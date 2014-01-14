@@ -15,7 +15,7 @@ But of course there has to be a reason for a blog post, and this is mine: I wan
 
 Reading through the cookbook article, the following plan took shape: when the form is created, add a checkbox to the form which is ticked depending on whether the User object bound to the form has the administrator role. When the form is submitted, if the checkbox is ticked, grant the user that role. If it is not, remove the role from their array of granted roles.
 
-[<img class="aligncenter size-full wp-image-311" title="The resulting form" src="http://marvelley.com/wp-content/uploads/2012/11/Screen-Shot-2012-11-10-at-14.51.51.png" alt="" width="793" height="491" />][2]
+[<img class="aligncenter size-full wp-image-311" title="The resulting form" src="/images/posts/2012/11/Screen-Shot-2012-11-10-at-14.51.51.png" alt="" width="793" height="491" />][2]
 
 To implement this, I needed two classes; a Form class, of course, and a new class that implements Symfony\Component\EventDispatcher\EventSubscriberInterface and subscribes to events on the form. As in the cookbook example, when the &#8216;preSetData&#8217; event fires I&#8217;d be adding a field to the form. In addition, when the &#8216;bind&#8217; event fires, I&#8217;d be using the value of the field to modify the bound object, in this case the User being managed. This is what I ended up with:
 
@@ -30,4 +30,4 @@ I&#8217;m manually adding the subscriber to the form in UserType::buildForm(), w
 The only downside I&#8217;ve found so far is that there doesn&#8217;t seem to be a way to order the fields that get added in the listener &#8211; they are always placed at the start of the collection, regardless of when the subscriber is attached to the form. This means that some template work is necessary to place the field as desired.
 
  [1]: http://symfony.com/doc/current/cookbook/form/dynamic_form_generation.html
- [2]: http://marvelley.com/wp-content/uploads/2012/11/Screen-Shot-2012-11-10-at-14.51.51.png
+ [2]: /images/posts/2012/11/Screen-Shot-2012-11-10-at-14.51.51.png

@@ -16,7 +16,7 @@ The theme of the hackday was &#8216;For the social good&#8217; &#8211; applicati
 My team comprised of myself; Paul, a former colleague, and Tom, a 3rd Year student at Cardiff University. Paul and I had decided to try to create a mobile app that used geolocation to provide the user with trivia and quizzes for the places of interest around them; we were only going to concern ourselves with Cardiff, so it would be a tourist aid for the city, or perhaps a learning tool for schoolchildren. Tom then joined us, and had originally wanted to work on a Corkboard-style app &#8211; after a discussion we modified that into a Q&A app which would be incorporated into our exploration tool idea, so the user could additionally ask questions and receive answers in realtime. That was the idea, anyway. We had 8.5 hours to implement it!
 
 <div id="attachment_218" class="wp-caption aligncenter" style="width: 310px">
-  <a href="http://marvelley.com/wp-content/uploads/2011/11/hackday54.jpg"><img class="size-medium wp-image-218" title="Team Explore Cardiff" src="http://marvelley.com/wp-content/uploads/2011/11/hackday54-300x199.jpg" alt="" width="300" height="199" /></a><p class="wp-caption-text">
+  <a href="/images/posts/2011/11/hackday54.jpg"><img class="size-medium wp-image-218" title="Team Explore Cardiff" src="/images/posts/2011/11/hackday54-300x199.jpg" alt="" width="300" height="199" /></a><p class="wp-caption-text">
     Photo courtesy of dangreenphotography.com
   </p>
 </div>
@@ -31,13 +31,13 @@ Most of the rest of my day was spent working with [Doctrine2][8], a PHP [ORM][9]
 
 By this point we were running quite low on time (I think I spent too long chowing down on the copious amounts of free pizza!), and so rather guiltily I left the other members of the team with only an hour to integrate the webservice into their apps &#8211; both were true heroes though, quickly turning everything around so that we could demo something fully featured to the other teams.
 
-[<img class="size-medium wp-image-216 aligncenter" title="The ExploreCardiff mobile app" src="http://marvelley.com/wp-content/uploads/2011/11/Screen-Shot-2011-11-22-at-22.48.17-221x300.png" alt="" width="221" height="300" />][10]
+[<img class="size-medium wp-image-216 aligncenter" title="The ExploreCardiff mobile app" src="/images/posts/2011/11/Screen-Shot-2011-11-22-at-22.48.17-221x300.png" alt="" width="221" height="300" />][10]
 
 Each of the other teams not only produced an app (I&#8217;ve been to hackdays where people don&#8217;t even get something together to demo, which is a little disappointing) but it was also gratifying to see that each app was functional, innovative and different. My personal favourite was Tomazs&#8217; mobile app for the Welsh Premier League (it doesn&#8217;t get enough love!), but the grit.ly team (who produced a mashup of several data sources to plot on a UK map areas at risk of accidents due to poor weather and lack of gritting), who won first prize, and a team of several 1st year Cardiff Uni students with another former colleague at Box UK, Warren Seymour, who took second with a cool Corkboard app for university students, thoroughly deserved their awards.
 
 It was also great to see Tom take the best individual developer prize, as he demonstrated some serious coding chops despite having to wait until the very last for the data his app depended on. He also ran into some issues with Cappuccino during the day, and rather than abandon what he was doing, he just switched to [Prototype][11] and got on with it in a very pragmatic fashion.
 
-[<img class="aligncenter size-medium wp-image-224" title="Ben and Kevin present their app" src="http://marvelley.com/wp-content/uploads/2011/11/IMG_1005-300x225.jpg" alt="" width="300" height="225" />][12]
+[<img class="aligncenter size-medium wp-image-224" title="Ben and Kevin present their app" src="/images/posts/2011/11/IMG_1005-300x225.jpg" alt="" width="300" height="225" />][12]
 
 As a bonus, after the prizes were handed out we decamped for a drink in the Tafarn, something I haven&#8217;t done since leaving Cardiff University 10 years ago. It was almost worth attending the event solely for the excuse to walk down memory lane!
 
@@ -52,7 +52,7 @@ The code for the CMS app I built can be found on [my Github page][13]. Time perm
  [7]: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
  [8]: http://www.doctrine-project.org/projects/orm/2.0/docs/en
  [9]: http://en.wikipedia.org/wiki/Object-relational_mapping
- [10]: http://marvelley.com/wp-content/uploads/2011/11/Screen-Shot-2011-11-22-at-22.48.17.png
+ [10]: /images/posts/2011/11/Screen-Shot-2011-11-22-at-22.48.17.png
  [11]: http://www.prototypejs.org/
- [12]: http://marvelley.com/wp-content/uploads/2011/11/IMG_1005.jpg
+ [12]: /images/posts/2011/11/IMG_1005.jpg
  [13]: https://github.com/craigmarvelley/ExploreCardiffAdmin

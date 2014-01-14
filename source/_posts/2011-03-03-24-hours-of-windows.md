@@ -31,7 +31,7 @@ I go into the add/remove Windows features programs bit in Control Panel and chec
 
 I open up IIS Manager, and all seems OK. I hit http://localhost in Chrome and I get the delightful IIS7 landing page. Web server: check. Painless.
 
-[<img class="alignnone size-large wp-image-111" title="IIS7" src="http://marvelley.com/wp-content/uploads/2011/03/IIS7-1024x754.png" alt="The IIS7 landing page." width="640" height="471" />][4]
+[<img class="alignnone size-large wp-image-111" title="IIS7" src="/images/posts/2011/03/IIS7-1024x754.png" alt="The IIS7 landing page." width="640" height="471" />][4]
 
 ## 9.38
 
@@ -68,11 +68,11 @@ And at that moment, the installer finishes. No error messages this time, which m
 
 I open up a command prompt and type &#8216;php&#8217; into it. Hit return. Error message &#8211; PHP isn&#8217;t recognised.
 
-[<img class="alignnone size-full wp-image-114" title="PHP not recognised" src="http://marvelley.com/wp-content/uploads/2011/03/php_not_recognised.png" alt="A familiar sight on Windows" width="684" height="351" />][5]
+[<img class="alignnone size-full wp-image-114" title="PHP not recognised" src="/images/posts/2011/03/php_not_recognised.png" alt="A familiar sight on Windows" width="684" height="351" />][5]
 
 Usually this means that PHP isn&#8217;t in Windows&#8217; PATH, so I probably need to do that. Hmm. Where&#8217;s the WPI put PHP? I find it under Program Files. Add that to the end of the path variable. Restart the cmd prompt. PHP is now responding, and the version is listed as 5.3.5. Fantastic.
 
-[<img class="alignnone size-full wp-image-115" title="PHP - Recognised!" src="http://marvelley.com/wp-content/uploads/2011/03/php_recognised.png" alt="That's better." width="693" height="355" />][6]
+[<img class="alignnone size-full wp-image-115" title="PHP - Recognised!" src="/images/posts/2011/03/php_recognised.png" alt="That's better." width="693" height="355" />][6]
 
 ## 22.38
 
@@ -88,7 +88,7 @@ The default web site is pointing to C:\inetpub\wwwroot, and it&#8217;s got some 
 
 I hit http://localhost in the browser, and wow &#8211; it&#8217;s working. The PHP interpreter, FastCGI as the SAPI &#8211; and all with pretty much zero configuration. Take it from someone who spent a good few evenings last year building a LAMP server from source and configuring PHP in Apache &#8211; this is impressive. OK, so I&#8217;ve done a lot of this before, but having the WPI take a lot of the grunt work away is so helpful. Also I always have to check which version of PHP I need on Windows &#8211; is it non-thread-safe? Thread-safe? VC6? VC9? It&#8217;s nice having all that uncertainty taken away.
 
-[<img class="alignnone size-large wp-image-117" title="phpinfo" src="http://marvelley.com/wp-content/uploads/2011/03/phpinfo-1024x574.png" alt="The PHPInfo page, courtesy IIS" width="640" height="358" />][7]
+[<img class="alignnone size-large wp-image-117" title="phpinfo" src="/images/posts/2011/03/phpinfo-1024x574.png" alt="The PHPInfo page, courtesy IIS" width="640" height="358" />][7]
 
 I take a look at the modules list. The usual suspects, nothing too fancy. I&#8217;m surprised to see that the Microsoft SQL Server Driver for PHP isn&#8217;t on there, I assumed that would be bundled. I think I saw it in the WPI, actually. I&#8217;ve a few can&#8217;t-live-without modules like PECL HTTP and XDebug that I&#8217;ll have to add in due course.
 
@@ -108,7 +108,7 @@ I keep following the steps, successfully creating a file and a temporary project
 
 No idea. Google tells me nothing. Maybe I missed something in the earlier part of the tutorial.
 
-<img class="alignnone size-full wp-image-118" title="Runtime Exception" src="http://marvelley.com/wp-content/uploads/2011/03/uhoh.png" alt="Runtime Exception: 0: Default document “ServiceDefinition.rd” does not exist in Service directory “ServiceDefinition.csx”!" width="693" height="355" />
+<img class="alignnone size-full wp-image-118" title="Runtime Exception" src="/images/posts/2011/03/uhoh.png" alt="Runtime Exception: 0: Default document “ServiceDefinition.rd” does not exist in Service directory “ServiceDefinition.csx”!" width="693" height="355" />
 
 ## 23.27
 
@@ -145,10 +145,10 @@ I&#8217;d like to thank Maarten for helping me out when I was seriously fed up. 
  [1]: http://www.phpazurecontest.com/
  [2]: http://technet.microsoft.com/en-us/evalcenter/cc442495
  [3]: http://www.microsoft.com/web/downloads/platform.aspx
- [4]: http://marvelley.com/wp-content/uploads/2011/03/IIS7.png
- [5]: http://marvelley.com/wp-content/uploads/2011/03/php_not_recognised.png
- [6]: http://marvelley.com/wp-content/uploads/2011/03/php_recognised.png
- [7]: http://marvelley.com/wp-content/uploads/2011/03/phpinfo.png
+ [4]: /images/posts/2011/03/IIS7.png
+ [5]: /images/posts/2011/03/php_not_recognised.png
+ [6]: /images/posts/2011/03/php_recognised.png
+ [7]: /images/posts/2011/03/phpinfo.png
  [8]: http://azurephp.interoperabilitybridges.com/articles/deploying-your-first-php-application-with-the-windows-azure-command-line-tools-for-php
  [9]: http://blog.maartenballiauw.be/
  [10]: http://twitter.com/#!/craigmarvelley/status/43101712755605504

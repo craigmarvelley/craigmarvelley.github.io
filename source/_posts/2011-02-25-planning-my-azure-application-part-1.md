@@ -31,7 +31,7 @@ Zend&#8217;s Controller classes are great, and I&#8217;ll probably use their rou
 
 So in an ideal world, this is how the application will be laid out:
 
-[<img class="alignnone size-full wp-image-100" title="Application Architecture Overview" src="http://marvelley.com/wp-content/uploads/2011/02/application_overview.jpg" alt="An overview of the application architecture" width="500" height="647" />][15]
+[<img class="alignnone size-full wp-image-100" title="Application Architecture Overview" src="/images/posts/2011/02/application_overview.jpg" alt="An overview of the application architecture" width="500" height="647" />][15]
 
 Next I&#8217;ll think in more detail about the frontend and backend applications. Now I have to go to PC World to buy a hard drive and a copy of Windows 7&#8230;
 
@@ -49,4 +49,4 @@ Next I&#8217;ll think in more detail about the frontend and backend applications
  [12]: http://social.msdn.microsoft.com/Forums/en-US/windowsazuredevelopment/thread/ab80b97f-462b-4b7d-bd65-f484e65be30c/
  [13]: http://stackoverflow.com/questions/3846793/running-solr-on-azure
  [14]: http://www.sencha.com/blog/ext-js-4-preview-faster-easier-more-stable
- [15]: http://marvelley.com/wp-content/uploads/2011/02/application_overview.jpg
+ [15]: /images/posts/2011/02/application_overview.jpg

@@ -17,7 +17,7 @@ I went along with [Carey][4] and [Warren][5] from [Box UK][6], and we formed a t
 <div class="mceTemp">
   <dl id="attachment_162" class="wp-caption alignnone" style="width: 650px;">
     <dt class="wp-caption-dt">
-      <a href="http://marvelley.com/wp-content/uploads/2011/03/stock-exchange.jpg"><img class="size-full wp-image-162" title="Co-Ordnance (courtesy Scraperwiki blog)" src="http://marvelley.com/wp-content/uploads/2011/03/stock-exchange.jpg" alt="" width="640" height="478" /></a>
+      <a href="/images/posts/2011/03/stock-exchange.jpg"><img class="size-full wp-image-162" title="Co-Ordnance (courtesy Scraperwiki blog)" src="/images/posts/2011/03/stock-exchange.jpg" alt="" width="640" height="478" /></a>
     </dt>
     
     <p>
@@ -35,7 +35,7 @@ This proved to be difficult, as URLs within the site feature hashed components &
 <div class="mceTemp">
   <dl id="attachment_161" class="wp-caption alignnone" style="width: 650px;">
     <dt class="wp-caption-dt">
-      <a href="http://marvelley.com/wp-content/uploads/2011/03/coordnance2.jpg"><img class="size-full wp-image-161 " title="Carey presents our app (courtesy Scraperwiki blog)" src="http://marvelley.com/wp-content/uploads/2011/03/coordnance2.jpg" alt="" width="640" height="478" /></a>
+      <a href="/images/posts/2011/03/coordnance2.jpg"><img class="size-full wp-image-161 " title="Carey presents our app (courtesy Scraperwiki blog)" src="/images/posts/2011/03/coordnance2.jpg" alt="" width="640" height="478" /></a>
     </dt>
     
     <p>

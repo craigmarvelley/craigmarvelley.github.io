@@ -16,7 +16,7 @@ I did a bit of Googling and came across a [few][2] [posts][3] [which][4] dealt w
 
 [I&#8217;ve put together a demo app][5] which hopefully illustrates everything. Have a play with it (installation instructions are in the README), then read on <img src='http://marvelley.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> 
 
-[<img class="aligncenter size-full wp-image-341" title="The demo application" src="http://marvelley.com/wp-content/uploads/2012/12/Screen-Shot-2012-12-20-at-21.55.12-e1356040628744.png" alt="" width="600" height="398" />][6]
+[<img class="aligncenter size-full wp-image-341" title="The demo application" src="/images/posts/2012/12/Screen-Shot-2012-12-20-at-21.55.12-e1356040628744.png" alt="" width="600" height="398" />][6]
 
 The app consists of a few components:
 
@@ -74,7 +74,7 @@ That&#8217;s it really. The code is a little rough and ready, but hopefully it&#
  [3]: https://groups.google.com/forum/?fromgroups=#!topic/symfony-devs/WvESDBprKrU
  [4]: http://stackoverflow.com/questions/12385923/handle-errors-in-ajax-within-symfony2-controller
  [5]: https://github.com/craigmarvelley/symfony2-xhr-error-handling
- [6]: http://marvelley.com/wp-content/uploads/2012/12/Screen-Shot-2012-12-20-at-21.55.12-e1356040628744.png
+ [6]: /images/posts/2012/12/Screen-Shot-2012-12-20-at-21.55.12-e1356040628744.png
  [7]: https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.md
  [8]: http://www.sencha.com/products/extjs
  [9]: https://gist.github.com/4340230#file-security-yml

@@ -19,13 +19,13 @@ It turns out that IIS 7 will automatically cache static resources, such as JavaS
 *   Enter a file extension of &#8216;.js&#8217; and disable both user-mode and kernel-mode caching, click OK.
 
 <div id="attachment_173" class="wp-caption alignnone" style="width: 310px">
-  <a href="http://marvelley.com/wp-content/uploads/2011/04/output_caching.png"><img class="size-medium wp-image-173" title="output_caching" src="http://marvelley.com/wp-content/uploads/2011/04/output_caching-300x224.png" alt="" width="300" height="224" /></a><p class="wp-caption-text">
+  <a href="/images/posts/2011/04/output_caching.png"><img class="size-medium wp-image-173" title="output_caching" src="/images/posts/2011/04/output_caching-300x224.png" alt="" width="300" height="224" /></a><p class="wp-caption-text">
     Select the 'Output Caching' Module
   </p>
 </div>
 
 <div id="attachment_174" class="wp-caption alignnone" style="width: 310px">
-  <a href="http://marvelley.com/wp-content/uploads/2011/04/add_cache_rule.png"><img class="size-medium wp-image-174" title="Disabling JavaScript caching" src="http://marvelley.com/wp-content/uploads/2011/04/add_cache_rule-300x224.png" alt="Disabling JavaScript caching" width="300" height="224" /></a><p class="wp-caption-text">
+  <a href="/images/posts/2011/04/add_cache_rule.png"><img class="size-medium wp-image-174" title="Disabling JavaScript caching" src="/images/posts/2011/04/add_cache_rule-300x224.png" alt="Disabling JavaScript caching" width="300" height="224" /></a><p class="wp-caption-text">
     Disabling JavaScript caching
   </p>
 </div>
