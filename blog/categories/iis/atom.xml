@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: IIS | Craig Marvelley]]></title>
-  <link href="http://craigmarvelley.github.io/blog/categories/iis/atom.xml" rel="self"/>
-  <link href="http://craigmarvelley.github.io/"/>
-  <updated>2014-02-03T20:55:23+00:00</updated>
-  <id>http://craigmarvelley.github.io/</id>
+  <link href="http://marvelley.com/blog/categories/iis/atom.xml" rel="self"/>
+  <link href="http://marvelley.com/"/>
+  <updated>2014-02-03T21:11:24+00:00</updated>
+  <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[IIS File Locking]]></title>
-    <link href="http://craigmarvelley.github.io/2011/08/15/iis-file-locking/"/>
+    <link href="http://marvelley.com/2011/08/15/iis-file-locking/"/>
     <updated>2011-08-15T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2011/08/15/iis-file-locking</id>
+    <id>http://marvelley.com/2011/08/15/iis-file-locking</id>
     <content type="html"><![CDATA[<p>This issue has bitten me so many times I&#8217;m going to document it here so hopefully I&#8217;ll remember it in future. Now and then, when deleting files using Windows Explorer, random files would fail an access check even though I&#8217;m the system administrator. <a href="http://www.emptyloop.com/unlocker/">Unlocker</a> reported no locks on the file, but it wouldn&#8217;t let me delete it either. The only way I could get around it was a restart.</p>
 
 <p>This got annoying so the next time it happened I started shutting down all my running programmes one by one and retrying the delete, until I discovered that it was in fact IIS that was causing the lock &#8211; even though the files weren&#8217;t web accessible. Turning off the webserver was enough to allow the files to be deleted.</p>
@@ -26,9 +26,9 @@
   
   <entry>
     <title type="html"><![CDATA[Preventing Aggressive Caching of JavaScript Files With IIS7]]></title>
-    <link href="http://craigmarvelley.github.io/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7/"/>
+    <link href="http://marvelley.com/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7/"/>
     <updated>2011-04-07T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7</id>
+    <id>http://marvelley.com/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7</id>
     <content type="html"><![CDATA[<p>I was playing with the new beta of Ext JS 4 the other day and noticed that sometimes the scripts were being cached, so my changes weren&#8217;t taking effect. Initially I thought this was because I&#8217;d upgraded to Firefox 4 &#8211; I use the <a href="https://addons.mozilla.org/en-us/firefox/addon/web-developer/">Web Developer</a> add-on which allows me to disable browser caching, and I&#8217;d assumed the cache setting had reverted when I upgraded. However the cache was indeed disabled, so I had to dig a little deeper.</p>
 
 <p>It turns out that IIS 7 will automatically cache static resources, such as JavaScript files. While this is probably what you&#8217;d want for a default production environment it almost certainly isn&#8217;t from a development point of view, when changes are being made by the minute. It wasn&#8217;t too hard to turn this feature off, however. To do so, just do the following:</p>
@@ -43,7 +43,7 @@
 
 
 <div id="attachment_173" class="wp-caption alignnone" style="width: 310px">
-  <a href="http://craigmarvelley.github.io/images/posts/2011/04/output_caching.png"><img class="size-medium wp-image-173" title="output_caching" src="http://craigmarvelley.github.io/images/posts/2011/04/output_caching-300x224.png" alt="" width="300" height="224" /></a><p class="wp-caption-text">
+  <a href="http://marvelley.com/images/posts/2011/04/output_caching.png"><img class="size-medium wp-image-173" title="output_caching" src="http://marvelley.com/images/posts/2011/04/output_caching-300x224.png" alt="" width="300" height="224" /></a><p class="wp-caption-text">
     Select the 'Output Caching' Module
   </p>
 </div>
@@ -52,7 +52,7 @@
 
 
 <div id="attachment_174" class="wp-caption alignnone" style="width: 310px">
-  <a href="http://craigmarvelley.github.io/images/posts/2011/04/add_cache_rule.png"><img class="size-medium wp-image-174" title="Disabling JavaScript caching" src="http://craigmarvelley.github.io/images/posts/2011/04/add_cache_rule-300x224.png" alt="Disabling JavaScript caching" width="300" height="224" /></a><p class="wp-caption-text">
+  <a href="http://marvelley.com/images/posts/2011/04/add_cache_rule.png"><img class="size-medium wp-image-174" title="Disabling JavaScript caching" src="http://marvelley.com/images/posts/2011/04/add_cache_rule-300x224.png" alt="Disabling JavaScript caching" width="300" height="224" /></a><p class="wp-caption-text">
     Disabling JavaScript caching
   </p>
 </div>

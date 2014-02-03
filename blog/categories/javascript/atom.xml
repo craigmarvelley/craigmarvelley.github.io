@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: JavaScript | Craig Marvelley]]></title>
-  <link href="http://craigmarvelley.github.io/blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="http://craigmarvelley.github.io/"/>
-  <updated>2014-02-03T20:55:23+00:00</updated>
-  <id>http://craigmarvelley.github.io/</id>
+  <link href="http://marvelley.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://marvelley.com/"/>
+  <updated>2014-02-03T21:11:24+00:00</updated>
+  <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Determining the Type of Appcelerator Objects.]]></title>
-    <link href="http://craigmarvelley.github.io/2011/03/09/determining-the-type-of-appcelerator-objects/"/>
+    <link href="http://marvelley.com/2011/03/09/determining-the-type-of-appcelerator-objects/"/>
     <updated>2011-03-09T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2011/03/09/determining-the-type-of-appcelerator-objects</id>
+    <id>http://marvelley.com/2011/03/09/determining-the-type-of-appcelerator-objects</id>
     <content type="html"><![CDATA[<p>The Appcelerator platform doesn&#8217;t provide a way to determine what the type of an Appcelerator object is (e.g. a Window, a View, a Button, etc.). This is often necessary because one may wish to tailor logic to the type of object being dealt with.</p>
 
 <p>For example, when working with a SplitWindow in an iPad app built in Appcelerator I needed to know if an object that was to be added to the detail view was a navigation group or a window. I ended up using toString() on the object to get its type, then using a regex. This is the way I ended up doing it:</p>
@@ -40,9 +40,9 @@ window: window&lt;br /&gt;
   
   <entry>
     <title type="html"><![CDATA[Titanium Appcelerator &#8211; Resizing the Andriod Emulator]]></title>
-    <link href="http://craigmarvelley.github.io/2010/11/28/titanium-appcelerator-resizing-the-andriod-emulator/"/>
+    <link href="http://marvelley.com/2010/11/28/titanium-appcelerator-resizing-the-andriod-emulator/"/>
     <updated>2010-11-28T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2010/11/28/titanium-appcelerator-resizing-the-andriod-emulator</id>
+    <id>http://marvelley.com/2010/11/28/titanium-appcelerator-resizing-the-andriod-emulator</id>
     <content type="html"><![CDATA[<p>While messing around with Appcelerator it was annoying that on my 13&#8243; Macbook the Android emulator was too big for the screen &#8211; the Titanium Developer program doesn&#8217;t provide a way to change this. My workaround was to copy the command that&#8217;s being run to launch the emulator from the console output, and run the emulator manually with a resize option before deploying the app.</p>
 
 <p>This can be accomplished using the emulator&#8217;s -scale option, which is a number from 0.1 to 3. I found setting it to 0.7 resulted in an emulator with a workable size for my Macbook.</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: General | Craig Marvelley]]></title>
-  <link href="http://craigmarvelley.github.io/blog/categories/general/atom.xml" rel="self"/>
-  <link href="http://craigmarvelley.github.io/"/>
-  <updated>2014-02-03T20:55:23+00:00</updated>
-  <id>http://craigmarvelley.github.io/</id>
+  <link href="http://marvelley.com/blog/categories/general/atom.xml" rel="self"/>
+  <link href="http://marvelley.com/"/>
+  <updated>2014-02-03T21:11:24+00:00</updated>
+  <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Including Filtered Thumbnail Data With the WordPress JSON API Plugin]]></title>
-    <link href="http://craigmarvelley.github.io/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/"/>
+    <link href="http://marvelley.com/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/"/>
     <updated>2013-09-26T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin</id>
+    <id>http://marvelley.com/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin</id>
     <content type="html"><![CDATA[<p>The <a href="http://wordpress.org/plugins/json-api/">JSON API</a> plugin is a great tool for exposing your WordPress data. I&#8217;ve used it to provide content to a few mobile applications; it&#8217;s well featured and most importantly, quite flexible. If your content providers are happiest using a CMS like WordPress, your project can benefit by allowing them to use the authoring tools they&#8217;re comfortable with while allowing you to easily access the content they&#8217;re creating, either to use directly within your application, or as I tend to do, by exporting the data into another application which then proxies the data to mobile applications. I find the latter approach gives you greater control over features like caching, while making it easier to relate the data to domain models that aren&#8217;t handled by WordPress.</p>
 
 <p>But I digress! This post was conceived because when requesting all posts of a certain type through the plugin, response times were hideously slow. The request I was making looked like this:</p>
@@ -38,9 +38,9 @@
   
   <entry>
     <title type="html"><![CDATA[On Incremental Improvement]]></title>
-    <link href="http://craigmarvelley.github.io/2013/01/06/on-incremental-improvement/"/>
+    <link href="http://marvelley.com/2013/01/06/on-incremental-improvement/"/>
     <updated>2013-01-06T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2013/01/06/on-incremental-improvement</id>
+    <id>http://marvelley.com/2013/01/06/on-incremental-improvement</id>
     <content type="html"><![CDATA[<p>Twice today I&#8217;ve seen references to the benefits of iterative improvement, and I found that the topic resonated with me. At the moment I&#8217;m halfway though a pretty lengthy software project in which it&#8217;s sometimes hard to see the wood for the trees. The backlog is substantial, resulting in a hefty set of tasks for our team. In these situations, where the to-do list doesn&#8217;t seem to change day to day, it&#8217;s easy to feel crippled by inertia. However, these two references illustrate that we can succeed provided we ensure we&#8217;re making healthy, gradual progress.</p>
 
 <p>One might expect that the references I&#8217;m alluding to originate from a tome of software development, like &#8220;<a href="http://pragprog.com/the-pragmatic-programmer">The Pragmatic Programmer</a>&#8220;, or from one of the many celebrated development gurus of Twitter, but in fact they are not directly concerned with software at all. The first comes from <a href="http://www.youtube.com/watch?v=7GHhmgZ0BwQ" title="The Undercover Economist Tim Harford: Full talk from Wired 2012">a talk discussing the pros and cons of iterative improvement</a> , linked to by my colleague (and all-round good chap) <a href="https://twitter.com/owenphelps" title="Owen Phelps' Twitter">Owen Phelps</a>, by Tim Harford at last year&#8217;s Wired UK conference:</p>
@@ -59,9 +59,9 @@
   
   <entry>
     <title type="html"><![CDATA[Jeff Atwood Is a Muppet.]]></title>
-    <link href="http://craigmarvelley.github.io/2012/06/30/jeff-atwood-is-a-muppet/"/>
+    <link href="http://marvelley.com/2012/06/30/jeff-atwood-is-a-muppet/"/>
     <updated>2012-06-30T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2012/06/30/jeff-atwood-is-a-muppet</id>
+    <id>http://marvelley.com/2012/06/30/jeff-atwood-is-a-muppet</id>
     <content type="html"><![CDATA[<p>I was having a nice, relaxing Saturday morning until I read through my Twitter timeline and was directed to Jeff Atwood&#8217;s latest post on Coding Horror, &#8220;<a href="http://www.codinghorror.com/blog/2012/06/the-php-singularity.html">The PHP Singularity</a>&#8220;. After reading through it, and the comments from other readers, I got annoyed. Really annoyed.</p>
 
 <p>I won&#8217;t repeat the article, but the gist of it is:</p>
@@ -103,9 +103,9 @@
   
   <entry>
     <title type="html"><![CDATA[Building Web Apps Like a (England) Boss.]]></title>
-    <link href="http://craigmarvelley.github.io/2012/05/16/building-web-apps-like-a-england-boss/"/>
+    <link href="http://marvelley.com/2012/05/16/building-web-apps-like-a-england-boss/"/>
     <updated>2012-05-16T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2012/05/16/building-web-apps-like-a-england-boss</id>
+    <id>http://marvelley.com/2012/05/16/building-web-apps-like-a-england-boss</id>
     <content type="html"><![CDATA[<p>If you think app development and football have nothing in common, read on.</p>
 
 <p>There was a discussion on our IRC server at work this morning which centred on how to best mitigate the risk involved with using third party tools in web applications. Not just at the code level, as in a JavaScript library like <a href="http://jquery.com/">jQuery</a>, or a PHP framework like <a href="http://symfony.com/">Symfony2</a>, but right through the stack &#8211; from the OS, to the web server, to the app codebase and beyond.</p>
@@ -134,9 +134,9 @@
   
   <entry>
     <title type="html"><![CDATA[Windows 7: Connecting to a Samsung Galaxy S2 Device With ADB]]></title>
-    <link href="http://craigmarvelley.github.io/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb/"/>
+    <link href="http://marvelley.com/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb/"/>
     <updated>2012-05-01T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb</id>
+    <id>http://marvelley.com/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb</id>
     <content type="html"><![CDATA[<p>Step 1: Buy a Mac</p>
 ]]></content>
   </entry>

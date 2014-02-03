@@ -1,185 +1,169 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://craigmarvelley.github.io/2010/09/23/much-success/</loc>
+        <loc>http://marvelley.com/2010/09/23/much-success/</loc>
+        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://marvelley.com/2010/10/01/mount-alpha-transparent-images-php-gd/</loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://craigmarvelley.github.io/2010/10/01/mount-alpha-transparent-images-php-gd/
+            http://marvelley.com/2010/10/06/overcoming-a-lock-wait-timeout-exceeded-exception/
+        </loc>
+        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://marvelley.com/2010/10/13/dompdf-and-the-mbstring-extension/</loc>
+        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://marvelley.com/2010/10/13/magento-on-windows-unable-to-log-into-admin-area/
         </loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://craigmarvelley.github.io/2010/10/06/overcoming-a-lock-wait-timeout-exceeded-exception/
-        </loc>
-        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://craigmarvelley.github.io/2010/10/13/dompdf-and-the-mbstring-extension/</loc>
-        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://craigmarvelley.github.io/2010/10/13/magento-on-windows-unable-to-log-into-admin-area/
+            http://marvelley.com/2010/11/05/jelly-form-element-references-for-hudson-development/
         </loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://craigmarvelley.github.io/2010/11/05/jelly-form-element-references-for-hudson-development/
+            http://marvelley.com/2010/11/28/titanium-appcelerator-resizing-the-andriod-emulator/
         </loc>
+        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://marvelley.com/2010/12/06/box-uk-open-source-software-and-php/</loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://craigmarvelley.github.io/2010/11/28/titanium-appcelerator-resizing-the-andriod-emulator/
+            http://marvelley.com/2011/02/02/sending-emails-with-php-using-swiftmailer-and-smtp-on-mac-osx/
         </loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
-        <loc>http://craigmarvelley.github.io/2010/12/06/box-uk-open-source-software-and-php/</loc>
+        <loc>http://marvelley.com/2011/02/10/entering-the-php-on-azure-contest/</loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://craigmarvelley.github.io/2011/02/02/sending-emails-with-php-using-swiftmailer-and-smtp-on-mac-osx/
-        </loc>
+        <loc>http://marvelley.com/2011/02/20/learning-about-windows-azure/</loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
-        <loc>http://craigmarvelley.github.io/2011/02/10/entering-the-php-on-azure-contest/</loc>
-        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://craigmarvelley.github.io/2011/02/20/learning-about-windows-azure/</loc>
-        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://craigmarvelley.github.io/2011/02/25/planning-my-azure-application-part-1/
-        </loc>
+        <loc>http://marvelley.com/2011/02/25/planning-my-azure-application-part-1/</loc>
         <lastmod>2014-01-14T23:34:36+00:00</lastmod>
     </url>
     <url>
-        <loc>http://craigmarvelley.github.io/2011/03/03/24-hours-of-windows/</loc>
+        <loc>http://marvelley.com/2011/03/03/24-hours-of-windows/</loc>
+        <lastmod>2014-01-14T23:39:34+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://marvelley.com/2011/03/09/determining-the-type-of-appcelerator-objects/</loc>
+        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://marvelley.com/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric/</loc>
+        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://marvelley.com/2011/03/27/hacks-and-hackers-hackday-cardiff/</loc>
         <lastmod>2014-01-14T23:39:34+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://craigmarvelley.github.io/2011/03/09/determining-the-type-of-appcelerator-objects/
-        </loc>
-        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://craigmarvelley.github.io/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric/
-        </loc>
-        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://craigmarvelley.github.io/2011/03/27/hacks-and-hackers-hackday-cardiff/</loc>
-        <lastmod>2014-01-14T23:39:34+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://craigmarvelley.github.io/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7/
+            http://marvelley.com/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7/
         </loc>
         <lastmod>2014-01-14T23:39:34+00:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://craigmarvelley.github.io/2011/05/08/using-a-php-framework-with-windows-azure/
-        </loc>
+        <loc>http://marvelley.com/2011/05/08/using-a-php-framework-with-windows-azure/</loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
-        <loc>http://craigmarvelley.github.io/2011/08/15/iis-file-locking/</loc>
-        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://craigmarvelley.github.io/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files/
-        </loc>
+        <loc>http://marvelley.com/2011/08/15/iis-file-locking/</loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://craigmarvelley.github.io/2011/11/08/speaking-at-phpsw-from-php-to-objective-c/
+            http://marvelley.com/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files/
         </loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://craigmarvelley.github.io/2011/11/24/for-the-social-good-box-uk-hackday-1-recap/
-        </loc>
+        <loc>http://marvelley.com/2011/11/08/speaking-at-phpsw-from-php-to-objective-c/</loc>
+        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://marvelley.com/2011/11/24/for-the-social-good-box-uk-hackday-1-recap/</loc>
         <lastmod>2014-01-14T23:39:34+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://craigmarvelley.github.io/2012/02/15/installing-the-imagemagick-extension-for-windows-7n/
+            http://marvelley.com/2012/02/15/installing-the-imagemagick-extension-for-windows-7n/
         </loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://craigmarvelley.github.io/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb/
+            http://marvelley.com/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb/
+        </loc>
+        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://marvelley.com/2012/05/16/building-web-apps-like-a-england-boss/</loc>
+        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://marvelley.com/2012/05/27/resources-for-learning-symfony2/</loc>
+        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://marvelley.com/2012/06/30/jeff-atwood-is-a-muppet/</loc>
+        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://marvelley.com/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/
         </loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://craigmarvelley.github.io/2012/05/16/building-web-apps-like-a-england-boss/
-        </loc>
-        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://craigmarvelley.github.io/2012/05/27/resources-for-learning-symfony2/</loc>
-        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://craigmarvelley.github.io/2012/06/30/jeff-atwood-is-a-muppet/</loc>
-        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://craigmarvelley.github.io/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/
-        </loc>
-        <lastmod>2014-01-14T14:37:37+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://craigmarvelley.github.io/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/
+            http://marvelley.com/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/
         </loc>
         <lastmod>2014-01-14T23:39:34+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://craigmarvelley.github.io/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/
+            http://marvelley.com/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/
         </loc>
         <lastmod>2014-01-14T23:39:34+00:00</lastmod>
     </url>
     <url>
-        <loc>http://craigmarvelley.github.io/2013/01/06/on-incremental-improvement/</loc>
+        <loc>http://marvelley.com/2013/01/06/on-incremental-improvement/</loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://craigmarvelley.github.io/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/
+            http://marvelley.com/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/
         </loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
     <url>
-        <loc>http://craigmarvelley.github.io/blog/archives/</loc>
+        <loc>http://marvelley.com/blog/archives/</loc>
         <lastmod>2014-01-14T23:39:34+00:00</lastmod>
     </url>
     <url>
-        <loc>http://craigmarvelley.github.io/</loc>
+        <loc>http://marvelley.com/</loc>
         <lastmod>2014-01-14T23:39:34+00:00</lastmod>
     </url>
     <url>
-        <loc>http://craigmarvelley.github.io/robots.txt</loc>
+        <loc>http://marvelley.com/robots.txt</loc>
         <lastmod>2014-01-14T14:37:37+00:00</lastmod>
     </url>
 </urlset>

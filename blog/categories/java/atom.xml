@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Java | Craig Marvelley]]></title>
-  <link href="http://craigmarvelley.github.io/blog/categories/java/atom.xml" rel="self"/>
-  <link href="http://craigmarvelley.github.io/"/>
-  <updated>2014-02-03T20:55:23+00:00</updated>
-  <id>http://craigmarvelley.github.io/</id>
+  <link href="http://marvelley.com/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://marvelley.com/"/>
+  <updated>2014-02-03T21:11:24+00:00</updated>
+  <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Jelly Form Element References for Hudson Development]]></title>
-    <link href="http://craigmarvelley.github.io/2010/11/05/jelly-form-element-references-for-hudson-development/"/>
+    <link href="http://marvelley.com/2010/11/05/jelly-form-element-references-for-hudson-development/"/>
     <updated>2010-11-05T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2010/11/05/jelly-form-element-references-for-hudson-development</id>
+    <id>http://marvelley.com/2010/11/05/jelly-form-element-references-for-hudson-development</id>
     <content type="html"><![CDATA[<p>I&#8217;ve been working on a Hudson plugin, which has been interesting because it&#8217;s been years since I&#8217;ve done any Java development. The tag library used by Hudson, Jelly, seems powerful enough but it&#8217;s not immediately apparent what tags it supports, and the Hudson documentation doesn&#8217;t go into much detail. The only two resources I could find are:</p>
 
 <p>A tag reference (think this is generated from the Jelly JavaDoc)<br/>

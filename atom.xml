@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Craig Marvelley]]></title>
-  <link href="http://craigmarvelley.github.io/atom.xml" rel="self"/>
-  <link href="http://craigmarvelley.github.io/"/>
-  <updated>2014-02-03T20:55:23+00:00</updated>
-  <id>http://craigmarvelley.github.io/</id>
+  <link href="http://marvelley.com/atom.xml" rel="self"/>
+  <link href="http://marvelley.com/"/>
+  <updated>2014-02-03T21:11:24+00:00</updated>
+  <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Including Filtered Thumbnail Data With the WordPress JSON API Plugin]]></title>
-    <link href="http://craigmarvelley.github.io/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/"/>
+    <link href="http://marvelley.com/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/"/>
     <updated>2013-09-26T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin</id>
+    <id>http://marvelley.com/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin</id>
     <content type="html"><![CDATA[<p>The <a href="http://wordpress.org/plugins/json-api/">JSON API</a> plugin is a great tool for exposing your WordPress data. I&#8217;ve used it to provide content to a few mobile applications; it&#8217;s well featured and most importantly, quite flexible. If your content providers are happiest using a CMS like WordPress, your project can benefit by allowing them to use the authoring tools they&#8217;re comfortable with while allowing you to easily access the content they&#8217;re creating, either to use directly within your application, or as I tend to do, by exporting the data into another application which then proxies the data to mobile applications. I find the latter approach gives you greater control over features like caching, while making it easier to relate the data to domain models that aren&#8217;t handled by WordPress.</p>
 
 <p>But I digress! This post was conceived because when requesting all posts of a certain type through the plugin, response times were hideously slow. The request I was making looked like this:</p>
@@ -38,9 +38,9 @@
   
   <entry>
     <title type="html"><![CDATA[On Incremental Improvement]]></title>
-    <link href="http://craigmarvelley.github.io/2013/01/06/on-incremental-improvement/"/>
+    <link href="http://marvelley.com/2013/01/06/on-incremental-improvement/"/>
     <updated>2013-01-06T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2013/01/06/on-incremental-improvement</id>
+    <id>http://marvelley.com/2013/01/06/on-incremental-improvement</id>
     <content type="html"><![CDATA[<p>Twice today I&#8217;ve seen references to the benefits of iterative improvement, and I found that the topic resonated with me. At the moment I&#8217;m halfway though a pretty lengthy software project in which it&#8217;s sometimes hard to see the wood for the trees. The backlog is substantial, resulting in a hefty set of tasks for our team. In these situations, where the to-do list doesn&#8217;t seem to change day to day, it&#8217;s easy to feel crippled by inertia. However, these two references illustrate that we can succeed provided we ensure we&#8217;re making healthy, gradual progress.</p>
 
 <p>One might expect that the references I&#8217;m alluding to originate from a tome of software development, like &#8220;<a href="http://pragprog.com/the-pragmatic-programmer">The Pragmatic Programmer</a>&#8220;, or from one of the many celebrated development gurus of Twitter, but in fact they are not directly concerned with software at all. The first comes from <a href="http://www.youtube.com/watch?v=7GHhmgZ0BwQ" title="The Undercover Economist Tim Harford: Full talk from Wired 2012">a talk discussing the pros and cons of iterative improvement</a> , linked to by my colleague (and all-round good chap) <a href="https://twitter.com/owenphelps" title="Owen Phelps' Twitter">Owen Phelps</a>, by Tim Harford at last year&#8217;s Wired UK conference:</p>
@@ -59,9 +59,9 @@
   
   <entry>
     <title type="html"><![CDATA[Symfony2: JSON Responses for XHR Errors and Authentication Failures]]></title>
-    <link href="http://craigmarvelley.github.io/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/"/>
+    <link href="http://marvelley.com/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/"/>
     <updated>2012-12-20T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures</id>
+    <id>http://marvelley.com/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures</id>
     <content type="html"><![CDATA[<p>I&#8217;ve been working on a Symfony2 application whose user interface is presented as a single page application that makes heavy use of JavaScript. The app sends <a href="http://en.wikipedia.org/wiki/XMLHttpRequest">XHR</a> requests to the Symfony2 backend API to retrieve and modify data, and it uses Symfony&#8217;s authorisation/authentication functionality to protect resources so they are only accessible to logged in users.</p>
 
 <p>In an ideal world every request made by the application will succeed, but in reality things often go wrong; the user may have provided invalid data, their session may have expired meaning they are no longer logged in, or we may have a bug in our API code which causes a server error. With an out-of-the-box installation of Symfony2, each of these scenarios will result in the default error handler rendering a HTML page which isn&#8217;t much use to our client JavaScript application &#8211; instead we want the server to issue a JSON response to our AJAX request, complete with some contextual error details, with which we can give the user a meaningful error message.</p>
@@ -70,7 +70,7 @@
 
 <p><a href="https://github.com/craigmarvelley/symfony2-xhr-error-handling">I&#8217;ve put together a demo app</a> which hopefully illustrates everything. Have a play with it (installation instructions are in the README), then read on <img src='http://marvelley.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /></p>
 
-<p><a href="http://craigmarvelley.github.io/images/posts/2012/12/Screen-Shot-2012-12-20-at-21.55.12-e1356040628744.png"><img class="aligncenter size-full wp-image-341" title="The demo application" src="http://craigmarvelley.github.io/images/posts/2012/12/Screen-Shot-2012-12-20-at-21.55.12-e1356040628744.png" alt="" width="600" height="398" /></a></p>
+<p><a href="http://marvelley.com/images/posts/2012/12/Screen-Shot-2012-12-20-at-21.55.12-e1356040628744.png"><img class="aligncenter size-full wp-image-341" title="The demo application" src="http://marvelley.com/images/posts/2012/12/Screen-Shot-2012-12-20-at-21.55.12-e1356040628744.png" alt="" width="600" height="398" /></a></p>
 
 <p>The app consists of a few components:</p>
 
@@ -142,9 +142,9 @@
   
   <entry>
     <title type="html"><![CDATA[Symfony2: Managing a User Entity Role With a Form Event Subscriber]]></title>
-    <link href="http://craigmarvelley.github.io/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/"/>
+    <link href="http://marvelley.com/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/"/>
     <updated>2012-11-10T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber</id>
+    <id>http://marvelley.com/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber</id>
     <content type="html"><![CDATA[<p>I&#8217;m working on a Symfony2 application which makes use of roles to manage what Users of the system are able to do within the app. Symfony places no limit on the amount of roles the User can have, but in the context of my application, there are only two &#8211; a base user (ROLE_USER, in Symfony parlance), and an administrator (ROLE_ADMIN). As is Symfony custom, all users would possess the default role, but the administrator role would be granted on a per user basis. I&#8217;m using the FOSUserBundle and Doctrine, so a User&#8217;s roles are stored within an array on that User&#8217; Doctrine entity.</p>
 
 <p>I began crafting a form (using the Symfony Form component) to manage user details. When creating forms that are bound to Doctrine I&#8217;ve generally found that I&#8217;ve needed to do little in the way of form customisation; the form component does a good job of figuring out which form fields to use based on the type of the variable it is given. So name, being a string, gets modelled as a textfield, while their registration date, being a DateTime object, causes a series of select boxes to be created which allow dates and times to be entered. So far so good.</p>
@@ -153,7 +153,7 @@
 
 <p>Reading through the cookbook article, the following plan took shape: when the form is created, add a checkbox to the form which is ticked depending on whether the User object bound to the form has the administrator role. When the form is submitted, if the checkbox is ticked, grant the user that role. If it is not, remove the role from their array of granted roles.</p>
 
-<p><a href="http://craigmarvelley.github.io/images/posts/2012/11/Screen-Shot-2012-11-10-at-14.51.51.png"><img class="aligncenter size-full wp-image-311" title="The resulting form" src="http://craigmarvelley.github.io/images/posts/2012/11/Screen-Shot-2012-11-10-at-14.51.51.png" alt="" width="793" height="491" /></a></p>
+<p><a href="http://marvelley.com/images/posts/2012/11/Screen-Shot-2012-11-10-at-14.51.51.png"><img class="aligncenter size-full wp-image-311" title="The resulting form" src="http://marvelley.com/images/posts/2012/11/Screen-Shot-2012-11-10-at-14.51.51.png" alt="" width="793" height="491" /></a></p>
 
 <p>To implement this, I needed two classes; a Form class, of course, and a new class that implements Symfony\Component\EventDispatcher\EventSubscriberInterface and subscribes to events on the form. As in the cookbook example, when the &#8216;preSetData&#8217; event fires I&#8217;d be adding a field to the form. In addition, when the &#8216;bind&#8217; event fires, I&#8217;d be using the value of the field to modify the bound object, in this case the User being managed. This is what I ended up with:</p>
 
@@ -174,9 +174,9 @@
   
   <entry>
     <title type="html"><![CDATA[Deactivating a Macports Install of XDebug in a LAMP Environment]]></title>
-    <link href="http://craigmarvelley.github.io/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/"/>
+    <link href="http://marvelley.com/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/"/>
     <updated>2012-09-20T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment</id>
+    <id>http://marvelley.com/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment</id>
     <content type="html"><![CDATA[<p>A few times I&#8217;ve found myself cursing when trying to toggle <a href="http://xdebug.org/">XDebug</a> on and off via <a href="http://www.macports.org/">Macports</a>. Typically I&#8217;ll be debugging with it enabled, then disable it for development/testing to get the fastest experience possible (it tends to really impact performance on large codebases, such as a Symfony2 standard install), only to experience segfaults when I refresh the page I&#8217;m working on.</p>
 
 <p>The solution I&#8217;ve found is when restarting Apache (which is necessary for the change to PHP&#8217;s installed modules takes effect), to use an explicit start/stop rather than a restart. <a href="http://httpd.apache.org/docs/2.2/stopping.html">According to the Apache docs</a> restarting only kills off children processes, so the parent remains running:</p>
@@ -207,9 +207,9 @@ sudo apachectl start</pre>
   
   <entry>
     <title type="html"><![CDATA[Jeff Atwood Is a Muppet.]]></title>
-    <link href="http://craigmarvelley.github.io/2012/06/30/jeff-atwood-is-a-muppet/"/>
+    <link href="http://marvelley.com/2012/06/30/jeff-atwood-is-a-muppet/"/>
     <updated>2012-06-30T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2012/06/30/jeff-atwood-is-a-muppet</id>
+    <id>http://marvelley.com/2012/06/30/jeff-atwood-is-a-muppet</id>
     <content type="html"><![CDATA[<p>I was having a nice, relaxing Saturday morning until I read through my Twitter timeline and was directed to Jeff Atwood&#8217;s latest post on Coding Horror, &#8220;<a href="http://www.codinghorror.com/blog/2012/06/the-php-singularity.html">The PHP Singularity</a>&#8220;. After reading through it, and the comments from other readers, I got annoyed. Really annoyed.</p>
 
 <p>I won&#8217;t repeat the article, but the gist of it is:</p>
@@ -251,9 +251,9 @@ sudo apachectl start</pre>
   
   <entry>
     <title type="html"><![CDATA[Resources for Learning Symfony2]]></title>
-    <link href="http://craigmarvelley.github.io/2012/05/27/resources-for-learning-symfony2/"/>
+    <link href="http://marvelley.com/2012/05/27/resources-for-learning-symfony2/"/>
     <updated>2012-05-27T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2012/05/27/resources-for-learning-symfony2</id>
+    <id>http://marvelley.com/2012/05/27/resources-for-learning-symfony2</id>
     <content type="html"><![CDATA[<p>I&#8217;ve been asked a few times what the best resources are for learning Symfony2. With the project still relatively young there aren&#8217;t yet (to my knowledge, anyway!) any books (physical or otherwise) on Symfony2 available, but there is a good amount of information in the form of manuals and tutorials on the web to get on with.</p>
 
 <p><a href="http://stackoverflow.com/questions/8623962/looking-for-symfony2-book">This question on Stack Overflow</a> lists most of them; specifically:</p>
@@ -290,9 +290,9 @@ sudo apachectl start</pre>
   
   <entry>
     <title type="html"><![CDATA[Building Web Apps Like a (England) Boss.]]></title>
-    <link href="http://craigmarvelley.github.io/2012/05/16/building-web-apps-like-a-england-boss/"/>
+    <link href="http://marvelley.com/2012/05/16/building-web-apps-like-a-england-boss/"/>
     <updated>2012-05-16T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2012/05/16/building-web-apps-like-a-england-boss</id>
+    <id>http://marvelley.com/2012/05/16/building-web-apps-like-a-england-boss</id>
     <content type="html"><![CDATA[<p>If you think app development and football have nothing in common, read on.</p>
 
 <p>There was a discussion on our IRC server at work this morning which centred on how to best mitigate the risk involved with using third party tools in web applications. Not just at the code level, as in a JavaScript library like <a href="http://jquery.com/">jQuery</a>, or a PHP framework like <a href="http://symfony.com/">Symfony2</a>, but right through the stack &#8211; from the OS, to the web server, to the app codebase and beyond.</p>
@@ -321,18 +321,18 @@ sudo apachectl start</pre>
   
   <entry>
     <title type="html"><![CDATA[Windows 7: Connecting to a Samsung Galaxy S2 Device With ADB]]></title>
-    <link href="http://craigmarvelley.github.io/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb/"/>
+    <link href="http://marvelley.com/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb/"/>
     <updated>2012-05-01T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb</id>
+    <id>http://marvelley.com/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb</id>
     <content type="html"><![CDATA[<p>Step 1: Buy a Mac</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[It&#8217;s a Kind of ImageMagick &#8211; Installing the PHP Extension for Windows 7.]]></title>
-    <link href="http://craigmarvelley.github.io/2012/02/15/installing-the-imagemagick-extension-for-windows-7n/"/>
+    <link href="http://marvelley.com/2012/02/15/installing-the-imagemagick-extension-for-windows-7n/"/>
     <updated>2012-02-15T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2012/02/15/installing-the-imagemagick-extension-for-windows-7n</id>
+    <id>http://marvelley.com/2012/02/15/installing-the-imagemagick-extension-for-windows-7n</id>
     <content type="html"><![CDATA[<p>I had a bit of a nightmare recently trying to get the ImageMagick PHP extension working on Windows. Builds of the extension as a DLL are <a href="http://valokuva.org/?page_id=50">provided by Mikko</a>, which is awesome, but I had some trouble getting it to work.</p>
 
 <p>The workstation I was using was running 64-bit Windows 7N, and the issue I was seeing was that the extension was being registered (if I ran php -m from the command line it seemed to be loaded) but when inspecting phpinfo() output the module was conspicuous by its absence.</p>
@@ -349,9 +349,9 @@ sudo apachectl start</pre>
   
   <entry>
     <title type="html"><![CDATA[For the Social Good &#8211; Box UK Hackday #1 Recap]]></title>
-    <link href="http://craigmarvelley.github.io/2011/11/24/for-the-social-good-box-uk-hackday-1-recap/"/>
+    <link href="http://marvelley.com/2011/11/24/for-the-social-good-box-uk-hackday-1-recap/"/>
     <updated>2011-11-24T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2011/11/24/for-the-social-good-box-uk-hackday-1-recap</id>
+    <id>http://marvelley.com/2011/11/24/for-the-social-good-box-uk-hackday-1-recap</id>
     <content type="html"><![CDATA[<p>On the twentieth of November, 2011, the company for whom I work (<a href="http://boxuk.com">Box UK</a>) held a <a href="http://hackday.boxuk.com/">hackday</a> in Cardiff at the Student&#8217;s Union. It was the first time that we&#8217;d organised such an event, but it seemed to go really well &#8211; feedback from the participants was good, it was well attended, and personally I had a really good (if stressful!) time.</p>
 
 <p>The theme of the hackday was &#8216;For the social good&#8217; &#8211; applications built during the day had to have some sort of social theme, ideally to improve the lives of the people that would use them. That&#8217;s quite a broad topic, and it resulted in an array of different apps &#8211; not just in the sense of intended purpose, but in style, and also in platform. While teams typically used scripting languages to build their apps within those used (PHP, JavaScript, Python) were a lot of varied frameworks (Symfony2, Lithium, Django, jQuery Mobile, Node.js, PhoneGap and more), as well as SQL and No-SQL solutions alike. I initially suggested creating an iOS app, until it was pointed out to me that the verbose nature of Cocoa meant we&#8217;d probably only get one class done in the 8.5 hours we had!</p>
@@ -359,7 +359,7 @@ sudo apachectl start</pre>
 <p>My team comprised of myself; Paul, a former colleague, and Tom, a 3rd Year student at Cardiff University. Paul and I had decided to try to create a mobile app that used geolocation to provide the user with trivia and quizzes for the places of interest around them; we were only going to concern ourselves with Cardiff, so it would be a tourist aid for the city, or perhaps a learning tool for schoolchildren. Tom then joined us, and had originally wanted to work on a Corkboard-style app &#8211; after a discussion we modified that into a Q&amp;A app which would be incorporated into our exploration tool idea, so the user could additionally ask questions and receive answers in realtime. That was the idea, anyway. We had 8.5 hours to implement it!</p>
 
 <div id="attachment_218" class="wp-caption aligncenter" style="width: 310px">
-  <a href="http://craigmarvelley.github.io/images/posts/2011/11/hackday54.jpg"><img class="size-medium wp-image-218" title="Team Explore Cardiff" src="http://craigmarvelley.github.io/images/posts/2011/11/hackday54-300x199.jpg" alt="" width="300" height="199" /></a><p class="wp-caption-text">
+  <a href="http://marvelley.com/images/posts/2011/11/hackday54.jpg"><img class="size-medium wp-image-218" title="Team Explore Cardiff" src="http://marvelley.com/images/posts/2011/11/hackday54-300x199.jpg" alt="" width="300" height="199" /></a><p class="wp-caption-text">
     Photo courtesy of dangreenphotography.com
   </p>
 </div>
@@ -375,13 +375,13 @@ sudo apachectl start</pre>
 
 <p>By this point we were running quite low on time (I think I spent too long chowing down on the copious amounts of free pizza!), and so rather guiltily I left the other members of the team with only an hour to integrate the webservice into their apps &#8211; both were true heroes though, quickly turning everything around so that we could demo something fully featured to the other teams.</p>
 
-<p><a href="http://craigmarvelley.github.io/images/posts/2011/11/Screen-Shot-2011-11-22-at-22.48.17.png"><img class="size-medium wp-image-216 aligncenter" title="The ExploreCardiff mobile app" src="http://craigmarvelley.github.io/images/posts/2011/11/Screen-Shot-2011-11-22-at-22.48.17-221x300.png" alt="" width="221" height="300" /></a></p>
+<p><a href="http://marvelley.com/images/posts/2011/11/Screen-Shot-2011-11-22-at-22.48.17.png"><img class="size-medium wp-image-216 aligncenter" title="The ExploreCardiff mobile app" src="http://marvelley.com/images/posts/2011/11/Screen-Shot-2011-11-22-at-22.48.17-221x300.png" alt="" width="221" height="300" /></a></p>
 
 <p>Each of the other teams not only produced an app (I&#8217;ve been to hackdays where people don&#8217;t even get something together to demo, which is a little disappointing) but it was also gratifying to see that each app was functional, innovative and different. My personal favourite was Tomazs&#8217; mobile app for the Welsh Premier League (it doesn&#8217;t get enough love!), but the grit.ly team (who produced a mashup of several data sources to plot on a UK map areas at risk of accidents due to poor weather and lack of gritting), who won first prize, and a team of several 1st year Cardiff Uni students with another former colleague at Box UK, Warren Seymour, who took second with a cool Corkboard app for university students, thoroughly deserved their awards.</p>
 
 <p>It was also great to see Tom take the best individual developer prize, as he demonstrated some serious coding chops despite having to wait until the very last for the data his app depended on. He also ran into some issues with Cappuccino during the day, and rather than abandon what he was doing, he just switched to <a href="http://www.prototypejs.org/">Prototype</a> and got on with it in a very pragmatic fashion.</p>
 
-<p><a href="http://craigmarvelley.github.io/images/posts/2011/11/IMG_1005.jpg"><img class="aligncenter size-medium wp-image-224" title="Ben and Kevin present their app" src="http://craigmarvelley.github.io/images/posts/2011/11/IMG_1005-300x225.jpg" alt="" width="300" height="225" /></a></p>
+<p><a href="http://marvelley.com/images/posts/2011/11/IMG_1005.jpg"><img class="aligncenter size-medium wp-image-224" title="Ben and Kevin present their app" src="http://marvelley.com/images/posts/2011/11/IMG_1005-300x225.jpg" alt="" width="300" height="225" /></a></p>
 
 <p>As a bonus, after the prizes were handed out we decamped for a drink in the Tafarn, something I haven&#8217;t done since leaving Cardiff University 10 years ago. It was almost worth attending the event solely for the excuse to walk down memory lane!</p>
 
@@ -391,9 +391,9 @@ sudo apachectl start</pre>
   
   <entry>
     <title type="html"><![CDATA[Speaking at PHPSW: From PHP to Objective-C]]></title>
-    <link href="http://craigmarvelley.github.io/2011/11/08/speaking-at-phpsw-from-php-to-objective-c/"/>
+    <link href="http://marvelley.com/2011/11/08/speaking-at-phpsw-from-php-to-objective-c/"/>
     <updated>2011-11-08T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2011/11/08/speaking-at-phpsw-from-php-to-objective-c</id>
+    <id>http://marvelley.com/2011/11/08/speaking-at-phpsw-from-php-to-objective-c</id>
     <content type="html"><![CDATA[<p>Tomorrow night (09/11) I&#8217;m going to be giving a 20 minute talk on how I&#8217;ve found the transition from PHP to Objective-C, which I&#8217;ve been doing over the last year or so (transition is probably the wrong word, since I still regularly develop in PHP). The talk will be a slimmer version of the one I&#8217;ve submitted to a couple of conferences, but the proposal will still apply so I thought I&#8217;d post it here in case it encourages anyone to attend!</p>
 
 <blockquote><p>Last year, after 8 years of developing almost exclusively in PHP, I decided to learn something new and begin developing for the iOS platform in Objective-C. I&#8217;d noticed that the typical modern PHP application, like an iOS application, is written using a framework and cutting-edge language features like closures and runtime dynamic binding, and thought that would serve to make the transfer easier. I also wanted to expand my skill set in an increasingly mobile, recession-hit world.</p>
@@ -406,9 +406,9 @@ sudo apachectl start</pre>
   
   <entry>
     <title type="html"><![CDATA[Three20, XCode 4 and the Case of the Missing Header Files.]]></title>
-    <link href="http://craigmarvelley.github.io/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files/"/>
+    <link href="http://marvelley.com/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files/"/>
     <updated>2011-08-25T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files</id>
+    <id>http://marvelley.com/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files</id>
     <content type="html"><![CDATA[<p>After a good hour of hitting my head against a brick wall, I finally managed to get Facebook&#8217;s three20 iOS library integrated with my XCode 4 based project, documented here for posterity and the hope that it may save someone else from the raw, savage agony I&#8217;m currently feeling.</p>
 
 <p>I followed the instructions on the <a href="http://three20.info/article/2010-10-06-Adding-Three20-To-Your-Project">three20 website</a> to the letter, using the python installation script to add the library to my project, but whenever I tried to include the main Three20.h header file within my application code I got a &#8216;file not found&#8217; warning which failed the build. After much trial and error / Stack Overflow searching I came across <a href="http://stackoverflow.com/questions/6833804/problem-with-three20">this post</a> which seemed to suggest trying every header search path under the sun. Indeed, one of these finally worked &#8211; I narrowed it down to the $(BUILT_PRODUCTS_DIR)/../three20 entry, but YMMV.</p>
@@ -419,9 +419,9 @@ sudo apachectl start</pre>
   
   <entry>
     <title type="html"><![CDATA[IIS File Locking]]></title>
-    <link href="http://craigmarvelley.github.io/2011/08/15/iis-file-locking/"/>
+    <link href="http://marvelley.com/2011/08/15/iis-file-locking/"/>
     <updated>2011-08-15T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2011/08/15/iis-file-locking</id>
+    <id>http://marvelley.com/2011/08/15/iis-file-locking</id>
     <content type="html"><![CDATA[<p>This issue has bitten me so many times I&#8217;m going to document it here so hopefully I&#8217;ll remember it in future. Now and then, when deleting files using Windows Explorer, random files would fail an access check even though I&#8217;m the system administrator. <a href="http://www.emptyloop.com/unlocker/">Unlocker</a> reported no locks on the file, but it wouldn&#8217;t let me delete it either. The only way I could get around it was a restart.</p>
 
 <p>This got annoying so the next time it happened I started shutting down all my running programmes one by one and retrying the delete, until I discovered that it was in fact IIS that was causing the lock &#8211; even though the files weren&#8217;t web accessible. Turning off the webserver was enough to allow the files to be deleted.</p>
@@ -430,9 +430,9 @@ sudo apachectl start</pre>
   
   <entry>
     <title type="html"><![CDATA[Using a PHP Framework With Windows Azure]]></title>
-    <link href="http://craigmarvelley.github.io/2011/05/08/using-a-php-framework-with-windows-azure/"/>
+    <link href="http://marvelley.com/2011/05/08/using-a-php-framework-with-windows-azure/"/>
     <updated>2011-05-08T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2011/05/08/using-a-php-framework-with-windows-azure</id>
+    <id>http://marvelley.com/2011/05/08/using-a-php-framework-with-windows-azure</id>
     <content type="html"><![CDATA[<p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
 
 <p>It&#8217;s been a while since my last PHP on Azure contest post, mostly due to commitments @work that have reduced my free time considerably. There&#8217;s not long left &#8217;til the competition closes though (I have a week), so I need to get my skates on!</p>
@@ -506,9 +506,9 @@ phar.require_hash = Off</pre>
   
   <entry>
     <title type="html"><![CDATA[Preventing Aggressive Caching of JavaScript Files With IIS7]]></title>
-    <link href="http://craigmarvelley.github.io/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7/"/>
+    <link href="http://marvelley.com/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7/"/>
     <updated>2011-04-07T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7</id>
+    <id>http://marvelley.com/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7</id>
     <content type="html"><![CDATA[<p>I was playing with the new beta of Ext JS 4 the other day and noticed that sometimes the scripts were being cached, so my changes weren&#8217;t taking effect. Initially I thought this was because I&#8217;d upgraded to Firefox 4 &#8211; I use the <a href="https://addons.mozilla.org/en-us/firefox/addon/web-developer/">Web Developer</a> add-on which allows me to disable browser caching, and I&#8217;d assumed the cache setting had reverted when I upgraded. However the cache was indeed disabled, so I had to dig a little deeper.</p>
 
 <p>It turns out that IIS 7 will automatically cache static resources, such as JavaScript files. While this is probably what you&#8217;d want for a default production environment it almost certainly isn&#8217;t from a development point of view, when changes are being made by the minute. It wasn&#8217;t too hard to turn this feature off, however. To do so, just do the following:</p>
@@ -523,7 +523,7 @@ phar.require_hash = Off</pre>
 
 
 <div id="attachment_173" class="wp-caption alignnone" style="width: 310px">
-  <a href="http://craigmarvelley.github.io/images/posts/2011/04/output_caching.png"><img class="size-medium wp-image-173" title="output_caching" src="http://craigmarvelley.github.io/images/posts/2011/04/output_caching-300x224.png" alt="" width="300" height="224" /></a><p class="wp-caption-text">
+  <a href="http://marvelley.com/images/posts/2011/04/output_caching.png"><img class="size-medium wp-image-173" title="output_caching" src="http://marvelley.com/images/posts/2011/04/output_caching-300x224.png" alt="" width="300" height="224" /></a><p class="wp-caption-text">
     Select the &#8216;Output Caching&#8217; Module
   </p>
 </div>
@@ -532,7 +532,7 @@ phar.require_hash = Off</pre>
 
 
 <div id="attachment_174" class="wp-caption alignnone" style="width: 310px">
-  <a href="http://craigmarvelley.github.io/images/posts/2011/04/add_cache_rule.png"><img class="size-medium wp-image-174" title="Disabling JavaScript caching" src="http://craigmarvelley.github.io/images/posts/2011/04/add_cache_rule-300x224.png" alt="Disabling JavaScript caching" width="300" height="224" /></a><p class="wp-caption-text">
+  <a href="http://marvelley.com/images/posts/2011/04/add_cache_rule.png"><img class="size-medium wp-image-174" title="Disabling JavaScript caching" src="http://marvelley.com/images/posts/2011/04/add_cache_rule-300x224.png" alt="Disabling JavaScript caching" width="300" height="224" /></a><p class="wp-caption-text">
     Disabling JavaScript caching
   </p>
 </div>
@@ -545,9 +545,9 @@ According to the IIS blog</a> IIS should flush the cache when files are modified
   
   <entry>
     <title type="html"><![CDATA[Hacks and Hackers Hackday Cardiff]]></title>
-    <link href="http://craigmarvelley.github.io/2011/03/27/hacks-and-hackers-hackday-cardiff/"/>
+    <link href="http://marvelley.com/2011/03/27/hacks-and-hackers-hackday-cardiff/"/>
     <updated>2011-03-27T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2011/03/27/hacks-and-hackers-hackday-cardiff</id>
+    <id>http://marvelley.com/2011/03/27/hacks-and-hackers-hackday-cardiff</id>
     <content type="html"><![CDATA[<p>It&#8217;s long overdue but here&#8217;s a quick recap of the <a href="http://blog.scraperwiki.com/2011/03/15/cardiff-hacks-and-hackers-hacks-day/">Hacks and Hackers Hackday</a> I attended on the 11th March 2011 at the <a href="http://cci.glam.ac.uk/campus/">Atrium</a>, Cardiff. It was my first hackday &#8211; though I&#8217;d been itching to try one for a while it seems they don&#8217;t tend to happen in Cardiff that often. I wasn&#8217;t disappointed, the day was really enjoyable.</p>
 
 <p>The hackday was sponsored and organised by <a href="http://scraperwiki.com/">Scraperwiki</a>, an open-source effort which aims to make webscraper tools, and the data they harvest, easily available and modifiable to the general public. In particular, the event attempted to bring journalists (hacks) and developers (hackers) together so that by combining each other&#8217;s strengths, we might teach each one another how to obtain and interpret the masses of public data that exists on the internet.</p>
@@ -557,7 +557,7 @@ According to the IIS blog</a> IIS should flush the cache when files are modified
 <div class="mceTemp">
   <dl id="attachment_162" class="wp-caption alignnone" style="width: 650px;">
     <dt class="wp-caption-dt">
-      <a href="http://craigmarvelley.github.io/images/posts/2011/03/stock-exchange.jpg"><img class="size-full wp-image-162" title="Co-Ordnance (courtesy Scraperwiki blog)" src="http://craigmarvelley.github.io/images/posts/2011/03/stock-exchange.jpg" alt="" width="640" height="478" /></a>
+      <a href="http://marvelley.com/images/posts/2011/03/stock-exchange.jpg"><img class="size-full wp-image-162" title="Co-Ordnance (courtesy Scraperwiki blog)" src="http://marvelley.com/images/posts/2011/03/stock-exchange.jpg" alt="" width="640" height="478" /></a>
     </dt>
     
     <p>
@@ -576,7 +576,7 @@ According to the IIS blog</a> IIS should flush the cache when files are modified
 <div class="mceTemp">
   <dl id="attachment_161" class="wp-caption alignnone" style="width: 650px;">
     <dt class="wp-caption-dt">
-      <a href="http://craigmarvelley.github.io/images/posts/2011/03/coordnance2.jpg"><img class="size-full wp-image-161 " title="Carey presents our app (courtesy Scraperwiki blog)" src="http://craigmarvelley.github.io/images/posts/2011/03/coordnance2.jpg" alt="" width="640" height="478" /></a>
+      <a href="http://marvelley.com/images/posts/2011/03/coordnance2.jpg"><img class="size-full wp-image-161 " title="Carey presents our app (courtesy Scraperwiki blog)" src="http://marvelley.com/images/posts/2011/03/coordnance2.jpg" alt="" width="640" height="478" /></a>
     </dt>
     
     <p>
@@ -598,9 +598,9 @@ According to the IIS blog</a> IIS should flush the cache when files are modified
   
   <entry>
     <title type="html"><![CDATA[Using Eclipse to Run PHP in Azure DevFabric]]></title>
-    <link href="http://craigmarvelley.github.io/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric/"/>
+    <link href="http://marvelley.com/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric/"/>
     <updated>2011-03-10T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric</id>
+    <id>http://marvelley.com/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric</id>
     <content type="html"><![CDATA[<p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
 
 <p>As detailed in <a href="http://marvelley.com/2011/03/03/24-hours-of-windows/">my last blog post</a> I had some&#8230; problems getting a PHP/Azure development environment set up after creating a Windows 7 partition. Well, I scrapped the partition, said goodbye to my old XP OS and started afresh, and that looks to have done the trick &#8211; I&#8217;m finally able to deploy PHP applications to development storage on my local machine. I&#8217;m none the wiser as to why it didn&#8217;t work the first time, which is annoying, but at least it&#8217;s working now.</p>
@@ -627,9 +627,9 @@ According to the IIS blog</a> IIS should flush the cache when files are modified
   
   <entry>
     <title type="html"><![CDATA[Determining the Type of Appcelerator Objects.]]></title>
-    <link href="http://craigmarvelley.github.io/2011/03/09/determining-the-type-of-appcelerator-objects/"/>
+    <link href="http://marvelley.com/2011/03/09/determining-the-type-of-appcelerator-objects/"/>
     <updated>2011-03-09T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2011/03/09/determining-the-type-of-appcelerator-objects</id>
+    <id>http://marvelley.com/2011/03/09/determining-the-type-of-appcelerator-objects</id>
     <content type="html"><![CDATA[<p>The Appcelerator platform doesn&#8217;t provide a way to determine what the type of an Appcelerator object is (e.g. a Window, a View, a Button, etc.). This is often necessary because one may wish to tailor logic to the type of object being dealt with.</p>
 
 <p>For example, when working with a SplitWindow in an iPad app built in Appcelerator I needed to know if an object that was to be added to the detail view was a navigation group or a window. I ended up using toString() on the object to get its type, then using a regex. This is the way I ended up doing it:</p>
@@ -652,9 +652,9 @@ window: window&lt;br /&gt;
   
   <entry>
     <title type="html"><![CDATA[24 Hours of Windows]]></title>
-    <link href="http://craigmarvelley.github.io/2011/03/03/24-hours-of-windows/"/>
+    <link href="http://marvelley.com/2011/03/03/24-hours-of-windows/"/>
     <updated>2011-03-03T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2011/03/03/24-hours-of-windows</id>
+    <id>http://marvelley.com/2011/03/03/24-hours-of-windows</id>
     <content type="html"><![CDATA[<p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
 
 <p>I&#8217;m sure everyone blogging about this contest will at some point write a post describing their experiences setting up an Azure development environment, but writing two posts a week is hard, so I can&#8217;t pass up an easy topic! Mine won&#8217;t be terribly formal since there are plenty of guides out there that already do that, so: from a clean Windows 7 install, here&#8217;s a minute-by-minute style guide to getting a PHP on Azure development machine configured. I&#8217;m going to try to stay away from as many guides and tutorials as possible to see how intuitive this process is.</p>
@@ -677,7 +677,7 @@ window: window&lt;br /&gt;
 
 <p>I open up IIS Manager, and all seems OK. I hit <a href="http://localhost">http://localhost</a> in Chrome and I get the delightful IIS7 landing page. Web server: check. Painless.</p>
 
-<p><a href="http://craigmarvelley.github.io/images/posts/2011/03/IIS7.png"><img class="alignnone size-large wp-image-111" title="IIS7" src="http://craigmarvelley.github.io/images/posts/2011/03/IIS7-1024x754.png" alt="The IIS7 landing page." width="640" height="471" /></a></p>
+<p><a href="http://marvelley.com/images/posts/2011/03/IIS7.png"><img class="alignnone size-large wp-image-111" title="IIS7" src="http://marvelley.com/images/posts/2011/03/IIS7-1024x754.png" alt="The IIS7 landing page." width="640" height="471" /></a></p>
 
 <h2>9.38</h2>
 
@@ -717,11 +717,11 @@ window: window&lt;br /&gt;
 
 <p>I open up a command prompt and type &#8216;php&#8217; into it. Hit return. Error message &#8211; PHP isn&#8217;t recognised.</p>
 
-<p><a href="http://craigmarvelley.github.io/images/posts/2011/03/php_not_recognised.png"><img class="alignnone size-full wp-image-114" title="PHP not recognised" src="http://craigmarvelley.github.io/images/posts/2011/03/php_not_recognised.png" alt="A familiar sight on Windows" width="684" height="351" /></a></p>
+<p><a href="http://marvelley.com/images/posts/2011/03/php_not_recognised.png"><img class="alignnone size-full wp-image-114" title="PHP not recognised" src="http://marvelley.com/images/posts/2011/03/php_not_recognised.png" alt="A familiar sight on Windows" width="684" height="351" /></a></p>
 
 <p>Usually this means that PHP isn&#8217;t in Windows&#8217; PATH, so I probably need to do that. Hmm. Where&#8217;s the WPI put PHP? I find it under Program Files. Add that to the end of the path variable. Restart the cmd prompt. PHP is now responding, and the version is listed as 5.3.5. Fantastic.</p>
 
-<p><a href="http://craigmarvelley.github.io/images/posts/2011/03/php_recognised.png"><img class="alignnone size-full wp-image-115" title="PHP - Recognised!" src="http://craigmarvelley.github.io/images/posts/2011/03/php_recognised.png" alt="That's better." width="693" height="355" /></a></p>
+<p><a href="http://marvelley.com/images/posts/2011/03/php_recognised.png"><img class="alignnone size-full wp-image-115" title="PHP - Recognised!" src="http://marvelley.com/images/posts/2011/03/php_recognised.png" alt="That's better." width="693" height="355" /></a></p>
 
 <h2>22.38</h2>
 
@@ -737,7 +737,7 @@ window: window&lt;br /&gt;
 
 <p>I hit <a href="http://localhost">http://localhost</a> in the browser, and wow &#8211; it&#8217;s working. The PHP interpreter, FastCGI as the SAPI &#8211; and all with pretty much zero configuration. Take it from someone who spent a good few evenings last year building a LAMP server from source and configuring PHP in Apache &#8211; this is impressive. OK, so I&#8217;ve done a lot of this before, but having the WPI take a lot of the grunt work away is so helpful. Also I always have to check which version of PHP I need on Windows &#8211; is it non-thread-safe? Thread-safe? VC6? VC9? It&#8217;s nice having all that uncertainty taken away.</p>
 
-<p><a href="http://craigmarvelley.github.io/images/posts/2011/03/phpinfo.png"><img class="alignnone size-large wp-image-117" title="phpinfo" src="http://craigmarvelley.github.io/images/posts/2011/03/phpinfo-1024x574.png" alt="The PHPInfo page, courtesy IIS" width="640" height="358" /></a></p>
+<p><a href="http://marvelley.com/images/posts/2011/03/phpinfo.png"><img class="alignnone size-large wp-image-117" title="phpinfo" src="http://marvelley.com/images/posts/2011/03/phpinfo-1024x574.png" alt="The PHPInfo page, courtesy IIS" width="640" height="358" /></a></p>
 
 <p>I take a look at the modules list. The usual suspects, nothing too fancy. I&#8217;m surprised to see that the Microsoft SQL Server Driver for PHP isn&#8217;t on there, I assumed that would be bundled. I think I saw it in the WPI, actually. I&#8217;ve a few can&#8217;t-live-without modules like PECL HTTP and XDebug that I&#8217;ll have to add in due course.</p>
 
@@ -757,7 +757,7 @@ window: window&lt;br /&gt;
 
 <p>No idea. Google tells me nothing. Maybe I missed something in the earlier part of the tutorial.</p>
 
-<p><img class="alignnone size-full wp-image-118" title="Runtime Exception" src="http://craigmarvelley.github.io/images/posts/2011/03/uhoh.png" alt="Runtime Exception: 0: Default document “ServiceDefinition.rd” does not exist in Service directory “ServiceDefinition.csx”!" width="693" height="355" /></p>
+<p><img class="alignnone size-full wp-image-118" title="Runtime Exception" src="http://marvelley.com/images/posts/2011/03/uhoh.png" alt="Runtime Exception: 0: Default document “ServiceDefinition.rd” does not exist in Service directory “ServiceDefinition.csx”!" width="693" height="355" /></p>
 
 <h2>23.27</h2>
 

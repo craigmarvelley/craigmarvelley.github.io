@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: PHP on Azure | Craig Marvelley]]></title>
-  <link href="http://craigmarvelley.github.io/blog/categories/php-on-azure/atom.xml" rel="self"/>
-  <link href="http://craigmarvelley.github.io/"/>
-  <updated>2014-02-03T20:55:23+00:00</updated>
-  <id>http://craigmarvelley.github.io/</id>
+  <link href="http://marvelley.com/blog/categories/php-on-azure/atom.xml" rel="self"/>
+  <link href="http://marvelley.com/"/>
+  <updated>2014-02-03T21:11:24+00:00</updated>
+  <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Using a PHP Framework With Windows Azure]]></title>
-    <link href="http://craigmarvelley.github.io/2011/05/08/using-a-php-framework-with-windows-azure/"/>
+    <link href="http://marvelley.com/2011/05/08/using-a-php-framework-with-windows-azure/"/>
     <updated>2011-05-08T00:00:00+01:00</updated>
-    <id>http://craigmarvelley.github.io/2011/05/08/using-a-php-framework-with-windows-azure</id>
+    <id>http://marvelley.com/2011/05/08/using-a-php-framework-with-windows-azure</id>
     <content type="html"><![CDATA[<p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
 
 <p>It&#8217;s been a while since my last PHP on Azure contest post, mostly due to commitments @work that have reduced my free time considerably. There&#8217;s not long left &#8217;til the competition closes though (I have a week), so I need to get my skates on!</p>
@@ -91,9 +91,9 @@ phar.require_hash = Off</pre>
   
   <entry>
     <title type="html"><![CDATA[Using Eclipse to Run PHP in Azure DevFabric]]></title>
-    <link href="http://craigmarvelley.github.io/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric/"/>
+    <link href="http://marvelley.com/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric/"/>
     <updated>2011-03-10T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric</id>
+    <id>http://marvelley.com/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric</id>
     <content type="html"><![CDATA[<p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
 
 <p>As detailed in <a href="http://marvelley.com/2011/03/03/24-hours-of-windows/">my last blog post</a> I had some&#8230; problems getting a PHP/Azure development environment set up after creating a Windows 7 partition. Well, I scrapped the partition, said goodbye to my old XP OS and started afresh, and that looks to have done the trick &#8211; I&#8217;m finally able to deploy PHP applications to development storage on my local machine. I&#8217;m none the wiser as to why it didn&#8217;t work the first time, which is annoying, but at least it&#8217;s working now.</p>
@@ -120,9 +120,9 @@ phar.require_hash = Off</pre>
   
   <entry>
     <title type="html"><![CDATA[24 Hours of Windows]]></title>
-    <link href="http://craigmarvelley.github.io/2011/03/03/24-hours-of-windows/"/>
+    <link href="http://marvelley.com/2011/03/03/24-hours-of-windows/"/>
     <updated>2011-03-03T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2011/03/03/24-hours-of-windows</id>
+    <id>http://marvelley.com/2011/03/03/24-hours-of-windows</id>
     <content type="html"><![CDATA[<p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
 
 <p>I&#8217;m sure everyone blogging about this contest will at some point write a post describing their experiences setting up an Azure development environment, but writing two posts a week is hard, so I can&#8217;t pass up an easy topic! Mine won&#8217;t be terribly formal since there are plenty of guides out there that already do that, so: from a clean Windows 7 install, here&#8217;s a minute-by-minute style guide to getting a PHP on Azure development machine configured. I&#8217;m going to try to stay away from as many guides and tutorials as possible to see how intuitive this process is.</p>
@@ -145,7 +145,7 @@ phar.require_hash = Off</pre>
 
 <p>I open up IIS Manager, and all seems OK. I hit <a href="http://localhost">http://localhost</a> in Chrome and I get the delightful IIS7 landing page. Web server: check. Painless.</p>
 
-<p><a href="/images/posts/2011/03/IIS7.png"><img class="alignnone size-large wp-image-111" title="IIS7" src="http://craigmarvelley.github.io/images/posts/2011/03/IIS7-1024x754.png" alt="The IIS7 landing page." width="640" height="471" /></a></p>
+<p><a href="/images/posts/2011/03/IIS7.png"><img class="alignnone size-large wp-image-111" title="IIS7" src="http://marvelley.com/images/posts/2011/03/IIS7-1024x754.png" alt="The IIS7 landing page." width="640" height="471" /></a></p>
 
 <h2>9.38</h2>
 
@@ -185,11 +185,11 @@ phar.require_hash = Off</pre>
 
 <p>I open up a command prompt and type &#8216;php&#8217; into it. Hit return. Error message &#8211; PHP isn&#8217;t recognised.</p>
 
-<p><a href="/images/posts/2011/03/php_not_recognised.png"><img class="alignnone size-full wp-image-114" title="PHP not recognised" src="http://craigmarvelley.github.io/images/posts/2011/03/php_not_recognised.png" alt="A familiar sight on Windows" width="684" height="351" /></a></p>
+<p><a href="/images/posts/2011/03/php_not_recognised.png"><img class="alignnone size-full wp-image-114" title="PHP not recognised" src="http://marvelley.com/images/posts/2011/03/php_not_recognised.png" alt="A familiar sight on Windows" width="684" height="351" /></a></p>
 
 <p>Usually this means that PHP isn&#8217;t in Windows&#8217; PATH, so I probably need to do that. Hmm. Where&#8217;s the WPI put PHP? I find it under Program Files. Add that to the end of the path variable. Restart the cmd prompt. PHP is now responding, and the version is listed as 5.3.5. Fantastic.</p>
 
-<p><a href="/images/posts/2011/03/php_recognised.png"><img class="alignnone size-full wp-image-115" title="PHP - Recognised!" src="http://craigmarvelley.github.io/images/posts/2011/03/php_recognised.png" alt="That's better." width="693" height="355" /></a></p>
+<p><a href="/images/posts/2011/03/php_recognised.png"><img class="alignnone size-full wp-image-115" title="PHP - Recognised!" src="http://marvelley.com/images/posts/2011/03/php_recognised.png" alt="That's better." width="693" height="355" /></a></p>
 
 <h2>22.38</h2>
 
@@ -205,7 +205,7 @@ phar.require_hash = Off</pre>
 
 <p>I hit <a href="http://localhost">http://localhost</a> in the browser, and wow &#8211; it&#8217;s working. The PHP interpreter, FastCGI as the SAPI &#8211; and all with pretty much zero configuration. Take it from someone who spent a good few evenings last year building a LAMP server from source and configuring PHP in Apache &#8211; this is impressive. OK, so I&#8217;ve done a lot of this before, but having the WPI take a lot of the grunt work away is so helpful. Also I always have to check which version of PHP I need on Windows &#8211; is it non-thread-safe? Thread-safe? VC6? VC9? It&#8217;s nice having all that uncertainty taken away.</p>
 
-<p><a href="/images/posts/2011/03/phpinfo.png"><img class="alignnone size-large wp-image-117" title="phpinfo" src="http://craigmarvelley.github.io/images/posts/2011/03/phpinfo-1024x574.png" alt="The PHPInfo page, courtesy IIS" width="640" height="358" /></a></p>
+<p><a href="/images/posts/2011/03/phpinfo.png"><img class="alignnone size-large wp-image-117" title="phpinfo" src="http://marvelley.com/images/posts/2011/03/phpinfo-1024x574.png" alt="The PHPInfo page, courtesy IIS" width="640" height="358" /></a></p>
 
 <p>I take a look at the modules list. The usual suspects, nothing too fancy. I&#8217;m surprised to see that the Microsoft SQL Server Driver for PHP isn&#8217;t on there, I assumed that would be bundled. I think I saw it in the WPI, actually. I&#8217;ve a few can&#8217;t-live-without modules like PECL HTTP and XDebug that I&#8217;ll have to add in due course.</p>
 
@@ -225,7 +225,7 @@ phar.require_hash = Off</pre>
 
 <p>No idea. Google tells me nothing. Maybe I missed something in the earlier part of the tutorial.</p>
 
-<p><img class="alignnone size-full wp-image-118" title="Runtime Exception" src="http://craigmarvelley.github.io/images/posts/2011/03/uhoh.png" alt="Runtime Exception: 0: Default document “ServiceDefinition.rd” does not exist in Service directory “ServiceDefinition.csx”!" width="693" height="355" /></p>
+<p><img class="alignnone size-full wp-image-118" title="Runtime Exception" src="http://marvelley.com/images/posts/2011/03/uhoh.png" alt="Runtime Exception: 0: Default document “ServiceDefinition.rd” does not exist in Service directory “ServiceDefinition.csx”!" width="693" height="355" /></p>
 
 <h2>23.27</h2>
 
@@ -263,9 +263,9 @@ phar.require_hash = Off</pre>
   
   <entry>
     <title type="html"><![CDATA[Planning My Azure Application (Part 1)]]></title>
-    <link href="http://craigmarvelley.github.io/2011/02/25/planning-my-azure-application-part-1/"/>
+    <link href="http://marvelley.com/2011/02/25/planning-my-azure-application-part-1/"/>
     <updated>2011-02-25T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2011/02/25/planning-my-azure-application-part-1</id>
+    <id>http://marvelley.com/2011/02/25/planning-my-azure-application-part-1</id>
     <content type="html"><![CDATA[<p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
 
 <p>I&#8217;ve had some time to think about how I&#8217;m going to build the application, and I&#8217;ve got some ideas for how I&#8217;d like to proceed. At this point I&#8217;d have liked to set my development environment up with the Azure tools and had a play with the example applications I&#8217;ve come across, mostly to get a feel for what&#8217;s possible, but unfortunately upon trying to install the <a href="http://msdn.microsoft.com/en-us/windowsazure/cc974146.aspx">Azure SDK</a> I discovered that it requires Windows Vista or 7, and at home I&#8217;m still running XP. I toyed with the idea of installing Windows 7 into a Virtual Machine, which would probably be the quickest route to get back on track, but since I have been intending to migrate to 7 for a while this is probably the right time; technology is obviously evolving beyond XP (finally!).</p>
@@ -291,7 +291,7 @@ phar.require_hash = Off</pre>
 
 <p>So in an ideal world, this is how the application will be laid out:</p>
 
-<p><a href="/images/posts/2011/02/application_overview.jpg"><img class="alignnone size-full wp-image-100" title="Application Architecture Overview" src="http://craigmarvelley.github.io/images/posts/2011/02/application_overview.jpg" alt="An overview of the application architecture" width="500" height="647" /></a></p>
+<p><a href="/images/posts/2011/02/application_overview.jpg"><img class="alignnone size-full wp-image-100" title="Application Architecture Overview" src="http://marvelley.com/images/posts/2011/02/application_overview.jpg" alt="An overview of the application architecture" width="500" height="647" /></a></p>
 
 <p>Next I&#8217;ll think in more detail about the frontend and backend applications. Now I have to go to PC World to buy a hard drive and a copy of Windows 7&#8230;</p>
 ]]></content>
@@ -299,9 +299,9 @@ phar.require_hash = Off</pre>
   
   <entry>
     <title type="html"><![CDATA[Learning About Windows Azure]]></title>
-    <link href="http://craigmarvelley.github.io/2011/02/20/learning-about-windows-azure/"/>
+    <link href="http://marvelley.com/2011/02/20/learning-about-windows-azure/"/>
     <updated>2011-02-20T00:00:00+00:00</updated>
-    <id>http://craigmarvelley.github.io/2011/02/20/learning-about-windows-azure</id>
+    <id>http://marvelley.com/2011/02/20/learning-about-windows-azure</id>
     <content type="html"><![CDATA[<p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
 
 <p>I&#8217;ve spent the last few days reading about Windows Azure, mostly just trying to get a feel for what features it has and how I could use them in an application. The competition rules suggest that entrants &#8220;can earn extra points by using other parts of the Windows Azure platform&#8221; and the more I get to learn, the better, so I&#8217;m going to try to make use of as much of Azure&#8217;s functionality as possible.</p>
