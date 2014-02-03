@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>It&#8217;s a Kind of ImageMagick &#8211; Installing the PHP Extension for Windows 7. - Craig Marvelley</title>
+  <meta name="author" content="Craig Marvelley">
+
+  
+  <meta name="description" content="I had a bit of a nightmare recently trying to get the ImageMagick PHP extension working on Windows. Builds of the extension as a DLL are provided by &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://craigmarvelley.github.io/2012/02/15/installing-the-imagemagick-extension-for-windows-7n">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Craig Marvelley" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Craig Marvelley</a></h1>
+  
+    <h2>Software and such</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:craigmarvelley.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">It&#8217;s a Kind of ImageMagick &#8211; Installing the PHP Extension for Windows 7.</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-15T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I had a bit of a nightmare recently trying to get the ImageMagick PHP extension working on Windows. Builds of the extension as a DLL are <a href="http://valokuva.org/?page_id=50">provided by Mikko</a>, which is awesome, but I had some trouble getting it to work.</p>
+
+<p>The workstation I was using was running 64-bit Windows 7N, and the issue I was seeing was that the extension was being registered (if I ran php -m from the command line it seemed to be loaded) but when inspecting phpinfo() output the module was conspicuous by its absence.</p>
+
+<p>Windows 7N is an EU version of Windows that comes without the Media Player framework &#8211; presumably an anti-trust related provision. Upon inspecting the extension DLL with <a href="http://www.google.co.uk/url?sa=t&amp;rct=j&amp;q=dependency%20walker&amp;source=web&amp;cd=1&amp;ved=0CCAQFjAA&amp;url=http%3A%2F%2Fwww.dependencywalker.com%2F&amp;ei=gmw7T6H-DqqO0AWCsrRt&amp;usg=AFQjCNH2xHd_jlOFVUuUCGsxzdiAM2BlXg">Dependency Walker</a> I discovered that it was linked to several missing DLLs that are supplied by the Media Player framework, and an additional DLL, IEShims.dll, which is an Internet Explorer library.</p>
+
+<p>I installed the <a href="http://www.microsoft.com/download/en/details.aspx?id=16546&amp;hash=7gyAvmSLCYr1yxwQ5Zti1LMYQjBvQzi8uADSX76Wzkj8h8n3XewG9LWsYhUlcMRMuXN1CUKhhqyeDDJZjZbygw%3d%3d">Media Feature Pack</a> which resolved the majority of the missing DLLs. I also copied IEShims.dll from Program Files\Internet Explorer to Windows\SystemWOW64 (this probably wasn&#8217;t a good idea as the architectures of the DLLs will be fundamentally different, SystemWOW64 expects 32-bit DLLs &#8211; but I haven&#8217;t encountered any adverse effects as yet). After doing this the extension began to work as expected, and was visible in phpinfo() output.</p>
+
+<p>There was a crucial comment on Mikko&#8217;s blog that I&#8217;ll repeat here &#8211; if the workstation is running PHP under IIS/FastCGI, install version <strong>6.6.2-10 or earlier</strong> of ImageMagick (available from <a href="http://image_magick.veidrodis.com/image_magick/">http://image_magick.veidrodis.com/image_magick/</a>). Don&#8217;t install any versions later than that &#8211; they were built with VC10 and will not be compatible with the extension, which was built with VC9.</p>
+
+<p>Finally, when I attempted to use the extension (I wanted to convert some images from SVG to PNG) I ran into errors because ImageMagick defaults to using the Windows temp directory as its conversion directory, and IUSR doesn&#8217;t have rights to write there. Rather than add it to the permitted users list (not a very secure approach) I set the IMAGICK_TMP environment system variable to a less prominent location; this required a restart to take effect.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Craig</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-15T00:00:00+00:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/php/'>PHP</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://craigmarvelley.github.io/2012/02/15/installing-the-imagemagick-extension-for-windows-7n/" data-via="" data-counturl="http://craigmarvelley.github.io/2012/02/15/installing-the-imagemagick-extension-for-windows-7n/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2011/11/24/for-the-social-good-box-uk-hackday-1-recap/" title="Previous Post: For the social good &#8211; Box UK Hackday #1 recap">&laquo; For the social good &#8211; Box UK Hackday #1 recap</a>
+      
+      
+        <a class="basic-alignment right" href="/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb/" title="Next Post: Windows 7: Connecting to a Samsung Galaxy S2 device with ADB">Windows 7: Connecting to a Samsung Galaxy S2 device with ADB &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/">Including Filtered Thumbnail Data With the WordPress JSON API Plugin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/">Symfony2: Managing a User Entity Role With a Form Event Subscriber</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/">Deactivating a Macports Install of XDebug in a LAMP Environment</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Craig Marvelley -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'craigmarvelley';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

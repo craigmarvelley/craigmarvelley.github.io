@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Craig Marvelley</title>
+  <meta name="author" content="Craig Marvelley">
+
+  
+  <meta name="description" content="On the twentieth of November, 2011, the company for whom I work (Box UK) held a hackday in Cardiff at the Student&#8217;s Union. It was the first &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://craigmarvelley.github.io/blog/page/2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Craig Marvelley" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Craig Marvelley</a></h1>
+  
+    <h2>Software and such</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:craigmarvelley.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/11/24/for-the-social-good-box-uk-hackday-1-recap/">For the Social Good &#8211; Box UK Hackday #1 Recap</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-24T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>On the twentieth of November, 2011, the company for whom I work (<a href="http://boxuk.com">Box UK</a>) held a <a href="http://hackday.boxuk.com/">hackday</a> in Cardiff at the Student&#8217;s Union. It was the first time that we&#8217;d organised such an event, but it seemed to go really well &#8211; feedback from the participants was good, it was well attended, and personally I had a really good (if stressful!) time.</p>
+
+<p>The theme of the hackday was &#8216;For the social good&#8217; &#8211; applications built during the day had to have some sort of social theme, ideally to improve the lives of the people that would use them. That&#8217;s quite a broad topic, and it resulted in an array of different apps &#8211; not just in the sense of intended purpose, but in style, and also in platform. While teams typically used scripting languages to build their apps within those used (PHP, JavaScript, Python) were a lot of varied frameworks (Symfony2, Lithium, Django, jQuery Mobile, Node.js, PhoneGap and more), as well as SQL and No-SQL solutions alike. I initially suggested creating an iOS app, until it was pointed out to me that the verbose nature of Cocoa meant we&#8217;d probably only get one class done in the 8.5 hours we had!</p>
+
+<p>My team comprised of myself; Paul, a former colleague, and Tom, a 3rd Year student at Cardiff University. Paul and I had decided to try to create a mobile app that used geolocation to provide the user with trivia and quizzes for the places of interest around them; we were only going to concern ourselves with Cardiff, so it would be a tourist aid for the city, or perhaps a learning tool for schoolchildren. Tom then joined us, and had originally wanted to work on a Corkboard-style app &#8211; after a discussion we modified that into a Q&amp;A app which would be incorporated into our exploration tool idea, so the user could additionally ask questions and receive answers in realtime. That was the idea, anyway. We had 8.5 hours to implement it!</p>
+
+<div id="attachment_218" class="wp-caption aligncenter" style="width: 310px">
+  <a href="/images/posts/2011/11/hackday54.jpg"><img class="size-medium wp-image-218" title="Team Explore Cardiff" src="/images/posts/2011/11/hackday54-300x199.jpg" alt="" width="300" height="199" /></a><p class="wp-caption-text">
+    Photo courtesy of dangreenphotography.com
+  </p>
+</div>
+
+
+<p>We split our responsibilities up such that Paul would build the mobile app (he plumped for <a href="http://jquerymobile.com/">jQuery mobile</a>, version 1 of which having been released just days earlier), Tom would build an app to aggregate questions from users and allow a pool of authors to submit replies (he wanted to use <a href="http://cappuccino.org/">Cappuccino</a>), and I would build the webservice/content management system both apps would run on (I thought <a href="http://symfony.com/">Symfony2</a> would be a good framework). It sounded good in theory, but then it always does.</p>
+
+<p>I&#8217;ve dabbled with Symfony2 since it was in beta so I knew <em>what</em> it could do, but not necessarily <em>how</em> to make it do it. So the first hour of the day was spent scanning the documentation and looking through the available &#8216;bundles&#8217; (Symfony nomenclature for packages of redistributable code) to see what community efforts I could re-use. I came across the <a href="http://sonata-project.org/bundles/admin/master">SonataAdminBundle</a> relatively quickly and it seemed a good fit &#8211; its purpose is to generate a <a href="http://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> interface for the models within the application&#8217;s domain. This would give me a quick way to add and manipulate the data in the app, so I plumped for it. I guess it&#8217;s a bit risky using an unknown in a hackday since if it turns out to be unsuitable, there&#8217;s not a lot of time to try something else &#8211; but I thankfully had no such problem here.</p>
+
+<p>The SonataAdminBundle is impressive, in that with relatively little configuration and code I had a very functional app. The project documentation assumes a fair bit of Symfony2 knowledge from the developer, which isn&#8217;t ideal in a high pressure scenario where I didn&#8217;t really have time to read the source code, but I&#8217;d worked it out by lunchtime. I&#8217;d say within a couple of hours I had an app with which I could create models, specify forms which related to them, and manage data.</p>
+
+<p>Most of the rest of my day was spent working with <a href="http://www.doctrine-project.org/projects/orm/2.0/docs/en">Doctrine2</a>, a PHP <a href="http://en.wikipedia.org/wiki/Object-relational_mapping">ORM</a> that is tightly integrated with Symfony2 and the SonataAdminBundle. Doctrine2 I found to be the perfect tool for a hackday &#8211; create a class, put some annotations on properties to define the type of the field, and any relationship to other classes, then run a command line script which generates all the accessor code, and even updates the database schema &#8211; saving a substantial bit of work. There were some hiccups along the way, but I did manage to get a webservice together which could supply Paul and Tom&#8217;s apps with data.</p>
+
+<p>By this point we were running quite low on time (I think I spent too long chowing down on the copious amounts of free pizza!), and so rather guiltily I left the other members of the team with only an hour to integrate the webservice into their apps &#8211; both were true heroes though, quickly turning everything around so that we could demo something fully featured to the other teams.</p>
+
+<p><a href="/images/posts/2011/11/Screen-Shot-2011-11-22-at-22.48.17.png"><img class="size-medium wp-image-216 aligncenter" title="The ExploreCardiff mobile app" src="/images/posts/2011/11/Screen-Shot-2011-11-22-at-22.48.17-221x300.png" alt="" width="221" height="300" /></a></p>
+
+<p>Each of the other teams not only produced an app (I&#8217;ve been to hackdays where people don&#8217;t even get something together to demo, which is a little disappointing) but it was also gratifying to see that each app was functional, innovative and different. My personal favourite was Tomazs&#8217; mobile app for the Welsh Premier League (it doesn&#8217;t get enough love!), but the grit.ly team (who produced a mashup of several data sources to plot on a UK map areas at risk of accidents due to poor weather and lack of gritting), who won first prize, and a team of several 1st year Cardiff Uni students with another former colleague at Box UK, Warren Seymour, who took second with a cool Corkboard app for university students, thoroughly deserved their awards.</p>
+
+<p>It was also great to see Tom take the best individual developer prize, as he demonstrated some serious coding chops despite having to wait until the very last for the data his app depended on. He also ran into some issues with Cappuccino during the day, and rather than abandon what he was doing, he just switched to <a href="http://www.prototypejs.org/">Prototype</a> and got on with it in a very pragmatic fashion.</p>
+
+<p><a href="/images/posts/2011/11/IMG_1005.jpg"><img class="aligncenter size-medium wp-image-224" title="Ben and Kevin present their app" src="/images/posts/2011/11/IMG_1005-300x225.jpg" alt="" width="300" height="225" /></a></p>
+
+<p>As a bonus, after the prizes were handed out we decamped for a drink in the Tafarn, something I haven&#8217;t done since leaving Cardiff University 10 years ago. It was almost worth attending the event solely for the excuse to walk down memory lane!</p>
+
+<p>The code for the CMS app I built can be found on <a href="https://github.com/craigmarvelley/ExploreCardiffAdmin">my Github page</a>. Time permitting, I&#8217;d like to take the idea a bit further; though it&#8217;ll require a bit more planning than the 15 mins it got on Sunday to be a proper success!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/11/08/speaking-at-phpsw-from-php-to-objective-c/">Speaking at PHPSW: From PHP to Objective-C</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-08T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tomorrow night (09/11) I&#8217;m going to be giving a 20 minute talk on how I&#8217;ve found the transition from PHP to Objective-C, which I&#8217;ve been doing over the last year or so (transition is probably the wrong word, since I still regularly develop in PHP). The talk will be a slimmer version of the one I&#8217;ve submitted to a couple of conferences, but the proposal will still apply so I thought I&#8217;d post it here in case it encourages anyone to attend!</p>
+
+<blockquote><p>Last year, after 8 years of developing almost exclusively in PHP, I decided to learn something new and begin developing for the iOS platform in Objective-C. I&#8217;d noticed that the typical modern PHP application, like an iOS application, is written using a framework and cutting-edge language features like closures and runtime dynamic binding, and thought that would serve to make the transfer easier. I also wanted to expand my skill set in an increasingly mobile, recession-hit world.</p>
+
+<p>In this talk I will share my experiences of going from PHP to Objective-C and Cocoa; how I took the paradigms that I was accustomed to in PHP, like syntax, memory management, unit testing and design patterns, and mapped them to the iOS ecosystem. I&#8217;ll also describe some techniques used in Objective-C that can be applied in PHP to enhance our code. Finally, I&#8217;ll discuss what I consider to be the pros and cons of each platform, and how I believe each has its place in our future careers.</p></blockquote>
+
+<p>PHPSW is a monthly PHP meetup held in Bristol, at the Golden Guinea, on the second Wednesday of every month. Everything kicks off at 7pm!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files/">Three20, XCode 4 and the Case of the Missing Header Files.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-25T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After a good hour of hitting my head against a brick wall, I finally managed to get Facebook&#8217;s three20 iOS library integrated with my XCode 4 based project, documented here for posterity and the hope that it may save someone else from the raw, savage agony I&#8217;m currently feeling.</p>
+
+<p>I followed the instructions on the <a href="http://three20.info/article/2010-10-06-Adding-Three20-To-Your-Project">three20 website</a> to the letter, using the python installation script to add the library to my project, but whenever I tried to include the main Three20.h header file within my application code I got a &#8216;file not found&#8217; warning which failed the build. After much trial and error / Stack Overflow searching I came across <a href="http://stackoverflow.com/questions/6833804/problem-with-three20">this post</a> which seemed to suggest trying every header search path under the sun. Indeed, one of these finally worked &#8211; I narrowed it down to the $(BUILT_PRODUCTS_DIR)/../three20 entry, but YMMV.</p>
+
+<p>As much as I like iOS, and XCode, Apple&#8217;s solution for integrating libraries is extremely error prone &#8211; and this was <em>with</em> a custom installation script. Hopefully once XCode 4 adoption has grown the process can be simplified, as newer libraries like <a href="http://restkit.org/">RestKit</a> seem to be less complicated to install.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/08/15/iis-file-locking/">IIS File Locking</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-15T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This issue has bitten me so many times I&#8217;m going to document it here so hopefully I&#8217;ll remember it in future. Now and then, when deleting files using Windows Explorer, random files would fail an access check even though I&#8217;m the system administrator. <a href="http://www.emptyloop.com/unlocker/">Unlocker</a> reported no locks on the file, but it wouldn&#8217;t let me delete it either. The only way I could get around it was a restart.</p>
+
+<p>This got annoying so the next time it happened I started shutting down all my running programmes one by one and retrying the delete, until I discovered that it was in fact IIS that was causing the lock &#8211; even though the files weren&#8217;t web accessible. Turning off the webserver was enough to allow the files to be deleted.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/05/08/using-a-php-framework-with-windows-azure/">Using a PHP Framework With Windows Azure</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-08T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
+
+<p>It&#8217;s been a while since my last PHP on Azure contest post, mostly due to commitments @work that have reduced my free time considerably. There&#8217;s not long left &#8217;til the competition closes though (I have a week), so I need to get my skates on!</p>
+
+<p>Casting my mind back to my last post, I was able to finally deploy to the local development fabric. In the interim I&#8217;ve set up an Azure account and successfully deployed a simple script to the cloud, so everything&#8217;s fine on that front. It&#8217;s time to start developing my application.</p>
+
+<p>Since my time is limited my application will be quite straightforward &#8211; a CMS to manage media files. This should allow me to use all the features of Azure (queuing, table storage, blobs) I&#8217;m interested in.</p>
+
+<h2>Bittersweet Symfony</h2>
+
+<p>The first step in building the application is to decide on  framework to speed up development. The main reason I got into the contest in the first place was because I wanted to have more experience with Zend Framework &#8211; while I&#8217;d used its components in isolation before I&#8217;d never built an application with it. However in the months since I entered the competition I&#8217;ve started using Symfony 2 heavily. That, and the realisation that ZF2 is around the corner, have made me think that ZF isn&#8217;t the best choice for this contest, so I decided to use Symfony 2 instead.</p>
+
+<p>That was easier said than done. I dropped the Symfony framework into my Azure WebRole project, and put together a &#8216;hello world&#8217; script, only to immediately run into <a href="http://blogs.msdn.com/b/jnak/archive/2010/01/14/windows-azure-path-too-long.aspx">this issue</a> &#8211; apparently Azure has issues when building projects when paths to files or directories exceed 260 characters. Of course, in a framework of Symfony&#8217;s size, with many nested directories, this limit is unrealistic.The solutions recommended on Jim&#8217;s blog include changing the project paths to be shorter (impossible in this case) and setting a temporary environment variable which moves the location at which Azure builds projects, thus reducing the prefix of any paths. As Jim says, this isn&#8217;t a guaranteed fix and indeed, it didn&#8217;t work for me.</p>
+
+<p>So including Symfony within the WebRole didn&#8217;t seem to be possible. I experimented with including in within my PHP include path, in the hope that it would save some characters, but that didn&#8217;t work at all, Azure didn&#8217;t even pick it up. I need to look around the net to see how Azure manages include paths, since it&#8217;s something I use often in PHP. How do PEAR modules work, I wonder? Can you manage PEAR within Azure as you would with a local PHP installation, or do you have to place the components within each WebRole? Topics for future posts, maybe.</p>
+
+<p>Anyway, it didn&#8217;t look like Symfony was going to work any time soon, so I needed an alternative, and since<a href="http://www.ben-waine.co.uk/blog/php-azure/deploying-a-zend-framework-to-app-fabric.php"> Ben Waine had successfully deployed using Zend Framework</a> I thought briefly of using that after all. Then, I came across <a href="http://silex-project.org/">Silex</a>.</p>
+
+<h2>Along came a Silex</h2>
+
+<p>Silex is a micro-framework based on Symfony 2 components, inspired by <a href="http://www.sinatrarb.com/">Sinatra</a>, the Ruby on Rails framework which presents an alternative to typical MVC web applications. It&#8217;s succinct and straightforward, and, crucially, is deployed as a PHAR archive. This means I only need to include a single file in the root of my project to be able to use the library &#8211; which means no long paths that Azure can&#8217;t handle.</p>
+
+<p>I downloaded the Silex archive from its website and dropped it into the root of my project, then copied the &#8216;hello world&#8217; example provided within the Silex documentation into my index.php file:</p>
+
+<pre>require_once __DIR__.'/silex.phar'; 
+
+$app = new Silex\Application(); 
+
+$app-&gt;get('/hello/{name}', function($name) {
+    return "Hello $name";
+}); 
+
+$app-&gt;run();</pre>
+
+
+<p>Then I deployed my project to dev fabric, and navigated to /hello/Craig. Of course, this didn&#8217;t work immediately &#8211; nothing ever does for me &#8211; because I didn&#8217;t have a web.config file set up to send all requests through the front controller, index.php. I got an IIS 404 page rather than the &#8216;Hello Craig&#8217; I was expecting. So I used IIS&#8217;s Apache config importer to convert the sample .htaccess file provided by Silex into a web.config file, then copied the relevant rewrite rules into my WebRole&#8217;s config file. Rebuilding the application resulted in a working application. Good to go!</p>
+
+<p>Here&#8217;s what I needed to add to my web.config file in case it&#8217;s of any use to anyone:</p>
+
+<h2>Compiling Silex on Windows</h2>
+
+<p>Because Silex is pretty new I&#8217;m expecting to find issues here and there, plus when working on Windows I&#8217;m accustomed to having to make little changes here and there to get PHP code that&#8217;s been written on *nix to run properly &#8211; so I wanted to build the Silex PHAR from source so I could make changes if necessary and properly understand how everything fits together.</p>
+
+<p>This is quite straightfoward. First, I checked out Silex from its <a href="https://github.com/fabpot/Silex">github page</a>:</p>
+
+<pre>git clone https://github.com/fabpot/Silex.git silex</pre>
+
+
+<p>I merged in <a href="https://github.com/Ziumin/Silex/commit/6abebd759850c1c2eabc678cfe4bb12a61412768">a pending fix</a> which addresses compilation issues on Windows &#8211; there&#8217;s probably a fancy way to do this in git but I just applied the fix manually.</p>
+
+<p>Then I needed to get Silex&#8217;s dependencies:</p>
+
+<pre>git submodule init
+git submodule update --recursive</pre>
+
+
+<p>Silex provides a PHP script, named &#8216;compile&#8217;, which puts the archive together. I had to make some changes to my php.ini file before I could run it successfully:</p>
+
+<pre>phar.readonly = Off
+phar.require_hash = Off</pre>
+
+
+<p>Then creating the archive was as simple as running:</p>
+
+<pre>php compile</pre>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7/">Preventing Aggressive Caching of JavaScript Files With IIS7</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-07T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was playing with the new beta of Ext JS 4 the other day and noticed that sometimes the scripts were being cached, so my changes weren&#8217;t taking effect. Initially I thought this was because I&#8217;d upgraded to Firefox 4 &#8211; I use the <a href="https://addons.mozilla.org/en-us/firefox/addon/web-developer/">Web Developer</a> add-on which allows me to disable browser caching, and I&#8217;d assumed the cache setting had reverted when I upgraded. However the cache was indeed disabled, so I had to dig a little deeper.</p>
+
+<p>It turns out that IIS 7 will automatically cache static resources, such as JavaScript files. While this is probably what you&#8217;d want for a default production environment it almost certainly isn&#8217;t from a development point of view, when changes are being made by the minute. It wasn&#8217;t too hard to turn this feature off, however. To do so, just do the following:</p>
+
+<ul>
+<li>Open up IIS Manager</li>
+<li>Optionally select the site you&#8217;re working with</li>
+<li>Open the &#8216;Output Caching&#8217; module</li>
+<li>Select &#8216;Add&#8230;&#8217; from the right hand menu</li>
+<li>Enter a file extension of &#8216;.js&#8217; and disable both user-mode and kernel-mode caching, click OK.</li>
+</ul>
+
+
+<div id="attachment_173" class="wp-caption alignnone" style="width: 310px">
+  <a href="/images/posts/2011/04/output_caching.png"><img class="size-medium wp-image-173" title="output_caching" src="/images/posts/2011/04/output_caching-300x224.png" alt="" width="300" height="224" /></a><p class="wp-caption-text">
+    Select the &#8216;Output Caching&#8217; Module
+  </p>
+</div>
+
+
+
+
+<div id="attachment_174" class="wp-caption alignnone" style="width: 310px">
+  <a href="/images/posts/2011/04/add_cache_rule.png"><img class="size-medium wp-image-174" title="Disabling JavaScript caching" src="/images/posts/2011/04/add_cache_rule-300x224.png" alt="Disabling JavaScript caching" width="300" height="224" /></a><p class="wp-caption-text">
+    Disabling JavaScript caching
+  </p>
+</div>
+
+
+<p><a href="http://blogs.iis.net/bills/archive/2007/05/02/iis7-output-caching-for-dynamic-content-dramatically-speed-up-your-asp-and-php-applications.aspx"><br/>
+According to the IIS blog</a> IIS should flush the cache when files are modified; however this wasn&#8217;t the behaviour that I was seeing. I had to completely disable caching to guarantee file modifications made it to the browser.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/03/27/hacks-and-hackers-hackday-cardiff/">Hacks and Hackers Hackday Cardiff</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-27T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It&#8217;s long overdue but here&#8217;s a quick recap of the <a href="http://blog.scraperwiki.com/2011/03/15/cardiff-hacks-and-hackers-hacks-day/">Hacks and Hackers Hackday</a> I attended on the 11th March 2011 at the <a href="http://cci.glam.ac.uk/campus/">Atrium</a>, Cardiff. It was my first hackday &#8211; though I&#8217;d been itching to try one for a while it seems they don&#8217;t tend to happen in Cardiff that often. I wasn&#8217;t disappointed, the day was really enjoyable.</p>
+
+<p>The hackday was sponsored and organised by <a href="http://scraperwiki.com/">Scraperwiki</a>, an open-source effort which aims to make webscraper tools, and the data they harvest, easily available and modifiable to the general public. In particular, the event attempted to bring journalists (hacks) and developers (hackers) together so that by combining each other&#8217;s strengths, we might teach each one another how to obtain and interpret the masses of public data that exists on the internet.</p>
+
+<p>I went along with <a href="http://twitter.com/#!/HandyBiteSize">Carey</a> and <a href="http://twitter.com/#!/woogoose">Warren</a> from <a href="http://www.boxuk.com/">Box UK</a>, and we formed a team with three &#8216;hacks&#8217; &#8211; <a href="http://twitter.com/#!/yessof" target="_blank">Steve Fossey</a>, Eva Tallaksen from <a href="http://www.intrafish.no/global/" target="_blank">Intrafish</a> and<a href="http://twitter.com/#!/digitalst" target="_blank"> Gareth Morlais</a> from <a href="http://www.bbc.co.uk/cymru/" target="_blank">BBC Cymru</a>. We named ourselves Co-Ordnance, though I can&#8217;t remember why &#8211; think it was decided while I was busy hacking!</p>
+
+<div class="mceTemp">
+  <dl id="attachment_162" class="wp-caption alignnone" style="width: 650px;">
+    <dt class="wp-caption-dt">
+      <a href="/images/posts/2011/03/stock-exchange.jpg"><img class="size-full wp-image-162" title="Co-Ordnance (courtesy Scraperwiki blog)" src="/images/posts/2011/03/stock-exchange.jpg" alt="" width="640" height="478" /></a>
+    </dt>
+    
+    <p>
+      Co-Ordnance (courtesy Scraperwiki blog)
+    </p>
+  </dl>
+</div>
+
+
+<p>Inspired by some ideas Eva had we initially decided to try to write an application to model stock market data, specifically a tool to collate stock market updates from floated companies. With a little more brainstorming we decided to make this a sub-feature of a larger tool that would plot companies on a UK map according to their registered addresses. The user would be able to filter by the type of business and the region in which it was registered, as well as letting them choose a specific point in time. Thus one could make observations about the behaviour of businesses, such as the popularity of certain sectors of business in certain areas, the impact the recession had on business growth or the collapse of businesses, which regions are ripe for investment, and so on.</p>
+
+<p>While Warren and Eva focused on writing a Scraperwiki script to collect the stock market data the rest of us planned the application. The first thing we considered was how we could obtain geolocation data for the companies that we were to be referencing, and that led us into trying to scrape data from the <a href="http://www.companieshouse.gov.uk/">Companies House</a> website.</p>
+
+<p>This proved to be difficult, as URLs within the site feature hashed components &#8211; possibly in an attempt to prevent spiders from navigating the site. This meant we&#8217;d never come up with a scraper solution in the time that we had available, but thankfully a member of the Scraperwiki team told us about <a href="http://opencorporates.com/">OpenCorporates</a>, which aims to &#8220;have a URL for every company in the world&#8221;. Many of those URLs provide addresses for companies, which we could geo-encode (using Google&#8217;s Geoencoder) to obtain UK co-ordinates for that company. So we were able to plot companies per region on a map.</p>
+
+<div class="mceTemp">
+  <dl id="attachment_161" class="wp-caption alignnone" style="width: 650px;">
+    <dt class="wp-caption-dt">
+      <a href="/images/posts/2011/03/coordnance2.jpg"><img class="size-full wp-image-161 " title="Carey presents our app (courtesy Scraperwiki blog)" src="/images/posts/2011/03/coordnance2.jpg" alt="" width="640" height="478" /></a>
+    </dt>
+    
+    <p>
+      Carey presents our app (courtesy Scraperwiki blog)
+    </p>
+  </dl>
+</div>
+
+
+<p>Carey wrote a scraper tool so that we could download data for each company into a local MySQL database for indexing. This would allow us to retrieve businesses for a particular region. A nice feature of the OpenCorporate dataset is that one is able to access the data in JSON, which made saving and accessing the data really easy, especially as the application was mainly to be written in JavaScript using the ExtJS framework. Incidentally, I took the opportunity to try the beta version of ExtJS 4, but since the app ended up being pretty much just a map and a form to manipulate the plotted data I didn&#8217;t get to play with any of the stuff added in the new release.</p>
+
+<p>So once we&#8217;d downloaded the data of a few thousand companies (enough for a sample dataset) and indexed the data by location, I needed to write the frontend to plot the companies on a Google Map. By this point we had a little under three hours left, so it was a bit of a push &#8211; especially since I hadn&#8217;t done any Google Maps development in about three years, and the API had completely changed during that period. Thankfully a generous supply of sweets, Coke and beer kept me energetic, and we just about made it. We didn&#8217;t get chance to integrate Warren&#8217;s work into the app, which was a shame, but we still managed to achieve two solutions, which I thought impressive considering the time we had available to us (about 7 hours, once we&#8217;d got started).</p>
+
+<p>In the reckoning we came third, which we were chuffed with. In addition to this Warren also won an individual prize for making the best use of Scraperwiki, which was totally deserved. It would perhaps have been nice if the judges had explained why they voted as they had, as I, and others I spoke to, were confused as to what the marking criteria was. Nevertheless it was a really good day, which challenged me in ways I&#8217;d never been challenged before, and forced me to work within a totally new team, under pressure, on a topic that I knew nothing about. I&#8217;d recommend the Scraperwiki tools, and the next time I need to harvest some data I&#8217;ll definitely be making use of them.</p>
+
+<p>The code I wrote on the day is available at my <a href="https://github.com/craigmarvelley/hhhCar">Github page</a>, and I&#8217;m hoping to get the app into a more usable state and hosted on this site in the near future.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric/">Using Eclipse to Run PHP in Azure DevFabric</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-10T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
+
+<p>As detailed in <a href="http://marvelley.com/2011/03/03/24-hours-of-windows/">my last blog post</a> I had some&#8230; problems getting a PHP/Azure development environment set up after creating a Windows 7 partition. Well, I scrapped the partition, said goodbye to my old XP OS and started afresh, and that looks to have done the trick &#8211; I&#8217;m finally able to deploy PHP applications to development storage on my local machine. I&#8217;m none the wiser as to why it didn&#8217;t work the first time, which is annoying, but at least it&#8217;s working now.</p>
+
+<p>After I reinstalled Windows 7 I took care to install all the automatic updates before I went near any other programmes. After a lot of rebooting I eventually installed IIS and, through the Web Platform Installer, the Azure SDK and the Azure command line tools for PHP, along with their dependencies. Then, I installed <a href="http://www.eclipse.org/pdt/">Eclipse PDT</a> and, following <a href="http://www.windowsazure4e.org/download/">this excellent article</a>, the Azure plugin for eclipse that Brian Swan wrote a <a href="http://blogs.iis.net/bswan/archive/2010/10/12/using-the-windows-azure-tools-for-eclipse-with-php.aspx">great tutorial on</a>.</p>
+
+<p>I came across a few issues while doing all this that I should detail:</p>
+
+<ul>
+<li>I had to set Eclipse to run as an administrator (right click eclipse.exe-> properties &ndash;> Compatibility &ndash;> Run as administrator) before it would install the plugin and allow me to use it within the application</li>
+<li>I signed up for the <a href="http://www.microsoft.com/windowsazure/free-trial/default.aspx">free introductory trial</a> of Azure so that I could follow the tutorial properly and configure a database on Azure</li>
+</ul>
+
+
+<p>It&#8217;s a bit annoying that even when developing an app one has to run against SQL Azure in the cloud (which will eventually incur costs). I&#8217;d assumed I&#8217;d be able to use SQL Server locally but that doesn&#8217;t seem to be the case. Some sort of free quota for use in the development stage would make sense to me.</p>
+
+<p>The really good thing about using the Eclipse plugin is that it brings together the <a href="http://phpazure.codeplex.com/">many</a> <a href="http://phpazurecontrib.codeplex.com/">disparate</a> <a href="http://www.interoperabilitybridges.com/projects/windows-azure-command-line-tools-for-php">projects</a> that one needs to leverage to work with PHP on Azure. When I was trying to install all this stuff on my own I got a bit muddled, especially since some of the libraries are installed through the Web Platform Installer. The other advantage of the plugin is one can deploy to the cloud from within Eclipse. I&#8217;m not a fan of the Eclipse platform but I have to say in this case it&#8217;s a good experience (especially since the alternative is the command line!).</p>
+
+<p>If I&#8217;ve one criticism of the documentation Microsoft provide (which is generally well-written and thorough) it&#8217;s that there&#8217;s no &#8216;official&#8217; site for PHP on Azure which gives a simple one-page overview of everything &#8211; after reading about this stuff for over two weeks I still don&#8217;t feel like I&#8217;ve grokked it, and without blogs like <a href="http://blogs.msdn.com/b/brian_swan/">Brian&#8217;s</a> and <a href="http://blog.maartenballiauw.be/">Maarten&#8217;s</a> I&#8217;d be struggling. As a PHP developer I&#8217;m used to the awesome PHP manual and its direct approach to documentation and perhaps Azure (as far as PHP is concerned) could do with something similar. For developers like me, who are new to Azure and trying to get up to speed quickly in a short space of time (and with little time to read around) that sort of resource would be invaluable.</p>
+
+<p>For the moment though I&#8217;m just happy that I can finally start developing my application. It&#8217;s been a frustrating week battling to get to the point where I can just write a line of code, but from here on in hopefully it&#8217;ll be worth it.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/03/09/determining-the-type-of-appcelerator-objects/">Determining the Type of Appcelerator Objects.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-09T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The Appcelerator platform doesn&#8217;t provide a way to determine what the type of an Appcelerator object is (e.g. a Window, a View, a Button, etc.). This is often necessary because one may wish to tailor logic to the type of object being dealt with.</p>
+
+<p>For example, when working with a SplitWindow in an iPad app built in Appcelerator I needed to know if an object that was to be added to the detail view was a navigation group or a window. I ended up using toString() on the object to get its type, then using a regex. This is the way I ended up doing it:</p>
+
+<p><code>&lt;br /&gt;
+if(! window.toString().match(/TiUIiPhoneNavigationGroup/)) {&lt;br /&gt;
+var nav = Ti.UI.iPhone.createNavigationGroup({&lt;br /&gt;
+window: window&lt;br /&gt;
+});</code></p>
+
+<p><code>return nav;&lt;br /&gt;
+}</code></p>
+
+<p><code></code></p>
+
+<p><code>return window;&lt;br /&gt;
+</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/03/03/24-hours-of-windows/">24 Hours of Windows</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-03T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
+
+<p>I&#8217;m sure everyone blogging about this contest will at some point write a post describing their experiences setting up an Azure development environment, but writing two posts a week is hard, so I can&#8217;t pass up an easy topic! Mine won&#8217;t be terribly formal since there are plenty of guides out there that already do that, so: from a clean Windows 7 install, here&#8217;s a minute-by-minute style guide to getting a PHP on Azure development machine configured. I&#8217;m going to try to stay away from as many guides and tutorials as possible to see how intuitive this process is.</p>
+
+<p><strong>The following takes place between 9.43pm and 01.56am on 02/03 March 2011.</strong></p>
+
+<h2>9.43 pm</h2>
+
+<p>The previous two hours involved me creating a new hard drive partition alongside my XP install and installing Windows 7 into it.  I&#8217;m using the <a href="http://technet.microsoft.com/en-us/evalcenter/cc442495">free Enterprise trial</a> for the time being. After booting for the first time, I install some Windows updates and reboot. The next thing I do is open Internet Explorer 8, search for Google Chrome and install it. IE&#8217;s come a long way recently, but it&#8217;ll have to go a lot further before I use it as my main browser. I write the intro to this blog post, and that takes us up to where we are now.</p>
+
+<h2>9.26</h2>
+
+<p>I go <a href="http://www.microsoft.com/web/downloads/platform.aspx">here</a> and download the Microsoft Web Platform installer, a neat utility which allows developers to install both products such as IIS and PHP, and web applications like WordPress and Drupal. Looking through the list I remember that Windows 7 (Enterprise edition, at least) comes bundled with IIS, so I think I&#8217;d better install through Windows to avoid confusion.</p>
+
+<h2>9.31</h2>
+
+<p>I go into the add/remove Windows features programs bit in Control Panel and check the Internet Information Services option which installs IIS with the default settings.</p>
+
+<h2>9.33</h2>
+
+<p>I open up IIS Manager, and all seems OK. I hit <a href="http://localhost">http://localhost</a> in Chrome and I get the delightful IIS7 landing page. Web server: check. Painless.</p>
+
+<p><a href="/images/posts/2011/03/IIS7.png"><img class="alignnone size-large wp-image-111" title="IIS7" src="/images/posts/2011/03/IIS7-1024x754.png" alt="The IIS7 landing page." width="640" height="471" /></a></p>
+
+<h2>9.38</h2>
+
+<p>I think I&#8217;ll add a picture of the IIS7 page since it looks so nice, and it gives me an excuse to try the new Paint application (which I think is a Windows 7 thing, though it may have come with Vista. I&#8217;ll never know). Paint&#8217;s a lot better these days, that&#8217;s for sure.</p>
+
+<h2>9.40</h2>
+
+<p>I run the Web Platform Installer (henceforth WPI) and select the Products tab. There&#8217;s plenty of stuff in there that looks cool, but for now I&#8217;m only going to bother with the essentials, so I choose:</p>
+
+<ul>
+<li>SQL Server Express 2008</li>
+<li>Windows Azure command line tools for PHP (sounds like that&#8217;ll come in handy!)</li>
+<li>PHP Manager for IIS (I&#8217;ve used this in work, it makes configuring PHP for Windows a breeze)</li>
+<li>PHP 5.3.5 for WebMatrix (not sure what the WebMatrix bit is about, but it&#8217;s nice to see the latest version of PHP in there)</li>
+</ul>
+
+
+<p>There&#8217;s a whole bunch of other stuff there that looks like it&#8217;ll come in handy, but the above should get me to a point where I can get a PHP script running so we&#8217;ll start there. I hit install, and see A LOT of dependencies which will also be downloaded. Turns out the PHP 5.3.5 for WebMatrix install is a little bit of PHP, and a whole lot of WebMatrix &#8211; and PHP 5.3.5 is already being downloaded as a dependency of the Windows Azure command line tools. I&#8217;m a little freaked out, and decide to untick the WebMatrix trojan horse and just try installing PHP on its own for now until I discover that I need anything else.</p>
+
+<p>Since I&#8217;m installing SQL Server, I get asked to set a password (I don&#8217;t have to, I could use Windows authentication, but I figure it&#8217;s safer). I choose a suitably fiendish one.</p>
+
+<p>This could take a while, so I go downstairs for a chat with my wife and a cup of tea.</p>
+
+<h2>22.03</h2>
+
+<p>I come back to a screen notifying me that all programmes but SQL Server installed correctly. I open the install log to find out why, and would you believe it &#8211; my password wasn&#8217;t strong enough! Lesson learned. OK, another go, this time with a tougher password. I also add in the SQL Server Management Studio application for working with SQL Server which I&#8217;d missed the first time round.</p>
+
+<h2>22.16</h2>
+
+<p>It&#8217;s taking <em>ages </em>to install SQL Server Management Studio, so I go back and rewrite the intro which somehow is in a completely different tense to the rest of the article. I look at the copy of Strunk and White on my desk and realise I need to read more than the 10 pages of it that I&#8217;ve managed to date.</p>
+
+<h2>22.18</h2>
+
+<p>And at that moment, the installer finishes. No error messages this time, which means I&#8217;ve got l33t pa55w0rd skillz. Now to check if PHP is working.</p>
+
+<h2>22.25</h2>
+
+<p>I open up a command prompt and type &#8216;php&#8217; into it. Hit return. Error message &#8211; PHP isn&#8217;t recognised.</p>
+
+<p><a href="/images/posts/2011/03/php_not_recognised.png"><img class="alignnone size-full wp-image-114" title="PHP not recognised" src="/images/posts/2011/03/php_not_recognised.png" alt="A familiar sight on Windows" width="684" height="351" /></a></p>
+
+<p>Usually this means that PHP isn&#8217;t in Windows&#8217; PATH, so I probably need to do that. Hmm. Where&#8217;s the WPI put PHP? I find it under Program Files. Add that to the end of the path variable. Restart the cmd prompt. PHP is now responding, and the version is listed as 5.3.5. Fantastic.</p>
+
+<p><a href="/images/posts/2011/03/php_recognised.png"><img class="alignnone size-full wp-image-115" title="PHP - Recognised!" src="/images/posts/2011/03/php_recognised.png" alt="That's better." width="693" height="355" /></a></p>
+
+<h2>22.38</h2>
+
+<p>I&#8217;m curious as to what modules come bundled with PHP when it&#8217;s installed via the WPI, so I&#8217;m going to check that out. I could do it through the command line with the -m switch but I also want to check the PHP manager for IIS is running, and configure PHP for IIS at the same time.</p>
+
+<p>I open up IIS and select the default web site, then select the PHP Manager module. It tells me that my PHP configuration isn&#8217;t correct, and offers to set the default document for the website to index.php and monitor my php.ini file for changes, both of which are helpful suggestions. I do both. IIS seems to have picked up the correct version of PHP, so all is well in that regard.</p>
+
+<h2>22.43</h2>
+
+<p>The default web site is pointing to C:\inetpub\wwwroot, and it&#8217;s got some random stuff in it. I delete both the default web site and the files, then create a new site. I create a new one called &#8216;localhost&#8217; and set it to respond to &#8216;localhost&#8217;. I try to add PHP file called index.php which outputs phpinfo(), but I don&#8217;t have administrator rights for this folder. Grr. I add myself with read / write permissions, and save the file successfully.</p>
+
+<h2>22.49</h2>
+
+<p>I hit <a href="http://localhost">http://localhost</a> in the browser, and wow &#8211; it&#8217;s working. The PHP interpreter, FastCGI as the SAPI &#8211; and all with pretty much zero configuration. Take it from someone who spent a good few evenings last year building a LAMP server from source and configuring PHP in Apache &#8211; this is impressive. OK, so I&#8217;ve done a lot of this before, but having the WPI take a lot of the grunt work away is so helpful. Also I always have to check which version of PHP I need on Windows &#8211; is it non-thread-safe? Thread-safe? VC6? VC9? It&#8217;s nice having all that uncertainty taken away.</p>
+
+<p><a href="/images/posts/2011/03/phpinfo.png"><img class="alignnone size-large wp-image-117" title="phpinfo" src="/images/posts/2011/03/phpinfo-1024x574.png" alt="The PHPInfo page, courtesy IIS" width="640" height="358" /></a></p>
+
+<p>I take a look at the modules list. The usual suspects, nothing too fancy. I&#8217;m surprised to see that the Microsoft SQL Server Driver for PHP isn&#8217;t on there, I assumed that would be bundled. I think I saw it in the WPI, actually. I&#8217;ve a few can&#8217;t-live-without modules like PECL HTTP and XDebug that I&#8217;ll have to add in due course.</p>
+
+<h2>22.59</h2>
+
+<p>OK, it&#8217;s getting late &#8211; time to wrap this up. I need to find a &#8216;my first Azure app&#8217; tutorial on the web and make sure I can run it.</p>
+
+<p>It doesn&#8217;t take much Googling to come across <a href="http://azurephp.interoperabilitybridges.com/articles/deploying-your-first-php-application-with-the-windows-azure-command-line-tools-for-php">this article</a>, which seems to be exactly what I&#8217;m looking for. I&#8217;m not too bothered about deploying to the cloud just yet, I just want to make sure I can develop on my local machine for now.</p>
+
+<p>I seem to have covered the first few steps already (they&#8217;re concerned with the Azure command line tools for PHP which I installed via the WPI earlier &#8211; that article could do with an update to notify others in a similar position), so I skip on and open up the Azure SDK command prompt.</p>
+
+<h2>23.23</h2>
+
+<p>I keep following the steps, successfully creating a file and a temporary project. I come to packaging the project with the package.php script, and deploying to DevFabric, and get the following error:</p>
+
+<blockquote><p>Runtime Exception: 0: Default document &#8220;ServiceDefinition.rd&#8221; does not exist in Service directory &#8220;ServiceDefinition.csx&#8221;!</p></blockquote>
+
+<p>No idea. Google tells me nothing. Maybe I missed something in the earlier part of the tutorial.</p>
+
+<p><img class="alignnone size-full wp-image-118" title="Runtime Exception" src="/images/posts/2011/03/uhoh.png" alt="Runtime Exception: 0: Default document “ServiceDefinition.rd” does not exist in Service directory “ServiceDefinition.csx”!" width="693" height="355" /></p>
+
+<h2>23.27</h2>
+
+<p>OK, looks like I might have needed to start the Compute Emulator. Let&#8217;s try that&#8230; Oh, and the Storage Emulator too.</p>
+
+<h2>23.29</h2>
+
+<p>Nope, that doesn&#8217;t fix it. I&#8217;d better re-read through everything in case I missed something.</p>
+
+<h2>23.42</h2>
+
+<p>I read through the package script code to see where things are going wrong. I see quickly enough where it attempts to reference the missing file, leading to the exception, but there doesn&#8217;t appear to be a point where the file is actually created. Is it supposed to be copied from somewhere? I can&#8217;t see anything obvious and there&#8217;s nothing on Google that mentions what that file is or where it comes from.</p>
+
+<p>This isn&#8217;t good. My ass is nowhere near Vegas at the moment!</p>
+
+<h2>01.56</h2>
+
+<p>I&#8217;m totally out of ideas, and I&#8217;m not above begging for help, so I contact <a href="http://blog.maartenballiauw.be/">Maarten Balliauw</a> (who has published a lot of material on PHP on Azure) <a href="http://twitter.com/#!/craigmarvelley/status/43101712755605504">via</a> <a href="http://twitter.com/#!/craigmarvelley/status/43101994981924864">Twitter</a> to see if he&#8217;s seen the error before and can point me in the right direction. He kindly offers to put me in touch with someone involved in creating the tools, and in the middle of <a href="http://www.2011mvpsummit.com/">MVP 2011</a> festivities too!</p>
+
+<h2>02.11</h2>
+
+<p>Since I&#8217;ve followed the instructions in the articles to the letter, I&#8217;m wondering if Windows is to blame. I&#8217;m noticing other weird behaviour on my machine. Windows suggests folders to me in the command line that don&#8217;t exist; it&#8217;s been using my external hard drive to store installers from WPI; when I try to restart my machine to see if that&#8217;ll cure the problem it tries, and fails, to install Windows updates. Perhaps running Windows on a partition alongside XP wasn&#8217;t such a good idea after all. I decide enough&#8217;s enough, and go to bed frustrated.</p>
+
+<h2>The Next Day</h2>
+
+<p>Despite having slept on it and coming back fresh I&#8217;m still having the same problems, and am less confident in my installation in general. It&#8217;s possible there may be a bug in the Azure tooling, but given I&#8217;m having other issues I think the best thing to do is to take the plunge and install Windows 7 onto a dedicated drive, in case there are conflicts arising from sharing one with XP (I don&#8217;t see how that could be the case, but strange things are definitely happening).</p>
+
+<p>I&#8217;m a little disappointed because things seemed to be going very smoothly right up until the last hurdle. The WPI, with its dependency management, makes it so easy &#8211; I&#8217;ve since learned I need only to have installed the Azure Command Line Tools for PHP to have got everything else automatically, which is neat.</p>
+
+<p>So I now face my second install of Windows 7 in 24 hours &#8211; a task I think even Jack Bauer would blanch at <img src='http://marvelley.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /></p>
+
+<p>I&#8217;d like to thank Maarten for helping me out when I was seriously fed up. Hopefully after a re-install this problem will go away and I can finally start developing. Fingers crossed!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/3/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/">Including Filtered Thumbnail Data With the WordPress JSON API Plugin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/">Symfony2: Managing a User Entity Role With a Form Event Subscriber</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/">Deactivating a Macports Install of XDebug in a LAMP Environment</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Craig Marvelley -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'craigmarvelley';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

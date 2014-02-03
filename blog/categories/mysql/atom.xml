@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: MySQL | Craig Marvelley]]></title>
+  <link href="http://craigmarvelley.github.io/blog/categories/mysql/atom.xml" rel="self"/>
+  <link href="http://craigmarvelley.github.io/"/>
+  <updated>2014-02-03T14:49:09+00:00</updated>
+  <id>http://craigmarvelley.github.io/</id>
+  <author>
+    <name><![CDATA[Craig Marvelley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Overcoming a &#8216;lock Wait Timeout Exceeded&#8217; Exception.]]></title>
+    <link href="http://craigmarvelley.github.io/2010/10/06/overcoming-a-lock-wait-timeout-exceeded-exception/"/>
+    <updated>2010-10-06T00:00:00+01:00</updated>
+    <id>http://craigmarvelley.github.io/2010/10/06/overcoming-a-lock-wait-timeout-exceeded-exception</id>
+    <content type="html"><![CDATA[<p>This exception was being thrown by <a href="http://doctrine-project.org">Doctrine</a> during a long-running process:</p>
+
+<p><code>exception 'Doctrine_Connection_Mysql_Exception' with message 'SQLSTATE[HY000]: General error: 1205 Lock wait timeout exceeded; try restarting transaction'&lt;br /&gt;
+</code></p>
+
+<p>The code in question was performing a lot of queries within a transaction &#8211; it seems that innodb will only hold a lock for so long, and this limit was being reached before the transaction could commit and release the lock. The solution (other than refactoring the code to be a little quicker!) was to increase innodb&#8217;s <code>innodb_lock_wait_timeout</code> setting in <code>my.cnf</code> to accommodate the transaction.</p>
+]]></content>
+  </entry>
+  
+</feed>

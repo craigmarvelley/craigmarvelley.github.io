@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Symfony2: Managing a User Entity Role With a Form Event Subscriber - Craig Marvelley</title>
+  <meta name="author" content="Craig Marvelley">
+
+  
+  <meta name="description" content="I&#8217;m working on a Symfony2 application which makes use of roles to manage what Users of the system are able to do within the app. Symfony places &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://craigmarvelley.github.io/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Craig Marvelley" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Craig Marvelley</a></h1>
+  
+    <h2>Software and such</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:craigmarvelley.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Symfony2: Managing a User Entity Role With a Form Event Subscriber</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-10T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I&#8217;m working on a Symfony2 application which makes use of roles to manage what Users of the system are able to do within the app. Symfony places no limit on the amount of roles the User can have, but in the context of my application, there are only two &#8211; a base user (ROLE_USER, in Symfony parlance), and an administrator (ROLE_ADMIN). As is Symfony custom, all users would possess the default role, but the administrator role would be granted on a per user basis. I&#8217;m using the FOSUserBundle and Doctrine, so a User&#8217;s roles are stored within an array on that User&#8217; Doctrine entity.</p>
+
+<p>I began crafting a form (using the Symfony Form component) to manage user details. When creating forms that are bound to Doctrine I&#8217;ve generally found that I&#8217;ve needed to do little in the way of form customisation; the form component does a good job of figuring out which form fields to use based on the type of the variable it is given. So name, being a string, gets modelled as a textfield, while their registration date, being a DateTime object, causes a series of select boxes to be created which allow dates and times to be entered. So far so good.</p>
+
+<p>But of course there has to be a reason for a blog post, and this is mine: I wanted a checkbox to toggle on/of the administrator role for each user. Since roles are stored in an array on the bound entity, the default is to render a collection of fields, which leads to an array of values being submitted by the form. Trying to modify the field definition to a &#8216;single&#8217; field, like a checkbox, led to an error as the Form component doesn&#8217;t know how to map an array to a single value. A multi-value field wasn&#8217;t an option as I didn&#8217;t want to expose the roles (which wouldn&#8217;t necessarily make sense to an end user), and I didn&#8217;t want to get into messing about with Twig templates if I could help it; a bit of Googling led me to <a href="http://symfony.com/doc/current/cookbook/form/dynamic_form_generation.html">this article</a> on the cookbook, which describes how to dynamically add elements to forms using a Form event subscriber; this turned out to be just what I needed.</p>
+
+<p>Reading through the cookbook article, the following plan took shape: when the form is created, add a checkbox to the form which is ticked depending on whether the User object bound to the form has the administrator role. When the form is submitted, if the checkbox is ticked, grant the user that role. If it is not, remove the role from their array of granted roles.</p>
+
+<p><a href="/images/posts/2012/11/Screen-Shot-2012-11-10-at-14.51.51.png"><img class="aligncenter size-full wp-image-311" title="The resulting form" src="/images/posts/2012/11/Screen-Shot-2012-11-10-at-14.51.51.png" alt="" width="793" height="491" /></a></p>
+
+<p>To implement this, I needed two classes; a Form class, of course, and a new class that implements Symfony\Component\EventDispatcher\EventSubscriberInterface and subscribes to events on the form. As in the cookbook example, when the &#8216;preSetData&#8217; event fires I&#8217;d be adding a field to the form. In addition, when the &#8216;bind&#8217; event fires, I&#8217;d be using the value of the field to modify the bound object, in this case the User being managed. This is what I ended up with:</p>
+
+<p><noscript>
+  <p></p>
+
+<pre><code>View the code on &lt;a href="https://gist.github.com/4051034"&gt;Gist&lt;/a&gt;.
+</code></pre>
+
+<p>  </p>
+</noscript></p>
+
+<p>I&#8217;m manually adding the subscriber to the form in UserType::buildForm(), which feels a bit weird when the usual approach would be to define a service and tag it appropriately. I&#8217;m not sure if that&#8217;s possible with Form subscribers, that&#8217;s just how the cookbook approach went. I&#8217;d imagine there are other ways I could have achieved the same result, but I like this approach because I don&#8217;t have to modify my User class at all, and I don&#8217;t have to delve into form field customisation.</p>
+
+<p>The only downside I&#8217;ve found so far is that there doesn&#8217;t seem to be a way to order the fields that get added in the listener &#8211; they are always placed at the start of the collection, regardless of when the subscriber is attached to the form. This means that some template work is necessary to place the field as desired.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Craig</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-10T00:00:00+00:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/symfony2/'>Symfony2</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://craigmarvelley.github.io/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/" data-via="" data-counturl="http://craigmarvelley.github.io/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/" title="Previous Post: Deactivating a Macports install of XDebug in a LAMP environment">&laquo; Deactivating a Macports install of XDebug in a LAMP environment</a>
+      
+      
+        <a class="basic-alignment right" href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/" title="Next Post: Symfony2: JSON responses for XHR errors and authentication failures">Symfony2: JSON responses for XHR errors and authentication failures &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/">Including Filtered Thumbnail Data With the WordPress JSON API Plugin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/">Symfony2: Managing a User Entity Role With a Form Event Subscriber</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/">Deactivating a Macports Install of XDebug in a LAMP Environment</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Craig Marvelley -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'craigmarvelley';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

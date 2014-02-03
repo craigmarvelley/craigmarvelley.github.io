@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Craig Marvelley</title>
+  <meta name="author" content="Craig Marvelley">
+
+  
+  <meta name="description" content="Yesterday brought a bug in a PHP thumbnail library I&#8217;ve been working on: when mounting a 24 bit PNG with alpha transparency onto another &#8216 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://craigmarvelley.github.io/blog/page/4">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Craig Marvelley" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Craig Marvelley</a></h1>
+  
+    <h2>Software and such</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:craigmarvelley.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/10/01/mount-alpha-transparent-images-php-gd/">Mounting Alpha Transparent Images With PHP and GD</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-01T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yesterday brought a bug in a PHP thumbnail library I&#8217;ve been working on: when mounting a 24 bit PNG with alpha transparency onto another &#8216;framing&#8217; image the transparency was being lost. A simplified version of the code looks something like this:</p>
+
+<pre>// Read the transparent image
+$image = imagecreatefrompng('transparent.png');
+$width = imagesx($image);
+$height = imagesy($image);
+
+// Create the mount
+$border = 10;
+$mountWidth = $width + ($border * 2);
+$mountHeight = $height + ($border * 2);
+$mount = imagecreatetruecolor($mountWidth, $mountHeight);
+$mountColour = imagecolorallocate($mount, 255, 0, 0);
+imagefilledrectangle($mount, 0, 0, $mountWidth, $mountHeight, $mountColour);
+
+// Centre the image within the mount
+imagecopymerge($mount, $image, $border, $border, 0, 0, $width, $height, 100);
+
+// Output to screen
+header('Content-Type: image/png');
+imagepng($mount);</pre>
+
+
+<p>This all worked well enough until someone tried mounting a PNG with alpha transparency, whereupon things became very messy. A bit of googling <a href="http://drupal.org/node/80369">suggested</a> <a href="http://www.phpfreaks.com/forums/index.php?topic=127046.0">that</a> that the <a href="http://uk.php.net/imagecopymerge">imagecopymerge</a>() function was to blame (I&#8217;d used  it because it allowed the manipulation of opacity in the merged image) and that the <a href="http://uk.php.net/imagecopy">imagecopy</a>() function handled transparency better &#8211; which I found to be the case.</p>
+
+<p>So a transparency-friendly version of the script looks like:</p>
+
+<pre>// Read the transparent image
+$image = imagecreatefrompng('transparent.png');
+
+...
+
+// Centre the image within the mount
+imagecopy($mount, $image, $border, $border, 0, 0, $width, $height);
+
+// Output to screen
+header('Content-Type: image/png');
+imagepng($mount);</pre>
+
+
+<p>And problem solved &#8211; though I&#8217;d like to find a way to maintain image transparency while also being able to adjust the opacity of the mounted image.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/09/23/much-success/">Much Success!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-23T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve put off starting a blog for a while now. For good reason, it seems &#8211; getting this thing working was as hellish as I&#8217;d imagined! Hopefully the last few nights of fevered configuring and installing will be worth the effort.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/3/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/">Including Filtered Thumbnail Data With the WordPress JSON API Plugin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/">Symfony2: Managing a User Entity Role With a Form Event Subscriber</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/">Deactivating a Macports Install of XDebug in a LAMP Environment</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Craig Marvelley -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'craigmarvelley';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

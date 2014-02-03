@@ -1,0 +1,626 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Craig Marvelley</title>
+  <meta name="author" content="Craig Marvelley">
+
+  
+  <meta name="description" content="[This is a blog post related to the PHP on Azure competition.] I&#8217;ve had some time to think about how I&#8217;m going to build the application, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://craigmarvelley.github.io/blog/page/3">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Craig Marvelley" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Craig Marvelley</a></h1>
+  
+    <h2>Software and such</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:craigmarvelley.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/02/25/planning-my-azure-application-part-1/">Planning My Azure Application (Part 1)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-25T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
+
+<p>I&#8217;ve had some time to think about how I&#8217;m going to build the application, and I&#8217;ve got some ideas for how I&#8217;d like to proceed. At this point I&#8217;d have liked to set my development environment up with the Azure tools and had a play with the example applications I&#8217;ve come across, mostly to get a feel for what&#8217;s possible, but unfortunately upon trying to install the <a href="http://msdn.microsoft.com/en-us/windowsazure/cc974146.aspx">Azure SDK</a> I discovered that it requires Windows Vista or 7, and at home I&#8217;m still running XP. I toyed with the idea of installing Windows 7 into a Virtual Machine, which would probably be the quickest route to get back on track, but since I have been intending to migrate to 7 for a while this is probably the right time; technology is obviously evolving beyond XP (finally!).</p>
+
+<p>So in the interim while I work on an upgrade I&#8217;ll start planning my CMS application. I&#8217;ve been thinking about the type of libraries and frameworks I want to take advantage of, and how I&#8217;m going to knit them together. I won&#8217;t be able to check they work on Windows Azure &#8217;til I get access to a machine, but I&#8217;m fairly confident that the vast majority, if not all of them, will work on the platform.</p>
+
+<p>Firstly I&#8217;ll be using Zend Framework to provide the backbone of the application. I&#8217;ve not yet decided how much of the framework I&#8217;ll be taking advantage of, but I&#8217;ll definitely be using <a href="http://framework.zend.com/manual/en/zend.application.html">Zend_Application</a> and its related classes to handle the bootstrapping phase of the application, because its flexibility will be key when loading the other libraries I intend to use. The application will then utilise the ubiquitous <a href="http://msdn.microsoft.com/en-us/library/ff649643.aspx">MVC</a> pattern, using the following components:</p>
+
+<ul>
+<li>Model: <a href="http://www.doctrine-project.org/projects/orm">Doctrine 2 ORM</a> / <a href="http://msdn.microsoft.com/en-us/library/dd179423.aspx">Windows Azure Table Storage</a></li>
+<li>View: Not sure yet, probably <a href="http://framework.zend.com/manual/en/zend.view.html">Zend_View</a> but needs more investigation</li>
+<li>Controller: <a href="http://framework.zend.com/manual/en/zend.controller.html">Zend_Controller</a></li>
+</ul>
+
+
+<p>As I mentioned in my last post I don&#8217;t yet know how I&#8217;m going to work with the data layer: I really want to use Doctrine 2, which I know has SQL Server (and thus, I&#8217;m assuming, SQL Azure) support, but I&#8217;m not aware of similar support for Table Storage. Brian Swan posted <a href="http://blogs.msdn.com/b/brian_swan/archive/2010/09/16/accessing-windows-azure-table-data-as-odata-via-php.aspx">a tutorial</a> where he uses the OAuth SDK to access Table Storage, and that follows a similar annotations-driven approach to Doctrine 2; if one doesn&#8217;t exist, I&#8217;m wondering how much work it would take to write a Table Storage driver for Doctrine.</p>
+
+<p>Functionally, it may be possible to use Table Storage exclusively within the app (<a href="http://www.intertech.com/Blog/post/Windows-Azure-Table-Storage-vs-Windows-SQL-Azure.aspx">it sounds like it&#8217;ll be cheaper</a>) but there appear to be some crucial missing features, like <a href="http://www.mygreatwindowsazureidea.com/forums/34192-windows-azure-feature-voting/suggestions/396315-provide-me-with-full-text-search-on-table-storage">full-text searching</a>. I&#8217;ve been spoiled working with Solr for the past few years; I&#8217;d like to use Solr here, but have read <a href="http://social.msdn.microsoft.com/Forums/en-US/windowsazuredevelopment/thread/ab80b97f-462b-4b7d-bd65-f484e65be30c/">conflicting</a> <a href="http://stackoverflow.com/questions/3846793/running-solr-on-azure">reports</a> as to whether it&#8217;s possible. The way things are looking, I&#8217;ll try to use Table Storage in the first instance, then fall back to SQL Azure if it doesn&#8217;t give me what I need.</p>
+
+<p>For the view / templating component I&#8217;ll probably take the path of least resistance, which will probably mean Zend_View. My main requirement is easy support for different RESTful response response formats, i.e. HTML, XML and JSON, especially since I intend for the backend of the app to be JavaScript-heavy (using <a href="http://www.sencha.com/blog/ext-js-4-preview-faster-easier-more-stable">ExtJS 4</a>) which will mean a lot of JSON.</p>
+
+<p>Zend&#8217;s Controller classes are great, and I&#8217;ll probably use their routing system as well since it has RESTful support. There&#8217;s not much more to say about that really!</p>
+
+<p>So in an ideal world, this is how the application will be laid out:</p>
+
+<p><a href="/images/posts/2011/02/application_overview.jpg"><img class="alignnone size-full wp-image-100" title="Application Architecture Overview" src="/images/posts/2011/02/application_overview.jpg" alt="An overview of the application architecture" width="500" height="647" /></a></p>
+
+<p>Next I&#8217;ll think in more detail about the frontend and backend applications. Now I have to go to PC World to buy a hard drive and a copy of Windows 7&#8230;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/02/20/learning-about-windows-azure/">Learning About Windows Azure</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-20T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
+
+<p>I&#8217;ve spent the last few days reading about Windows Azure, mostly just trying to get a feel for what features it has and how I could use them in an application. The competition rules suggest that entrants &#8220;can earn extra points by using other parts of the Windows Azure platform&#8221; and the more I get to learn, the better, so I&#8217;m going to try to make use of as much of Azure&#8217;s functionality as possible.</p>
+
+<p>Though I haven&#8217;t yet decided what application I&#8217;ll be writing it&#8217;ll probably be some sort of a CMS &#8211; it&#8217;s the genre of web app I&#8217;m most familiar and its likely I&#8217;ll get more done in the short time frame I have if I stick to what I know best. As a result I&#8217;ve been looking at Azure&#8217;s feature list and thinking &#8220;how I can map this platform feature to a feature of a CMS?&#8221;</p>
+
+<p>I found plenty of resources which helped me get an overview of Azure, and which I&#8217;m sure I&#8217;ll continue to use as I progress. The most helpful were:</p>
+
+<ul>
+<li>Maarten Balliauw&#8217;s exhaustive <a href="http://articles.sitepoint.com/article/windows-azure-php">Sitepoint article</a></li>
+<li><a href="http://www.joshholmes.com/blog/">Josh Holmes&#8217; blog</a> (plenty of posts concerning PHP on Azure)</li>
+<li><a href="http://blogs.msdn.com/b/brian_swan/">Brian Swan&#8217;s blog</a> (loads of good Microsoft/PHP content, including lots of Azure-related posts)</li>
+</ul>
+
+
+<p>The Sitepoint article does a great job of summarising what Azure offers a PHP developer. As I was reading it I kept thinking &#8220;Ooh, that&#8217;d come in handy for this&#8221; or &#8220;That&#8217;d make so-and-so easy&#8230;&#8221; &#8211; here&#8217;s my reaction to some of the topics covered in the article.</p>
+
+<h2>Platform as a Service</h2>
+
+<p>The article starts by explaining that unlike, for example, Amazon&#8217;s EC2, which is an example of Infrastucture-as-a-Service, Windows Azure is a Platform-as-a-service. This essentially means that a developer using Azure doesn&#8217;t need to worry about maintaining the server, and just has to focus on deploying and configuring the applications that run on it. This sounds good to me; while my experiences of EC2 have been mostly good, there is a lot of work involved with getting servers into a state where they are usable. This can be mitigated somewhat by creating build scripts, but even then these have to be maintained, while managing server security is another headache that I&#8217;d be glad to be rid of. I&#8217;m optimistic that Azure will prove itself to be very hospitable, though I suppose there&#8217;s a chance that it&#8217;ll be too inflexible for more demanding applications that require atypical server configurations.</p>
+
+<h2>Blobs, Tables and Queues (oh my&#8230;)</h2>
+
+<p>Judging by how often they&#8217;re mentioned in the articles I&#8217;ve read, these three features seem to be what Microsoft deem the most valuable. All three will play their part in a highly scalable application, which is one of the advantages of the platform. Blobs can be leveraged to provide resources (images, downloads and the like) through a <a href="http://en.wikipedia.org/wiki/Content_delivery_network">Content Delivery Network</a>, accessed via a REST API &#8211; this is very relevant to a CMS, so I&#8217;ll definitely be taking advantage of this feature.</p>
+
+<p>Table storage is a document-oriented non-relational database in the same vein as <a href="http://www.mongodb.org/">MongoDB</a> or <a href="http://couchdb.apache.org/">CouchDB</a>. While I imagine the application will use relational databases, hopefully there will be an opportunity to use Table storage; perhaps to hold the content itself. I don&#8217;t have a lot of experience with this type of database so it&#8217;ll be a good chance for me to learn something.</p>
+
+<p>Queues are very exciting; a built-in way to pass processor-heavy tasks off to worker machines. I can immediately think of a few ways a CMS could make use of this feature: generating PDFs of pages; creating ZIP files of multiple downloads; analysing uploaded files for automated tagging and classification; computing internal analytics&#8230; there are plenty of scenarios where queuing could be invaluable. This feature interests me the most.</p>
+
+<h2>SQL Azure</h2>
+
+<p>Microsoft have provided SQL Server support, albeit in a modified fashion, through SQL Azure. I&#8217;ve used SQL Server frequently over the last 4 years but have always preferred to use MySQL since until recently it&#8217;s been better supported by PHP through both highly maintained PDO drivers, and the mysqli client library. That has changed in the last year or so with <a href="http://sqlsrvphp.codeplex.com/">Microsoft&#8217;s SQL Server Driver for PHP</a>, and this will be my first chance to make use of that driver. It&#8217;s likely that I&#8217;ll employ Doctrine 2&#8242;s <a href="http://www.doctrine-project.org/projects/dbal">database abstraction layer</a> since it has support for the driver, and it&#8217;ll make my application more portable in future &#8211; plus I&#8217;ve been looking for an excuse to put Doctrine 2 through its paces, having used Doctrine 1 extensively.</p>
+
+<h2>Windows Azure Platform Appfabric</h2>
+
+<p>Appfabric is a substantial element, comprising many components including Access Control, Caching, and Service Bus, which allows applications and services to communicate even through restrictive firewalls. Access control is a way to perform user authentication through federated identity services such as Active Directory, Microsoft Live, Yahoo!, Facebook and Google, which will be useful to web 2.0 style social applications that often delegate user identification. If it&#8217;s straightforward enough to do (and Microsoft say that it is) I may manage user authentication in this way; the web certainly doesn&#8217;t need another authentication device.</p>
+
+<p>I&#8217;m unclear as to whether the caching system can currently be used; <a href="http://www.microsoft.com/windowsazure/AppFabric/Overview/default.aspx#top">this article</a> mentions only .NET applications, and suggests that it is only available for preview, which is a shame. If it isn&#8217;t, then there are other options available for caching &#8211; simple file-based caching, which will probably be too slow (and isn&#8217;t very scalable); the Wincache extension, which uses shared memory, which will be faster; or perhaps I&#8217;ll be able to implement a <a href="http://archive.msdn.microsoft.com/winazurememcached">Memcached solution</a>.</p>
+
+<p>While I think Service Bus is a neat idea, I&#8217;m not sure whether my application will require communication with other network devices &#8211; it seems to be more relevant to applications concerned with restrictive networks.</p>
+
+<h2>Conclusion</h2>
+
+<p>I&#8217;ve read plenty about Windows Azure this week, and am quite excited about what it can offer a PHP application; some of the features make it almost too easy to dream up application functionality! Next I need to design my application, and get my development environment set up to work with Azure and its tools.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/02/10/entering-the-php-on-azure-contest/">Entering the PHP on Azure Contest</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-10T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve decided to enter the <a href="http://www.phpazurecontest.com/">PHP on Azure contest</a> that&#8217;s being organised by <a href="http://www.phpbenelux.eu/">PHP Benelux</a> and supported by <a href="http://microsoft.com">Microsoft</a>, which is challenging developers to build a PHP application that runs in and takes advantage of the <a href="http://www.microsoft.com/windowsazure/">Windows Azure platform</a>, Microsoft&#8217;s recent cloud computing offering.</p>
+
+<p>While I wouldn&#8217;t grumble if I won a trip to Las Vegas for MIX2012 (the first prize), my main motivation for entering is to see how the platform can engender scalability in a web application, since that&#8217;s a subject close to my heart. I&#8217;m also hoping to use it as an excuse to experiment with some cutting-edge libraries and frameworks in PHP like Doctrine 2, and maybe in JavaScript, like ExtJS 4. I&#8217;m thinking the contest rule of regular blogging about my experiences of the Azure platform will help me maintain this blog a little better, too.</p>
+
+<p>So ideally I&#8217;ll be blogging about the contest here, and <a href="http://twitter.com/craigmarvelley">tweeting about it</a>, until it closes on May 15th.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/02/02/sending-emails-with-php-using-swiftmailer-and-smtp-on-mac-osx/">Sending Emails With PHP Using Swiftmailer and SMTP on Mac OSX</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-02T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m a fan of <a href="http://swiftmailer.org/">Swiftmailer</a> for sending emails through PHP &#8211; it&#8217;s a much more elegant alternative to the <code>mail()</code>function and recently was absorbed into the Symfony project, so its future seems certain. A big plus is its support for sending mail using the <code>&lt;a href="ht&lt;code&gt;&lt;/code&gt;tp://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol"&gt;SMTP&lt;/a&gt;</code> protocol, which makes it great for more complex scenarios where authentication or performance are concerns.</p>
+
+<p>Up until this week I&#8217;d only used Swiftmailer on Windows, with an SMTP server on our network. This changed when I needed to do a demonstration using my Macbook, and as OSX comes installed with <a href="http://www.postfix.org/">Postfix</a> I thought everything should just work if I <a href="http://swiftmailer.org/docs/smtp-howto">configured Swiftmailer to use an SMTP server</a> on <code>localhost</code> at the standard port (25). This was nearly the case &#8211; as I read <a href="http://www.freshblurbs.com/how-enable-local-smtp-postfix-os-x-leopard">here</a> while Postfix is installed, it&#8217;s not enabled by default. After following the steps outlined there email started sending as expected.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/12/06/box-uk-open-source-software-and-php/">Box UK, Open Source Software and PHP</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-06T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Over the last couple of weeks I&#8217;ve been involved in a new initiative at <a href="http://boxuk.com">Box UK</a> to <a href="http://www.boxuk.com/news/announcing-box-uk-open-source-software-libraries">package and release some of our code under an open source license</a>. This decision stemmed from some conversations I had with fellow developers at the PHPNW 2010 conference,  specifically relating to dependency injection and how it can be useful in larger PHP applications. People seemed interested in the DI container solution developed for <a href="http://amaxus.com">Amaxus</a> using features introduced to PHP in the 5.3 release, so we decided to make both that and a thumbnailing library available to the wider community in the hope that they may prove useful.</p>
+
+<p>More can be read about boxuk-di, the dependency injection library, <a href="http://www.boxuk.com/labs/dependency-injection-and-reflection-library">on this page</a>. The article outlines some of the nifty features of the library, such as using reflection to achieve automatic dependency resolution, doing away with the configuration files commonly found in DI solutions. The <a href="http://github.com/boxuk/boxuk-di">code</a> itself is available at <a href="http://github.com/boxuk">BoxUK&#8217;s github</a> page. It&#8217;s pretty cool, and makes creating objects with loads of dependencies a breeze.</p>
+
+<p>The second library, Obscura, is a wrapper for <a href="http://php.net/gd">PHP&#8217;s GD library</a> that aims to make it easy to do image thumbnailing using an object oriented approach. I wrote the library earlier in the year, and it&#8217;s currently used in the Amaxus CMS. It&#8217;s still in its infancy, and there&#8217;s plenty I hope to add to it in the near future (like cropping and watermarking) but as a simple thumbnailer it does the job. I don&#8217;t know of too many thumbnailers for PHP with such a permissive license, which was the driving force behind my desire to write this one. More details can be found at <a href="http://www.boxuk.com/labs/obscura,-the-php-thumbnail-library">Box UK&#8217;s website</a>, while again the <a href="http://github.com/boxuk/obscura">code</a> can be found at the <a href="http://github.com/boxuk">company&#8217;s github repository</a>.</p>
+
+<p>Hopefully there&#8217;ll be more to come if these initial releases prove successful. I&#8217;m glad to have been involved in the project, as it&#8217;s helped alleviate some of my guilt at using so many excellent open source tools but, until now, not giving anything back. I&#8217;m aiming to release some of my own code in a similar fashion in the near future.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/11/28/titanium-appcelerator-resizing-the-andriod-emulator/">Titanium Appcelerator &#8211; Resizing the Andriod Emulator</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-28T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While messing around with Appcelerator it was annoying that on my 13&#8243; Macbook the Android emulator was too big for the screen &#8211; the Titanium Developer program doesn&#8217;t provide a way to change this. My workaround was to copy the command that&#8217;s being run to launch the emulator from the console output, and run the emulator manually with a resize option before deploying the app.</p>
+
+<p>This can be accomplished using the emulator&#8217;s -scale option, which is a number from 0.1 to 3. I found setting it to 0.7 resulted in an emulator with a workable size for my Macbook.</p>
+
+<p>From the root of your Android SDK folder run:</p>
+
+<p>/tools/emulator -avd titanium_2_WVGA854 -port 5560 -sdcard ~/.titanium/android2.sdcard -logcat &#8216;*:d *&#8217; -no-boot-anim -partition-size 128 -scale 0.7</p>
+
+<p>(titanium_2_WVGA854 is the name of the emulator created by Titanium, this will differ depending on your chosen emulator).</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/11/05/jelly-form-element-references-for-hudson-development/">Jelly Form Element References for Hudson Development</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-05T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been working on a Hudson plugin, which has been interesting because it&#8217;s been years since I&#8217;ve done any Java development. The tag library used by Hudson, Jelly, seems powerful enough but it&#8217;s not immediately apparent what tags it supports, and the Hudson documentation doesn&#8217;t go into much detail. The only two resources I could find are:</p>
+
+<p>A tag reference (think this is generated from the Jelly JavaDoc)<br/>
+<a href="http://hudson-ci.org/maven-site/hudson-core/jelly-taglib-ref.html">http://hudson-ci.org/maven-site/hudson-core/jelly-taglib-ref.html</a></p>
+
+<p>Browse the source<br/>
+<a href="https://hudson.dev.java.net/source/browse/hudson/trunk/hudson/main/core/src/main/resources/lib/form/">https://hudson.dev.java.net/source/browse/hudson/trunk/hudson/main/core/src/main/resources/lib/form/</a></p>
+
+<p>Though I picked up the most knowledge from checking out the Hudson source and just looking through the many plugins that have been added to the project &#8211; there are plenty of real-world examples of how to implement various UI patterns.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/10/13/magento-on-windows-unable-to-log-into-admin-area/">Magento on Windows: Unable to Log Into Admin Area</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-13T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve run into this issue a few times when setting <a href="http://www.magentocommerce.com/">Magento</a> up on Windows, but keep forgetting how to resolve it. After the setup wizard, on attempting to log into the admin area with the correct credentials I was constantly being redirected back to the login screen with no errors to suggest why I&#8217;d been denied.</p>
+
+<p>There&#8217;s <a href="http://www.magentocommerce.com/boards/viewthread/43148/">some advice</a> on the Magento forum that advocates commenting out some code relating to session cookie instantiation, but the fault seems to lie with Magento requiring a <a href="http://en.wikipedia.org/wiki/Top-level_domain">TLD</a> in order to persist the session &#8211; therefore placing your installation at a URL like <a href="http://magento.something">http://magento.something</a> rather than <a href="http://magento">http://magento</a> should prevent this happening and let you access the store backend without having to hack modify the code.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/10/13/dompdf-and-the-mbstring-extension/">DOMPDF and the Mbstring Extension</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-13T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been using <a href="http://www.digitaljunkies.ca/dompdf/">DOMPDF</a> for a while &#8211; it&#8217;s a great tool for converting HTML to PDF through PHP. I&#8217;ve been running it locally on several machines without issue, but I recently deployed it to a server running Centos 5.5 and was greeted with a blank page with no output every time I tried to generate a file. No errors on screen, no errors in the log file &#8211; and no way to step through the code.</p>
+
+<p>After a painful couple of hours of old-school echo()-ing I noticed a call to one of the mb_* functions &#8211; PHP&#8217;s set of functions for dealing with <a href="http://uk.php.net/mb_string">multibyte strings</a>. I don&#8217;t use that extension in my application, and DOMPDF doesn&#8217;t mention it in its installation notes along with its other dependencies, so I hadn&#8217;t thought I&#8217;d need it. A quick configure / make later though, and with the mbstring extension enabled PDFs were rendering quite happily.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/10/06/overcoming-a-lock-wait-timeout-exceeded-exception/">Overcoming a &#8216;lock Wait Timeout Exceeded&#8217; Exception.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-06T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This exception was being thrown by <a href="http://doctrine-project.org">Doctrine</a> during a long-running process:</p>
+
+<p><code>exception 'Doctrine_Connection_Mysql_Exception' with message 'SQLSTATE[HY000]: General error: 1205 Lock wait timeout exceeded; try restarting transaction'&lt;br /&gt;
+</code></p>
+
+<p>The code in question was performing a lot of queries within a transaction &#8211; it seems that innodb will only hold a lock for so long, and this limit was being reached before the transaction could commit and release the lock. The solution (other than refactoring the code to be a little quicker!) was to increase innodb&#8217;s <code>innodb_lock_wait_timeout</code> setting in <code>my.cnf</code> to accommodate the transaction.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/4/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/2/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/">Including Filtered Thumbnail Data With the WordPress JSON API Plugin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/">Symfony2: Managing a User Entity Role With a Form Event Subscriber</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/">Deactivating a Macports Install of XDebug in a LAMP Environment</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Craig Marvelley -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'craigmarvelley';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

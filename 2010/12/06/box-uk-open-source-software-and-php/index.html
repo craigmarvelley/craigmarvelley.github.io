@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Box UK, Open Source Software and PHP - Craig Marvelley</title>
+  <meta name="author" content="Craig Marvelley">
+
+  
+  <meta name="description" content="Over the last couple of weeks I&#8217;ve been involved in a new initiative at Box UK to package and release some of our code under an open source &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://craigmarvelley.github.io/2010/12/06/box-uk-open-source-software-and-php">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Craig Marvelley" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Craig Marvelley</a></h1>
+  
+    <h2>Software and such</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:craigmarvelley.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Box UK, Open Source Software and PHP</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-06T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Over the last couple of weeks I&#8217;ve been involved in a new initiative at <a href="http://boxuk.com">Box UK</a> to <a href="http://www.boxuk.com/news/announcing-box-uk-open-source-software-libraries">package and release some of our code under an open source license</a>. This decision stemmed from some conversations I had with fellow developers at the PHPNW 2010 conference,  specifically relating to dependency injection and how it can be useful in larger PHP applications. People seemed interested in the DI container solution developed for <a href="http://amaxus.com">Amaxus</a> using features introduced to PHP in the 5.3 release, so we decided to make both that and a thumbnailing library available to the wider community in the hope that they may prove useful.</p>
+
+<p>More can be read about boxuk-di, the dependency injection library, <a href="http://www.boxuk.com/labs/dependency-injection-and-reflection-library">on this page</a>. The article outlines some of the nifty features of the library, such as using reflection to achieve automatic dependency resolution, doing away with the configuration files commonly found in DI solutions. The <a href="http://github.com/boxuk/boxuk-di">code</a> itself is available at <a href="http://github.com/boxuk">BoxUK&#8217;s github</a> page. It&#8217;s pretty cool, and makes creating objects with loads of dependencies a breeze.</p>
+
+<p>The second library, Obscura, is a wrapper for <a href="http://php.net/gd">PHP&#8217;s GD library</a> that aims to make it easy to do image thumbnailing using an object oriented approach. I wrote the library earlier in the year, and it&#8217;s currently used in the Amaxus CMS. It&#8217;s still in its infancy, and there&#8217;s plenty I hope to add to it in the near future (like cropping and watermarking) but as a simple thumbnailer it does the job. I don&#8217;t know of too many thumbnailers for PHP with such a permissive license, which was the driving force behind my desire to write this one. More details can be found at <a href="http://www.boxuk.com/labs/obscura,-the-php-thumbnail-library">Box UK&#8217;s website</a>, while again the <a href="http://github.com/boxuk/obscura">code</a> can be found at the <a href="http://github.com/boxuk">company&#8217;s github repository</a>.</p>
+
+<p>Hopefully there&#8217;ll be more to come if these initial releases prove successful. I&#8217;m glad to have been involved in the project, as it&#8217;s helped alleviate some of my guilt at using so many excellent open source tools but, until now, not giving anything back. I&#8217;m aiming to release some of my own code in a similar fashion in the near future.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Craig</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-06T00:00:00+00:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/php/'>PHP</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://craigmarvelley.github.io/2010/12/06/box-uk-open-source-software-and-php/" data-via="" data-counturl="http://craigmarvelley.github.io/2010/12/06/box-uk-open-source-software-and-php/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2010/11/28/titanium-appcelerator-resizing-the-andriod-emulator/" title="Previous Post: Titanium Appcelerator &#8211; Resizing the Andriod emulator">&laquo; Titanium Appcelerator &#8211; Resizing the Andriod emulator</a>
+      
+      
+        <a class="basic-alignment right" href="/2011/02/02/sending-emails-with-php-using-swiftmailer-and-smtp-on-mac-osx/" title="Next Post: Sending emails with PHP using Swiftmailer and SMTP on Mac OSX">Sending emails with PHP using Swiftmailer and SMTP on Mac OSX &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/">Including Filtered Thumbnail Data With the WordPress JSON API Plugin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/">Symfony2: Managing a User Entity Role With a Form Event Subscriber</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/">Deactivating a Macports Install of XDebug in a LAMP Environment</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Craig Marvelley -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'craigmarvelley';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

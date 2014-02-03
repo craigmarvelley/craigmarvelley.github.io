@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Hacks and Hackers Hackday Cardiff - Craig Marvelley</title>
+  <meta name="author" content="Craig Marvelley">
+
+  
+  <meta name="description" content="It&#8217;s long overdue but here&#8217;s a quick recap of the Hacks and Hackers Hackday I attended on the 11th March 2011 at the Atrium, Cardiff. It &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://craigmarvelley.github.io/2011/03/27/hacks-and-hackers-hackday-cardiff">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Craig Marvelley" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Craig Marvelley</a></h1>
+  
+    <h2>Software and such</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:craigmarvelley.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Hacks and Hackers Hackday Cardiff</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-27T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>It&#8217;s long overdue but here&#8217;s a quick recap of the <a href="http://blog.scraperwiki.com/2011/03/15/cardiff-hacks-and-hackers-hacks-day/">Hacks and Hackers Hackday</a> I attended on the 11th March 2011 at the <a href="http://cci.glam.ac.uk/campus/">Atrium</a>, Cardiff. It was my first hackday &#8211; though I&#8217;d been itching to try one for a while it seems they don&#8217;t tend to happen in Cardiff that often. I wasn&#8217;t disappointed, the day was really enjoyable.</p>
+
+<p>The hackday was sponsored and organised by <a href="http://scraperwiki.com/">Scraperwiki</a>, an open-source effort which aims to make webscraper tools, and the data they harvest, easily available and modifiable to the general public. In particular, the event attempted to bring journalists (hacks) and developers (hackers) together so that by combining each other&#8217;s strengths, we might teach each one another how to obtain and interpret the masses of public data that exists on the internet.</p>
+
+<p>I went along with <a href="http://twitter.com/#!/HandyBiteSize">Carey</a> and <a href="http://twitter.com/#!/woogoose">Warren</a> from <a href="http://www.boxuk.com/">Box UK</a>, and we formed a team with three &#8216;hacks&#8217; &#8211; <a href="http://twitter.com/#!/yessof" target="_blank">Steve Fossey</a>, Eva Tallaksen from <a href="http://www.intrafish.no/global/" target="_blank">Intrafish</a> and<a href="http://twitter.com/#!/digitalst" target="_blank"> Gareth Morlais</a> from <a href="http://www.bbc.co.uk/cymru/" target="_blank">BBC Cymru</a>. We named ourselves Co-Ordnance, though I can&#8217;t remember why &#8211; think it was decided while I was busy hacking!</p>
+
+<div class="mceTemp">
+  <dl id="attachment_162" class="wp-caption alignnone" style="width: 650px;">
+    <dt class="wp-caption-dt">
+      <a href="/images/posts/2011/03/stock-exchange.jpg"><img class="size-full wp-image-162" title="Co-Ordnance (courtesy Scraperwiki blog)" src="/images/posts/2011/03/stock-exchange.jpg" alt="" width="640" height="478" /></a>
+    </dt>
+    
+    <p>
+      Co-Ordnance (courtesy Scraperwiki blog)
+    </p>
+  </dl>
+</div>
+
+
+<p>Inspired by some ideas Eva had we initially decided to try to write an application to model stock market data, specifically a tool to collate stock market updates from floated companies. With a little more brainstorming we decided to make this a sub-feature of a larger tool that would plot companies on a UK map according to their registered addresses. The user would be able to filter by the type of business and the region in which it was registered, as well as letting them choose a specific point in time. Thus one could make observations about the behaviour of businesses, such as the popularity of certain sectors of business in certain areas, the impact the recession had on business growth or the collapse of businesses, which regions are ripe for investment, and so on.</p>
+
+<p>While Warren and Eva focused on writing a Scraperwiki script to collect the stock market data the rest of us planned the application. The first thing we considered was how we could obtain geolocation data for the companies that we were to be referencing, and that led us into trying to scrape data from the <a href="http://www.companieshouse.gov.uk/">Companies House</a> website.</p>
+
+<p>This proved to be difficult, as URLs within the site feature hashed components &#8211; possibly in an attempt to prevent spiders from navigating the site. This meant we&#8217;d never come up with a scraper solution in the time that we had available, but thankfully a member of the Scraperwiki team told us about <a href="http://opencorporates.com/">OpenCorporates</a>, which aims to &#8220;have a URL for every company in the world&#8221;. Many of those URLs provide addresses for companies, which we could geo-encode (using Google&#8217;s Geoencoder) to obtain UK co-ordinates for that company. So we were able to plot companies per region on a map.</p>
+
+<div class="mceTemp">
+  <dl id="attachment_161" class="wp-caption alignnone" style="width: 650px;">
+    <dt class="wp-caption-dt">
+      <a href="/images/posts/2011/03/coordnance2.jpg"><img class="size-full wp-image-161 " title="Carey presents our app (courtesy Scraperwiki blog)" src="/images/posts/2011/03/coordnance2.jpg" alt="" width="640" height="478" /></a>
+    </dt>
+    
+    <p>
+      Carey presents our app (courtesy Scraperwiki blog)
+    </p>
+  </dl>
+</div>
+
+
+<p>Carey wrote a scraper tool so that we could download data for each company into a local MySQL database for indexing. This would allow us to retrieve businesses for a particular region. A nice feature of the OpenCorporate dataset is that one is able to access the data in JSON, which made saving and accessing the data really easy, especially as the application was mainly to be written in JavaScript using the ExtJS framework. Incidentally, I took the opportunity to try the beta version of ExtJS 4, but since the app ended up being pretty much just a map and a form to manipulate the plotted data I didn&#8217;t get to play with any of the stuff added in the new release.</p>
+
+<p>So once we&#8217;d downloaded the data of a few thousand companies (enough for a sample dataset) and indexed the data by location, I needed to write the frontend to plot the companies on a Google Map. By this point we had a little under three hours left, so it was a bit of a push &#8211; especially since I hadn&#8217;t done any Google Maps development in about three years, and the API had completely changed during that period. Thankfully a generous supply of sweets, Coke and beer kept me energetic, and we just about made it. We didn&#8217;t get chance to integrate Warren&#8217;s work into the app, which was a shame, but we still managed to achieve two solutions, which I thought impressive considering the time we had available to us (about 7 hours, once we&#8217;d got started).</p>
+
+<p>In the reckoning we came third, which we were chuffed with. In addition to this Warren also won an individual prize for making the best use of Scraperwiki, which was totally deserved. It would perhaps have been nice if the judges had explained why they voted as they had, as I, and others I spoke to, were confused as to what the marking criteria was. Nevertheless it was a really good day, which challenged me in ways I&#8217;d never been challenged before, and forced me to work within a totally new team, under pressure, on a topic that I knew nothing about. I&#8217;d recommend the Scraperwiki tools, and the next time I need to harvest some data I&#8217;ll definitely be making use of them.</p>
+
+<p>The code I wrote on the day is available at my <a href="https://github.com/craigmarvelley/hhhCar">Github page</a>, and I&#8217;m hoping to get the app into a more usable state and hosted on this site in the near future.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Craig</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-27T00:00:00+00:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/general/'>General</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://craigmarvelley.github.io/2011/03/27/hacks-and-hackers-hackday-cardiff/" data-via="" data-counturl="http://craigmarvelley.github.io/2011/03/27/hacks-and-hackers-hackday-cardiff/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric/" title="Previous Post: Using Eclipse to run PHP in Azure DevFabric">&laquo; Using Eclipse to run PHP in Azure DevFabric</a>
+      
+      
+        <a class="basic-alignment right" href="/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7/" title="Next Post: Preventing aggressive caching of JavaScript files with IIS7">Preventing aggressive caching of JavaScript files with IIS7 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/">Including Filtered Thumbnail Data With the WordPress JSON API Plugin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/">Symfony2: Managing a User Entity Role With a Form Event Subscriber</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/">Deactivating a Macports Install of XDebug in a LAMP Environment</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Craig Marvelley -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'craigmarvelley';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

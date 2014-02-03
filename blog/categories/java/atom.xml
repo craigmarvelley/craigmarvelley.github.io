@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Java | Craig Marvelley]]></title>
+  <link href="http://craigmarvelley.github.io/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://craigmarvelley.github.io/"/>
+  <updated>2014-02-03T14:49:09+00:00</updated>
+  <id>http://craigmarvelley.github.io/</id>
+  <author>
+    <name><![CDATA[Craig Marvelley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Jelly Form Element References for Hudson Development]]></title>
+    <link href="http://craigmarvelley.github.io/2010/11/05/jelly-form-element-references-for-hudson-development/"/>
+    <updated>2010-11-05T00:00:00+00:00</updated>
+    <id>http://craigmarvelley.github.io/2010/11/05/jelly-form-element-references-for-hudson-development</id>
+    <content type="html"><![CDATA[<p>I&#8217;ve been working on a Hudson plugin, which has been interesting because it&#8217;s been years since I&#8217;ve done any Java development. The tag library used by Hudson, Jelly, seems powerful enough but it&#8217;s not immediately apparent what tags it supports, and the Hudson documentation doesn&#8217;t go into much detail. The only two resources I could find are:</p>
+
+<p>A tag reference (think this is generated from the Jelly JavaDoc)<br/>
+<a href="http://hudson-ci.org/maven-site/hudson-core/jelly-taglib-ref.html">http://hudson-ci.org/maven-site/hudson-core/jelly-taglib-ref.html</a></p>
+
+<p>Browse the source<br/>
+<a href="https://hudson.dev.java.net/source/browse/hudson/trunk/hudson/main/core/src/main/resources/lib/form/">https://hudson.dev.java.net/source/browse/hudson/trunk/hudson/main/core/src/main/resources/lib/form/</a></p>
+
+<p>Though I picked up the most knowledge from checking out the Hudson source and just looking through the many plugins that have been added to the project &#8211; there are plenty of real-world examples of how to implement various UI patterns.</p>
+]]></content>
+  </entry>
+  
+</feed>

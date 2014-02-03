@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Using a PHP Framework With Windows Azure - Craig Marvelley</title>
+  <meta name="author" content="Craig Marvelley">
+
+  
+  <meta name="description" content="[This is a blog post related to the PHP on Azure competition.] It&#8217;s been a while since my last PHP on Azure contest post, mostly due to &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://craigmarvelley.github.io/2011/05/08/using-a-php-framework-with-windows-azure">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Craig Marvelley" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Craig Marvelley</a></h1>
+  
+    <h2>Software and such</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:craigmarvelley.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Using a PHP Framework With Windows Azure</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-08T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
+
+<p>It&#8217;s been a while since my last PHP on Azure contest post, mostly due to commitments @work that have reduced my free time considerably. There&#8217;s not long left &#8217;til the competition closes though (I have a week), so I need to get my skates on!</p>
+
+<p>Casting my mind back to my last post, I was able to finally deploy to the local development fabric. In the interim I&#8217;ve set up an Azure account and successfully deployed a simple script to the cloud, so everything&#8217;s fine on that front. It&#8217;s time to start developing my application.</p>
+
+<p>Since my time is limited my application will be quite straightforward &#8211; a CMS to manage media files. This should allow me to use all the features of Azure (queuing, table storage, blobs) I&#8217;m interested in.</p>
+
+<h2>Bittersweet Symfony</h2>
+
+<p>The first step in building the application is to decide on  framework to speed up development. The main reason I got into the contest in the first place was because I wanted to have more experience with Zend Framework &#8211; while I&#8217;d used its components in isolation before I&#8217;d never built an application with it. However in the months since I entered the competition I&#8217;ve started using Symfony 2 heavily. That, and the realisation that ZF2 is around the corner, have made me think that ZF isn&#8217;t the best choice for this contest, so I decided to use Symfony 2 instead.</p>
+
+<p>That was easier said than done. I dropped the Symfony framework into my Azure WebRole project, and put together a &#8216;hello world&#8217; script, only to immediately run into <a href="http://blogs.msdn.com/b/jnak/archive/2010/01/14/windows-azure-path-too-long.aspx">this issue</a> &#8211; apparently Azure has issues when building projects when paths to files or directories exceed 260 characters. Of course, in a framework of Symfony&#8217;s size, with many nested directories, this limit is unrealistic.The solutions recommended on Jim&#8217;s blog include changing the project paths to be shorter (impossible in this case) and setting a temporary environment variable which moves the location at which Azure builds projects, thus reducing the prefix of any paths. As Jim says, this isn&#8217;t a guaranteed fix and indeed, it didn&#8217;t work for me.</p>
+
+<p>So including Symfony within the WebRole didn&#8217;t seem to be possible. I experimented with including in within my PHP include path, in the hope that it would save some characters, but that didn&#8217;t work at all, Azure didn&#8217;t even pick it up. I need to look around the net to see how Azure manages include paths, since it&#8217;s something I use often in PHP. How do PEAR modules work, I wonder? Can you manage PEAR within Azure as you would with a local PHP installation, or do you have to place the components within each WebRole? Topics for future posts, maybe.</p>
+
+<p>Anyway, it didn&#8217;t look like Symfony was going to work any time soon, so I needed an alternative, and since<a href="http://www.ben-waine.co.uk/blog/php-azure/deploying-a-zend-framework-to-app-fabric.php"> Ben Waine had successfully deployed using Zend Framework</a> I thought briefly of using that after all. Then, I came across <a href="http://silex-project.org/">Silex</a>.</p>
+
+<h2>Along came a Silex</h2>
+
+<p>Silex is a micro-framework based on Symfony 2 components, inspired by <a href="http://www.sinatrarb.com/">Sinatra</a>, the Ruby on Rails framework which presents an alternative to typical MVC web applications. It&#8217;s succinct and straightforward, and, crucially, is deployed as a PHAR archive. This means I only need to include a single file in the root of my project to be able to use the library &#8211; which means no long paths that Azure can&#8217;t handle.</p>
+
+<p>I downloaded the Silex archive from its website and dropped it into the root of my project, then copied the &#8216;hello world&#8217; example provided within the Silex documentation into my index.php file:</p>
+
+<pre>require_once __DIR__.'/silex.phar'; 
+
+$app = new Silex\Application(); 
+
+$app-&gt;get('/hello/{name}', function($name) {
+    return "Hello $name";
+}); 
+
+$app-&gt;run();</pre>
+
+
+<p>Then I deployed my project to dev fabric, and navigated to /hello/Craig. Of course, this didn&#8217;t work immediately &#8211; nothing ever does for me &#8211; because I didn&#8217;t have a web.config file set up to send all requests through the front controller, index.php. I got an IIS 404 page rather than the &#8216;Hello Craig&#8217; I was expecting. So I used IIS&#8217;s Apache config importer to convert the sample .htaccess file provided by Silex into a web.config file, then copied the relevant rewrite rules into my WebRole&#8217;s config file. Rebuilding the application resulted in a working application. Good to go!</p>
+
+<p>Here&#8217;s what I needed to add to my web.config file in case it&#8217;s of any use to anyone:</p>
+
+<h2>Compiling Silex on Windows</h2>
+
+<p>Because Silex is pretty new I&#8217;m expecting to find issues here and there, plus when working on Windows I&#8217;m accustomed to having to make little changes here and there to get PHP code that&#8217;s been written on *nix to run properly &#8211; so I wanted to build the Silex PHAR from source so I could make changes if necessary and properly understand how everything fits together.</p>
+
+<p>This is quite straightfoward. First, I checked out Silex from its <a href="https://github.com/fabpot/Silex">github page</a>:</p>
+
+<pre>git clone https://github.com/fabpot/Silex.git silex</pre>
+
+
+<p>I merged in <a href="https://github.com/Ziumin/Silex/commit/6abebd759850c1c2eabc678cfe4bb12a61412768">a pending fix</a> which addresses compilation issues on Windows &#8211; there&#8217;s probably a fancy way to do this in git but I just applied the fix manually.</p>
+
+<p>Then I needed to get Silex&#8217;s dependencies:</p>
+
+<pre>git submodule init
+git submodule update --recursive</pre>
+
+
+<p>Silex provides a PHP script, named &#8216;compile&#8217;, which puts the archive together. I had to make some changes to my php.ini file before I could run it successfully:</p>
+
+<pre>phar.readonly = Off
+phar.require_hash = Off</pre>
+
+
+<p>Then creating the archive was as simple as running:</p>
+
+<pre>php compile</pre>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Craig</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-08T00:00:00+01:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/php-on-azure/'>PHP on Azure</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://craigmarvelley.github.io/2011/05/08/using-a-php-framework-with-windows-azure/" data-via="" data-counturl="http://craigmarvelley.github.io/2011/05/08/using-a-php-framework-with-windows-azure/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7/" title="Previous Post: Preventing aggressive caching of JavaScript files with IIS7">&laquo; Preventing aggressive caching of JavaScript files with IIS7</a>
+      
+      
+        <a class="basic-alignment right" href="/2011/08/15/iis-file-locking/" title="Next Post: IIS file locking">IIS file locking &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/">Including Filtered Thumbnail Data With the WordPress JSON API Plugin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/">Symfony2: Managing a User Entity Role With a Form Event Subscriber</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/">Deactivating a Macports Install of XDebug in a LAMP Environment</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Craig Marvelley -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'craigmarvelley';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

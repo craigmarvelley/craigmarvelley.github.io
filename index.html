@@ -1,1 +1,761 @@
-My Octopress Page is coming soon &hellip;
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Craig Marvelley</title>
+  <meta name="author" content="Craig Marvelley">
+
+  
+  <meta name="description" content="The JSON API plugin is a great tool for exposing your WordPress data. I&#8217;ve used it to provide content to a few mobile applications; it&#8217;s &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://craigmarvelley.github.io">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Craig Marvelley" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Craig Marvelley</a></h1>
+  
+    <h2>Software and such</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:craigmarvelley.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/">Including Filtered Thumbnail Data With the WordPress JSON API Plugin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-26T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The <a href="http://wordpress.org/plugins/json-api/">JSON API</a> plugin is a great tool for exposing your WordPress data. I&#8217;ve used it to provide content to a few mobile applications; it&#8217;s well featured and most importantly, quite flexible. If your content providers are happiest using a CMS like WordPress, your project can benefit by allowing them to use the authoring tools they&#8217;re comfortable with while allowing you to easily access the content they&#8217;re creating, either to use directly within your application, or as I tend to do, by exporting the data into another application which then proxies the data to mobile applications. I find the latter approach gives you greater control over features like caching, while making it easier to relate the data to domain models that aren&#8217;t handled by WordPress.</p>
+
+<p>But I digress! This post was conceived because when requesting all posts of a certain type through the plugin, response times were hideously slow. The request I was making looked like this:</p>
+
+<p><a href="http://domain.com/?json=get_posts&amp;post_type=artist&amp;count=1000&amp;order=ASC">http://domain.com/?json=get_posts&amp;post_type=artist&amp;count=1000&amp;order=ASC</a></p>
+
+<p>Reading the documentation for the plugin, I found that it was possible to filter the response to only contain properties that I wanted, which I figured should reduce the amount of work WordPress was having to do:</p>
+
+<p><a href="http://domain.com/?json=get_posts&amp;post_type=artist&amp;count=2&amp;order=ASC&amp;include=id,title,content,custom_fields,thumbnail_images">http://domain.com/?json=get_posts&amp;post_type=artist&amp;count=2&amp;order=ASC&amp;include=id,title,content,custom_fields,thumbnail_images</a></p>
+
+<p>This proved to be true, but I hit a snag when trying to include the thumbnail_images property &#8211; adding it to the CSV of whitelisted fields had no effect. Through trial and error it transpired that including the thumbnail field also has the effect of including the thumbnail, thumbnail_size, and thumbnail_images fields. The final URL ended up looking like this:</p>
+
+<p><a href="http://domain.com/?json=get_posts&amp;post_type=artist&amp;count=2&amp;order=ASC&amp;include=id,title,content,custom_fields,thumbnail">http://domain.com/?json=get_posts&amp;post_type=artist&amp;count=2&amp;order=ASC&amp;include=id,title,content,custom_fields,thumbnail</a></p>
+
+<p>Problem solved!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-06T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Twice today I&#8217;ve seen references to the benefits of iterative improvement, and I found that the topic resonated with me. At the moment I&#8217;m halfway though a pretty lengthy software project in which it&#8217;s sometimes hard to see the wood for the trees. The backlog is substantial, resulting in a hefty set of tasks for our team. In these situations, where the to-do list doesn&#8217;t seem to change day to day, it&#8217;s easy to feel crippled by inertia. However, these two references illustrate that we can succeed provided we ensure we&#8217;re making healthy, gradual progress.</p>
+
+<p>One might expect that the references I&#8217;m alluding to originate from a tome of software development, like &#8220;<a href="http://pragprog.com/the-pragmatic-programmer">The Pragmatic Programmer</a>&#8220;, or from one of the many celebrated development gurus of Twitter, but in fact they are not directly concerned with software at all. The first comes from <a href="http://www.youtube.com/watch?v=7GHhmgZ0BwQ" title="The Undercover Economist Tim Harford: Full talk from Wired 2012">a talk discussing the pros and cons of iterative improvement</a> , linked to by my colleague (and all-round good chap) <a href="https://twitter.com/owenphelps" title="Owen Phelps' Twitter">Owen Phelps</a>, by Tim Harford at last year&#8217;s Wired UK conference:</p>
+
+<blockquote><p>If you put together enough marginal improvements, in enough areas, you get something that&#8217;s truly outstanding.</p></blockquote>
+
+<p>Give it a watch &#8211; it&#8217;s entertaining and informative.</p>
+
+<p>The second reference came from an altogether different source &#8211; <a href="http://www.soundonsound.com/sos/jan13/articles/it-0113.htm" title="Alan Moulder: Sound on Sound January 2012">an interview with renowned mix engineer Alan Moulder</a> in this month&#8217;s issue of Sound on Sound magazine, in which he discusses his approach when applying VST plugins to his music projects:</p>
+
+<blockquote><p>All the things I use do something to make the sound a tiny bit better, and if  you add everything together, the end result will be a lot better&#8230; It&#8217;s simple: better is better, whether it&#8217;s a tiny bit better or a lot better.</p></blockquote>
+
+<p>Through never-ending sprints, features and tasks, iterative improvement is something all development teams should strive to achieve.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-20T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been working on a Symfony2 application whose user interface is presented as a single page application that makes heavy use of JavaScript. The app sends <a href="http://en.wikipedia.org/wiki/XMLHttpRequest">XHR</a> requests to the Symfony2 backend API to retrieve and modify data, and it uses Symfony&#8217;s authorisation/authentication functionality to protect resources so they are only accessible to logged in users.</p>
+
+<p>In an ideal world every request made by the application will succeed, but in reality things often go wrong; the user may have provided invalid data, their session may have expired meaning they are no longer logged in, or we may have a bug in our API code which causes a server error. With an out-of-the-box installation of Symfony2, each of these scenarios will result in the default error handler rendering a HTML page which isn&#8217;t much use to our client JavaScript application &#8211; instead we want the server to issue a JSON response to our AJAX request, complete with some contextual error details, with which we can give the user a meaningful error message.</p>
+
+<p>I did a bit of Googling and came across a <a href="http://stackoverflow.com/questions/8607212/symfony2-ajax-login">few</a> <a href="https://groups.google.com/forum/?fromgroups=#!topic/symfony-devs/WvESDBprKrU">posts</a> <a href="http://stackoverflow.com/questions/12385923/handle-errors-in-ajax-within-symfony2-controller">which</a> dealt with some of these challenges, and by putting them all together I arrived at a solution which I&#8217;ll detail here in case it&#8217;s of use to anyone else.</p>
+
+<p><a href="https://github.com/craigmarvelley/symfony2-xhr-error-handling">I&#8217;ve put together a demo app</a> which hopefully illustrates everything. Have a play with it (installation instructions are in the README), then read on <img src='http://marvelley.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /></p>
+
+<p><a href="/images/posts/2012/12/Screen-Shot-2012-12-20-at-21.55.12-e1356040628744.png"><img class="aligncenter size-full wp-image-341" title="The demo application" src="/images/posts/2012/12/Screen-Shot-2012-12-20-at-21.55.12-e1356040628744.png" alt="" width="600" height="398" /></a></p>
+
+<p>The app consists of a few components:</p>
+
+<p>Client side:</p>
+
+<ul>
+<li>A jQuery global AJAX error handler</li>
+<li>A login form &#8211; I have two, a Symfony2/Twig-based HTML login page which the user is redirected to if they try to access the app without a valid session, and a JavaScript login dialog which we will display if the server rejects an AJAX request due to authentication/authorisation failure, allowing the user to reauthenticate without leaving the app</li>
+</ul>
+
+
+<p>Server side:</p>
+
+<ul>
+<li>An authentication failure handler</li>
+<li>An authentication success handler</li>
+<li>A kernel exception listener</li>
+</ul>
+
+
+<p>As far as the rest of the app goes, I&#8217;m using the <a href="https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.md">FOSUserBundle</a> with a standard configuration, which supplies the rest of the auth functionality, including the HTML login page.</p>
+
+<p>Let&#8217;s start with the server components &#8211; three classes and a bit of config:</p>
+
+<p><noscript>
+  <p></p>
+
+<pre><code>View the code on &lt;a href="https://gist.github.com/4340230"&gt;Gist&lt;/a&gt;.
+</code></pre>
+
+<p>  </p>
+</noscript></p>
+
+<p>The <code>XHRAuthenticationSuccessHandler</code> and <code>XHRAuthenticationFailureHandler</code> class&#8217; code is triggered when the user logs in, or fails to log in, respectively. We check to see if the original request was an AJAX (XHR) one, and if so we respond with JSON. If it&#8217;s a failure we&#8217;re dealing with, we also include the exception message to give the user some feedback &#8211; note that this is a quick solution; it might be prudent to vet the message, or to translate it. I&#8217;ve also included a &#8216;success&#8217; property which is a JavaScript convention that some frameworks (like <a href="http://www.sencha.com/products/extjs">ExtJS</a>) use to execute appropriate callbacks. Finally, we wire up these handlers with the security component in our application&#8217;s <a href="https://gist.github.com/4340230#file-security-yml">security configuration</a>.</p>
+
+<p>The <code>XHRCoreExceptionListener</code> class code is triggered whenever a kernel exception occurs &#8211; check the <a href="https://gist.github.com/4340230#file-services-xml">service definition</a> for this listener, you&#8217;ll see we tell Symfony to call its <code>onCoreException</code> method whenever an exception event is fired. Again, we only want to act if the request that caused the exception was an AJAX one. Assuming it is, we try to work out the status code to return from the exception code &#8211; if it&#8217;s a valid HTTP code, we use that, otherwise we assume a server error (500). As before, we&#8217;re reusing the exception message to provide context &#8211; but in this case, where the exception could relate to anything in the system (like a database query) we&#8217;d really want to be cautious about exposing it to the user, so this code certainly isn&#8217;t suitable for a production environment.</p>
+
+<p>That&#8217;s it for the server, now for the client. All the functionality is in <code>src/Acme/DemoBundle/Resources/views/Welcome/index.html.js</code>.</p>
+
+<p>First we define a global error handler, which will be fired whenever an uncaught AJAX error occurs:</p>
+
+<p><noscript>
+  <p></p>
+
+<pre><code>View the code on &lt;a href="https://gist.github.com/4348746"&gt;Gist&lt;/a&gt;.
+</code></pre>
+
+<p>  </p>
+</noscript></p>
+
+<p>If the problem is that the user does not have a valid authentication token, we invite them to log in.</p>
+
+<p><noscript>
+  <p></p>
+
+<pre><code>View the code on &lt;a href="https://gist.github.com/4348760"&gt;Gist&lt;/a&gt;.
+</code></pre>
+
+<p>  </p>
+</noscript></p>
+
+<p>The login process is interesting &#8211; the modal login form is essentially a duplicate of the HTML one, but lacks the CSRF token which is automatically injected into the HTML form by Symfony. This helps prevent spoofing so I didn&#8217;t want to remove it, so the approach I took was to request the HTML login page, capture the value of the CSRF field in the response, then use that in a second request to actually authenticate the user. This meant I could reuse the same authentication code on the server.</p>
+
+<p>The demo app also includes two other demonstrations &#8211; making a valid request (which will fail, and force a login, if the user does not have a valid session) and an invalid one (which displays the error message returned by the server). There&#8217;s not much to say about those, the code should be self explanatory.</p>
+
+<p>That&#8217;s it really. The code is a little rough and ready, but hopefully it&#8217;ll give you enough to go on if you&#8217;re trying to do something similar!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/">Symfony2: Managing a User Entity Role With a Form Event Subscriber</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-10T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m working on a Symfony2 application which makes use of roles to manage what Users of the system are able to do within the app. Symfony places no limit on the amount of roles the User can have, but in the context of my application, there are only two &#8211; a base user (ROLE_USER, in Symfony parlance), and an administrator (ROLE_ADMIN). As is Symfony custom, all users would possess the default role, but the administrator role would be granted on a per user basis. I&#8217;m using the FOSUserBundle and Doctrine, so a User&#8217;s roles are stored within an array on that User&#8217; Doctrine entity.</p>
+
+<p>I began crafting a form (using the Symfony Form component) to manage user details. When creating forms that are bound to Doctrine I&#8217;ve generally found that I&#8217;ve needed to do little in the way of form customisation; the form component does a good job of figuring out which form fields to use based on the type of the variable it is given. So name, being a string, gets modelled as a textfield, while their registration date, being a DateTime object, causes a series of select boxes to be created which allow dates and times to be entered. So far so good.</p>
+
+<p>But of course there has to be a reason for a blog post, and this is mine: I wanted a checkbox to toggle on/of the administrator role for each user. Since roles are stored in an array on the bound entity, the default is to render a collection of fields, which leads to an array of values being submitted by the form. Trying to modify the field definition to a &#8216;single&#8217; field, like a checkbox, led to an error as the Form component doesn&#8217;t know how to map an array to a single value. A multi-value field wasn&#8217;t an option as I didn&#8217;t want to expose the roles (which wouldn&#8217;t necessarily make sense to an end user), and I didn&#8217;t want to get into messing about with Twig templates if I could help it; a bit of Googling led me to <a href="http://symfony.com/doc/current/cookbook/form/dynamic_form_generation.html">this article</a> on the cookbook, which describes how to dynamically add elements to forms using a Form event subscriber; this turned out to be just what I needed.</p>
+
+<p>Reading through the cookbook article, the following plan took shape: when the form is created, add a checkbox to the form which is ticked depending on whether the User object bound to the form has the administrator role. When the form is submitted, if the checkbox is ticked, grant the user that role. If it is not, remove the role from their array of granted roles.</p>
+
+<p><a href="/images/posts/2012/11/Screen-Shot-2012-11-10-at-14.51.51.png"><img class="aligncenter size-full wp-image-311" title="The resulting form" src="/images/posts/2012/11/Screen-Shot-2012-11-10-at-14.51.51.png" alt="" width="793" height="491" /></a></p>
+
+<p>To implement this, I needed two classes; a Form class, of course, and a new class that implements Symfony\Component\EventDispatcher\EventSubscriberInterface and subscribes to events on the form. As in the cookbook example, when the &#8216;preSetData&#8217; event fires I&#8217;d be adding a field to the form. In addition, when the &#8216;bind&#8217; event fires, I&#8217;d be using the value of the field to modify the bound object, in this case the User being managed. This is what I ended up with:</p>
+
+<p><noscript>
+  <p></p>
+
+<pre><code>View the code on &lt;a href="https://gist.github.com/4051034"&gt;Gist&lt;/a&gt;.
+</code></pre>
+
+<p>  </p>
+</noscript></p>
+
+<p>I&#8217;m manually adding the subscriber to the form in UserType::buildForm(), which feels a bit weird when the usual approach would be to define a service and tag it appropriately. I&#8217;m not sure if that&#8217;s possible with Form subscribers, that&#8217;s just how the cookbook approach went. I&#8217;d imagine there are other ways I could have achieved the same result, but I like this approach because I don&#8217;t have to modify my User class at all, and I don&#8217;t have to delve into form field customisation.</p>
+
+<p>The only downside I&#8217;ve found so far is that there doesn&#8217;t seem to be a way to order the fields that get added in the listener &#8211; they are always placed at the start of the collection, regardless of when the subscriber is attached to the form. This means that some template work is necessary to place the field as desired.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/">Deactivating a Macports Install of XDebug in a LAMP Environment</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-20T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A few times I&#8217;ve found myself cursing when trying to toggle <a href="http://xdebug.org/">XDebug</a> on and off via <a href="http://www.macports.org/">Macports</a>. Typically I&#8217;ll be debugging with it enabled, then disable it for development/testing to get the fastest experience possible (it tends to really impact performance on large codebases, such as a Symfony2 standard install), only to experience segfaults when I refresh the page I&#8217;m working on.</p>
+
+<p>The solution I&#8217;ve found is when restarting Apache (which is necessary for the change to PHP&#8217;s installed modules takes effect), to use an explicit start/stop rather than a restart. <a href="http://httpd.apache.org/docs/2.2/stopping.html">According to the Apache docs</a> restarting only kills off children processes, so the parent remains running:</p>
+
+<blockquote><p>Sending the <code>HUP</code> or <code>restart</code> signal to the parent causes it to kill off its children like in <code>TERM</code>, but the parent doesn&#8217;t exit. It re-reads its configuration files, and re-opens any log files. Then it spawns a new set of children and continues serving hits.</p></blockquote>
+
+<p>I imagine this leading to a discrepancy in the loaded PHP modules, which causes the issue.</p>
+
+<p>So when wanting to toggle XDebug, I use these commands:</p>
+
+<pre>Install (first time only):
+sudo port install php5-xdebug
+
+Disable:
+sudo port deactivate php5-xdebug
+sudo apachectl stop
+sudo apachectl start
+
+Enable:
+sudo port activate php5-xdebug
+sudo apachectl stop
+sudo apachectl start</pre>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/06/30/jeff-atwood-is-a-muppet/">Jeff Atwood Is a Muppet.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-30T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was having a nice, relaxing Saturday morning until I read through my Twitter timeline and was directed to Jeff Atwood&#8217;s latest post on Coding Horror, &#8220;<a href="http://www.codinghorror.com/blog/2012/06/the-php-singularity.html">The PHP Singularity</a>&#8220;. After reading through it, and the comments from other readers, I got annoyed. Really annoyed.</p>
+
+<p>I won&#8217;t repeat the article, but the gist of it is:</p>
+
+<ul>
+<li>PHP is a horrible language</li>
+<li>Something must be done</li>
+<li>Jeff is the person to do it</li>
+</ul>
+
+
+<p>I quite enjoy blogging but I don&#8217;t do it very often. I try to make sure anything I talk about is well researched, because a baseless opinion is worthless, but I don&#8217;t have a lot of free time &#8211; so if I don&#8217;t have something I consider worth saying, I don&#8217;t say it.</p>
+
+<p>Jeff doesn&#8217;t have the same concern. You may wonder why I read his blog, given that I clearly take exception to some of its content, but the funny thing is that when talking about things he is knowledgable of, he has some great advice.</p>
+
+<p>Like when he talks about <a href="http://www.codinghorror.com/blog/2011/10/on-parenthood.html">his children</a>, because he obviously knows them, or <a href="http://www.codinghorror.com/blog/2012/06/because-everyone-still-needs-a-router.html">routers</a>, where he&#8217;s clearly done some investigation. Now, I&#8217;m about to become a father, so I really enjoyed the former post, and if I needed to buy a router, I&#8217;d probably just be lazy and pick one from the latter because he knows a lot more about them than I do.</p>
+
+<p>But here&#8217;s the thing. Jeff doesn&#8217;t seem to know much about PHP. I&#8217;d guess he&#8217;s read some posts about it, seen a few Q&amp;As on Stack Overflow about it (a site he deserves massive kudos for), read through the PHP Manual, whatever &#8211; but he&#8217;s not a PHP developer. When he says PHP is &#8216;terrible&#8217; or &#8216;deeply flawed&#8217;, I wonder how he&#8217;s come to that conclusion? Has he ever developed anything substantial in PHP? What is he basing this opinion on? He&#8217;s played with his children, he&#8217;s bought and installed a router. But when it comes to PHP, is the extent of his knowledge that which he has gleaned from others? Because if that&#8217;s the case, he really should think twice about offering his opinion on it.</p>
+
+<p>The most glaring statement in the entire article is this one:</p>
+
+<blockquote><p>Therefore, I&#8217;d like to submit a humble suggestion to my fellow programmers. The next time you feel the urge to write Yet Another Epic Critique of PHP, consider that:</p>
+
+<ol>
+<li>We get it already. PHP is horrible, but it&#8217;s used everywhere. Guess what? It was just as horrible in 2008. And 2005. And 2002. There&#8217;s a pattern here, but it&#8217;s subtle. You have to look very closely to see it. On second thought, never mind. You&#8217;re probably not smart enough to figure it out.</li>
+<li>The best way to combat something as pervasively and institutionally awful as PHP is not to point out all its (many, many, <em>many</em>) faults, but to <strong>build compelling alternatives</strong> and <strong>make sure these alternatives are equally pervasive, as easy to set up and use as possible</strong>.</li>
+</ol>
+</blockquote>
+
+<p>How anyone can offer a &#8216;humble&#8217; suggestion and then go on to question the reader&#8217;s intelligence is besides the point (though it does nicely illustrate Jeff&#8217;s technique of drawing the reader in with deference only to hit them with a massive dose of self-righteousness) &#8211; but there&#8217;s two things I really take exception to here. Firstly, as <strong>anyone</strong> who has spent any real time with PHP knows, the language is far, far different now to what it was in 2002. For heaven&#8217;s sake, PHP5 (with a brand new object model that made proper OOP possible) didn&#8217;t make its debut &#8217;til 2004, and support for register_globals (one of the worst features of PHP, ever) was removed in the most recent version, 5.4. Those facts are available under <a href="http://en.wikipedia.org/wiki/PHP">PHP&#8217;s entry on Wikipedia</a>, but perhaps Jeff&#8217;s not smart enough to Google the history of PHP before commenting on it?</p>
+
+<p>Secondly; assuming for a second that PHP is as horrible as he deems it to be &#8211; the best way to &#8216;combat&#8217; it isn&#8217;t to &#8216;build compelling alternatives&#8217; and &#8216;make sure these alternatives are equally pervasive, as easy to set up and use as possible&#8217; &#8211; no, the &#8216;best&#8217; thing to do (considering the amount of developers and sites worldwide who depend on the language and are getting things done with it every single day) is <strong>get involved</strong> with and <strong>actually understand</strong> PHP &#8211; read the <a href="http://news.php.net/php.internals">internals mailing list</a>, make <a href="https://wiki.php.net/rfc">requests for comments</a>, code contributions, etc. It&#8217;s a silly person who decides to try something new before attempting to fix what&#8217;s broken, when there is so much invested in it. Perhaps if Jeff wasn&#8217;t trying to drum up interest in this new project of his, he&#8217;d have been a little less inflammatory?</p>
+
+<p>Look, as someone who has used PHP successfully for the last decade, obviously I&#8217;m going to disagree with Jeff&#8217;s opinion. But the language has not only helped me get a great job, a nice house, and will shortly be helping me pay for one of those baby things, it&#8217;s also made Facebook the biggest website in the world, and enabled Yahoo! to build (ok, and throw away, but it&#8217;s not PHP&#8217;s fault) an empire. When Jeff&#8217;s got off his soap box and tried to build something equally successful in PHP <strong>and failed</strong>, I&#8217;ll start taking his opinion seriously.</p>
+
+<p>As I said, I don&#8217;t like making statements unless I&#8217;ve researched them fully. I&#8217;ve read Coding Horror for a long time, and I feel qualified to say that Jeff Atwood is a <a href="http://www.urbandictionary.com/define.php?term=muppet&amp;defid=778738">muppet</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/05/27/resources-for-learning-symfony2/">Resources for Learning Symfony2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-27T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been asked a few times what the best resources are for learning Symfony2. With the project still relatively young there aren&#8217;t yet (to my knowledge, anyway!) any books (physical or otherwise) on Symfony2 available, but there is a good amount of information in the form of manuals and tutorials on the web to get on with.</p>
+
+<p><a href="http://stackoverflow.com/questions/8623962/looking-for-symfony2-book">This question on Stack Overflow</a> lists most of them; specifically:</p>
+
+<ul>
+<li><a href="http://symfony.com/doc/current/book/index.html">The Book</a>: The official documentation, also available as a PDF download from the same location. The best place to start, and covers most of Symfony&#8217;s functionality, but doesn&#8217;t have many &#8216;real-world&#8217; examples, as opposed to&#8230;</li>
+<li>&#8230; <a href="http://symfony.com/doc/current/cookbook/index.html">The Cookbook</a>: Complements The Book by providing some more complicated examples of how Symfony2 can be used &#8211; sometimes the example you&#8217;re desperately searching for doesn&#8217;t feature, but on the whole it&#8217;s necessary reading to understand what Symfony2&#8242;s capable of and the best ways to use it.</li>
+<li>It&#8217;s not strictly a Symfony2 resource, but Fabien Potencier&#8217;s <a href="http://fabien.potencier.org/article/50/create-your-own-framework-on-top-of-the-symfony2-components-part-1">&#8216;Build your own framework&#8217;</a> series of articles use the same components that make up Symfony2 to construct a similar framework, and as such are a really good way to familiarise oneself with the building blocks often become invaluable when trying to accomplish anything complex with Symfony2.</li>
+</ul>
+
+
+<p>That&#8217;s it in terms of &#8216;official&#8217; resources. There are some really good community efforts too, including:</p>
+
+<ul>
+<li>A <a href="http://knpuniversity.com/">series of screencasts</a> at KnpUniversity which introduce the key features of Symfony2, from installation and configuration through to security, forms, and using Doctrine to work with data sources. These cost $$$, and I haven&#8217;t tried them myself, but KnpLabs have been very involved with the development of Symfony2 so they&#8217;re probably well worth a look.</li>
+<li>The <a href="http://tutorial.symblog.co.uk/">Symblog</a> tutorial is an excellent step-by-step guide to building a blog in Symfony2, covering most of the essential topics, in the spirit of the Jobeet tutorial from the original Symfony framework. Each part of the tutorial points to related articles in the official documentation, so it&#8217;s a nice way to work through that while building something tangible.</li>
+<li>Speaking of the Jobeet tutorial, there&#8217;s also <a href="http://www.ens.ro/2012/03/21/jobeet-tutorial-with-symfony2/">a companion tutorial</a> for Symfony2. Like the Symblog tutorial, this explains the MVC approach to development with Symfony2 and dips into functional/unit testing too.</li>
+<li>I&#8217;ve found the <a href="http://php-and-symfony.matthiasnoback.nl/">PHP and Symfony</a> blog to be one of the best for learning about less common features of the framework, the sort of topics that are crucial when going beyond building the simple blog apps.</li>
+<li><a href="http://richardmiller.co.uk/">Richard Miller</a>&#8216;s blog is also excellent for the same reason.</li>
+</ul>
+
+
+<p>Each of those resources will probably give anyone with decent PHP experience enough information to start building applications with the framework. Questions will inevitably arise, in which case go to the following places for help:</p>
+
+<ul>
+<li><a href="https://groups.google.com/forum/?fromgroups#!forum/symfony2">The Symfony2 Google Group</a> is handy because often the problem you have has been answered already, so it&#8217;s a good resource as well as somewhere to get help from others using the framework.</li>
+<li><a href="http://symfony.com/irc">The Symfony2 IRC Channel</a> is good for real-time assistance, and is populated with both experts and newbies. Following the chat is a great way to pick up hints and tips for problems you have yet to encounter.</li>
+</ul>
+
+
+<p>If there are other good resources that I&#8217;ve missed, please let me know and I&#8217;ll add them. I&#8217;ll try to keep this article up to date in future as new resources emerge.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/05/16/building-web-apps-like-a-england-boss/">Building Web Apps Like a (England) Boss.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-16T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you think app development and football have nothing in common, read on.</p>
+
+<p>There was a discussion on our IRC server at work this morning which centred on how to best mitigate the risk involved with using third party tools in web applications. Not just at the code level, as in a JavaScript library like <a href="http://jquery.com/">jQuery</a>, or a PHP framework like <a href="http://symfony.com/">Symfony2</a>, but right through the stack &#8211; from the OS, to the web server, to the app codebase and beyond.</p>
+
+<p>Much of the discussion was along the lines of what you&#8217;d expect when devops (or sysadmins) and developers collide &#8211; those responsible for managing the stack want things that can be easily automated, are verifiable (ideally through something like checksums) and reliable (i.e. not placed directly on a production server from a Pentium 3 machine in some teenager&#8217;s bedroom half way round the world), while those responsible for writing the code want to be able to use the best tool for the job, whether it be a tried and trusted web server or the newest, shiniest Symfony2 bundle.</p>
+
+<p>The general consensus was that both have equal importance. Personally, I think that depending on the nature of the app, it&#8217;s wise to proportion risk accordingly; an app with a USP centred around some novel, interactive UX may want to incorporate a new innovative JavaScript toolkit even if it&#8217;s yet to reach version 1.0, whereas an app with paramount speed and scalability requirements might want to try <a href="http://blog.digitalstruct.com/2010/07/12/getting-started-with-nginx-and-php-fpm/">PHP-FPM with nginx</a> in place of a more familiar solution like mod-php with Apache.</p>
+
+<p>In isolation, either of these decisions probably wouldn&#8217;t pose a problem. Combining many such scenarios, though, may eventually load the project with enough risk as to eventually make it untenable. The holy grail is to arrive at a point where we have an app that delivers its required functionality while making use of as many trusted, reliable tools as possible, and can be managed in such a way as to make deployment and maintenance safe and simple.</p>
+
+<p>Now, to the title of this post. While this discussion was raging in IRC, there was much furore over the <a href="http://www.guardian.co.uk/football/2012/may/16/euro-2012-england-squad-announcement-live">selection of the provisional England squad</a> for the Euro 2012 tournament. It occurred to me that the new England manager, Roy Hodgson, is facing many of the same challenges myself and my coworkers face when trying to decide on a strategy for selecting the players he thinks will combine to great effect in a few month&#8217;s time. He wants a team that blends reliable, experienced, mature players with younger, modern ones &#8211; with maybe a sprinkling of unpredictable, yet highly creative, firebrands that can make the difference between a good squad and a great one. This is essentially what I was trying to articulate in the conversation, but swapping players for libraries, or tools, written by myself, or by others.</p>
+
+<p>So when I was scanning the list of players that are going to Poland and the Ukraine this summer, I couldn&#8217;t help but think of them in a technical fashion. For example:</p>
+
+<ul>
+<li>John Terry (Defender) &#8211; Very experienced, but can be unreliable and prone to catastrophic behaviour. (Windows OS &#8211; ever tried hosting a PHP app on Windows?).</li>
+<li>Alex Oxlade-Chamberlain (Midfielder) &#8211; New kid on the block, has a speciality that offers a new dimension (see: nginx and content distribution networks)</li>
+<li>Stuart Downing (Midfielder) &#8211; Does what he does and does it well enough, but isn&#8217;t going to make a massive difference overall. Comes with baggage and divides opinion. (CodeIgniter/CakePHP/any other technically limited PHP framework)</li>
+<li>Wayne Rooney &#8211; Best of breed, unrivalled, links up with others very well, difficult to replicate or replace (jQuery)</li>
+</ul>
+
+
+<p>It&#8217;s a popular argument at the moment that more people should be aware of, and be able to, code. But perhaps we&#8217;re missing a trick &#8211; perhaps a few games of <a href="http://www.footballmanager.com/">Football Manager</a> is all it takes to be able to understand how to compose a fabulous web app these days.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb/">Windows 7: Connecting to a Samsung Galaxy S2 Device With ADB</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-01T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Step 1: Buy a Mac</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/02/15/installing-the-imagemagick-extension-for-windows-7n/">It&#8217;s a Kind of ImageMagick &#8211; Installing the PHP Extension for Windows 7.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-15T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I had a bit of a nightmare recently trying to get the ImageMagick PHP extension working on Windows. Builds of the extension as a DLL are <a href="http://valokuva.org/?page_id=50">provided by Mikko</a>, which is awesome, but I had some trouble getting it to work.</p>
+
+<p>The workstation I was using was running 64-bit Windows 7N, and the issue I was seeing was that the extension was being registered (if I ran php -m from the command line it seemed to be loaded) but when inspecting phpinfo() output the module was conspicuous by its absence.</p>
+
+<p>Windows 7N is an EU version of Windows that comes without the Media Player framework &#8211; presumably an anti-trust related provision. Upon inspecting the extension DLL with <a href="http://www.google.co.uk/url?sa=t&amp;rct=j&amp;q=dependency%20walker&amp;source=web&amp;cd=1&amp;ved=0CCAQFjAA&amp;url=http%3A%2F%2Fwww.dependencywalker.com%2F&amp;ei=gmw7T6H-DqqO0AWCsrRt&amp;usg=AFQjCNH2xHd_jlOFVUuUCGsxzdiAM2BlXg">Dependency Walker</a> I discovered that it was linked to several missing DLLs that are supplied by the Media Player framework, and an additional DLL, IEShims.dll, which is an Internet Explorer library.</p>
+
+<p>I installed the <a href="http://www.microsoft.com/download/en/details.aspx?id=16546&amp;hash=7gyAvmSLCYr1yxwQ5Zti1LMYQjBvQzi8uADSX76Wzkj8h8n3XewG9LWsYhUlcMRMuXN1CUKhhqyeDDJZjZbygw%3d%3d">Media Feature Pack</a> which resolved the majority of the missing DLLs. I also copied IEShims.dll from Program Files\Internet Explorer to Windows\SystemWOW64 (this probably wasn&#8217;t a good idea as the architectures of the DLLs will be fundamentally different, SystemWOW64 expects 32-bit DLLs &#8211; but I haven&#8217;t encountered any adverse effects as yet). After doing this the extension began to work as expected, and was visible in phpinfo() output.</p>
+
+<p>There was a crucial comment on Mikko&#8217;s blog that I&#8217;ll repeat here &#8211; if the workstation is running PHP under IIS/FastCGI, install version <strong>6.6.2-10 or earlier</strong> of ImageMagick (available from <a href="http://image_magick.veidrodis.com/image_magick/">http://image_magick.veidrodis.com/image_magick/</a>). Don&#8217;t install any versions later than that &#8211; they were built with VC10 and will not be compatible with the extension, which was built with VC9.</p>
+
+<p>Finally, when I attempted to use the extension (I wanted to convert some images from SVG to PNG) I ran into errors because ImageMagick defaults to using the Windows temp directory as its conversion directory, and IUSR doesn&#8217;t have rights to write there. Rather than add it to the permitted users list (not a very secure approach) I set the IMAGICK_TMP environment system variable to a less prominent location; this required a restart to take effect.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/">Including Filtered Thumbnail Data With the WordPress JSON API Plugin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/">Symfony2: Managing a User Entity Role With a Form Event Subscriber</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/">Deactivating a Macports Install of XDebug in a LAMP Environment</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Craig Marvelley -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'craigmarvelley';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

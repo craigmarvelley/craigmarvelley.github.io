@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: iOS | Craig Marvelley]]></title>
+  <link href="http://craigmarvelley.github.io/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://craigmarvelley.github.io/"/>
+  <updated>2014-02-03T14:49:09+00:00</updated>
+  <id>http://craigmarvelley.github.io/</id>
+  <author>
+    <name><![CDATA[Craig Marvelley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Three20, XCode 4 and the Case of the Missing Header Files.]]></title>
+    <link href="http://craigmarvelley.github.io/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files/"/>
+    <updated>2011-08-25T00:00:00+01:00</updated>
+    <id>http://craigmarvelley.github.io/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files</id>
+    <content type="html"><![CDATA[<p>After a good hour of hitting my head against a brick wall, I finally managed to get Facebook&#8217;s three20 iOS library integrated with my XCode 4 based project, documented here for posterity and the hope that it may save someone else from the raw, savage agony I&#8217;m currently feeling.</p>
+
+<p>I followed the instructions on the <a href="http://three20.info/article/2010-10-06-Adding-Three20-To-Your-Project">three20 website</a> to the letter, using the python installation script to add the library to my project, but whenever I tried to include the main Three20.h header file within my application code I got a &#8216;file not found&#8217; warning which failed the build. After much trial and error / Stack Overflow searching I came across <a href="http://stackoverflow.com/questions/6833804/problem-with-three20">this post</a> which seemed to suggest trying every header search path under the sun. Indeed, one of these finally worked &#8211; I narrowed it down to the $(BUILT_PRODUCTS_DIR)/../three20 entry, but YMMV.</p>
+
+<p>As much as I like iOS, and XCode, Apple&#8217;s solution for integrating libraries is extremely error prone &#8211; and this was <em>with</em> a custom installation script. Hopefully once XCode 4 adoption has grown the process can be simplified, as newer libraries like <a href="http://restkit.org/">RestKit</a> seem to be less complicated to install.</p>
+]]></content>
+  </entry>
+  
+</feed>
