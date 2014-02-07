@@ -9,7 +9,7 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="Yesterday brought a bug in a PHP thumbnail library I&#8217;ve been working on: when mounting a 24 bit PNG with alpha transparency onto another &#8216 &hellip;">
+  <meta name="description" content="This exception was being thrown by Doctrine during a long-running process: exception 'Doctrine_Connection_Mysql_Exception' with message 'SQLSTATE[ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,6 +31,18 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1845487-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -65,6 +77,47 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/10/06/overcoming-a-lock-wait-timeout-exceeded-exception/">Overcoming a &#8216;lock Wait Timeout Exceeded&#8217; Exception.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-06T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This exception was being thrown by <a href="http://doctrine-project.org">Doctrine</a> during a long-running process:</p>
+
+<p><code>exception 'Doctrine_Connection_Mysql_Exception' with message 'SQLSTATE[HY000]: General error: 1205 Lock wait timeout exceeded; try restarting transaction'&lt;br /&gt;
+</code></p>
+
+<p>The code in question was performing a lot of queries within a transaction &#8211; it seems that innodb will only hold a lock for so long, and this limit was being reached before the transaction could commit and release the lock. The solution (other than refactoring the code to be a little quicker!) was to increase innodb&#8217;s <code>innodb_lock_wait_timeout</code> setting in <code>my.cnf</code> to accommodate the transaction.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -193,6 +246,10 @@ imagepng($mount);</pre>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/04/box-uk-has-an-engineering-blog/">Box UK Has an Engineering Blog</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/">Including Filtered Thumbnail Data With the WordPress JSON API Plugin</a>
       </li>
     
@@ -206,10 +263,6 @@ imagepng($mount);</pre>
     
       <li class="post">
         <a href="/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/">Symfony2: Managing a User Entity Role With a Form Event Subscriber</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/">Deactivating a Macports Install of XDebug in a LAMP Environment</a>
       </li>
     
   </ul>
