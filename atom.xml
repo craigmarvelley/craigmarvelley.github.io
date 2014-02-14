@@ -4,7 +4,7 @@
   <title><![CDATA[Craig Marvelley]]></title>
   <link href="http://marvelley.com/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-02-14T11:26:14+00:00</updated>
+  <updated>2014-02-14T13:45:24+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -18,9 +18,9 @@
     <link href="http://marvelley.com/blog/2014/02/14/understanding-dns/"/>
     <updated>2014-02-14T09:53:02+00:00</updated>
     <id>http://marvelley.com/blog/2014/02/14/understanding-dns</id>
-    <content type="html"><![CDATA[<p>I&rsquo;ve never really taken the time to read up on how DNS works. Ten years of web development mean I&rsquo;ve gradually assumed a pretty good idea through trial and error, but I&rsquo;ve never really felt 100% confident that I know what I&rsquo;m doing when registering and administering domain names, particularly when it comes to more obscure record types like <a href="http://www.zytrax.com/books/dns/ch9/spf.html">SPF</a>. Thinks work, but I don&rsquo;t really know why.</p>
+    <content type="html"><![CDATA[<p>I&rsquo;ve never really taken the time to read up on how DNS works. Ten years of web development mean I&rsquo;ve gradually assumed a pretty good idea through trial and error, but I&rsquo;ve never really felt 100% confident that I know what I&rsquo;m doing when registering and administering domain names, particularly when it comes to more obscure record types like <a href="http://www.zytrax.com/books/dns/ch9/spf.html">SPF</a>. Things work, but I don&rsquo;t <em>really</em> know why.</p>
 
-<p>I was shopping for a domain name the other day and while on the DNSimple website I was invited to receive a series of emails that offered to explain how DNS works. I batted away my initial reluctance to sign myself up for spam, and I&rsquo;m glad I did &ndash; the lessons are nicely written, short and to the point, and thankfully aren&rsquo;t just an excercise in advertising for the registrar. I&rsquo;ve learned a couple things and reinforced my knowledge of others. I can&rsquo;t find a signup link now, but I do recommend them to anyone who wants to learn more about DNS.</p>
+<p>I was shopping for a domain name the other day and while on the DNSimple website I was invited to receive a series of emails that offered to outline the DNS basics. I batted away my initial reluctance to sign myself up for spam, and I&rsquo;m glad I did &ndash; the lessons are nicely written, short and to the point, and thankfully aren&rsquo;t just an excercise in advertising for the registrar. I&rsquo;ve learned a couple things and reinforced my knowledge of others. I can&rsquo;t find a signup link now, but I do recommend them to anyone who wants to learn more about DNS.</p>
 ]]></content>
   </entry>
   
