@@ -4,7 +4,7 @@
   <title><![CDATA[Craig Marvelley]]></title>
   <link href="http://marvelley.com/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-02-07T10:58:12+00:00</updated>
+  <updated>2014-02-14T11:26:14+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Understanding DNS]]></title>
+    <link href="http://marvelley.com/blog/2014/02/14/understanding-dns/"/>
+    <updated>2014-02-14T09:53:02+00:00</updated>
+    <id>http://marvelley.com/blog/2014/02/14/understanding-dns</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve never really taken the time to read up on how DNS works. Ten years of web development mean I&rsquo;ve gradually assumed a pretty good idea through trial and error, but I&rsquo;ve never really felt 100% confident that I know what I&rsquo;m doing when registering and administering domain names, particularly when it comes to more obscure record types like <a href="http://www.zytrax.com/books/dns/ch9/spf.html">SPF</a>. Thinks work, but I don&rsquo;t really know why.</p>
+
+<p>I was shopping for a domain name the other day and while on the DNSimple website I was invited to receive a series of emails that offered to explain how DNS works. I batted away my initial reluctance to sign myself up for spam, and I&rsquo;m glad I did &ndash; the lessons are nicely written, short and to the point, and thankfully aren&rsquo;t just an excercise in advertising for the registrar. I&rsquo;ve learned a couple things and reinforced my knowledge of others. I can&rsquo;t find a signup link now, but I do recommend them to anyone who wants to learn more about DNS.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Box UK Has an Engineering Blog]]></title>
@@ -633,31 +644,6 @@ According to the IIS blog</a> IIS should flush the cache when files are modified
 <p>If I&#8217;ve one criticism of the documentation Microsoft provide (which is generally well-written and thorough) it&#8217;s that there&#8217;s no &#8216;official&#8217; site for PHP on Azure which gives a simple one-page overview of everything &#8211; after reading about this stuff for over two weeks I still don&#8217;t feel like I&#8217;ve grokked it, and without blogs like <a href="http://blogs.msdn.com/b/brian_swan/">Brian&#8217;s</a> and <a href="http://blog.maartenballiauw.be/">Maarten&#8217;s</a> I&#8217;d be struggling. As a PHP developer I&#8217;m used to the awesome PHP manual and its direct approach to documentation and perhaps Azure (as far as PHP is concerned) could do with something similar. For developers like me, who are new to Azure and trying to get up to speed quickly in a short space of time (and with little time to read around) that sort of resource would be invaluable.</p>
 
 <p>For the moment though I&#8217;m just happy that I can finally start developing my application. It&#8217;s been a frustrating week battling to get to the point where I can just write a line of code, but from here on in hopefully it&#8217;ll be worth it.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Determining the Type of Appcelerator Objects.]]></title>
-    <link href="http://marvelley.com/2011/03/09/determining-the-type-of-appcelerator-objects/"/>
-    <updated>2011-03-09T00:00:00+00:00</updated>
-    <id>http://marvelley.com/2011/03/09/determining-the-type-of-appcelerator-objects</id>
-    <content type="html"><![CDATA[<p>The Appcelerator platform doesn&#8217;t provide a way to determine what the type of an Appcelerator object is (e.g. a Window, a View, a Button, etc.). This is often necessary because one may wish to tailor logic to the type of object being dealt with.</p>
-
-<p>For example, when working with a SplitWindow in an iPad app built in Appcelerator I needed to know if an object that was to be added to the detail view was a navigation group or a window. I ended up using toString() on the object to get its type, then using a regex. This is the way I ended up doing it:</p>
-
-<p><code>&lt;br /&gt;
-if(! window.toString().match(/TiUIiPhoneNavigationGroup/)) {&lt;br /&gt;
-var nav = Ti.UI.iPhone.createNavigationGroup({&lt;br /&gt;
-window: window&lt;br /&gt;
-});</code></p>
-
-<p><code>return nav;&lt;br /&gt;
-}</code></p>
-
-<p><code></code></p>
-
-<p><code>return window;&lt;br /&gt;
-</code></p>
 ]]></content>
   </entry>
   

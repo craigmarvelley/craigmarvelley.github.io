@@ -9,7 +9,7 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="This exception was being thrown by Doctrine during a long-running process: exception 'Doctrine_Connection_Mysql_Exception' with message 'SQLSTATE[ &hellip;">
+  <meta name="description" content="I&#8217;ve been using DOMPDF for a while &#8211; it&#8217;s a great tool for converting HTML to PDF through PHP. I&#8217;ve been running it locally &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,44 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/10/13/dompdf-and-the-mbstring-extension/">DOMPDF and the Mbstring Extension</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-13T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been using <a href="http://www.digitaljunkies.ca/dompdf/">DOMPDF</a> for a while &#8211; it&#8217;s a great tool for converting HTML to PDF through PHP. I&#8217;ve been running it locally on several machines without issue, but I recently deployed it to a server running Centos 5.5 and was greeted with a blank page with no output every time I tried to generate a file. No errors on screen, no errors in the log file &#8211; and no way to step through the code.</p>
+
+<p>After a painful couple of hours of old-school echo()-ing I noticed a call to one of the mb_* functions &#8211; PHP&#8217;s set of functions for dealing with <a href="http://uk.php.net/mb_string">multibyte strings</a>. I don&#8217;t use that extension in my application, and DOMPDF doesn&#8217;t mention it in its installation notes along with its other dependencies, so I hadn&#8217;t thought I&#8217;d need it. A quick configure / make later though, and with the mbstring extension enabled PDFs were rendering quite happily.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -246,6 +284,10 @@ imagepng($mount);</pre>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/14/understanding-dns/">Understanding DNS</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/04/box-uk-has-an-engineering-blog/">Box UK Has an Engineering Blog</a>
       </li>
     
@@ -261,14 +303,19 @@ imagepng($mount);</pre>
         <a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a>
       </li>
     
-      <li class="post">
-        <a href="/2012/11/10/symfony2-managing-a-user-entity-role-with-a-form-subscriber/">Symfony2: Managing a User Entity Role With a Form Event Subscriber</a>
-      </li>
-    
   </ul>
 </section>
 
 
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/113573941679447813594?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
 
 
 
