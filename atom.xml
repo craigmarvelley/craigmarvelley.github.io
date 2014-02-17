@@ -4,7 +4,7 @@
   <title><![CDATA[Craig Marvelley]]></title>
   <link href="http://marvelley.com/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-02-14T13:45:24+00:00</updated>
+  <updated>2014-02-17T10:47:11+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Restore Missing Audio in iMovie for Mac]]></title>
+    <link href="http://marvelley.com/blog/2014/02/17/restore-missing-audio-in-imovie-for-mac/"/>
+    <updated>2014-02-17T08:45:26+00:00</updated>
+    <id>http://marvelley.com/blog/2014/02/17/restore-missing-audio-in-imovie-for-mac</id>
+    <content type="html"><![CDATA[<p><img src="http://farm1.staticflickr.com/169/414411019_e702aa6d54_o.jpg" alt="image" /></p>
+
+<p>I recently got a new Macbook (running Mavericks) and wanted to transfer the iMovie projects from my older machine (running Mountain Lion). The new machine featured the most recent version of iMovie (iMovie for Mac, version 10.0.2) while my old one was on 9.0.9.</p>
+
+<p>I loaded the projects into iMovie for Mac by copying over the <code>iMovie Events</code>, <code>iMovie Original Movies</code> and <code>iMovie Projects</code> folders via AirDrop. Upon starting iMovie for Mac it prompted me to upgrade my projects to the new format. After some time a dialog appeared notifying me that some events had not been found, and that the upgrade had not been successful.</p>
+
+<p>It turned out that the movie events were fine, but the background audio I&rsquo;d added (via iTunes) was missing because I&rsquo;d not copied over my iTunes folder (and hadn&rsquo;t planned to, since I now use iTunes in the Cloud). Attempting to open a ported project gave me a dialog along the lines of &lsquo;Upgrade now, with missing events, or upgrade later&rsquo; &ndash; the choice was inconsequential since even by choosing &lsquo;Upgrade later&rsquo; before putting the tracks in the places they were expected before opening the movie, the movie didn&rsquo;t seem to pick up on the fact that they were now there. The waveforms remained blank, and the audio didn&rsquo;t play. Of course, in most cases I didn&rsquo;t even know which files were missing because most of these movies were put together months ago.</p>
+
+<p>I eventually fixed it by painstakingly downloading and importing each audio track into the movie alongside the original clip, which triggered a reload of the original. Then the second clip could be removed, leaving the original which now played. It would be nice if iMovie for Mac had a &lsquo;reload all events in this movie&rsquo; feature (perhaps it does, and I couldn&rsquo;t find it &ndash; I&rsquo;ve never found iMovie to have the most intuitive of interfaces)&ndash; thankfully I only had 20 or so tracks to fix, but for some more hardcore users it could be a lot worse.</p>
+
+<p>(Waveform image copyright <a href="http://www.flickr.com/photos/topgold/414411019/">Bernard Goldbach</a>)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Understanding DNS]]></title>
@@ -615,35 +634,6 @@ According to the IIS blog</a> IIS should flush the cache when files are modified
 <p>In the reckoning we came third, which we were chuffed with. In addition to this Warren also won an individual prize for making the best use of Scraperwiki, which was totally deserved. It would perhaps have been nice if the judges had explained why they voted as they had, as I, and others I spoke to, were confused as to what the marking criteria was. Nevertheless it was a really good day, which challenged me in ways I&#8217;d never been challenged before, and forced me to work within a totally new team, under pressure, on a topic that I knew nothing about. I&#8217;d recommend the Scraperwiki tools, and the next time I need to harvest some data I&#8217;ll definitely be making use of them.</p>
 
 <p>The code I wrote on the day is available at my <a href="https://github.com/craigmarvelley/hhhCar">Github page</a>, and I&#8217;m hoping to get the app into a more usable state and hosted on this site in the near future.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Using Eclipse to Run PHP in Azure DevFabric]]></title>
-    <link href="http://marvelley.com/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric/"/>
-    <updated>2011-03-10T00:00:00+00:00</updated>
-    <id>http://marvelley.com/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric</id>
-    <content type="html"><![CDATA[<p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
-
-<p>As detailed in <a href="http://marvelley.com/2011/03/03/24-hours-of-windows/">my last blog post</a> I had some&#8230; problems getting a PHP/Azure development environment set up after creating a Windows 7 partition. Well, I scrapped the partition, said goodbye to my old XP OS and started afresh, and that looks to have done the trick &#8211; I&#8217;m finally able to deploy PHP applications to development storage on my local machine. I&#8217;m none the wiser as to why it didn&#8217;t work the first time, which is annoying, but at least it&#8217;s working now.</p>
-
-<p>After I reinstalled Windows 7 I took care to install all the automatic updates before I went near any other programmes. After a lot of rebooting I eventually installed IIS and, through the Web Platform Installer, the Azure SDK and the Azure command line tools for PHP, along with their dependencies. Then, I installed <a href="http://www.eclipse.org/pdt/">Eclipse PDT</a> and, following <a href="http://www.windowsazure4e.org/download/">this excellent article</a>, the Azure plugin for eclipse that Brian Swan wrote a <a href="http://blogs.iis.net/bswan/archive/2010/10/12/using-the-windows-azure-tools-for-eclipse-with-php.aspx">great tutorial on</a>.</p>
-
-<p>I came across a few issues while doing all this that I should detail:</p>
-
-<ul>
-<li>I had to set Eclipse to run as an administrator (right click eclipse.exe-> properties &ndash;> Compatibility &ndash;> Run as administrator) before it would install the plugin and allow me to use it within the application</li>
-<li>I signed up for the <a href="http://www.microsoft.com/windowsazure/free-trial/default.aspx">free introductory trial</a> of Azure so that I could follow the tutorial properly and configure a database on Azure</li>
-</ul>
-
-
-<p>It&#8217;s a bit annoying that even when developing an app one has to run against SQL Azure in the cloud (which will eventually incur costs). I&#8217;d assumed I&#8217;d be able to use SQL Server locally but that doesn&#8217;t seem to be the case. Some sort of free quota for use in the development stage would make sense to me.</p>
-
-<p>The really good thing about using the Eclipse plugin is that it brings together the <a href="http://phpazure.codeplex.com/">many</a> <a href="http://phpazurecontrib.codeplex.com/">disparate</a> <a href="http://www.interoperabilitybridges.com/projects/windows-azure-command-line-tools-for-php">projects</a> that one needs to leverage to work with PHP on Azure. When I was trying to install all this stuff on my own I got a bit muddled, especially since some of the libraries are installed through the Web Platform Installer. The other advantage of the plugin is one can deploy to the cloud from within Eclipse. I&#8217;m not a fan of the Eclipse platform but I have to say in this case it&#8217;s a good experience (especially since the alternative is the command line!).</p>
-
-<p>If I&#8217;ve one criticism of the documentation Microsoft provide (which is generally well-written and thorough) it&#8217;s that there&#8217;s no &#8216;official&#8217; site for PHP on Azure which gives a simple one-page overview of everything &#8211; after reading about this stuff for over two weeks I still don&#8217;t feel like I&#8217;ve grokked it, and without blogs like <a href="http://blogs.msdn.com/b/brian_swan/">Brian&#8217;s</a> and <a href="http://blog.maartenballiauw.be/">Maarten&#8217;s</a> I&#8217;d be struggling. As a PHP developer I&#8217;m used to the awesome PHP manual and its direct approach to documentation and perhaps Azure (as far as PHP is concerned) could do with something similar. For developers like me, who are new to Azure and trying to get up to speed quickly in a short space of time (and with little time to read around) that sort of resource would be invaluable.</p>
-
-<p>For the moment though I&#8217;m just happy that I can finally start developing my application. It&#8217;s been a frustrating week battling to get to the point where I can just write a line of code, but from here on in hopefully it&#8217;ll be worth it.</p>
 ]]></content>
   </entry>
   

@@ -9,7 +9,7 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="I&rsquo;ve never really taken the time to read up on how DNS works. Ten years of web development mean I&rsquo;ve gradually assumed a pretty good idea &hellip;">
+  <meta name="description" content="I recently got a new Macbook (running Mavericks) and wanted to transfer the iMovie projects from my older machine (running Mountain Lion). The new &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/17/restore-missing-audio-in-imovie-for-mac/">Restore Missing Audio in iMovie for Mac</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-17T08:45:26+00:00" pubdate data-updated="true">Feb 17<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="http://farm1.staticflickr.com/169/414411019_e702aa6d54_o.jpg" alt="image" /></p>
+
+<p>I recently got a new Macbook (running Mavericks) and wanted to transfer the iMovie projects from my older machine (running Mountain Lion). The new machine featured the most recent version of iMovie (iMovie for Mac, version 10.0.2) while my old one was on 9.0.9.</p>
+
+<p>I loaded the projects into iMovie for Mac by copying over the <code>iMovie Events</code>, <code>iMovie Original Movies</code> and <code>iMovie Projects</code> folders via AirDrop. Upon starting iMovie for Mac it prompted me to upgrade my projects to the new format. After some time a dialog appeared notifying me that some events had not been found, and that the upgrade had not been successful.</p>
+
+<p>It turned out that the movie events were fine, but the background audio I&rsquo;d added (via iTunes) was missing because I&rsquo;d not copied over my iTunes folder (and hadn&rsquo;t planned to, since I now use iTunes in the Cloud). Attempting to open a ported project gave me a dialog along the lines of &lsquo;Upgrade now, with missing events, or upgrade later&rsquo; &ndash; the choice was inconsequential since even by choosing &lsquo;Upgrade later&rsquo; before putting the tracks in the places they were expected before opening the movie, the movie didn&rsquo;t seem to pick up on the fact that they were now there. The waveforms remained blank, and the audio didn&rsquo;t play. Of course, in most cases I didn&rsquo;t even know which files were missing because most of these movies were put together months ago.</p>
+
+<p>I eventually fixed it by painstakingly downloading and importing each audio track into the movie alongside the original clip, which triggered a reload of the original. Then the second clip could be removed, leaving the original which now played. It would be nice if iMovie for Mac had a &lsquo;reload all events in this movie&rsquo; feature (perhaps it does, and I couldn&rsquo;t find it &ndash; I&rsquo;ve never found iMovie to have the most intuitive of interfaces)&ndash; thankfully I only had 20 or so tracks to fix, but for some more hardcore users it could be a lot worse.</p>
+
+<p>(Waveform image copyright <a href="http://www.flickr.com/photos/topgold/414411019/">Bernard Goldbach</a>)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -618,64 +664,6 @@ sudo apachectl start</pre>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/16/building-web-apps-like-a-england-boss/">Building Web Apps Like a (England) Boss.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-16T00:00:00+01:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you think app development and football have nothing in common, read on.</p>
-
-<p>There was a discussion on our IRC server at work this morning which centred on how to best mitigate the risk involved with using third party tools in web applications. Not just at the code level, as in a JavaScript library like <a href="http://jquery.com/">jQuery</a>, or a PHP framework like <a href="http://symfony.com/">Symfony2</a>, but right through the stack &#8211; from the OS, to the web server, to the app codebase and beyond.</p>
-
-<p>Much of the discussion was along the lines of what you&#8217;d expect when devops (or sysadmins) and developers collide &#8211; those responsible for managing the stack want things that can be easily automated, are verifiable (ideally through something like checksums) and reliable (i.e. not placed directly on a production server from a Pentium 3 machine in some teenager&#8217;s bedroom half way round the world), while those responsible for writing the code want to be able to use the best tool for the job, whether it be a tried and trusted web server or the newest, shiniest Symfony2 bundle.</p>
-
-<p>The general consensus was that both have equal importance. Personally, I think that depending on the nature of the app, it&#8217;s wise to proportion risk accordingly; an app with a USP centred around some novel, interactive UX may want to incorporate a new innovative JavaScript toolkit even if it&#8217;s yet to reach version 1.0, whereas an app with paramount speed and scalability requirements might want to try <a href="http://blog.digitalstruct.com/2010/07/12/getting-started-with-nginx-and-php-fpm/">PHP-FPM with nginx</a> in place of a more familiar solution like mod-php with Apache.</p>
-
-<p>In isolation, either of these decisions probably wouldn&#8217;t pose a problem. Combining many such scenarios, though, may eventually load the project with enough risk as to eventually make it untenable. The holy grail is to arrive at a point where we have an app that delivers its required functionality while making use of as many trusted, reliable tools as possible, and can be managed in such a way as to make deployment and maintenance safe and simple.</p>
-
-<p>Now, to the title of this post. While this discussion was raging in IRC, there was much furore over the <a href="http://www.guardian.co.uk/football/2012/may/16/euro-2012-england-squad-announcement-live">selection of the provisional England squad</a> for the Euro 2012 tournament. It occurred to me that the new England manager, Roy Hodgson, is facing many of the same challenges myself and my coworkers face when trying to decide on a strategy for selecting the players he thinks will combine to great effect in a few month&#8217;s time. He wants a team that blends reliable, experienced, mature players with younger, modern ones &#8211; with maybe a sprinkling of unpredictable, yet highly creative, firebrands that can make the difference between a good squad and a great one. This is essentially what I was trying to articulate in the conversation, but swapping players for libraries, or tools, written by myself, or by others.</p>
-
-<p>So when I was scanning the list of players that are going to Poland and the Ukraine this summer, I couldn&#8217;t help but think of them in a technical fashion. For example:</p>
-
-<ul>
-<li>John Terry (Defender) &#8211; Very experienced, but can be unreliable and prone to catastrophic behaviour. (Windows OS &#8211; ever tried hosting a PHP app on Windows?).</li>
-<li>Alex Oxlade-Chamberlain (Midfielder) &#8211; New kid on the block, has a speciality that offers a new dimension (see: nginx and content distribution networks)</li>
-<li>Stuart Downing (Midfielder) &#8211; Does what he does and does it well enough, but isn&#8217;t going to make a massive difference overall. Comes with baggage and divides opinion. (CodeIgniter/CakePHP/any other technically limited PHP framework)</li>
-<li>Wayne Rooney &#8211; Best of breed, unrivalled, links up with others very well, difficult to replicate or replace (jQuery)</li>
-</ul>
-
-
-<p>It&#8217;s a popular argument at the moment that more people should be aware of, and be able to, code. But perhaps we&#8217;re missing a trick &#8211; perhaps a few games of <a href="http://www.footballmanager.com/">Football Manager</a> is all it takes to be able to understand how to compose a fabulous web app these days.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -691,6 +679,10 @@ sudo apachectl start</pre>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/restore-missing-audio-in-imovie-for-mac/">Restore Missing Audio in iMovie for Mac</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/14/understanding-dns/">Understanding DNS</a>
       </li>
     
@@ -704,10 +696,6 @@ sudo apachectl start</pre>
     
       <li class="post">
         <a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a>
       </li>
     
   </ul>

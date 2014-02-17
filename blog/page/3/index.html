@@ -9,7 +9,7 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="The Appcelerator platform doesn&#8217;t provide a way to determine what the type of an Appcelerator object is (e.g. a Window, a View, a Button, etc &hellip;">
+  <meta name="description" content="[This is a blog post related to the PHP on Azure competition.] As detailed in my last blog post I had some&#8230; problems getting a PHP/Azure &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/03/10/using-eclipse-to-run-php-in-azure-devfabric/">Using Eclipse to Run PHP in Azure DevFabric</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-10T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
+
+<p>As detailed in <a href="http://marvelley.com/2011/03/03/24-hours-of-windows/">my last blog post</a> I had some&#8230; problems getting a PHP/Azure development environment set up after creating a Windows 7 partition. Well, I scrapped the partition, said goodbye to my old XP OS and started afresh, and that looks to have done the trick &#8211; I&#8217;m finally able to deploy PHP applications to development storage on my local machine. I&#8217;m none the wiser as to why it didn&#8217;t work the first time, which is annoying, but at least it&#8217;s working now.</p>
+
+<p>After I reinstalled Windows 7 I took care to install all the automatic updates before I went near any other programmes. After a lot of rebooting I eventually installed IIS and, through the Web Platform Installer, the Azure SDK and the Azure command line tools for PHP, along with their dependencies. Then, I installed <a href="http://www.eclipse.org/pdt/">Eclipse PDT</a> and, following <a href="http://www.windowsazure4e.org/download/">this excellent article</a>, the Azure plugin for eclipse that Brian Swan wrote a <a href="http://blogs.iis.net/bswan/archive/2010/10/12/using-the-windows-azure-tools-for-eclipse-with-php.aspx">great tutorial on</a>.</p>
+
+<p>I came across a few issues while doing all this that I should detail:</p>
+
+<ul>
+<li>I had to set Eclipse to run as an administrator (right click eclipse.exe-> properties &ndash;> Compatibility &ndash;> Run as administrator) before it would install the plugin and allow me to use it within the application</li>
+<li>I signed up for the <a href="http://www.microsoft.com/windowsazure/free-trial/default.aspx">free introductory trial</a> of Azure so that I could follow the tutorial properly and configure a database on Azure</li>
+</ul>
+
+
+<p>It&#8217;s a bit annoying that even when developing an app one has to run against SQL Azure in the cloud (which will eventually incur costs). I&#8217;d assumed I&#8217;d be able to use SQL Server locally but that doesn&#8217;t seem to be the case. Some sort of free quota for use in the development stage would make sense to me.</p>
+
+<p>The really good thing about using the Eclipse plugin is that it brings together the <a href="http://phpazure.codeplex.com/">many</a> <a href="http://phpazurecontrib.codeplex.com/">disparate</a> <a href="http://www.interoperabilitybridges.com/projects/windows-azure-command-line-tools-for-php">projects</a> that one needs to leverage to work with PHP on Azure. When I was trying to install all this stuff on my own I got a bit muddled, especially since some of the libraries are installed through the Web Platform Installer. The other advantage of the plugin is one can deploy to the cloud from within Eclipse. I&#8217;m not a fan of the Eclipse platform but I have to say in this case it&#8217;s a good experience (especially since the alternative is the command line!).</p>
+
+<p>If I&#8217;ve one criticism of the documentation Microsoft provide (which is generally well-written and thorough) it&#8217;s that there&#8217;s no &#8216;official&#8217; site for PHP on Azure which gives a simple one-page overview of everything &#8211; after reading about this stuff for over two weeks I still don&#8217;t feel like I&#8217;ve grokked it, and without blogs like <a href="http://blogs.msdn.com/b/brian_swan/">Brian&#8217;s</a> and <a href="http://blog.maartenballiauw.be/">Maarten&#8217;s</a> I&#8217;d be struggling. As a PHP developer I&#8217;m used to the awesome PHP manual and its direct approach to documentation and perhaps Azure (as far as PHP is concerned) could do with something similar. For developers like me, who are new to Azure and trying to get up to speed quickly in a short space of time (and with little time to read around) that sort of resource would be invaluable.</p>
+
+<p>For the moment though I&#8217;m just happy that I can finally start developing my application. It&#8217;s been a frustrating week battling to get to the point where I can just write a line of code, but from here on in hopefully it&#8217;ll be worth it.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -650,44 +706,6 @@ window: window&lt;br /&gt;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/10/13/magento-on-windows-unable-to-log-into-admin-area/">Magento on Windows: Unable to Log Into Admin Area</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-13T00:00:00+01:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&#8217;ve run into this issue a few times when setting <a href="http://www.magentocommerce.com/">Magento</a> up on Windows, but keep forgetting how to resolve it. After the setup wizard, on attempting to log into the admin area with the correct credentials I was constantly being redirected back to the login screen with no errors to suggest why I&#8217;d been denied.</p>
-
-<p>There&#8217;s <a href="http://www.magentocommerce.com/boards/viewthread/43148/">some advice</a> on the Magento forum that advocates commenting out some code relating to session cookie instantiation, but the fault seems to lie with Magento requiring a <a href="http://en.wikipedia.org/wiki/Top-level_domain">TLD</a> in order to persist the session &#8211; therefore placing your installation at a URL like <a href="http://magento.something">http://magento.something</a> rather than <a href="http://magento">http://magento</a> should prevent this happening and let you access the store backend without having to hack modify the code.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -705,6 +723,10 @@ window: window&lt;br /&gt;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/restore-missing-audio-in-imovie-for-mac/">Restore Missing Audio in iMovie for Mac</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/14/understanding-dns/">Understanding DNS</a>
       </li>
     
@@ -718,10 +740,6 @@ window: window&lt;br /&gt;
     
       <li class="post">
         <a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a>
       </li>
     
   </ul>

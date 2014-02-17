@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Appcelerator - Craig Marvelley</title>
+  <title>Restore Missing Audio in iMovie for Mac - Craig Marvelley</title>
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="Category: Appcelerator">
+  <meta name="description" content="I recently got a new Macbook (running Mavericks) and wanted to transfer the iMovie projects from my older machine (running Mountain Lion). The new &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://marvelley.comblog/categories/appcelerator">
+  <link rel="canonical" href="http://marvelley.com/blog/2014/02/17/restore-missing-audio-in-imovie-for-mac">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Craig Marvelley" type="application/atom+xml">
@@ -76,36 +76,95 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Appcelerator</h1>
+    
+      <h1 class="entry-title">Restore Missing Audio in iMovie for Mac</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-17T08:45:26+00:00" pubdate data-updated="true">Feb 17<span>th</span>, 2014</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p><img src="http://farm1.staticflickr.com/169/414411019_e702aa6d54_o.jpg" alt="image" /></p>
 
-  
-  <h2>2011</h2>
+<p>I recently got a new Macbook (running Mavericks) and wanted to transfer the iMovie projects from my older machine (running Mountain Lion). The new machine featured the most recent version of iMovie (iMovie for Mac, version 10.0.2) while my old one was on 9.0.9.</p>
 
-<article>
-  
-<h1><a href="/2011/03/09/determining-the-type-of-appcelerator-objects/">Determining the Type of Appcelerator Objects.</a></h1>
-<time datetime="2011-03-09T00:00:00+00:00" pubdate><span class='month'>Mar</span> <span class='day'>09</span> <span class='year'>2011</span></time>
+<p>I loaded the projects into iMovie for Mac by copying over the <code>iMovie Events</code>, <code>iMovie Original Movies</code> and <code>iMovie Projects</code> folders via AirDrop. Upon starting iMovie for Mac it prompted me to upgrade my projects to the new format. After some time a dialog appeared notifying me that some events had not been found, and that the upgrade had not been successful.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/appcelerator/'>Appcelerator</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a></span>
-</footer>
+<p>It turned out that the movie events were fine, but the background audio I&rsquo;d added (via iTunes) was missing because I&rsquo;d not copied over my iTunes folder (and hadn&rsquo;t planned to, since I now use iTunes in the Cloud). Attempting to open a ported project gave me a dialog along the lines of &lsquo;Upgrade now, with missing events, or upgrade later&rsquo; &ndash; the choice was inconsequential since even by choosing &lsquo;Upgrade later&rsquo; before putting the tracks in the places they were expected before opening the movie, the movie didn&rsquo;t seem to pick up on the fact that they were now there. The waveforms remained blank, and the audio didn&rsquo;t play. Of course, in most cases I didn&rsquo;t even know which files were missing because most of these movies were put together months ago.</p>
 
+<p>I eventually fixed it by painstakingly downloading and importing each audio track into the movie alongside the original clip, which triggered a reload of the original. Then the second clip could be removed, leaving the original which now played. It would be nice if iMovie for Mac had a &lsquo;reload all events in this movie&rsquo; feature (perhaps it does, and I couldn&rsquo;t find it &ndash; I&rsquo;ve never found iMovie to have the most intuitive of interfaces)&ndash; thankfully I only had 20 or so tracks to fix, but for some more hardcore users it could be a lot worse.</p>
 
-</article>
-
+<p>(Waveform image copyright <a href="http://www.flickr.com/photos/topgold/414411019/">Bernard Goldbach</a>)</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Craig Marvelley</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-17T08:45:26+00:00" pubdate data-updated="true">Feb 17<span>th</span>, 2014</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://marvelley.com/blog/2014/02/17/restore-missing-audio-in-imovie-for-mac/" data-via="craigmarvelley" data-counturl="http://marvelley.com/blog/2014/02/17/restore-missing-audio-in-imovie-for-mac/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/02/14/understanding-dns/" title="Previous Post: Understanding DNS">&laquo; Understanding DNS</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -169,7 +228,10 @@
       var disqus_shortname = 'craigmarvelley';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://marvelley.com/blog/2014/02/17/restore-missing-audio-in-imovie-for-mac/';
+        var disqus_url = 'http://marvelley.com/blog/2014/02/17/restore-missing-audio-in-imovie-for-mac/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

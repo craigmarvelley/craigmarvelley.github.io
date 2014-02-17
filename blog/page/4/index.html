@@ -9,7 +9,7 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="I&#8217;ve been using DOMPDF for a while &#8211; it&#8217;s a great tool for converting HTML to PDF through PHP. I&#8217;ve been running it locally &hellip;">
+  <meta name="description" content="I&#8217;ve run into this issue a few times when setting Magento up on Windows, but keep forgetting how to resolve it. After the setup wizard, on &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,44 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/10/13/magento-on-windows-unable-to-log-into-admin-area/">Magento on Windows: Unable to Log Into Admin Area</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-13T00:00:00+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve run into this issue a few times when setting <a href="http://www.magentocommerce.com/">Magento</a> up on Windows, but keep forgetting how to resolve it. After the setup wizard, on attempting to log into the admin area with the correct credentials I was constantly being redirected back to the login screen with no errors to suggest why I&#8217;d been denied.</p>
+
+<p>There&#8217;s <a href="http://www.magentocommerce.com/boards/viewthread/43148/">some advice</a> on the Magento forum that advocates commenting out some code relating to session cookie instantiation, but the fault seems to lie with Magento requiring a <a href="http://en.wikipedia.org/wiki/Top-level_domain">TLD</a> in order to persist the session &#8211; therefore placing your installation at a URL like <a href="http://magento.something">http://magento.something</a> rather than <a href="http://magento">http://magento</a> should prevent this happening and let you access the store backend without having to hack modify the code.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -284,6 +322,10 @@ imagepng($mount);</pre>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/17/restore-missing-audio-in-imovie-for-mac/">Restore Missing Audio in iMovie for Mac</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/02/14/understanding-dns/">Understanding DNS</a>
       </li>
     
@@ -297,10 +339,6 @@ imagepng($mount);</pre>
     
       <li class="post">
         <a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/20/symfony2-json-responses-for-xhr-errors-and-authentication-failures/">Symfony2: JSON Responses for XHR Errors and Authentication Failures</a>
       </li>
     
   </ul>
