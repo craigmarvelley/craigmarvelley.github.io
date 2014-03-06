@@ -1,0 +1,16 @@
+---
+layout: post
+title: "Goodbye Box UK, Hello BipSync"
+date: 2014-03-06 23:08:01 +0000
+comments: false
+categories: 
+---
+For the last 7 years I consider myself lucky to have been employed by Box UK. When I joined in 2007 I'd spent the previous 3 years writing what I consider 'despite software'. Software that did its job despite the efforts of the developer behind it. I was guilty of pretty much every bad practice at some stage; a direct result of me being the sole developer within both my company and my social circles. I didn't know better and had no-one to tell me otherwise, but by 2007 I knew I needed to address that by working for a company in which there were lots of people smarter and more experienced than me. To "aim to be the dumbest person in the room", as it's often put - and never better than by my colleague and mentor at Box UK, [Carey Hiles](http://twitter.com/handybitesize), [speaking about being a lone coder](http://vimeo.com/37279704) in the first [Unified Diff](http://unifieddiff.co.uk) meetup put on several years later.
+
+My first assignment at Box UK was making some tweaks to a web form on [Promethean's](http://www.prometheanworld.com/gb/english/education/home/) e-commerce site. My last assignment was rearchitecting the technology behind [careerswales.com](http://www.careerswales.com), a multi-application portal serving millions of users, which is destined to help shape lives of the people of Wales for years to come. In between I've created mobile applications, written web services, ported databases, implemented designs, discovered search platforms, pushed to queues, knocked out specifications, made many a calculation and finally - finally - got to grips with git. I've taught schoolchildren how to code. I've also shared more in-jokes than you could shake a stick at. Seriously.
+
+As a software developer, I can't think of a better place to learn one's trade; every couple of months a new project comes along which will either improve existing skills, or demand new ones. Through the work that I've done there I've had the opportunity to travel the world, meet heroes, and [speak at conferences](http://www.youtube.com/watch?v=g2f_BzKrpaU&list=PLo7mBDsRHu11HSkEucxDIAxeBZUJp10Jn&index=5). My colleagues have been everything I'd hoped they'd be - smart, friendly, and more than happy to help. Most importantly, they're passionate. Box UK have aimed to only hire those who care about the work they do, and that's clearly reflected in what we've achieved.
+
+TL/DR: I've had an amazing job these last 7 years, and have loved every single minute of it. 
+
+After seven years I'm ready for a new challenge, and a wonderful opportunity at a startup called [BipSync](http://bipsync.com) means it's time to move on. I'll be working with some former colleagues on some exciting software in a domain that's fresh and interesting. I can't wait to get stuck in, and hopefully share my experiences. I'd like to thank all at Box UK, especially Benno and those with whom I worked closely with over the years, for all the opportunities I was given and the experiences I've had. You've undoubtedly made me a better person, and I wish you all the best for the future.
