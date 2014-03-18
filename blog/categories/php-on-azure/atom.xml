@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHP on Azure | Craig Marvelley]]></title>
   <link href="http://marvelley.com/blog/categories/php-on-azure/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-03-06T23:11:07+00:00</updated>
+  <updated>2014-03-18T18:25:45+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Using a PHP Framework With Windows Azure]]></title>
     <link href="http://marvelley.com/2011/05/08/using-a-php-framework-with-windows-azure/"/>
-    <updated>2011-05-08T00:00:00+01:00</updated>
+    <updated>2011-05-08T00:00:00+00:00</updated>
     <id>http://marvelley.com/2011/05/08/using-a-php-framework-with-windows-azure</id>
     <content type="html"><![CDATA[<p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
 

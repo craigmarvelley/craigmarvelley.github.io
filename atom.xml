@@ -4,7 +4,7 @@
   <title><![CDATA[Craig Marvelley]]></title>
   <link href="http://marvelley.com/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-03-06T23:11:07+00:00</updated>
+  <updated>2014-03-18T18:25:45+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -12,6 +12,58 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vagrant 1.5 Syncing Situation]]></title>
+    <link href="http://marvelley.com/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/"/>
+    <updated>2014-03-18T09:39:02+00:00</updated>
+    <id>http://marvelley.com/blog/2014/03/18/vagrant-1-dot-5-syncing-situation</id>
+    <content type="html"><![CDATA[<p><img src="http://marvelley.com/images/posts/2014/03/synchronised.jpg" alt="image" /></p>
+
+<p>When starting work at <a href="http://www.bipsync.com">BipSync</a> I resolved to put the bits
+and bobs I&rsquo;d learned about provisioning with Vagrant and Ansible into practice, and
+no longer host development environments locally on my MacBook. The reasons were
+twofold &ndash; firstly I wanted my development environment to mirror that
+of live as closely as possible, and secondly when previously hosting multiple,
+complex projects on one machine I experienced increased battery drain and frequent
+slowdowns caused by active background services that I often didn&rsquo;t even need for my current
+task. It was a pain to keep track of everything, especially when multiple versions
+were required. So the attraction of having dev environments I could bring up and down, and if
+necessary occasionally trash, was a strong one.</p>
+
+<p>I&rsquo;d played with Vagrant / VirtualBox hosted projects on smallish codebases before,
+where the default VirtualBox synced folder support was sufficient; however when
+attempting to host and develop BipSync&rsquo;s sizeable applications it was quickly clear
+that this combination wouldn&rsquo;t be fast enough to be fit for purpose.</p>
+
+<p>Since VirtualBox has been <a href="http://puppetlabs.com/blog/new-vmware-provider-gives-vagrant-a-boost">acknowledged</a>
+as the slowest of Vagrant&rsquo;s provider options, and we already had Parallels
+licences for the development of our Windows applications, next I tried out the
+third party <a href="https://github.com/Parallels/vagrant-parallels">Parallels plugin for Vagrant</a>.
+Basically this was a non-starter &ndash; I immediately ran into bugs that were present in the project&rsquo;s
+issue tracker, and the impression I got was that the plugin is still a work-in-progress.
+The plugin is overseen by Parallels so I&rsquo;m optimistic that it&rsquo;ll one day be a
+first-class provider, but as it was it was unusable.</p>
+
+<p>So I went back to VirtualBox (VMWare was another option but before forking out money on the
+software and accompanying plugin I wanted to exhaust all other options) and tried the other
+synced folder types. First I tried the new rsync support, which I&rsquo;d <a href="https://www.vagrantup.com/blog/feature-preview-vagrant-1-5-rsync.html">read good things
+about</a>. In terms of speed this was very quick because there isn&rsquo;t really a share to speak
+of; shared items are copied to the guest rather than mounted. It requires a command
+to be run constantly, to watch synced files for changes and copy them to the guest, and
+this proved to be a problem; as <a href="https://github.com/mitchellh/vagrant/issues/3249">issues raised</a>
+by others attest, the approach wasn&rsquo;t scaling to large (20k+ files) codebases, which
+is common in my experience. I tried excluding some folders to see if that would help,
+but it didn&rsquo;t.</p>
+
+<p>So after all that I ended up using the NFS sync option, which aside from requiring
+a password for sudo when booting the VM has proved trouble free, so far. Performance
+is good, both in terms of the applications themselves, and when browsing and modifying files
+in the share; I&rsquo;ve seen PHPStorm occasionally lock up but then it always has ;) It&rsquo;s
+certainly good enough to work with now, and I&rsquo;ll be keeping an eye on the rsync and Parallels
+options as they should improve in time.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Goodbye Box UK, Hello BipSync]]></title>
@@ -74,7 +126,7 @@
   <entry>
     <title type="html"><![CDATA[Including Filtered Thumbnail Data With the WordPress JSON API Plugin]]></title>
     <link href="http://marvelley.com/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/"/>
-    <updated>2013-09-26T00:00:00+01:00</updated>
+    <updated>2013-09-26T00:00:00+00:00</updated>
     <id>http://marvelley.com/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin</id>
     <content type="html"><![CDATA[<p>The <a href="http://wordpress.org/plugins/json-api/">JSON API</a> plugin is a great tool for exposing your WordPress data. I&#8217;ve used it to provide content to a few mobile applications; it&#8217;s well featured and most importantly, quite flexible. If your content providers are happiest using a CMS like WordPress, your project can benefit by allowing them to use the authoring tools they&#8217;re comfortable with while allowing you to easily access the content they&#8217;re creating, either to use directly within your application, or as I tend to do, by exporting the data into another application which then proxies the data to mobile applications. I find the latter approach gives you greater control over features like caching, while making it easier to relate the data to domain models that aren&#8217;t handled by WordPress.</p>
 
@@ -233,7 +285,7 @@
   <entry>
     <title type="html"><![CDATA[Deactivating a Macports Install of XDebug in a LAMP Environment]]></title>
     <link href="http://marvelley.com/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/"/>
-    <updated>2012-09-20T00:00:00+01:00</updated>
+    <updated>2012-09-20T00:00:00+00:00</updated>
     <id>http://marvelley.com/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment</id>
     <content type="html"><![CDATA[<p>A few times I&#8217;ve found myself cursing when trying to toggle <a href="http://xdebug.org/">XDebug</a> on and off via <a href="http://www.macports.org/">Macports</a>. Typically I&#8217;ll be debugging with it enabled, then disable it for development/testing to get the fastest experience possible (it tends to really impact performance on large codebases, such as a Symfony2 standard install), only to experience segfaults when I refresh the page I&#8217;m working on.</p>
 
@@ -266,7 +318,7 @@ sudo apachectl start</pre>
   <entry>
     <title type="html"><![CDATA[Jeff Atwood Is a Muppet.]]></title>
     <link href="http://marvelley.com/2012/06/30/jeff-atwood-is-a-muppet/"/>
-    <updated>2012-06-30T00:00:00+01:00</updated>
+    <updated>2012-06-30T00:00:00+00:00</updated>
     <id>http://marvelley.com/2012/06/30/jeff-atwood-is-a-muppet</id>
     <content type="html"><![CDATA[<p>I was having a nice, relaxing Saturday morning until I read through my Twitter timeline and was directed to Jeff Atwood&#8217;s latest post on Coding Horror, &#8220;<a href="http://www.codinghorror.com/blog/2012/06/the-php-singularity.html">The PHP Singularity</a>&#8220;. After reading through it, and the comments from other readers, I got annoyed. Really annoyed.</p>
 
@@ -310,7 +362,7 @@ sudo apachectl start</pre>
   <entry>
     <title type="html"><![CDATA[Resources for Learning Symfony2]]></title>
     <link href="http://marvelley.com/2012/05/27/resources-for-learning-symfony2/"/>
-    <updated>2012-05-27T00:00:00+01:00</updated>
+    <updated>2012-05-27T00:00:00+00:00</updated>
     <id>http://marvelley.com/2012/05/27/resources-for-learning-symfony2</id>
     <content type="html"><![CDATA[<p>I&#8217;ve been asked a few times what the best resources are for learning Symfony2. With the project still relatively young there aren&#8217;t yet (to my knowledge, anyway!) any books (physical or otherwise) on Symfony2 available, but there is a good amount of information in the form of manuals and tutorials on the web to get on with.</p>
 
@@ -349,7 +401,7 @@ sudo apachectl start</pre>
   <entry>
     <title type="html"><![CDATA[Building Web Apps Like a (England) Boss.]]></title>
     <link href="http://marvelley.com/2012/05/16/building-web-apps-like-a-england-boss/"/>
-    <updated>2012-05-16T00:00:00+01:00</updated>
+    <updated>2012-05-16T00:00:00+00:00</updated>
     <id>http://marvelley.com/2012/05/16/building-web-apps-like-a-england-boss</id>
     <content type="html"><![CDATA[<p>If you think app development and football have nothing in common, read on.</p>
 
@@ -380,7 +432,7 @@ sudo apachectl start</pre>
   <entry>
     <title type="html"><![CDATA[Windows 7: Connecting to a Samsung Galaxy S2 Device With ADB]]></title>
     <link href="http://marvelley.com/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb/"/>
-    <updated>2012-05-01T00:00:00+01:00</updated>
+    <updated>2012-05-01T00:00:00+00:00</updated>
     <id>http://marvelley.com/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb</id>
     <content type="html"><![CDATA[<p>Step 1: Buy a Mac</p>
 ]]></content>
@@ -465,7 +517,7 @@ sudo apachectl start</pre>
   <entry>
     <title type="html"><![CDATA[Three20, XCode 4 and the Case of the Missing Header Files.]]></title>
     <link href="http://marvelley.com/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files/"/>
-    <updated>2011-08-25T00:00:00+01:00</updated>
+    <updated>2011-08-25T00:00:00+00:00</updated>
     <id>http://marvelley.com/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files</id>
     <content type="html"><![CDATA[<p>After a good hour of hitting my head against a brick wall, I finally managed to get Facebook&#8217;s three20 iOS library integrated with my XCode 4 based project, documented here for posterity and the hope that it may save someone else from the raw, savage agony I&#8217;m currently feeling.</p>
 
@@ -478,7 +530,7 @@ sudo apachectl start</pre>
   <entry>
     <title type="html"><![CDATA[IIS File Locking]]></title>
     <link href="http://marvelley.com/2011/08/15/iis-file-locking/"/>
-    <updated>2011-08-15T00:00:00+01:00</updated>
+    <updated>2011-08-15T00:00:00+00:00</updated>
     <id>http://marvelley.com/2011/08/15/iis-file-locking</id>
     <content type="html"><![CDATA[<p>This issue has bitten me so many times I&#8217;m going to document it here so hopefully I&#8217;ll remember it in future. Now and then, when deleting files using Windows Explorer, random files would fail an access check even though I&#8217;m the system administrator. <a href="http://www.emptyloop.com/unlocker/">Unlocker</a> reported no locks on the file, but it wouldn&#8217;t let me delete it either. The only way I could get around it was a restart.</p>
 
@@ -489,7 +541,7 @@ sudo apachectl start</pre>
   <entry>
     <title type="html"><![CDATA[Using a PHP Framework With Windows Azure]]></title>
     <link href="http://marvelley.com/2011/05/08/using-a-php-framework-with-windows-azure/"/>
-    <updated>2011-05-08T00:00:00+01:00</updated>
+    <updated>2011-05-08T00:00:00+00:00</updated>
     <id>http://marvelley.com/2011/05/08/using-a-php-framework-with-windows-azure</id>
     <content type="html"><![CDATA[<p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
 
@@ -559,45 +611,6 @@ phar.require_hash = Off</pre>
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Preventing Aggressive Caching of JavaScript Files With IIS7]]></title>
-    <link href="http://marvelley.com/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7/"/>
-    <updated>2011-04-07T00:00:00+01:00</updated>
-    <id>http://marvelley.com/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7</id>
-    <content type="html"><![CDATA[<p>I was playing with the new beta of Ext JS 4 the other day and noticed that sometimes the scripts were being cached, so my changes weren&#8217;t taking effect. Initially I thought this was because I&#8217;d upgraded to Firefox 4 &#8211; I use the <a href="https://addons.mozilla.org/en-us/firefox/addon/web-developer/">Web Developer</a> add-on which allows me to disable browser caching, and I&#8217;d assumed the cache setting had reverted when I upgraded. However the cache was indeed disabled, so I had to dig a little deeper.</p>
-
-<p>It turns out that IIS 7 will automatically cache static resources, such as JavaScript files. While this is probably what you&#8217;d want for a default production environment it almost certainly isn&#8217;t from a development point of view, when changes are being made by the minute. It wasn&#8217;t too hard to turn this feature off, however. To do so, just do the following:</p>
-
-<ul>
-<li>Open up IIS Manager</li>
-<li>Optionally select the site you&#8217;re working with</li>
-<li>Open the &#8216;Output Caching&#8217; module</li>
-<li>Select &#8216;Add&#8230;&#8217; from the right hand menu</li>
-<li>Enter a file extension of &#8216;.js&#8217; and disable both user-mode and kernel-mode caching, click OK.</li>
-</ul>
-
-
-<div id="attachment_173" class="wp-caption alignnone" style="width: 310px">
-  <a href="http://marvelley.com/images/posts/2011/04/output_caching.png"><img class="size-medium wp-image-173" title="output_caching" src="http://marvelley.com/images/posts/2011/04/output_caching-300x224.png" alt="" width="300" height="224" /></a><p class="wp-caption-text">
-    Select the &#8216;Output Caching&#8217; Module
-  </p>
-</div>
-
-
-
-
-<div id="attachment_174" class="wp-caption alignnone" style="width: 310px">
-  <a href="http://marvelley.com/images/posts/2011/04/add_cache_rule.png"><img class="size-medium wp-image-174" title="Disabling JavaScript caching" src="http://marvelley.com/images/posts/2011/04/add_cache_rule-300x224.png" alt="Disabling JavaScript caching" width="300" height="224" /></a><p class="wp-caption-text">
-    Disabling JavaScript caching
-  </p>
-</div>
-
-
-<p><a href="http://blogs.iis.net/bills/archive/2007/05/02/iis7-output-caching-for-dynamic-content-dramatically-speed-up-your-asp-and-php-applications.aspx"><br/>
-According to the IIS blog</a> IIS should flush the cache when files are modified; however this wasn&#8217;t the behaviour that I was seeing. I had to completely disable caching to guarantee file modifications made it to the browser.</p>
 ]]></content>
   </entry>
   

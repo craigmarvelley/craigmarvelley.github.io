@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Symfony2 | Craig Marvelley]]></title>
   <link href="http://marvelley.com/blog/categories/symfony2/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-03-06T23:11:07+00:00</updated>
+  <updated>2014-03-18T18:25:45+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -131,7 +131,7 @@
   <entry>
     <title type="html"><![CDATA[Resources for Learning Symfony2]]></title>
     <link href="http://marvelley.com/2012/05/27/resources-for-learning-symfony2/"/>
-    <updated>2012-05-27T00:00:00+01:00</updated>
+    <updated>2012-05-27T00:00:00+00:00</updated>
     <id>http://marvelley.com/2012/05/27/resources-for-learning-symfony2</id>
     <content type="html"><![CDATA[<p>I&#8217;ve been asked a few times what the best resources are for learning Symfony2. With the project still relatively young there aren&#8217;t yet (to my knowledge, anyway!) any books (physical or otherwise) on Symfony2 available, but there is a good amount of information in the form of manuals and tutorials on the web to get on with.</p>
 

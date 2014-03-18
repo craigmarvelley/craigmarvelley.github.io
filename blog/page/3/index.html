@@ -9,7 +9,7 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="It&#8217;s long overdue but here&#8217;s a quick recap of the Hacks and Hackers Hackday I attended on the 11th March 2011 at the Atrium, Cardiff. It &hellip;">
+  <meta name="description" content="I was playing with the new beta of Ext JS 4 the other day and noticed that sometimes the scripts were being cached, so my changes weren&#8217;t &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,72 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/04/07/preventing-aggressive-caching-of-javascript-files-with-iis7/">Preventing Aggressive Caching of JavaScript Files With IIS7</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-07T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was playing with the new beta of Ext JS 4 the other day and noticed that sometimes the scripts were being cached, so my changes weren&#8217;t taking effect. Initially I thought this was because I&#8217;d upgraded to Firefox 4 &#8211; I use the <a href="https://addons.mozilla.org/en-us/firefox/addon/web-developer/">Web Developer</a> add-on which allows me to disable browser caching, and I&#8217;d assumed the cache setting had reverted when I upgraded. However the cache was indeed disabled, so I had to dig a little deeper.</p>
+
+<p>It turns out that IIS 7 will automatically cache static resources, such as JavaScript files. While this is probably what you&#8217;d want for a default production environment it almost certainly isn&#8217;t from a development point of view, when changes are being made by the minute. It wasn&#8217;t too hard to turn this feature off, however. To do so, just do the following:</p>
+
+<ul>
+<li>Open up IIS Manager</li>
+<li>Optionally select the site you&#8217;re working with</li>
+<li>Open the &#8216;Output Caching&#8217; module</li>
+<li>Select &#8216;Add&#8230;&#8217; from the right hand menu</li>
+<li>Enter a file extension of &#8216;.js&#8217; and disable both user-mode and kernel-mode caching, click OK.</li>
+</ul>
+
+
+<div id="attachment_173" class="wp-caption alignnone" style="width: 310px">
+  <a href="/images/posts/2011/04/output_caching.png"><img class="size-medium wp-image-173" title="output_caching" src="/images/posts/2011/04/output_caching-300x224.png" alt="" width="300" height="224" /></a><p class="wp-caption-text">
+    Select the &#8216;Output Caching&#8217; Module
+  </p>
+</div>
+
+
+
+
+<div id="attachment_174" class="wp-caption alignnone" style="width: 310px">
+  <a href="/images/posts/2011/04/add_cache_rule.png"><img class="size-medium wp-image-174" title="Disabling JavaScript caching" src="/images/posts/2011/04/add_cache_rule-300x224.png" alt="Disabling JavaScript caching" width="300" height="224" /></a><p class="wp-caption-text">
+    Disabling JavaScript caching
+  </p>
+</div>
+
+
+<p><a href="http://blogs.iis.net/bills/archive/2007/05/02/iis7-output-caching-for-dynamic-content-dramatically-speed-up-your-asp-and-php-applications.aspx"><br/>
+According to the IIS blog</a> IIS should flush the cache when files are modified; however this wasn&#8217;t the behaviour that I was seeing. I had to completely disable caching to guarantee file modifications made it to the browser.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -698,50 +764,6 @@ window: window&lt;br /&gt;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/11/28/titanium-appcelerator-resizing-the-andriod-emulator/">Titanium Appcelerator &#8211; Resizing the Andriod Emulator</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-28T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>While messing around with Appcelerator it was annoying that on my 13&#8243; Macbook the Android emulator was too big for the screen &#8211; the Titanium Developer program doesn&#8217;t provide a way to change this. My workaround was to copy the command that&#8217;s being run to launch the emulator from the console output, and run the emulator manually with a resize option before deploying the app.</p>
-
-<p>This can be accomplished using the emulator&#8217;s -scale option, which is a number from 0.1 to 3. I found setting it to 0.7 resulted in an emulator with a workable size for my Macbook.</p>
-
-<p>From the root of your Android SDK folder run:</p>
-
-<p>/tools/emulator -avd titanium_2_WVGA854 -port 5560 -sdcard ~/.titanium/android2.sdcard -logcat &#8216;*:d *&#8217; -no-boot-anim -partition-size 128 -scale 0.7</p>
-
-<p>(titanium_2_WVGA854 is the name of the emulator created by Titanium, this will differ depending on your chosen emulator).</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -759,6 +781,10 @@ window: window&lt;br /&gt;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/">Vagrant 1.5 Syncing Situation</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/06/goodbye-box-uk-hello-bipsync/">Goodbye Box UK, Hello BipSync</a>
       </li>
     
@@ -772,10 +798,6 @@ window: window&lt;br /&gt;
     
       <li class="post">
         <a href="/blog/2014/02/04/box-uk-has-an-engineering-blog/">Box UK Has an Engineering Blog</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/">Including Filtered Thumbnail Data With the WordPress JSON API Plugin</a>
       </li>
     
   </ul>

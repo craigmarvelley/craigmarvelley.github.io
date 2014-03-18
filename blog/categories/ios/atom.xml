@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS | Craig Marvelley]]></title>
   <link href="http://marvelley.com/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-03-06T23:11:07+00:00</updated>
+  <updated>2014-03-18T18:25:45+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Three20, XCode 4 and the Case of the Missing Header Files.]]></title>
     <link href="http://marvelley.com/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files/"/>
-    <updated>2011-08-25T00:00:00+01:00</updated>
+    <updated>2011-08-25T00:00:00+00:00</updated>
     <id>http://marvelley.com/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files</id>
     <content type="html"><![CDATA[<p>After a good hour of hitting my head against a brick wall, I finally managed to get Facebook&#8217;s three20 iOS library integrated with my XCode 4 based project, documented here for posterity and the hope that it may save someone else from the raw, savage agony I&#8217;m currently feeling.</p>
 
