@@ -50,3 +50,5 @@ is good, both in terms of the applications themselves, and when browsing and mod
 in the share; I've seen PHPStorm occasionally lock up but then it always has ;) It's
 certainly good enough to work with now, and I'll be keeping an eye on the rsync and Parallels
 options as they should improve in time.
+
+("Moonlight Synchro" image courtesy of [Chris Phutully](http://www.flickr.com/photos/72562013@N06/12765457844/). [See license](https://creativecommons.org/licenses/by/2.0/).)
