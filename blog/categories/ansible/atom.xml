@@ -1,4 +1,24 @@
-<p>I recently <a href="http://marvelley.com/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/">mentioned</a>
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ansible, | Craig Marvelley]]></title>
+  <link href="http://marvelley.com/blog/categories/ansible/atom.xml" rel="self"/>
+  <link href="http://marvelley.com/"/>
+  <updated>2014-04-11T20:24:33+00:00</updated>
+  <id>http://marvelley.com/</id>
+  <author>
+    <name><![CDATA[Craig Marvelley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Local Provisioning With Ansible]]></title>
+    <link href="http://marvelley.com/blog/2014/04/11/local-provisioning-with-ansible/"/>
+    <updated>2014-04-11T21:24:00+00:00</updated>
+    <id>http://marvelley.com/blog/2014/04/11/local-provisioning-with-ansible</id>
+    <content type="html"><![CDATA[<p>I recently <a href="http://marvelley.com/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/">mentioned</a>
 I&rsquo;m going all-in on provisioning and running all my development
 environments in VMs provisioned with Ansible. My Ansible use doesn&rsquo;t end there though &ndash;
 I&rsquo;m also using it to provision my MacBook.</p>
@@ -48,3 +68,7 @@ Also I&rsquo;m still finding my way with Ansible, so my playbooks can undoubtedl
 when it comes to idempotency.
 Nevertheless I&rsquo;m really happy to have a record of my machine&rsquo;s starting state, and will enjoy adding to it as time
 passes.</p>
+]]></content>
+  </entry>
+  
+</feed>

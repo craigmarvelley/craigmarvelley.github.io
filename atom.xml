@@ -4,7 +4,7 @@
   <title><![CDATA[Craig Marvelley]]></title>
   <link href="http://marvelley.com/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-04-11T20:19:36+00:00</updated>
+  <updated>2014-04-11T20:24:33+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Local Provisioning With Ansible]]></title>
-    <link href="http://marvelley.com/blog/2014/03/24/local-provisioning-with-ansible/"/>
-    <updated>2014-03-24T00:00:00+00:00</updated>
-    <id>http://marvelley.com/blog/2014/03/24/local-provisioning-with-ansible</id>
+    <link href="http://marvelley.com/blog/2014/04/11/local-provisioning-with-ansible/"/>
+    <updated>2014-04-11T21:24:00+00:00</updated>
+    <id>http://marvelley.com/blog/2014/04/11/local-provisioning-with-ansible</id>
     <content type="html"><![CDATA[<p>I recently <a href="http://marvelley.com/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/">mentioned</a>
 I&rsquo;m going all-in on provisioning and running all my development
 environments in VMs provisioned with Ansible. My Ansible use doesn&rsquo;t end there though &ndash;
