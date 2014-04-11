@@ -9,7 +9,7 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="I was having a nice, relaxing Saturday morning until I read through my Twitter timeline and was directed to Jeff Atwood&#8217;s latest post on Coding &hellip;">
+  <meta name="description" content="A few times I&#8217;ve found myself cursing when trying to toggle XDebug on and off via Macports. Typically I&#8217;ll be debugging with it enabled, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,66 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/09/20/deactivating-a-macports-install-of-xdebug-in-a-lamp-environment/">Deactivating a Macports Install of XDebug in a LAMP Environment</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-20T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A few times I&#8217;ve found myself cursing when trying to toggle <a href="http://xdebug.org/">XDebug</a> on and off via <a href="http://www.macports.org/">Macports</a>. Typically I&#8217;ll be debugging with it enabled, then disable it for development/testing to get the fastest experience possible (it tends to really impact performance on large codebases, such as a Symfony2 standard install), only to experience segfaults when I refresh the page I&#8217;m working on.</p>
+
+<p>The solution I&#8217;ve found is when restarting Apache (which is necessary for the change to PHP&#8217;s installed modules takes effect), to use an explicit start/stop rather than a restart. <a href="http://httpd.apache.org/docs/2.2/stopping.html">According to the Apache docs</a> restarting only kills off children processes, so the parent remains running:</p>
+
+<blockquote><p>Sending the <code>HUP</code> or <code>restart</code> signal to the parent causes it to kill off its children like in <code>TERM</code>, but the parent doesn&#8217;t exit. It re-reads its configuration files, and re-opens any log files. Then it spawns a new set of children and continues serving hits.</p></blockquote>
+
+<p>I imagine this leading to a discrepancy in the loaded PHP modules, which causes the issue.</p>
+
+<p>So when wanting to toggle XDebug, I use these commands:</p>
+
+<pre>Install (first time only):
+sudo port install php5-xdebug
+
+Disable:
+sudo port deactivate php5-xdebug
+sudo apachectl stop
+sudo apachectl start
+
+Enable:
+sudo port activate php5-xdebug
+sudo apachectl stop
+sudo apachectl start</pre>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -544,109 +604,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/05/08/using-a-php-framework-with-windows-azure/">Using a PHP Framework With Windows Azure</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-08T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
-
-<p>It&#8217;s been a while since my last PHP on Azure contest post, mostly due to commitments @work that have reduced my free time considerably. There&#8217;s not long left &#8217;til the competition closes though (I have a week), so I need to get my skates on!</p>
-
-<p>Casting my mind back to my last post, I was able to finally deploy to the local development fabric. In the interim I&#8217;ve set up an Azure account and successfully deployed a simple script to the cloud, so everything&#8217;s fine on that front. It&#8217;s time to start developing my application.</p>
-
-<p>Since my time is limited my application will be quite straightforward &#8211; a CMS to manage media files. This should allow me to use all the features of Azure (queuing, table storage, blobs) I&#8217;m interested in.</p>
-
-<h2>Bittersweet Symfony</h2>
-
-<p>The first step in building the application is to decide on  framework to speed up development. The main reason I got into the contest in the first place was because I wanted to have more experience with Zend Framework &#8211; while I&#8217;d used its components in isolation before I&#8217;d never built an application with it. However in the months since I entered the competition I&#8217;ve started using Symfony 2 heavily. That, and the realisation that ZF2 is around the corner, have made me think that ZF isn&#8217;t the best choice for this contest, so I decided to use Symfony 2 instead.</p>
-
-<p>That was easier said than done. I dropped the Symfony framework into my Azure WebRole project, and put together a &#8216;hello world&#8217; script, only to immediately run into <a href="http://blogs.msdn.com/b/jnak/archive/2010/01/14/windows-azure-path-too-long.aspx">this issue</a> &#8211; apparently Azure has issues when building projects when paths to files or directories exceed 260 characters. Of course, in a framework of Symfony&#8217;s size, with many nested directories, this limit is unrealistic.The solutions recommended on Jim&#8217;s blog include changing the project paths to be shorter (impossible in this case) and setting a temporary environment variable which moves the location at which Azure builds projects, thus reducing the prefix of any paths. As Jim says, this isn&#8217;t a guaranteed fix and indeed, it didn&#8217;t work for me.</p>
-
-<p>So including Symfony within the WebRole didn&#8217;t seem to be possible. I experimented with including in within my PHP include path, in the hope that it would save some characters, but that didn&#8217;t work at all, Azure didn&#8217;t even pick it up. I need to look around the net to see how Azure manages include paths, since it&#8217;s something I use often in PHP. How do PEAR modules work, I wonder? Can you manage PEAR within Azure as you would with a local PHP installation, or do you have to place the components within each WebRole? Topics for future posts, maybe.</p>
-
-<p>Anyway, it didn&#8217;t look like Symfony was going to work any time soon, so I needed an alternative, and since<a href="http://www.ben-waine.co.uk/blog/php-azure/deploying-a-zend-framework-to-app-fabric.php"> Ben Waine had successfully deployed using Zend Framework</a> I thought briefly of using that after all. Then, I came across <a href="http://silex-project.org/">Silex</a>.</p>
-
-<h2>Along came a Silex</h2>
-
-<p>Silex is a micro-framework based on Symfony 2 components, inspired by <a href="http://www.sinatrarb.com/">Sinatra</a>, the Ruby on Rails framework which presents an alternative to typical MVC web applications. It&#8217;s succinct and straightforward, and, crucially, is deployed as a PHAR archive. This means I only need to include a single file in the root of my project to be able to use the library &#8211; which means no long paths that Azure can&#8217;t handle.</p>
-
-<p>I downloaded the Silex archive from its website and dropped it into the root of my project, then copied the &#8216;hello world&#8217; example provided within the Silex documentation into my index.php file:</p>
-
-<pre>require_once __DIR__.'/silex.phar'; 
-
-$app = new Silex\Application(); 
-
-$app-&gt;get('/hello/{name}', function($name) {
-    return "Hello $name";
-}); 
-
-$app-&gt;run();</pre>
-
-
-<p>Then I deployed my project to dev fabric, and navigated to /hello/Craig. Of course, this didn&#8217;t work immediately &#8211; nothing ever does for me &#8211; because I didn&#8217;t have a web.config file set up to send all requests through the front controller, index.php. I got an IIS 404 page rather than the &#8216;Hello Craig&#8217; I was expecting. So I used IIS&#8217;s Apache config importer to convert the sample .htaccess file provided by Silex into a web.config file, then copied the relevant rewrite rules into my WebRole&#8217;s config file. Rebuilding the application resulted in a working application. Good to go!</p>
-
-<p>Here&#8217;s what I needed to add to my web.config file in case it&#8217;s of any use to anyone:</p>
-
-<h2>Compiling Silex on Windows</h2>
-
-<p>Because Silex is pretty new I&#8217;m expecting to find issues here and there, plus when working on Windows I&#8217;m accustomed to having to make little changes here and there to get PHP code that&#8217;s been written on *nix to run properly &#8211; so I wanted to build the Silex PHAR from source so I could make changes if necessary and properly understand how everything fits together.</p>
-
-<p>This is quite straightfoward. First, I checked out Silex from its <a href="https://github.com/fabpot/Silex">github page</a>:</p>
-
-<pre>git clone https://github.com/fabpot/Silex.git silex</pre>
-
-
-<p>I merged in <a href="https://github.com/Ziumin/Silex/commit/6abebd759850c1c2eabc678cfe4bb12a61412768">a pending fix</a> which addresses compilation issues on Windows &#8211; there&#8217;s probably a fancy way to do this in git but I just applied the fix manually.</p>
-
-<p>Then I needed to get Silex&#8217;s dependencies:</p>
-
-<pre>git submodule init
-git submodule update --recursive</pre>
-
-
-<p>Silex provides a PHP script, named &#8216;compile&#8217;, which puts the archive together. I had to make some changes to my php.ini file before I could run it successfully:</p>
-
-<pre>phar.readonly = Off
-phar.require_hash = Off</pre>
-
-
-<p>Then creating the archive was as simple as running:</p>
-
-<pre>php compile</pre>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -664,6 +621,10 @@ phar.require_hash = Off</pre>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/03/24/local-provisioning-with-ansible/">Local Provisioning With Ansible</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/">Vagrant 1.5 Syncing Situation</a>
       </li>
     
@@ -677,10 +638,6 @@ phar.require_hash = Off</pre>
     
       <li class="post">
         <a href="/blog/2014/02/14/understanding-dns/">Understanding DNS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/04/box-uk-has-an-engineering-blog/">Box UK Has an Engineering Blog</a>
       </li>
     
   </ul>

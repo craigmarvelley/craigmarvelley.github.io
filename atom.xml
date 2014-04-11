@@ -4,7 +4,7 @@
   <title><![CDATA[Craig Marvelley]]></title>
   <link href="http://marvelley.com/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-03-18T22:17:59+00:00</updated>
+  <updated>2014-04-11T20:19:36+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -12,6 +12,64 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Local Provisioning With Ansible]]></title>
+    <link href="http://marvelley.com/blog/2014/03/24/local-provisioning-with-ansible/"/>
+    <updated>2014-03-24T00:00:00+00:00</updated>
+    <id>http://marvelley.com/blog/2014/03/24/local-provisioning-with-ansible</id>
+    <content type="html"><![CDATA[<p>I recently <a href="http://marvelley.com/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/">mentioned</a>
+I&rsquo;m going all-in on provisioning and running all my development
+environments in VMs provisioned with Ansible. My Ansible use doesn&rsquo;t end there though &ndash;
+I&rsquo;m also using it to provision my MacBook.</p>
+
+<p>I&rsquo;d read of a few other people doing this &ndash; Benjamin Eberlei has a particularly
+<a href="http://whitewashing.de/2013/11/19/setting_up_development_machines_ansible_edition.html">good post</a>
+on the topic, and was pretty much the inspiration for me doing the
+same. Setting up a new machine can be a bit of a bore, and while in theory it
+only happens whenever I upgrade hardware I have been caught out in the past with kernel
+corruption forcing a reinstall, and I&rsquo;d like
+to minimise the hassle should it ever happen again. I have <a href="http://backblaze.com">backups</a>
+, but one of the few upsides of going back to scratch with a machine is that it&rsquo;s an
+opportunity for spring clean; a script that effectively lists all the essential
+components of my computer, and configures them to my taste, makes that so much easier.</p>
+
+<p>Anyway. A couple of people mentioned they&rsquo;d be interested in the playbooks I wrote
+to provision my laptop, so I&rsquo;ve taken out anything personal to me and <a href="https://github.com/craigmarvelley/macbook-provisioning">mirrored them
+on Github</a>.</p>
+
+<p>Currently the provisioning involves four things:</p>
+
+<ul>
+<li>Install Homebrew and various brews</li>
+<li>Install Homebrew Casks and various casks</li>
+<li>Enable zsh as default shell and install oh-my-zsh</li>
+<li>Install dotfiles to configure git, vim, etc. (my dotfiles repo is <a href="https://github.com/craigmarvelley/dotfiles">here</a>)</li>
+</ul>
+
+
+<p>It&rsquo;s all straightforward, but a couple of implementation details:</p>
+
+<ul>
+<li>I&rsquo;ve ended up using Alfred as my OS X search tool because I store my casks under <code>/usr/local</code>
+with the other brew stuff and symlink to /Applications, and Spotlight doesn&rsquo;t
+grok symlinks. Instead I configure Alfred to link in the cask files</li>
+<li>I read on a few places on the web that the method I use to determine my current shell
+process &ndash; <code>echo $SHELL</code> &ndash; isn&rsquo;t foolproof. Works for me, but YMMV</li>
+</ul>
+
+
+<p>There&rsquo;s more I could do in terms of what I manage, especially when it comes to
+dotfile configuration (incidentally one of the best things about automating
+provisioning in this way is you end up looking at other people&rsquo;s approaches,
+and finding out about libraries and tools that you never even knew existed &ndash; <a href="http://robots.thoughtbot.com/rcm-for-rc-files-in-dotfiles-repos">Thoughtbot&rsquo;s rcm</a>
+is one such example here).
+Also I&rsquo;m still finding my way with Ansible, so my playbooks can undoubtedly be improved, especially
+when it comes to idempotency.
+Nevertheless I&rsquo;m really happy to have a record of my machine&rsquo;s starting state, and will enjoy adding to it as time
+passes.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Vagrant 1.5 Syncing Situation]]></title>
@@ -537,82 +595,6 @@ sudo apachectl start</pre>
     <content type="html"><![CDATA[<p>This issue has bitten me so many times I&#8217;m going to document it here so hopefully I&#8217;ll remember it in future. Now and then, when deleting files using Windows Explorer, random files would fail an access check even though I&#8217;m the system administrator. <a href="http://www.emptyloop.com/unlocker/">Unlocker</a> reported no locks on the file, but it wouldn&#8217;t let me delete it either. The only way I could get around it was a restart.</p>
 
 <p>This got annoying so the next time it happened I started shutting down all my running programmes one by one and retrying the delete, until I discovered that it was in fact IIS that was causing the lock &#8211; even though the files weren&#8217;t web accessible. Turning off the webserver was enough to allow the files to be deleted.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Using a PHP Framework With Windows Azure]]></title>
-    <link href="http://marvelley.com/2011/05/08/using-a-php-framework-with-windows-azure/"/>
-    <updated>2011-05-08T00:00:00+00:00</updated>
-    <id>http://marvelley.com/2011/05/08/using-a-php-framework-with-windows-azure</id>
-    <content type="html"><![CDATA[<p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
-
-<p>It&#8217;s been a while since my last PHP on Azure contest post, mostly due to commitments @work that have reduced my free time considerably. There&#8217;s not long left &#8217;til the competition closes though (I have a week), so I need to get my skates on!</p>
-
-<p>Casting my mind back to my last post, I was able to finally deploy to the local development fabric. In the interim I&#8217;ve set up an Azure account and successfully deployed a simple script to the cloud, so everything&#8217;s fine on that front. It&#8217;s time to start developing my application.</p>
-
-<p>Since my time is limited my application will be quite straightforward &#8211; a CMS to manage media files. This should allow me to use all the features of Azure (queuing, table storage, blobs) I&#8217;m interested in.</p>
-
-<h2>Bittersweet Symfony</h2>
-
-<p>The first step in building the application is to decide on  framework to speed up development. The main reason I got into the contest in the first place was because I wanted to have more experience with Zend Framework &#8211; while I&#8217;d used its components in isolation before I&#8217;d never built an application with it. However in the months since I entered the competition I&#8217;ve started using Symfony 2 heavily. That, and the realisation that ZF2 is around the corner, have made me think that ZF isn&#8217;t the best choice for this contest, so I decided to use Symfony 2 instead.</p>
-
-<p>That was easier said than done. I dropped the Symfony framework into my Azure WebRole project, and put together a &#8216;hello world&#8217; script, only to immediately run into <a href="http://blogs.msdn.com/b/jnak/archive/2010/01/14/windows-azure-path-too-long.aspx">this issue</a> &#8211; apparently Azure has issues when building projects when paths to files or directories exceed 260 characters. Of course, in a framework of Symfony&#8217;s size, with many nested directories, this limit is unrealistic.The solutions recommended on Jim&#8217;s blog include changing the project paths to be shorter (impossible in this case) and setting a temporary environment variable which moves the location at which Azure builds projects, thus reducing the prefix of any paths. As Jim says, this isn&#8217;t a guaranteed fix and indeed, it didn&#8217;t work for me.</p>
-
-<p>So including Symfony within the WebRole didn&#8217;t seem to be possible. I experimented with including in within my PHP include path, in the hope that it would save some characters, but that didn&#8217;t work at all, Azure didn&#8217;t even pick it up. I need to look around the net to see how Azure manages include paths, since it&#8217;s something I use often in PHP. How do PEAR modules work, I wonder? Can you manage PEAR within Azure as you would with a local PHP installation, or do you have to place the components within each WebRole? Topics for future posts, maybe.</p>
-
-<p>Anyway, it didn&#8217;t look like Symfony was going to work any time soon, so I needed an alternative, and since<a href="http://www.ben-waine.co.uk/blog/php-azure/deploying-a-zend-framework-to-app-fabric.php"> Ben Waine had successfully deployed using Zend Framework</a> I thought briefly of using that after all. Then, I came across <a href="http://silex-project.org/">Silex</a>.</p>
-
-<h2>Along came a Silex</h2>
-
-<p>Silex is a micro-framework based on Symfony 2 components, inspired by <a href="http://www.sinatrarb.com/">Sinatra</a>, the Ruby on Rails framework which presents an alternative to typical MVC web applications. It&#8217;s succinct and straightforward, and, crucially, is deployed as a PHAR archive. This means I only need to include a single file in the root of my project to be able to use the library &#8211; which means no long paths that Azure can&#8217;t handle.</p>
-
-<p>I downloaded the Silex archive from its website and dropped it into the root of my project, then copied the &#8216;hello world&#8217; example provided within the Silex documentation into my index.php file:</p>
-
-<pre>require_once __DIR__.'/silex.phar'; 
-
-$app = new Silex\Application(); 
-
-$app-&gt;get('/hello/{name}', function($name) {
-    return "Hello $name";
-}); 
-
-$app-&gt;run();</pre>
-
-
-<p>Then I deployed my project to dev fabric, and navigated to /hello/Craig. Of course, this didn&#8217;t work immediately &#8211; nothing ever does for me &#8211; because I didn&#8217;t have a web.config file set up to send all requests through the front controller, index.php. I got an IIS 404 page rather than the &#8216;Hello Craig&#8217; I was expecting. So I used IIS&#8217;s Apache config importer to convert the sample .htaccess file provided by Silex into a web.config file, then copied the relevant rewrite rules into my WebRole&#8217;s config file. Rebuilding the application resulted in a working application. Good to go!</p>
-
-<p>Here&#8217;s what I needed to add to my web.config file in case it&#8217;s of any use to anyone:</p>
-
-<h2>Compiling Silex on Windows</h2>
-
-<p>Because Silex is pretty new I&#8217;m expecting to find issues here and there, plus when working on Windows I&#8217;m accustomed to having to make little changes here and there to get PHP code that&#8217;s been written on *nix to run properly &#8211; so I wanted to build the Silex PHAR from source so I could make changes if necessary and properly understand how everything fits together.</p>
-
-<p>This is quite straightfoward. First, I checked out Silex from its <a href="https://github.com/fabpot/Silex">github page</a>:</p>
-
-<pre>git clone https://github.com/fabpot/Silex.git silex</pre>
-
-
-<p>I merged in <a href="https://github.com/Ziumin/Silex/commit/6abebd759850c1c2eabc678cfe4bb12a61412768">a pending fix</a> which addresses compilation issues on Windows &#8211; there&#8217;s probably a fancy way to do this in git but I just applied the fix manually.</p>
-
-<p>Then I needed to get Silex&#8217;s dependencies:</p>
-
-<pre>git submodule init
-git submodule update --recursive</pre>
-
-
-<p>Silex provides a PHP script, named &#8216;compile&#8217;, which puts the archive together. I had to make some changes to my php.ini file before I could run it successfully:</p>
-
-<pre>phar.readonly = Off
-phar.require_hash = Off</pre>
-
-
-<p>Then creating the archive was as simple as running:</p>
-
-<pre>php compile</pre>
-
-
-
 ]]></content>
   </entry>
   
