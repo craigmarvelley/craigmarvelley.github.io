@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Local Provisioning With Ansible"
+date: 2014-04-11 21:24:00 +0000
+comments: true
+categories: ansible, provisioning
+---
+
 I recently [mentioned](http://marvelley.com/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/)
 I'm going all-in on provisioning and running all my development
 environments in VMs provisioned with Ansible. My Ansible use doesn't end there though -
