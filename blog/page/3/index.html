@@ -9,7 +9,7 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="[This is a blog post related to the PHP on Azure competition.] It&#8217;s been a while since my last PHP on Azure contest post, mostly due to &hellip;">
+  <meta name="description" content="This issue has bitten me so many times I&#8217;m going to document it here so hopefully I&#8217;ll remember it in future. Now and then, when deleting &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,44 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/08/15/iis-file-locking/">IIS File Locking</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-15T00:00:00+00:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This issue has bitten me so many times I&#8217;m going to document it here so hopefully I&#8217;ll remember it in future. Now and then, when deleting files using Windows Explorer, random files would fail an access check even though I&#8217;m the system administrator. <a href="http://www.emptyloop.com/unlocker/">Unlocker</a> reported no locks on the file, but it wouldn&#8217;t let me delete it either. The only way I could get around it was a restart.</p>
+
+<p>This got annoying so the next time it happened I started shutting down all my running programmes one by one and retrying the delete, until I discovered that it was in fact IIS that was causing the lock &#8211; even though the files weren&#8217;t web accessible. Turning off the webserver was enough to allow the files to be deleted.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -787,44 +825,6 @@ window: window&lt;br /&gt;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/02/02/sending-emails-with-php-using-swiftmailer-and-smtp-on-mac-osx/">Sending Emails With PHP Using Swiftmailer and SMTP on Mac OSX</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-02T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&#8217;m a fan of <a href="http://swiftmailer.org/">Swiftmailer</a> for sending emails through PHP &#8211; it&#8217;s a much more elegant alternative to the <code>mail()</code>function and recently was absorbed into the Symfony project, so its future seems certain. A big plus is its support for sending mail using the <code>&lt;a href="ht&lt;code&gt;&lt;/code&gt;tp://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol"&gt;SMTP&lt;/a&gt;</code> protocol, which makes it great for more complex scenarios where authentication or performance are concerns.</p>
-
-<p>Up until this week I&#8217;d only used Swiftmailer on Windows, with an SMTP server on our network. This changed when I needed to do a demonstration using my Macbook, and as OSX comes installed with <a href="http://www.postfix.org/">Postfix</a> I thought everything should just work if I <a href="http://swiftmailer.org/docs/smtp-howto">configured Swiftmailer to use an SMTP server</a> on <code>localhost</code> at the standard port (25). This was nearly the case &#8211; as I read <a href="http://www.freshblurbs.com/how-enable-local-smtp-postfix-os-x-leopard">here</a> while Postfix is installed, it&#8217;s not enabled by default. After following the steps outlined there email started sending as expected.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -842,6 +842,10 @@ window: window&lt;br /&gt;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/04/23/handling-interactive-ansible-tasks/">Handling Interactive Ansible Tasks</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/04/11/local-provisioning-with-ansible/">Local Provisioning With Ansible</a>
       </li>
     
@@ -855,10 +859,6 @@ window: window&lt;br /&gt;
     
       <li class="post">
         <a href="/blog/2014/02/17/restore-missing-audio-in-imovie-for-mac/">Restore Missing Audio in iMovie for Mac</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/14/understanding-dns/">Understanding DNS</a>
       </li>
     
   </ul>

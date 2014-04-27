@@ -4,7 +4,7 @@
   <title><![CDATA[Craig Marvelley]]></title>
   <link href="http://marvelley.com/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-04-11T20:24:33+00:00</updated>
+  <updated>2014-04-27T22:25:50+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Handling Interactive Ansible Tasks]]></title>
+    <link href="http://marvelley.com/blog/2014/04/23/handling-interactive-ansible-tasks/"/>
+    <updated>2014-04-23T09:40:10+00:00</updated>
+    <id>http://marvelley.com/blog/2014/04/23/handling-interactive-ansible-tasks</id>
+    <content type="html"><![CDATA[<p>I recently re-ran some Ansible provisioning scripts after upgrading the
+base box to an Ubuntu 14.04 image and found they stalled midway through. The cause? One
+task involved installing the PECL mongo module, and the installation process now prompts
+the user to decide whether or not to build with Cyrus SASL support. I couldn&rsquo;t see a way to force
+a decision via the PECL installer, and Ansible can&rsquo;t
+respond to the prompt, so the provisioning process hung while awaiting an answer.</p>
+
+<p>I found two ways to solve this.</p>
+
+<h2>I&rsquo;ve been expecting you</h2>
+
+<p>I did a bit of Googling and after coming across <a href="https://groups.google.com/forum/#!topic/ansible-project/pMy2VWgkQ1s">this post</a>
+on the Ansible forum, I took a look at <a href="http://linux.die.net/man/1/expect">expect</a>. Expect lets you
+script interactions with a spawned command, using regex to match against prompt text, and send
+appropriate responses. It&rsquo;s a sound approach; I wrote a script that looked like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#!/usr/bin/expect
+</span><span class='line'>
+</span><span class='line'>spawn pecl install mongo
+</span><span class='line'>
+</span><span class='line'>expect "Build with Cyrus SASL"
+</span><span class='line'>send "\r"
+</span><span class='line'>
+</span><span class='line'>expect eof</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And executed it on the box using Ansible&rsquo;s <code>script</code> module:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Install PECL mongo extension
+</span><span class='line'>  script: install_pecl_mongo.expect</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Mission achieved. I felt very pleased with myself for about 30 seconds, which is
+how long it took for Paul to wander over and tell me there was a simpler way to do it.
+Expect is a really good solution for scripting varied or complex responses, but I wasn&rsquo;t
+faced with that problem here&hellip;</p>
+
+<h2>Yes man</h2>
+
+<p>In this specific case, all I wanted to do was answer a prompt which needed a yes or no
+answer, and I wasn&rsquo;t concerned which I went with. There&rsquo;s a linux command
+called <a href="http://en.wikipedia.org/wiki/Yes_(Unix">yes</a> which &ldquo;outputs an affirmative response,
+or a user-defined string of text continuously until killed&rdquo;, which is just what I needed.</p>
+
+<p>So now my task looks like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Install PECL mongo extension
+</span><span class='line'>  command: yes '' | pecl install mongo</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Which continuously pipes the &lsquo;y&rsquo; character (by default) and a newline character into
+the install command, automatically causing any prompts to be responded to in the
+affirmative. For my simple use case it works perfectly, and is more straightforward than
+writing expect scripts.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Local Provisioning With Ansible]]></title>
@@ -584,17 +658,6 @@ sudo apachectl start</pre>
 <p>I followed the instructions on the <a href="http://three20.info/article/2010-10-06-Adding-Three20-To-Your-Project">three20 website</a> to the letter, using the python installation script to add the library to my project, but whenever I tried to include the main Three20.h header file within my application code I got a &#8216;file not found&#8217; warning which failed the build. After much trial and error / Stack Overflow searching I came across <a href="http://stackoverflow.com/questions/6833804/problem-with-three20">this post</a> which seemed to suggest trying every header search path under the sun. Indeed, one of these finally worked &#8211; I narrowed it down to the $(BUILT_PRODUCTS_DIR)/../three20 entry, but YMMV.</p>
 
 <p>As much as I like iOS, and XCode, Apple&#8217;s solution for integrating libraries is extremely error prone &#8211; and this was <em>with</em> a custom installation script. Hopefully once XCode 4 adoption has grown the process can be simplified, as newer libraries like <a href="http://restkit.org/">RestKit</a> seem to be less complicated to install.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[IIS File Locking]]></title>
-    <link href="http://marvelley.com/2011/08/15/iis-file-locking/"/>
-    <updated>2011-08-15T00:00:00+00:00</updated>
-    <id>http://marvelley.com/2011/08/15/iis-file-locking</id>
-    <content type="html"><![CDATA[<p>This issue has bitten me so many times I&#8217;m going to document it here so hopefully I&#8217;ll remember it in future. Now and then, when deleting files using Windows Explorer, random files would fail an access check even though I&#8217;m the system administrator. <a href="http://www.emptyloop.com/unlocker/">Unlocker</a> reported no locks on the file, but it wouldn&#8217;t let me delete it either. The only way I could get around it was a restart.</p>
-
-<p>This got annoying so the next time it happened I started shutting down all my running programmes one by one and retrying the delete, until I discovered that it was in fact IIS that was causing the lock &#8211; even though the files weren&#8217;t web accessible. Turning off the webserver was enough to allow the files to be deleted.</p>
 ]]></content>
   </entry>
   

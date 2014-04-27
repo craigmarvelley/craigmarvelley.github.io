@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Vagrant 1.5 Syncing Situation - Craig Marvelley</title>
+  <title>Handling Interactive Ansible Tasks - Craig Marvelley</title>
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="When starting work at BipSync I resolved to put the bits
-and bobs I&rsquo;d learned about provisioning with Vagrant and Ansible into practice, and &hellip;">
+  <meta name="description" content="I recently re-ran some Ansible provisioning scripts after upgrading the
+base box to an Ubuntu 14.04 image and found they stalled midway through. The &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ and bobs I&rsquo;d learned about provisioning with Vagrant and Ansible into prac
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://marvelley.com/blog/2014/03/18/vagrant-1-dot-5-syncing-situation">
+  <link rel="canonical" href="http://marvelley.com/blog/2014/04/23/handling-interactive-ansible-tasks">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Craig Marvelley" type="application/atom+xml">
@@ -81,7 +81,7 @@ and bobs I&rsquo;d learned about provisioning with Vagrant and Ansible into prac
   
   <header>
     
-      <h1 class="entry-title">Vagrant 1.5 Syncing Situation</h1>
+      <h1 class="entry-title">Handling Interactive Ansible Tasks</h1>
     
     
       <p class="meta">
@@ -97,59 +97,79 @@ and bobs I&rsquo;d learned about provisioning with Vagrant and Ansible into prac
   
 
 
-<time datetime="2014-03-18T09:39:02+00:00" pubdate data-updated="true">Mar 18<span>th</span>, 2014</time>
+<time datetime="2014-04-23T09:40:10+00:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><img src="/images/posts/2014/03/synchronised.jpg" alt="image" /></p>
+<div class="entry-content"><p>I recently re-ran some Ansible provisioning scripts after upgrading the
+base box to an Ubuntu 14.04 image and found they stalled midway through. The cause? One
+task involved installing the PECL mongo module, and the installation process now prompts
+the user to decide whether or not to build with Cyrus SASL support. I couldn&rsquo;t see a way to force
+a decision via the PECL installer, and Ansible can&rsquo;t
+respond to the prompt, so the provisioning process hung while awaiting an answer.</p>
 
-<p>When starting work at <a href="http://www.bipsync.com">BipSync</a> I resolved to put the bits
-and bobs I&rsquo;d learned about provisioning with Vagrant and Ansible into practice, and
-no longer host development environments locally on my MacBook. The reasons were
-twofold &ndash; firstly I wanted my development environment to mirror that
-of live as closely as possible, and secondly when previously hosting multiple,
-complex projects on one machine I experienced increased battery drain and frequent
-slowdowns caused by active background services that I often didn&rsquo;t even need for my current
-task. It was a pain to keep track of everything, especially when multiple versions
-were required. So the attraction of having dev environments I could bring up and down, and if
-necessary occasionally trash, was a strong one.</p>
+<p>I found two ways to solve this.</p>
 
-<p>I&rsquo;d played with Vagrant / VirtualBox hosted projects on smallish codebases before,
-where the default VirtualBox synced folder support was sufficient; however when
-attempting to host and develop BipSync&rsquo;s sizeable applications it was quickly clear
-that this combination wouldn&rsquo;t be fast enough to be fit for purpose.</p>
+<h2>I&rsquo;ve been expecting you</h2>
 
-<p>Since VirtualBox has been <a href="http://puppetlabs.com/blog/new-vmware-provider-gives-vagrant-a-boost">acknowledged</a>
-as the slowest of Vagrant&rsquo;s provider options, and we already had Parallels
-licences for the development of our Windows applications, next I tried out the
-third party <a href="https://github.com/Parallels/vagrant-parallels">Parallels plugin for Vagrant</a>.
-Basically this was a non-starter &ndash; I immediately ran into bugs that were present in the project&rsquo;s
-issue tracker, and the impression I got was that the plugin is still a work-in-progress.
-The plugin is overseen by Parallels so I&rsquo;m optimistic that it&rsquo;ll one day be a
-first-class provider, but as it was it was unusable.</p>
+<p>I did a bit of Googling and after coming across <a href="https://groups.google.com/forum/#!topic/ansible-project/pMy2VWgkQ1s">this post</a>
+on the Ansible forum, I took a look at <a href="http://linux.die.net/man/1/expect">expect</a>. Expect lets you
+script interactions with a spawned command, using regex to match against prompt text, and send
+appropriate responses. It&rsquo;s a sound approach; I wrote a script that looked like this:</p>
 
-<p>So I went back to VirtualBox (VMWare was another option but before forking out money on the
-software and accompanying plugin I wanted to exhaust all other options) and tried the other
-synced folder types. First I tried the new rsync support, which I&rsquo;d <a href="https://www.vagrantup.com/blog/feature-preview-vagrant-1-5-rsync.html">read good things
-about</a>. In terms of speed this was very quick because there isn&rsquo;t really a share to speak
-of; shared items are copied to the guest rather than mounted. It requires a command
-to be run constantly, to watch synced files for changes and copy them to the guest, and
-this proved to be a problem; as <a href="https://github.com/mitchellh/vagrant/issues/3249">issues raised</a>
-by others attest, the approach wasn&rsquo;t scaling to large (20k+ files) codebases, which
-is common in my experience. I tried excluding some folders to see if that would help,
-but it didn&rsquo;t.</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#!/usr/bin/expect
+</span><span class='line'>
+</span><span class='line'>spawn pecl install mongo
+</span><span class='line'>
+</span><span class='line'>expect "Build with Cyrus SASL"
+</span><span class='line'>send "\r"
+</span><span class='line'>
+</span><span class='line'>expect eof</span></code></pre></td></tr></table></div></figure>
 
-<p>So after all that I ended up using the NFS sync option, which aside from requiring
-a password for sudo when booting the VM has proved trouble free, so far. Performance
-is good, both in terms of the applications themselves, and when browsing and modifying files
-in the share; I&rsquo;ve seen PHPStorm occasionally lock up but then it always has ;) It&rsquo;s
-certainly good enough to work with now, and I&rsquo;ll be keeping an eye on the rsync and Parallels
-options as they should improve in time.</p>
 
-<p>(&ldquo;Moonlight Synchro&rdquo; image courtesy of <a href="http://www.flickr.com/photos/72562013@N06/12765457844/">Chris Phutully</a>. <a href="https://creativecommons.org/licenses/by/2.0/">See license</a>.)</p>
+<p>And executed it on the box using Ansible&rsquo;s <code>script</code> module:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Install PECL mongo extension
+</span><span class='line'>  script: install_pecl_mongo.expect</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Mission achieved. I felt very pleased with myself for about 30 seconds, which is
+how long it took for Paul to wander over and tell me there was a simpler way to do it.
+Expect is a really good solution for scripting varied or complex responses, but I wasn&rsquo;t
+faced with that problem here&hellip;</p>
+
+<h2>Yes man</h2>
+
+<p>In this specific case, all I wanted to do was answer a prompt which needed a yes or no
+answer, and I wasn&rsquo;t concerned which I went with. There&rsquo;s a linux command
+called <a href="http://en.wikipedia.org/wiki/Yes_(Unix">yes</a> which &ldquo;outputs an affirmative response,
+or a user-defined string of text continuously until killed&rdquo;, which is just what I needed.</p>
+
+<p>So now my task looks like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Install PECL mongo extension
+</span><span class='line'>  command: yes '' | pecl install mongo</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Which continuously pipes the &lsquo;y&rsquo; character (by default) and a newline character into
+the install command, automatically causing any prompts to be responded to in the
+affirmative. For my simple use case it works perfectly, and is more straightforward than
+writing expect scripts.</p>
 </div>
 
 
@@ -172,12 +192,12 @@ options as they should improve in time.</p>
   
 
 
-<time datetime="2014-03-18T09:39:02+00:00" pubdate data-updated="true">Mar 18<span>th</span>, 2014</time>
+<time datetime="2014-04-23T09:40:10+00:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/provisioning/'>provisioning</a>, <a class='category' href='/blog/categories/vagrant/'>vagrant,</a>
+    <a class='category' href='/blog/categories/ansible/'>ansible</a>
   
 </span>
 
@@ -186,7 +206,7 @@ options as they should improve in time.</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://marvelley.com/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/" data-via="craigmarvelley" data-counturl="http://marvelley.com/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://marvelley.com/blog/2014/04/23/handling-interactive-ansible-tasks/" data-via="craigmarvelley" data-counturl="http://marvelley.com/blog/2014/04/23/handling-interactive-ansible-tasks/" >Tweet</a>
   
   
   
@@ -195,10 +215,8 @@ options as they should improve in time.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/03/06/goodbye-box-uk-hello-bipsync/" title="Previous Post: Goodbye Box UK, Hello BipSync">&laquo; Goodbye Box UK, Hello BipSync</a>
+        <a class="basic-alignment left" href="/blog/2014/04/11/local-provisioning-with-ansible/" title="Previous Post: Local Provisioning With Ansible">&laquo; Local Provisioning With Ansible</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/04/11/local-provisioning-with-ansible/" title="Next Post: Local Provisioning With Ansible">Local Provisioning With Ansible &raquo;</a>
       
     </p>
   </footer>
@@ -273,8 +291,8 @@ options as they should improve in time.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://marvelley.com/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/';
-        var disqus_url = 'http://marvelley.com/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/';
+        var disqus_identifier = 'http://marvelley.com/blog/2014/04/23/handling-interactive-ansible-tasks/';
+        var disqus_url = 'http://marvelley.com/blog/2014/04/23/handling-interactive-ansible-tasks/';
         var disqus_script = 'embed.js';
       
     (function () {
