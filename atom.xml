@@ -4,7 +4,7 @@
   <title><![CDATA[Craig Marvelley]]></title>
   <link href="http://marvelley.com/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-04-27T22:25:50+00:00</updated>
+  <updated>2014-04-27T22:29:57+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -77,7 +77,7 @@ or a user-defined string of text continuously until killed&rdquo;, which is just
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>- name: Install PECL mongo extension
-</span><span class='line'>  command: yes '' | pecl install mongo</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>  shell: yes '' | pecl install mongo</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Which continuously pipes the &lsquo;y&rsquo; character (by default) and a newline character into
