@@ -56,7 +56,7 @@ So now my task looks like this:
 
 ```
 - name: Install PECL mongo extension
-  command: yes '' | pecl install mongo
+  shell: yes '' | pecl install mongo
 ```
 
 Which continuously pipes the 'y' character (by default) and a newline character into
