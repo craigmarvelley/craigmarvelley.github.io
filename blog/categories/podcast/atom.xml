@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Beta | Craig Marvelley]]></title>
-  <link href="http://marvelley.com/blog/categories/beta/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Podcast | Craig Marvelley]]></title>
+  <link href="http://marvelley.com/blog/categories/podcast/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-06-09T22:21:02+00:00</updated>
+  <updated>2014-06-09T22:27:01+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
