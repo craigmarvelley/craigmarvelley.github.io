@@ -6,9 +6,9 @@ comments: false
 categories: "never out of beta"
 ---
 
-I love podcasts. Since I moved house and gained a commute last year I've whiled away the time to and from work listening to [The Talk Show](http://daringfireball.net/thetalkshow/), [The Record](http://therecord.co), [The Guardian's Football Weekly](http://www.theguardian.com/football/series/footballweekly), and a couple of other great shows. So many that I'm barely able to listen to them all. It's made me pine for [Never Out Of Beta](http://www.neveroutofbeta.com) though, a podcast [Gav](https://twitter.com/gavD_UK) and [Carey](https://twitter.com/handybitesize) started a couple of years ago that I and a few friends would guest on from time to time.
+I love podcasts. Since I moved house and gained a commute I've whiled away the time to and from work listening to [The Talk Show](http://daringfireball.net/thetalkshow/), [The Record](http://therecord.co), [The Guardian's Football Weekly](http://www.theguardian.com/football/series/footballweekly), and a couple of other great shows. Enough that I'm barely able to listen to them all. They made me pine for [Never Out Of Beta](http://www.neveroutofbeta.com) though, a podcast [Gav](https://twitter.com/gavD_UK) and [Carey](https://twitter.com/handybitesize) started a couple of years ago that I and a few friends would guest on, which was great fun.
 
-Thankfully I won't be pining any longer as Gav and myself have rebooted the show, and the [first episode is available now](https://soundcloud.com/never-out-of-beta/episode-0-2-1-its-not-in-my) via Soundcloud!
+But my longing is over - Gav and I have rebooted the show, and the [first episode is available now](https://soundcloud.com/never-out-of-beta/episode-0-2-1-its-not-in-my) via Soundcloud!
 
 A couple of notes:
 
