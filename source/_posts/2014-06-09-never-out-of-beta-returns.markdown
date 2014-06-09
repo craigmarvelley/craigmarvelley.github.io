@@ -3,7 +3,7 @@ layout: post
 title: "Never Out Of Beta Returns!"
 date: 2014-06-09 14:26:18 +0000
 comments: false
-categories: "never out of beta"
+categories: podcast
 ---
 
 I love podcasts. Since I moved house and gained a commute I've whiled away the time to and from work listening to [The Talk Show](http://daringfireball.net/thetalkshow/), [The Record](http://therecord.co), [The Guardian's Football Weekly](http://www.theguardian.com/football/series/footballweekly), and a couple of other great shows. Enough that I'm barely able to listen to them all. They made me pine for [Never Out Of Beta](http://www.neveroutofbeta.com) though, a podcast [Gav](https://twitter.com/gavD_UK) and [Carey](https://twitter.com/handybitesize) started a couple of years ago that I and a few friends would guest on, which was great fun.
