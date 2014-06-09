@@ -4,7 +4,7 @@
   <title><![CDATA[Craig Marvelley]]></title>
   <link href="http://marvelley.com/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-04-27T22:29:57+00:00</updated>
+  <updated>2014-06-09T22:21:02+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Never Out of Beta Returns!]]></title>
+    <link href="http://marvelley.com/blog/2014/06/09/never-out-of-beta-returns/"/>
+    <updated>2014-06-09T14:26:18+00:00</updated>
+    <id>http://marvelley.com/blog/2014/06/09/never-out-of-beta-returns</id>
+    <content type="html"><![CDATA[<p>I love podcasts. Since I moved house and gained a commute I&rsquo;ve whiled away the time to and from work listening to <a href="http://daringfireball.net/thetalkshow/">The Talk Show</a>, <a href="http://therecord.co">The Record</a>, <a href="http://www.theguardian.com/football/series/footballweekly">The Guardian&rsquo;s Football Weekly</a>, and a couple of other great shows. Enough that I&rsquo;m barely able to listen to them all. They made me pine for <a href="http://www.neveroutofbeta.com">Never Out Of Beta</a> though, a podcast <a href="https://twitter.com/gavD_UK">Gav</a> and <a href="https://twitter.com/handybitesize">Carey</a> started a couple of years ago that I and a few friends would guest on, which was great fun.</p>
+
+<p>But my longing is over &ndash; Gav and I have rebooted the show, and the <a href="https://soundcloud.com/never-out-of-beta/episode-0-2-1-its-not-in-my">first episode is available now</a> via Soundcloud!</p>
+
+<p>A couple of notes:</p>
+
+<ul>
+<li>Production &ldquo;issues&rdquo; (well, I forgot a bunch of audio equipment) meant that we had to record this one via my Macbook&rsquo;s built in microphone. It turned out ok, but we&rsquo;ve got higher standards which hopefully we&rsquo;ll get closer to next time</li>
+<li>It took longer than I&rsquo;d have liked to get the episode out because I&rsquo;m learning the ropes when it comes to editing. The WWDC stuff is a bit old hat now, but get past that and I think there&rsquo;s some interesting discussion around the DevOps mindset and provisioning with Ansible</li>
+<li>An iTunes feed is coming as soon as I can sort one out &ndash; I listen to podcasts through the Apple Podcast app so I&rsquo;m eager to make it available there</li>
+<li>Inspired by The Talk Show&rsquo;s recent switch we&rsquo;re hosting the show on SoundCloud, which has been perfect so far</li>
+</ul>
+
+
+<p>As with pretty much everything else Gav and I do, it might take a few iterations before this is something we&rsquo;re really happy with, and feedback to aid us in getting there will be very much appreciated.</p>
+
+<p>If you like tech, you might like this. Check it out!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Handling Interactive Ansible Tasks]]></title>
@@ -645,19 +670,6 @@ sudo apachectl start</pre>
 <p>In this talk I will share my experiences of going from PHP to Objective-C and Cocoa; how I took the paradigms that I was accustomed to in PHP, like syntax, memory management, unit testing and design patterns, and mapped them to the iOS ecosystem. I&#8217;ll also describe some techniques used in Objective-C that can be applied in PHP to enhance our code. Finally, I&#8217;ll discuss what I consider to be the pros and cons of each platform, and how I believe each has its place in our future careers.</p></blockquote>
 
 <p>PHPSW is a monthly PHP meetup held in Bristol, at the Golden Guinea, on the second Wednesday of every month. Everything kicks off at 7pm!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Three20, XCode 4 and the Case of the Missing Header Files.]]></title>
-    <link href="http://marvelley.com/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files/"/>
-    <updated>2011-08-25T00:00:00+00:00</updated>
-    <id>http://marvelley.com/2011/08/25/three20-xcode-4-and-the-case-of-the-missing-header-files</id>
-    <content type="html"><![CDATA[<p>After a good hour of hitting my head against a brick wall, I finally managed to get Facebook&#8217;s three20 iOS library integrated with my XCode 4 based project, documented here for posterity and the hope that it may save someone else from the raw, savage agony I&#8217;m currently feeling.</p>
-
-<p>I followed the instructions on the <a href="http://three20.info/article/2010-10-06-Adding-Three20-To-Your-Project">three20 website</a> to the letter, using the python installation script to add the library to my project, but whenever I tried to include the main Three20.h header file within my application code I got a &#8216;file not found&#8217; warning which failed the build. After much trial and error / Stack Overflow searching I came across <a href="http://stackoverflow.com/questions/6833804/problem-with-three20">this post</a> which seemed to suggest trying every header search path under the sun. Indeed, one of these finally worked &#8211; I narrowed it down to the $(BUILT_PRODUCTS_DIR)/../three20 entry, but YMMV.</p>
-
-<p>As much as I like iOS, and XCode, Apple&#8217;s solution for integrating libraries is extremely error prone &#8211; and this was <em>with</em> a custom installation script. Hopefully once XCode 4 adoption has grown the process can be simplified, as newer libraries like <a href="http://restkit.org/">RestKit</a> seem to be less complicated to install.</p>
 ]]></content>
   </entry>
   

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Of | Craig Marvelley]]></title>
+  <link href="http://marvelley.com/blog/categories/of/atom.xml" rel="self"/>
+  <link href="http://marvelley.com/"/>
+  <updated>2014-06-09T22:21:02+00:00</updated>
+  <id>http://marvelley.com/</id>
+  <author>
+    <name><![CDATA[Craig Marvelley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Never Out of Beta Returns!]]></title>
+    <link href="http://marvelley.com/blog/2014/06/09/never-out-of-beta-returns/"/>
+    <updated>2014-06-09T14:26:18+00:00</updated>
+    <id>http://marvelley.com/blog/2014/06/09/never-out-of-beta-returns</id>
+    <content type="html"><![CDATA[<p>I love podcasts. Since I moved house and gained a commute I&rsquo;ve whiled away the time to and from work listening to <a href="http://daringfireball.net/thetalkshow/">The Talk Show</a>, <a href="http://therecord.co">The Record</a>, <a href="http://www.theguardian.com/football/series/footballweekly">The Guardian&rsquo;s Football Weekly</a>, and a couple of other great shows. Enough that I&rsquo;m barely able to listen to them all. They made me pine for <a href="http://www.neveroutofbeta.com">Never Out Of Beta</a> though, a podcast <a href="https://twitter.com/gavD_UK">Gav</a> and <a href="https://twitter.com/handybitesize">Carey</a> started a couple of years ago that I and a few friends would guest on, which was great fun.</p>
+
+<p>But my longing is over &ndash; Gav and I have rebooted the show, and the <a href="https://soundcloud.com/never-out-of-beta/episode-0-2-1-its-not-in-my">first episode is available now</a> via Soundcloud!</p>
+
+<p>A couple of notes:</p>
+
+<ul>
+<li>Production &ldquo;issues&rdquo; (well, I forgot a bunch of audio equipment) meant that we had to record this one via my Macbook&rsquo;s built in microphone. It turned out ok, but we&rsquo;ve got higher standards which hopefully we&rsquo;ll get closer to next time</li>
+<li>It took longer than I&rsquo;d have liked to get the episode out because I&rsquo;m learning the ropes when it comes to editing. The WWDC stuff is a bit old hat now, but get past that and I think there&rsquo;s some interesting discussion around the DevOps mindset and provisioning with Ansible</li>
+<li>An iTunes feed is coming as soon as I can sort one out &ndash; I listen to podcasts through the Apple Podcast app so I&rsquo;m eager to make it available there</li>
+<li>Inspired by The Talk Show&rsquo;s recent switch we&rsquo;re hosting the show on SoundCloud, which has been perfect so far</li>
+</ul>
+
+
+<p>As with pretty much everything else Gav and I do, it might take a few iterations before this is something we&rsquo;re really happy with, and feedback to aid us in getting there will be very much appreciated.</p>
+
+<p>If you like tech, you might like this. Check it out!</p>
+]]></content>
+  </entry>
+  
+</feed>
