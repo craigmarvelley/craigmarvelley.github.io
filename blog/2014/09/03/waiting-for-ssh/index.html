@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Windows 7: Connecting to a Samsung Galaxy S2 Device With ADB - Craig Marvelley</title>
+  <title>Waiting for SSH - Craig Marvelley</title>
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="Step 1: Buy a Mac
-">
+  <meta name="description" content="I&rsquo;ve spent the day provisioning a whole lot of EC2 instances with Ansible from a control machine in the cloud. This involves two stages: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://marvelley.com/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb">
+  <link rel="canonical" href="http://marvelley.com/blog/2014/09/03/waiting-for-ssh">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Craig Marvelley" type="application/atom+xml">
@@ -81,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Windows 7: Connecting to a Samsung Galaxy S2 Device With ADB</h1>
+      <h1 class="entry-title">Waiting for SSH</h1>
     
     
       <p class="meta">
@@ -97,14 +96,62 @@
   
 
 
-<time datetime="2012-05-01T00:00:00+00:00" pubdate data-updated="true"></time>
+<time datetime="2014-09-03T19:17:18+00:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Step 1: Buy a Mac</p>
+<div class="entry-content"><p>I&rsquo;ve spent the day provisioning a whole lot of EC2 instances with Ansible from a control machine in the cloud. This involves two stages: firstly an instance is launched, and then once SSH is available (using Ansible&rsquo;s <code>wait_for</code> module), the second stage of more detailed provisioning begins.</p>
+
+<p>An issue I&rsquo;d experienced a few times previously but had not been able to pinpoint, was that often the <code>wait_for</code> module failed to identify that SSH is ready. My Ansible task looked like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Wait until SSH is available
+</span><span class='line'>  local_action: 
+</span><span class='line'>    module: wait_for 
+</span><span class='line'>    host: "{{ item.public_dns_name }}"
+</span><span class='line'>    port: 22 
+</span><span class='line'>    delay: 60 
+</span><span class='line'>    timeout: 320 
+</span><span class='line'>    state: started
+</span><span class='line'>  with_items: launched_instances.instances</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That task would often time out, but in such cases if I were to immediately try to SSH from the terminal it would succeed, which was odd indeed.</p>
+
+<p>Today this behaviour was consistent, and I eventually realised that in the task I was using the instance&rsquo;s public DNS name, whereas when I was connecting via the terminal I used the public IP address. Indeed, changing the task to use the IP address seems to have made the whole thing a lot more reliable:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Wait until SSH is available
+</span><span class='line'>  local_action: 
+</span><span class='line'>    module: wait_for 
+</span><span class='line'>    host: "{{ item.public_ip }}"
+</span><span class='line'>    port: 22 
+</span><span class='line'>    delay: 60 
+</span><span class='line'>    timeout: 320 
+</span><span class='line'>    state: started
+</span><span class='line'>  with_items: launched_instances.instances</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&rsquo;m guessing that on my Mac (where this was rarely an issue) the DNS cache updates quicker than it does on the control machine in EC2, where this problem was more frequent &ndash; using the explicit IP address renders the issue moot.</p>
 </div>
 
 
@@ -113,7 +160,7 @@
       
   
 
-<span class="byline author vcard">Posted by <span class="fn">Craig</span></span>
+<span class="byline author vcard">Posted by <span class="fn">Craig Marvelley</span></span>
 
       
 
@@ -127,12 +174,12 @@
   
 
 
-<time datetime="2012-05-01T00:00:00+00:00" pubdate data-updated="true"></time>
+<time datetime="2014-09-03T19:17:18+00:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/general/'>General</a>
+    <a class='category' href='/blog/categories/ansible/'>ansible</a>
   
 </span>
 
@@ -141,7 +188,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://marvelley.com/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb/" data-via="craigmarvelley" data-counturl="http://marvelley.com/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://marvelley.com/blog/2014/09/03/waiting-for-ssh/" data-via="craigmarvelley" data-counturl="http://marvelley.com/blog/2014/09/03/waiting-for-ssh/" >Tweet</a>
   
   
   
@@ -150,10 +197,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2012/02/15/installing-the-imagemagick-extension-for-windows-7n/" title="Previous Post: It&#8217;s a kind of ImageMagick &#8211; installing the PHP extension for Windows 7.">&laquo; It&#8217;s a kind of ImageMagick &#8211; installing the PHP extension for Windows 7.</a>
+        <a class="basic-alignment left" href="/blog/2014/06/09/never-out-of-beta-returns/" title="Previous Post: Never Out Of Beta Returns!">&laquo; Never Out Of Beta Returns!</a>
       
-      
-        <a class="basic-alignment right" href="/2012/05/16/building-web-apps-like-a-england-boss/" title="Next Post: Building web apps like a (England) boss.">Building web apps like a (England) boss. &raquo;</a>
       
     </p>
   </footer>
@@ -216,19 +261,6 @@
 
 </footer>
   
-
-<script type="text/javascript">
-      var disqus_shortname = 'craigmarvelley';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
 
 
 

@@ -9,7 +9,7 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="I love podcasts. Since I moved house and gained a commute I&rsquo;ve whiled away the time to and from work listening to The Talk Show, The Record, &hellip;">
+  <meta name="description" content="I&rsquo;ve spent the day provisioning a whole lot of EC2 instances with Ansible from a control machine in the cloud. This involves two stages: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,90 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/03/waiting-for-ssh/">Waiting for SSH</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-03T19:17:18+00:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;ve spent the day provisioning a whole lot of EC2 instances with Ansible from a control machine in the cloud. This involves two stages: firstly an instance is launched, and then once SSH is available (using Ansible&rsquo;s <code>wait_for</code> module), the second stage of more detailed provisioning begins.</p>
+
+<p>An issue I&rsquo;d experienced a few times previously but had not been able to pinpoint, was that often the <code>wait_for</code> module failed to identify that SSH is ready. My Ansible task looked like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Wait until SSH is available
+</span><span class='line'>  local_action: 
+</span><span class='line'>    module: wait_for 
+</span><span class='line'>    host: "{{ item.public_dns_name }}"
+</span><span class='line'>    port: 22 
+</span><span class='line'>    delay: 60 
+</span><span class='line'>    timeout: 320 
+</span><span class='line'>    state: started
+</span><span class='line'>  with_items: launched_instances.instances</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That task would often time out, but in such cases if I were to immediately try to SSH from the terminal it would succeed, which was odd indeed.</p>
+
+<p>Today this behaviour was consistent, and I eventually realised that in the task I was using the instance&rsquo;s public DNS name, whereas when I was connecting via the terminal I used the public IP address. Indeed, changing the task to use the IP address seems to have made the whole thing a lot more reliable:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Wait until SSH is available
+</span><span class='line'>  local_action: 
+</span><span class='line'>    module: wait_for 
+</span><span class='line'>    host: "{{ item.public_ip }}"
+</span><span class='line'>    port: 22 
+</span><span class='line'>    delay: 60 
+</span><span class='line'>    timeout: 320 
+</span><span class='line'>    state: started
+</span><span class='line'>  with_items: launched_instances.instances</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&rsquo;m guessing that on my Mac (where this was rarely an issue) the DNS cache updates quicker than it does on the control machine in EC2, where this problem was more frequent &ndash; using the explicit IP address renders the issue moot.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -613,54 +697,6 @@ options as they should improve in time.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/01/06/on-incremental-improvement/">On Incremental Improvement</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-06T00:00:00+00:00" pubdate data-updated="true"></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Twice today I&#8217;ve seen references to the benefits of iterative improvement, and I found that the topic resonated with me. At the moment I&#8217;m halfway though a pretty lengthy software project in which it&#8217;s sometimes hard to see the wood for the trees. The backlog is substantial, resulting in a hefty set of tasks for our team. In these situations, where the to-do list doesn&#8217;t seem to change day to day, it&#8217;s easy to feel crippled by inertia. However, these two references illustrate that we can succeed provided we ensure we&#8217;re making healthy, gradual progress.</p>
-
-<p>One might expect that the references I&#8217;m alluding to originate from a tome of software development, like &#8220;<a href="http://pragprog.com/the-pragmatic-programmer">The Pragmatic Programmer</a>&#8220;, or from one of the many celebrated development gurus of Twitter, but in fact they are not directly concerned with software at all. The first comes from <a href="http://www.youtube.com/watch?v=7GHhmgZ0BwQ" title="The Undercover Economist Tim Harford: Full talk from Wired 2012">a talk discussing the pros and cons of iterative improvement</a> , linked to by my colleague (and all-round good chap) <a href="https://twitter.com/owenphelps" title="Owen Phelps' Twitter">Owen Phelps</a>, by Tim Harford at last year&#8217;s Wired UK conference:</p>
-
-<blockquote><p>If you put together enough marginal improvements, in enough areas, you get something that&#8217;s truly outstanding.</p></blockquote>
-
-<p>Give it a watch &#8211; it&#8217;s entertaining and informative.</p>
-
-<p>The second reference came from an altogether different source &#8211; <a href="http://www.soundonsound.com/sos/jan13/articles/it-0113.htm" title="Alan Moulder: Sound on Sound January 2012">an interview with renowned mix engineer Alan Moulder</a> in this month&#8217;s issue of Sound on Sound magazine, in which he discusses his approach when applying VST plugins to his music projects:</p>
-
-<blockquote><p>All the things I use do something to make the sound a tiny bit better, and if  you add everything together, the end result will be a lot better&#8230; It&#8217;s simple: better is better, whether it&#8217;s a tiny bit better or a lot better.</p></blockquote>
-
-<p>Through never-ending sprints, features and tasks, iterative improvement is something all development teams should strive to achieve.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -676,6 +712,10 @@ options as they should improve in time.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/03/waiting-for-ssh/">Waiting for SSH</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/06/09/never-out-of-beta-returns/">Never Out of Beta Returns!</a>
       </li>
     
@@ -689,10 +729,6 @@ options as they should improve in time.</p>
     
       <li class="post">
         <a href="/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/">Vagrant 1.5 Syncing Situation</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/06/goodbye-box-uk-hello-bipsync/">Goodbye Box UK, Hello BipSync</a>
       </li>
     
   </ul>

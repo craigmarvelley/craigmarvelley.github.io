@@ -4,7 +4,7 @@
   <title><![CDATA[Craig Marvelley]]></title>
   <link href="http://marvelley.com/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-06-09T22:27:01+00:00</updated>
+  <updated>2014-09-03T23:03:23+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Waiting for SSH]]></title>
+    <link href="http://marvelley.com/blog/2014/09/03/waiting-for-ssh/"/>
+    <updated>2014-09-03T19:17:18+00:00</updated>
+    <id>http://marvelley.com/blog/2014/09/03/waiting-for-ssh</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve spent the day provisioning a whole lot of EC2 instances with Ansible from a control machine in the cloud. This involves two stages: firstly an instance is launched, and then once SSH is available (using Ansible&rsquo;s <code>wait_for</code> module), the second stage of more detailed provisioning begins.</p>
+
+<p>An issue I&rsquo;d experienced a few times previously but had not been able to pinpoint, was that often the <code>wait_for</code> module failed to identify that SSH is ready. My Ansible task looked like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Wait until SSH is available
+</span><span class='line'>  local_action: 
+</span><span class='line'>    module: wait_for 
+</span><span class='line'>    host: "{{ item.public_dns_name }}"
+</span><span class='line'>    port: 22 
+</span><span class='line'>    delay: 60 
+</span><span class='line'>    timeout: 320 
+</span><span class='line'>    state: started
+</span><span class='line'>  with_items: launched_instances.instances</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That task would often time out, but in such cases if I were to immediately try to SSH from the terminal it would succeed, which was odd indeed.</p>
+
+<p>Today this behaviour was consistent, and I eventually realised that in the task I was using the instance&rsquo;s public DNS name, whereas when I was connecting via the terminal I used the public IP address. Indeed, changing the task to use the IP address seems to have made the whole thing a lot more reliable:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Wait until SSH is available
+</span><span class='line'>  local_action: 
+</span><span class='line'>    module: wait_for 
+</span><span class='line'>    host: "{{ item.public_ip }}"
+</span><span class='line'>    port: 22 
+</span><span class='line'>    delay: 60 
+</span><span class='line'>    timeout: 320 
+</span><span class='line'>    state: started
+</span><span class='line'>  with_items: launched_instances.instances</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&rsquo;m guessing that on my Mac (where this was rarely an issue) the DNS cache updates quicker than it does on the control machine in EC2, where this problem was more frequent &ndash; using the explicit IP address renders the issue moot.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Never Out of Beta Returns!]]></title>
@@ -655,21 +712,6 @@ sudo apachectl start</pre>
 <p>As a bonus, after the prizes were handed out we decamped for a drink in the Tafarn, something I haven&#8217;t done since leaving Cardiff University 10 years ago. It was almost worth attending the event solely for the excuse to walk down memory lane!</p>
 
 <p>The code for the CMS app I built can be found on <a href="https://github.com/craigmarvelley/ExploreCardiffAdmin">my Github page</a>. Time permitting, I&#8217;d like to take the idea a bit further; though it&#8217;ll require a bit more planning than the 15 mins it got on Sunday to be a proper success!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Speaking at PHPSW: From PHP to Objective-C]]></title>
-    <link href="http://marvelley.com/2011/11/08/speaking-at-phpsw-from-php-to-objective-c/"/>
-    <updated>2011-11-08T00:00:00+00:00</updated>
-    <id>http://marvelley.com/2011/11/08/speaking-at-phpsw-from-php-to-objective-c</id>
-    <content type="html"><![CDATA[<p>Tomorrow night (09/11) I&#8217;m going to be giving a 20 minute talk on how I&#8217;ve found the transition from PHP to Objective-C, which I&#8217;ve been doing over the last year or so (transition is probably the wrong word, since I still regularly develop in PHP). The talk will be a slimmer version of the one I&#8217;ve submitted to a couple of conferences, but the proposal will still apply so I thought I&#8217;d post it here in case it encourages anyone to attend!</p>
-
-<blockquote><p>Last year, after 8 years of developing almost exclusively in PHP, I decided to learn something new and begin developing for the iOS platform in Objective-C. I&#8217;d noticed that the typical modern PHP application, like an iOS application, is written using a framework and cutting-edge language features like closures and runtime dynamic binding, and thought that would serve to make the transfer easier. I also wanted to expand my skill set in an increasingly mobile, recession-hit world.</p>
-
-<p>In this talk I will share my experiences of going from PHP to Objective-C and Cocoa; how I took the paradigms that I was accustomed to in PHP, like syntax, memory management, unit testing and design patterns, and mapped them to the iOS ecosystem. I&#8217;ll also describe some techniques used in Objective-C that can be applied in PHP to enhance our code. Finally, I&#8217;ll discuss what I consider to be the pros and cons of each platform, and how I believe each has its place in our future careers.</p></blockquote>
-
-<p>PHPSW is a monthly PHP meetup held in Bristol, at the Golden Guinea, on the second Wednesday of every month. Everything kicks off at 7pm!</p>
 ]]></content>
   </entry>
   
