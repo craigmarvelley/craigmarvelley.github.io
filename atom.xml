@@ -4,7 +4,7 @@
   <title><![CDATA[Craig Marvelley]]></title>
   <link href="http://marvelley.com/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-09-03T23:03:23+00:00</updated>
+  <updated>2014-09-06T11:14:02+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -18,7 +18,9 @@
     <link href="http://marvelley.com/blog/2014/09/03/waiting-for-ssh/"/>
     <updated>2014-09-03T19:17:18+00:00</updated>
     <id>http://marvelley.com/blog/2014/09/03/waiting-for-ssh</id>
-    <content type="html"><![CDATA[<p>I&rsquo;ve spent the day provisioning a whole lot of EC2 instances with Ansible from a control machine in the cloud. This involves two stages: firstly an instance is launched, and then once SSH is available (using Ansible&rsquo;s <code>wait_for</code> module), the second stage of more detailed provisioning begins.</p>
+    <content type="html"><![CDATA[<p><strong>Update 2014/09/06</strong> &ndash; Michael DeHaan <a href="https://twitter.com/laserllama/status/507325690610728962">mentions on Twitter</a> that he adds in a few seconds of sleep with the pause module to ensure the SSH port is open.</p>
+
+<p>I&rsquo;ve spent the day provisioning a whole lot of EC2 instances with Ansible from a control machine in the cloud. This involves two stages: firstly an instance is launched, and then once SSH is available (using Ansible&rsquo;s <code>wait_for</code> module), the second stage of more detailed provisioning begins.</p>
 
 <p>An issue I&rsquo;d experienced a few times previously but had not been able to pinpoint, was that often the <code>wait_for</code> module failed to identify that SSH is ready. My Ansible task looked like this:</p>
 
