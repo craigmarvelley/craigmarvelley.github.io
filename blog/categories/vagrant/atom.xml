@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vagrant, | Craig Marvelley]]></title>
   <link href="http://marvelley.com/blog/categories/vagrant/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-09-06T11:14:02+00:00</updated>
+  <updated>2014-09-06T19:26:54+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -23,7 +23,7 @@
 <p>When starting work at <a href="http://www.bipsync.com">BipSync</a> I resolved to put the bits
 and bobs I&rsquo;d learned about provisioning with Vagrant and Ansible into practice, and
 no longer host development environments locally on my MacBook. The reasons were
-twofold &ndash; firstly I wanted my development environment to mirror that
+twofold - firstly I wanted my development environment to mirror that
 of live as closely as possible, and secondly when previously hosting multiple,
 complex projects on one machine I experienced increased battery drain and frequent
 slowdowns caused by active background services that I often didn&rsquo;t even need for my current
@@ -40,7 +40,7 @@ that this combination wouldn&rsquo;t be fast enough to be fit for purpose.</p>
 as the slowest of Vagrant&rsquo;s provider options, and we already had Parallels
 licences for the development of our Windows applications, next I tried out the
 third party <a href="https://github.com/Parallels/vagrant-parallels">Parallels plugin for Vagrant</a>.
-Basically this was a non-starter &ndash; I immediately ran into bugs that were present in the project&rsquo;s
+Basically this was a non-starter - I immediately ran into bugs that were present in the project&rsquo;s
 issue tracker, and the impression I got was that the plugin is still a work-in-progress.
 The plugin is overseen by Parallels so I&rsquo;m optimistic that it&rsquo;ll one day be a
 first-class provider, but as it was it was unusable.</p>

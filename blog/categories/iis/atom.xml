@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: IIS | Craig Marvelley]]></title>
+  <title><![CDATA[Category: Iis | Craig Marvelley]]></title>
   <link href="http://marvelley.com/blog/categories/iis/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-09-06T11:14:02+00:00</updated>
+  <updated>2014-09-06T19:26:54+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -44,7 +44,7 @@
 
 <div id="attachment_173" class="wp-caption alignnone" style="width: 310px">
   <a href="http://marvelley.com/images/posts/2011/04/output_caching.png"><img class="size-medium wp-image-173" title="output_caching" src="http://marvelley.com/images/posts/2011/04/output_caching-300x224.png" alt="" width="300" height="224" /></a><p class="wp-caption-text">
-    Select the 'Output Caching' Module
+    Select the &#8216;Output Caching&#8217; Module
   </p>
 </div>
 

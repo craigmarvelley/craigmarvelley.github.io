@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://marvelley.com/blog/page/2">
+  <link rel="canonical" href="http://marvelley.com/posts/2">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Craig Marvelley" type="application/atom+xml">
@@ -60,7 +60,7 @@
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:marvelley.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -92,14 +92,7 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2013-01-06T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2013-01-06T00:00:00+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -140,14 +133,7 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-12-20T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2012-12-20T00:00:00+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -188,12 +174,9 @@
 <p>Let&#8217;s start with the server components &#8211; three classes and a bit of config:</p>
 
 <p><noscript>
-  <p></p>
-
-<pre><code>View the code on &lt;a href="https://gist.github.com/4340230"&gt;Gist&lt;/a&gt;.
-</code></pre>
-
-<p>  </p>
+  <p>
+    View the code on <a href="https://gist.github.com/4340230">Gist</a>.
+  </p>
 </noscript></p>
 
 <p>The <code>XHRAuthenticationSuccessHandler</code> and <code>XHRAuthenticationFailureHandler</code> class&#8217; code is triggered when the user logs in, or fails to log in, respectively. We check to see if the original request was an AJAX (XHR) one, and if so we respond with JSON. If it&#8217;s a failure we&#8217;re dealing with, we also include the exception message to give the user some feedback &#8211; note that this is a quick solution; it might be prudent to vet the message, or to translate it. I&#8217;ve also included a &#8216;success&#8217; property which is a JavaScript convention that some frameworks (like <a href="http://www.sencha.com/products/extjs">ExtJS</a>) use to execute appropriate callbacks. Finally, we wire up these handlers with the security component in our application&#8217;s <a href="https://gist.github.com/4340230#file-security-yml">security configuration</a>.</p>
@@ -205,23 +188,17 @@
 <p>First we define a global error handler, which will be fired whenever an uncaught AJAX error occurs:</p>
 
 <p><noscript>
-  <p></p>
-
-<pre><code>View the code on &lt;a href="https://gist.github.com/4348746"&gt;Gist&lt;/a&gt;.
-</code></pre>
-
-<p>  </p>
+  <p>
+    View the code on <a href="https://gist.github.com/4348746">Gist</a>.
+  </p>
 </noscript></p>
 
 <p>If the problem is that the user does not have a valid authentication token, we invite them to log in.</p>
 
 <p><noscript>
-  <p></p>
-
-<pre><code>View the code on &lt;a href="https://gist.github.com/4348760"&gt;Gist&lt;/a&gt;.
-</code></pre>
-
-<p>  </p>
+  <p>
+    View the code on <a href="https://gist.github.com/4348760">Gist</a>.
+  </p>
 </noscript></p>
 
 <p>The login process is interesting &#8211; the modal login form is essentially a duplicate of the HTML one, but lacks the CSRF token which is automatically injected into the HTML form by Symfony. This helps prevent spoofing so I didn&#8217;t want to remove it, so the approach I took was to request the HTML login page, capture the value of the CSRF field in the response, then use that in a second request to actually authenticate the user. This meant I could reuse the same authentication code on the server.</p>
@@ -250,14 +227,7 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-11-10T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2012-11-10T00:00:00+00:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -277,12 +247,9 @@
 <p>To implement this, I needed two classes; a Form class, of course, and a new class that implements Symfony\Component\EventDispatcher\EventSubscriberInterface and subscribes to events on the form. As in the cookbook example, when the &#8216;preSetData&#8217; event fires I&#8217;d be adding a field to the form. In addition, when the &#8216;bind&#8217; event fires, I&#8217;d be using the value of the field to modify the bound object, in this case the User being managed. This is what I ended up with:</p>
 
 <p><noscript>
-  <p></p>
-
-<pre><code>View the code on &lt;a href="https://gist.github.com/4051034"&gt;Gist&lt;/a&gt;.
-</code></pre>
-
-<p>  </p>
+  <p>
+    View the code on <a href="https://gist.github.com/4051034">Gist</a>.
+  </p>
 </noscript></p>
 
 <p>I&#8217;m manually adding the subscriber to the form in UserType::buildForm(), which feels a bit weird when the usual approach would be to define a service and tag it appropriately. I&#8217;m not sure if that&#8217;s possible with Form subscribers, that&#8217;s just how the cookbook approach went. I&#8217;d imagine there are other ways I could have achieved the same result, but I like this approach because I don&#8217;t have to modify my User class at all, and I don&#8217;t have to delve into form field customisation.</p>
@@ -309,14 +276,7 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-09-20T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2012-09-20T00:00:00+00:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -369,14 +329,7 @@ sudo apachectl start</pre>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-06-30T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2012-06-30T00:00:00+00:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -440,14 +393,7 @@ sudo apachectl start</pre>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-05-27T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2012-05-27T00:00:00+00:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -506,14 +452,7 @@ sudo apachectl start</pre>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-05-16T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2012-05-16T00:00:00+00:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -564,14 +503,7 @@ sudo apachectl start</pre>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-05-01T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2012-05-01T00:00:00+00:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -600,14 +532,7 @@ sudo apachectl start</pre>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-02-15T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2012-02-15T00:00:00+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -646,14 +571,7 @@ sudo apachectl start</pre>
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2011-11-24T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2011-11-24T00:00:00+00:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -703,11 +621,11 @@ sudo apachectl start</pre>
   
   <div class="pagination">
     
-      <a class="prev" href="/blog/page/3/">&larr; Older</a>
+      <a class="prev" href="/posts/3">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
-    <a class="next" href="/">Newer &rarr;</a>
+    <a class="next" href="/index.html">Newer &rarr;</a>
     
   </div>
 </div>

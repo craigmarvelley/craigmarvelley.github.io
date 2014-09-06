@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ansible | Craig Marvelley]]></title>
   <link href="http://marvelley.com/blog/categories/ansible/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-09-06T11:14:02+00:00</updated>
+  <updated>2014-09-06T19:26:54+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -18,13 +18,13 @@
     <link href="http://marvelley.com/blog/2014/09/03/waiting-for-ssh/"/>
     <updated>2014-09-03T19:17:18+00:00</updated>
     <id>http://marvelley.com/blog/2014/09/03/waiting-for-ssh</id>
-    <content type="html"><![CDATA[<p><strong>Update 2014/09/06</strong> &ndash; Michael DeHaan <a href="https://twitter.com/laserllama/status/507325690610728962">mentions on Twitter</a> that he adds in a few seconds of sleep with the pause module to ensure the SSH port is open.</p>
+    <content type="html"><![CDATA[<p><strong>Update 2014/09/06</strong> - Michael DeHaan <a href="https://twitter.com/laserllama/status/507325690610728962">mentions on Twitter</a> that he adds in a few seconds of sleep with the pause module to ensure the SSH port is open.</p>
 
 <p>I&rsquo;ve spent the day provisioning a whole lot of EC2 instances with Ansible from a control machine in the cloud. This involves two stages: firstly an instance is launched, and then once SSH is available (using Ansible&rsquo;s <code>wait_for</code> module), the second stage of more detailed provisioning begins.</p>
 
 <p>An issue I&rsquo;d experienced a few times previously but had not been able to pinpoint, was that often the <code>wait_for</code> module failed to identify that SSH is ready. My Ansible task looked like this:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -33,27 +33,21 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&ndash; name: Wait until SSH is available
-</span><span class='line'>  local_action:&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>module: wait_for 
-</span><span class='line'>host: "{{ item.public_dns_name }}"
-</span><span class='line'>port: 22 
-</span><span class='line'>delay: 60 
-</span><span class='line'>timeout: 320 
-</span><span class='line'>state: started
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p>  with_items: launched_instances.instances</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Wait until SSH is available
+</span><span class='line'>  local_action:
+</span><span class='line'>    module: wait_for
+</span><span class='line'>    host: &ldquo;{{ item.public_dns_name }}&rdquo;
+</span><span class='line'>    port: 22
+</span><span class='line'>    delay: 60
+</span><span class='line'>    timeout: 320
+</span><span class='line'>    state: started
+</span><span class='line'>  with_items: launched_instances.instances</span></code></pre></td></tr></table></div></figure></p>
 
 <p>That task would often time out, but in such cases if I were to immediately try to SSH from the terminal it would succeed, which was odd indeed.</p>
 
 <p>Today this behaviour was consistent, and I eventually realised that in the task I was using the instance&rsquo;s public DNS name, whereas when I was connecting via the terminal I used the public IP address. Indeed, changing the task to use the IP address seems to have made the whole thing a lot more reliable:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -62,23 +56,17 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&ndash; name: Wait until SSH is available
-</span><span class='line'>  local_action:&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;pre>&lt;code>module: wait_for 
-</span><span class='line'>host: "{{ item.public_ip }}"
-</span><span class='line'>port: 22 
-</span><span class='line'>delay: 60 
-</span><span class='line'>timeout: 320 
-</span><span class='line'>state: started
-</span><span class='line'>&lt;/code>&lt;/pre>
-</span><span class='line'>
-</span><span class='line'>&lt;p>  with_items: launched_instances.instances</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- name: Wait until SSH is available
+</span><span class='line'>  local_action:
+</span><span class='line'>    module: wait_for
+</span><span class='line'>    host: &ldquo;{{ item.public_ip }}&rdquo;
+</span><span class='line'>    port: 22
+</span><span class='line'>    delay: 60
+</span><span class='line'>    timeout: 320
+</span><span class='line'>    state: started
+</span><span class='line'>  with_items: launched_instances.instances</span></code></pre></td></tr></table></div></figure></p>
 
-<p>I&rsquo;m guessing that on my Mac (where this was rarely an issue) the DNS cache updates quicker than it does on the control machine in EC2, where this problem was more frequent &ndash; using the explicit IP address renders the issue moot.</p>
+<p>I&rsquo;m guessing that on my Mac (where this was rarely an issue) the DNS cache updates quicker than it does on the control machine in EC2, where this problem was more frequent - using the explicit IP address renders the issue moot.</p>
 ]]></content>
   </entry>
   
@@ -103,24 +91,21 @@ on the Ansible forum, I took a look at <a href="http://linux.die.net/man/1/expec
 script interactions with a spawned command, using regex to match against prompt text, and send
 appropriate responses. It&rsquo;s a sound approach; I wrote a script that looked like this:</p>
 
-<p>```</p>
+<pre><code>#!/usr/bin/expect
 
-<h1>!/usr/bin/expect</h1>
+spawn pecl install mongo
 
-<p>spawn pecl install mongo</p>
+expect "Build with Cyrus SASL"
+send "\r"
 
-<p>expect &ldquo;Build with Cyrus SASL&rdquo;
-send &ldquo;\r&rdquo;</p>
-
-<p>expect eof
-```</p>
+expect eof
+</code></pre>
 
 <p>And executed it on the box using Ansible&rsquo;s <code>script</code> module:</p>
 
-<p><code>
-- name: Install PECL mongo extension
+<pre><code>- name: Install PECL mongo extension
   script: install_pecl_mongo.expect
-</code></p>
+</code></pre>
 
 <p>Mission achieved. I felt very pleased with myself for about 30 seconds, which is
 how long it took for Paul to wander over and tell me there was a simpler way to do it.
@@ -136,10 +121,9 @@ or a user-defined string of text continuously until killed&rdquo;, which is just
 
 <p>So now my task looks like this:</p>
 
-<p><code>
-- name: Install PECL mongo extension
+<pre><code>- name: Install PECL mongo extension
   shell: yes '' | pecl install mongo
-</code></p>
+</code></pre>
 
 <p>Which continuously pipes the &lsquo;y&rsquo; character (by default) and a newline character into
 the install command, automatically causing any prompts to be responded to in the

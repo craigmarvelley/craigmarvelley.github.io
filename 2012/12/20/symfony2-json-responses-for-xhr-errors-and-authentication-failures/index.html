@@ -60,7 +60,7 @@
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:marvelley.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -89,14 +89,7 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-12-20T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2012-12-20T00:00:00+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -137,12 +130,9 @@
 <p>Let&#8217;s start with the server components &#8211; three classes and a bit of config:</p>
 
 <p><noscript>
-  <p></p>
-
-<pre><code>View the code on &lt;a href="https://gist.github.com/4340230"&gt;Gist&lt;/a&gt;.
-</code></pre>
-
-<p>  </p>
+  <p>
+    View the code on <a href="https://gist.github.com/4340230">Gist</a>.
+  </p>
 </noscript></p>
 
 <p>The <code>XHRAuthenticationSuccessHandler</code> and <code>XHRAuthenticationFailureHandler</code> class&#8217; code is triggered when the user logs in, or fails to log in, respectively. We check to see if the original request was an AJAX (XHR) one, and if so we respond with JSON. If it&#8217;s a failure we&#8217;re dealing with, we also include the exception message to give the user some feedback &#8211; note that this is a quick solution; it might be prudent to vet the message, or to translate it. I&#8217;ve also included a &#8216;success&#8217; property which is a JavaScript convention that some frameworks (like <a href="http://www.sencha.com/products/extjs">ExtJS</a>) use to execute appropriate callbacks. Finally, we wire up these handlers with the security component in our application&#8217;s <a href="https://gist.github.com/4340230#file-security-yml">security configuration</a>.</p>
@@ -154,23 +144,17 @@
 <p>First we define a global error handler, which will be fired whenever an uncaught AJAX error occurs:</p>
 
 <p><noscript>
-  <p></p>
-
-<pre><code>View the code on &lt;a href="https://gist.github.com/4348746"&gt;Gist&lt;/a&gt;.
-</code></pre>
-
-<p>  </p>
+  <p>
+    View the code on <a href="https://gist.github.com/4348746">Gist</a>.
+  </p>
 </noscript></p>
 
 <p>If the problem is that the user does not have a valid authentication token, we invite them to log in.</p>
 
 <p><noscript>
-  <p></p>
-
-<pre><code>View the code on &lt;a href="https://gist.github.com/4348760"&gt;Gist&lt;/a&gt;.
-</code></pre>
-
-<p>  </p>
+  <p>
+    View the code on <a href="https://gist.github.com/4348760">Gist</a>.
+  </p>
 </noscript></p>
 
 <p>The login process is interesting &#8211; the modal login form is essentially a duplicate of the HTML one, but lacks the CSRF token which is automatically injected into the HTML form by Symfony. This helps prevent spoofing so I didn&#8217;t want to remove it, so the approach I took was to request the HTML login page, capture the value of the CSRF field in the response, then use that in a second request to actually authenticate the user. This meant I could reuse the same authentication code on the server.</p>
@@ -193,19 +177,12 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-12-20T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2012-12-20T00:00:00+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/symfony2/'>Symfony2</a>
+    <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/symfony2/'>symfony2</a>
   
 </span>
 

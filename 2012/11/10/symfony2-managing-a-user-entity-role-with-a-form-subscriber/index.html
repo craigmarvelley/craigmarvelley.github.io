@@ -60,7 +60,7 @@
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:marvelley.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -89,14 +89,7 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-11-10T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2012-11-10T00:00:00+00:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -116,12 +109,9 @@
 <p>To implement this, I needed two classes; a Form class, of course, and a new class that implements Symfony\Component\EventDispatcher\EventSubscriberInterface and subscribes to events on the form. As in the cookbook example, when the &#8216;preSetData&#8217; event fires I&#8217;d be adding a field to the form. In addition, when the &#8216;bind&#8217; event fires, I&#8217;d be using the value of the field to modify the bound object, in this case the User being managed. This is what I ended up with:</p>
 
 <p><noscript>
-  <p></p>
-
-<pre><code>View the code on &lt;a href="https://gist.github.com/4051034"&gt;Gist&lt;/a&gt;.
-</code></pre>
-
-<p>  </p>
+  <p>
+    View the code on <a href="https://gist.github.com/4051034">Gist</a>.
+  </p>
 </noscript></p>
 
 <p>I&#8217;m manually adding the subscriber to the form in UserType::buildForm(), which feels a bit weird when the usual approach would be to define a service and tag it appropriately. I&#8217;m not sure if that&#8217;s possible with Form subscribers, that&#8217;s just how the cookbook approach went. I&#8217;d imagine there are other ways I could have achieved the same result, but I like this approach because I don&#8217;t have to modify my User class at all, and I don&#8217;t have to delve into form field customisation.</p>
@@ -142,19 +132,12 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2012-11-10T00:00:00+00:00" pubdate data-updated="true"></time>
+<time class='entry-date' datetime='2012-11-10T00:00:00+00:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/php/'>PHP</a>, <a class='category' href='/blog/categories/symfony2/'>Symfony2</a>
+    <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/symfony2/'>symfony2</a>
   
 </span>
 

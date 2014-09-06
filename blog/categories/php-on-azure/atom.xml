@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: PHP on Azure | Craig Marvelley]]></title>
+  <title><![CDATA[Category: Php on Azure | Craig Marvelley]]></title>
   <link href="http://marvelley.com/blog/categories/php-on-azure/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-09-06T11:14:02+00:00</updated>
+  <updated>2014-09-06T19:26:54+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -103,7 +103,7 @@ phar.require_hash = Off</pre>
 <p>I came across a few issues while doing all this that I should detail:</p>
 
 <ul>
-<li>I had to set Eclipse to run as an administrator (right click eclipse.exe-> properties &ndash;> Compatibility &ndash;> Run as administrator) before it would install the plugin and allow me to use it within the application</li>
+<li>I had to set Eclipse to run as an administrator (right click eclipse.exe-> properties -> Compatibility -> Run as administrator) before it would install the plugin and allow me to use it within the application</li>
 <li>I signed up for the <a href="http://www.microsoft.com/windowsazure/free-trial/default.aspx">free introductory trial</a> of Azure so that I could follow the tutorial properly and configure a database on Azure</li>
 </ul>
 
