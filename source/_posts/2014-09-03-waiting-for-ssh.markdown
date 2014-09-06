@@ -6,6 +6,8 @@ comments: false
 categories: ansible
 ---
 
+**Update 2014/09/06** - Michael DeHaan [mentions on Twitter](https://twitter.com/laserllama/status/507325690610728962) that he adds in a few seconds of sleep with the pause module to ensure the SSH port is open.
+
 I've spent the day provisioning a whole lot of EC2 instances with Ansible from a control machine in the cloud. This involves two stages: firstly an instance is launched, and then once SSH is available (using Ansible's `wait_for` module), the second stage of more detailed provisioning begins.
 
 An issue I'd experienced a few times previously but had not been able to pinpoint, was that often the `wait_for` module failed to identify that SSH is ready. My Ansible task looked like this:
