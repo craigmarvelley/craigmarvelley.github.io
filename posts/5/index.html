@@ -9,7 +9,7 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="I&#8217;ve put off starting a blog for a while now. For good reason, it seems &#8211; getting this thing working was as hellish as I&#8217;d imagined &hellip;">
+  <meta name="description" content="Yesterday brought a bug in a PHP thumbnail library I&#8217;ve been working on: when mounting a 24 bit PNG with alpha transparency onto another &#8216 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,75 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2010/10/01/mount-alpha-transparent-images-php-gd/">Mounting Alpha Transparent Images With PHP and GD</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-10-01T00:00:00+00:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2010</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yesterday brought a bug in a PHP thumbnail library I&#8217;ve been working on: when mounting a 24 bit PNG with alpha transparency onto another &#8216;framing&#8217; image the transparency was being lost. A simplified version of the code looks something like this:</p>
+
+<pre>// Read the transparent image
+$image = imagecreatefrompng('transparent.png');
+$width = imagesx($image);
+$height = imagesy($image);
+
+// Create the mount
+$border = 10;
+$mountWidth = $width + ($border * 2);
+$mountHeight = $height + ($border * 2);
+$mount = imagecreatetruecolor($mountWidth, $mountHeight);
+$mountColour = imagecolorallocate($mount, 255, 0, 0);
+imagefilledrectangle($mount, 0, 0, $mountWidth, $mountHeight, $mountColour);
+
+// Centre the image within the mount
+imagecopymerge($mount, $image, $border, $border, 0, 0, $width, $height, 100);
+
+// Output to screen
+header('Content-Type: image/png');
+imagepng($mount);</pre>
+
+
+<p>This all worked well enough until someone tried mounting a PNG with alpha transparency, whereupon things became very messy. A bit of googling <a href="http://drupal.org/node/80369">suggested</a> <a href="http://www.phpfreaks.com/forums/index.php?topic=127046.0">that</a> that the <a href="http://uk.php.net/imagecopymerge">imagecopymerge</a>() function was to blame (I&#8217;d used  it because it allowed the manipulation of opacity in the merged image) and that the <a href="http://uk.php.net/imagecopy">imagecopy</a>() function handled transparency better &#8211; which I found to be the case.</p>
+
+<p>So a transparency-friendly version of the script looks like:</p>
+
+<pre>// Read the transparent image
+$image = imagecreatefrompng('transparent.png');
+
+...
+
+// Centre the image within the mount
+imagecopy($mount, $image, $border, $border, 0, 0, $width, $height);
+
+// Output to screen
+header('Content-Type: image/png');
+imagepng($mount);</pre>
+
+
+<p>And problem solved &#8211; though I&#8217;d like to find a way to maintain image transparency while also being able to adjust the opacity of the mounted image.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2010/09/23/much-success/">Much Success!</a></h1>
     
     
@@ -122,6 +191,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/17/noob-0-dot-9-19-you-shouldnt-have-to-click-it/">NOOB 0.9.19 - &#8216;You Shouldn&#8217;t Have to Click It&#8217;</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/03/waiting-for-ssh/">Waiting for SSH</a>
       </li>
     
@@ -135,10 +208,6 @@
     
       <li class="post">
         <a href="/blog/2014/04/11/local-provisioning-with-ansible/">Local Provisioning With Ansible</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/">Vagrant 1.5 Syncing Situation</a>
       </li>
     
   </ul>

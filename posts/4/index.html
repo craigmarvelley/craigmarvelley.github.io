@@ -9,7 +9,7 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="[This is a blog post related to the PHP on Azure competition.] I&#8217;ve spent the last few days reading about Windows Azure, mostly just trying to &hellip;">
+  <meta name="description" content="[This is a blog post related to the PHP on Azure competition.] I&#8217;ve had some time to think about how I&#8217;m going to build the application, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/02/25/planning-my-azure-application-part-1/">Planning My Azure Application (Part 1)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-02-25T00:00:00+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>[This is a blog post related to the <a href="http://www.phpazurecontest.com/">PHP on Azure competition</a>.]</p>
+
+<p>I&#8217;ve had some time to think about how I&#8217;m going to build the application, and I&#8217;ve got some ideas for how I&#8217;d like to proceed. At this point I&#8217;d have liked to set my development environment up with the Azure tools and had a play with the example applications I&#8217;ve come across, mostly to get a feel for what&#8217;s possible, but unfortunately upon trying to install the <a href="http://msdn.microsoft.com/en-us/windowsazure/cc974146.aspx">Azure SDK</a> I discovered that it requires Windows Vista or 7, and at home I&#8217;m still running XP. I toyed with the idea of installing Windows 7 into a Virtual Machine, which would probably be the quickest route to get back on track, but since I have been intending to migrate to 7 for a while this is probably the right time; technology is obviously evolving beyond XP (finally!).</p>
+
+<p>So in the interim while I work on an upgrade I&#8217;ll start planning my CMS application. I&#8217;ve been thinking about the type of libraries and frameworks I want to take advantage of, and how I&#8217;m going to knit them together. I won&#8217;t be able to check they work on Windows Azure &#8217;til I get access to a machine, but I&#8217;m fairly confident that the vast majority, if not all of them, will work on the platform.</p>
+
+<p>Firstly I&#8217;ll be using Zend Framework to provide the backbone of the application. I&#8217;ve not yet decided how much of the framework I&#8217;ll be taking advantage of, but I&#8217;ll definitely be using <a href="http://framework.zend.com/manual/en/zend.application.html">Zend_Application</a> and its related classes to handle the bootstrapping phase of the application, because its flexibility will be key when loading the other libraries I intend to use. The application will then utilise the ubiquitous <a href="http://msdn.microsoft.com/en-us/library/ff649643.aspx">MVC</a> pattern, using the following components:</p>
+
+<ul>
+<li>Model: <a href="http://www.doctrine-project.org/projects/orm">Doctrine 2 ORM</a> / <a href="http://msdn.microsoft.com/en-us/library/dd179423.aspx">Windows Azure Table Storage</a></li>
+<li>View: Not sure yet, probably <a href="http://framework.zend.com/manual/en/zend.view.html">Zend_View</a> but needs more investigation</li>
+<li>Controller: <a href="http://framework.zend.com/manual/en/zend.controller.html">Zend_Controller</a></li>
+</ul>
+
+
+<p>As I mentioned in my last post I don&#8217;t yet know how I&#8217;m going to work with the data layer: I really want to use Doctrine 2, which I know has SQL Server (and thus, I&#8217;m assuming, SQL Azure) support, but I&#8217;m not aware of similar support for Table Storage. Brian Swan posted <a href="http://blogs.msdn.com/b/brian_swan/archive/2010/09/16/accessing-windows-azure-table-data-as-odata-via-php.aspx">a tutorial</a> where he uses the OAuth SDK to access Table Storage, and that follows a similar annotations-driven approach to Doctrine 2; if one doesn&#8217;t exist, I&#8217;m wondering how much work it would take to write a Table Storage driver for Doctrine.</p>
+
+<p>Functionally, it may be possible to use Table Storage exclusively within the app (<a href="http://www.intertech.com/Blog/post/Windows-Azure-Table-Storage-vs-Windows-SQL-Azure.aspx">it sounds like it&#8217;ll be cheaper</a>) but there appear to be some crucial missing features, like <a href="http://www.mygreatwindowsazureidea.com/forums/34192-windows-azure-feature-voting/suggestions/396315-provide-me-with-full-text-search-on-table-storage">full-text searching</a>. I&#8217;ve been spoiled working with Solr for the past few years; I&#8217;d like to use Solr here, but have read <a href="http://social.msdn.microsoft.com/Forums/en-US/windowsazuredevelopment/thread/ab80b97f-462b-4b7d-bd65-f484e65be30c/">conflicting</a> <a href="http://stackoverflow.com/questions/3846793/running-solr-on-azure">reports</a> as to whether it&#8217;s possible. The way things are looking, I&#8217;ll try to use Table Storage in the first instance, then fall back to SQL Azure if it doesn&#8217;t give me what I need.</p>
+
+<p>For the view / templating component I&#8217;ll probably take the path of least resistance, which will probably mean Zend_View. My main requirement is easy support for different RESTful response response formats, i.e. HTML, XML and JSON, especially since I intend for the backend of the app to be JavaScript-heavy (using <a href="http://www.sencha.com/blog/ext-js-4-preview-faster-easier-more-stable">ExtJS 4</a>) which will mean a lot of JSON.</p>
+
+<p>Zend&#8217;s Controller classes are great, and I&#8217;ll probably use their routing system as well since it has RESTful support. There&#8217;s not much more to say about that really!</p>
+
+<p>So in an ideal world, this is how the application will be laid out:</p>
+
+<p><a href="/images/posts/2011/02/application_overview.jpg"><img class="alignnone size-full wp-image-100" title="Application Architecture Overview" src="/images/posts/2011/02/application_overview.jpg" alt="An overview of the application architecture" width="500" height="647" /></a></p>
+
+<p>Next I&#8217;ll think in more detail about the frontend and backend applications. Now I have to go to PC World to buy a hard drive and a copy of Windows 7&#8230;</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -419,75 +475,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/10/01/mount-alpha-transparent-images-php-gd/">Mounting Alpha Transparent Images With PHP and GD</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-10-01T00:00:00+00:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2010</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Yesterday brought a bug in a PHP thumbnail library I&#8217;ve been working on: when mounting a 24 bit PNG with alpha transparency onto another &#8216;framing&#8217; image the transparency was being lost. A simplified version of the code looks something like this:</p>
-
-<pre>// Read the transparent image
-$image = imagecreatefrompng('transparent.png');
-$width = imagesx($image);
-$height = imagesy($image);
-
-// Create the mount
-$border = 10;
-$mountWidth = $width + ($border * 2);
-$mountHeight = $height + ($border * 2);
-$mount = imagecreatetruecolor($mountWidth, $mountHeight);
-$mountColour = imagecolorallocate($mount, 255, 0, 0);
-imagefilledrectangle($mount, 0, 0, $mountWidth, $mountHeight, $mountColour);
-
-// Centre the image within the mount
-imagecopymerge($mount, $image, $border, $border, 0, 0, $width, $height, 100);
-
-// Output to screen
-header('Content-Type: image/png');
-imagepng($mount);</pre>
-
-
-<p>This all worked well enough until someone tried mounting a PNG with alpha transparency, whereupon things became very messy. A bit of googling <a href="http://drupal.org/node/80369">suggested</a> <a href="http://www.phpfreaks.com/forums/index.php?topic=127046.0">that</a> that the <a href="http://uk.php.net/imagecopymerge">imagecopymerge</a>() function was to blame (I&#8217;d used  it because it allowed the manipulation of opacity in the merged image) and that the <a href="http://uk.php.net/imagecopy">imagecopy</a>() function handled transparency better &#8211; which I found to be the case.</p>
-
-<p>So a transparency-friendly version of the script looks like:</p>
-
-<pre>// Read the transparent image
-$image = imagecreatefrompng('transparent.png');
-
-...
-
-// Centre the image within the mount
-imagecopy($mount, $image, $border, $border, 0, 0, $width, $height);
-
-// Output to screen
-header('Content-Type: image/png');
-imagepng($mount);</pre>
-
-
-<p>And problem solved &#8211; though I&#8217;d like to find a way to maintain image transparency while also being able to adjust the opacity of the mounted image.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -505,6 +492,10 @@ imagepng($mount);</pre>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/17/noob-0-dot-9-19-you-shouldnt-have-to-click-it/">NOOB 0.9.19 - &#8216;You Shouldn&#8217;t Have to Click It&#8217;</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/03/waiting-for-ssh/">Waiting for SSH</a>
       </li>
     
@@ -518,10 +509,6 @@ imagepng($mount);</pre>
     
       <li class="post">
         <a href="/blog/2014/04/11/local-provisioning-with-ansible/">Local Provisioning With Ansible</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/">Vagrant 1.5 Syncing Situation</a>
       </li>
     
   </ul>

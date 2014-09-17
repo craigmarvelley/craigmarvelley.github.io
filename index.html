@@ -9,7 +9,7 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="Update 2014/09/06 - Michael DeHaan mentions on Twitter that he adds in a few seconds of sleep with the pause module to ensure the SSH port is open. I &hellip;">
+  <meta name="description" content="Gav and myself mainly talk about software company processes and principles, with a little bit on communication tools and AWS thrown in for good &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,41 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/17/noob-0-dot-9-19-you-shouldnt-have-to-click-it/">NOOB 0.9.19 - &#8216;You Shouldn&#8217;t Have to Click It&#8217;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-17T10:17:41+00:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:17 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Gav and myself mainly talk about software company processes and principles, with a little bit on communication tools and AWS thrown in for good measure.</p>
+
+<p>This is the first podcast we&rsquo;ve recorded remotely, since Gav moved to Bristol. Following <a href="http://www.macworld.com/article/2030512/how-we-produce-our-podcasts.html">this Macworld post&rsquo;s directions</a> seemed to work; we each recorded our own audio via Quicktime, and synced it up with our &ldquo;master&rdquo; recording from Skype, made possible via <a href="http://ecamm.com/mac/callrecorder/">Call Recorder</a>. I sequenced it all in GarageBand, with the odd final edit in Audacity.</p>
+
+<p>We&rsquo;re five episodes in since we rebooted the podcast back in June. There&rsquo;s still a lot of room for improvement (especially, for me, in my speech - I find it hard to speak in a slow cadence, and concentrating on that often distracts me from the topic at hand), but I feel that each episode has gained in professionalism, and they&rsquo;re a lot of fun to do.</p>
+
+<p>Check it out on Soundcloud <a href="https://soundcloud.com/never-out-of-beta/you-shouldnt-have-to-click-it">here</a>, or even <a href="https://itunes.apple.com/gb/podcast/never-out-of-beta/id908946657?mt=2">subscribe on iTunes</a> thanks to Soundcloud&rsquo;s currently-in-beta integration with that service, which we&rsquo;re fortunate have been given access to.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -586,49 +621,6 @@ options as they should improve in time.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/09/26/including-filtered-thumbnail-data-with-the-wordpress-json-api-plugin/">Including Filtered Thumbnail Data With the WordPress JSON API Plugin</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-09-26T00:00:00+00:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The <a href="http://wordpress.org/plugins/json-api/">JSON API</a> plugin is a great tool for exposing your WordPress data. I&#8217;ve used it to provide content to a few mobile applications; it&#8217;s well featured and most importantly, quite flexible. If your content providers are happiest using a CMS like WordPress, your project can benefit by allowing them to use the authoring tools they&#8217;re comfortable with while allowing you to easily access the content they&#8217;re creating, either to use directly within your application, or as I tend to do, by exporting the data into another application which then proxies the data to mobile applications. I find the latter approach gives you greater control over features like caching, while making it easier to relate the data to domain models that aren&#8217;t handled by WordPress.</p>
-
-<p>But I digress! This post was conceived because when requesting all posts of a certain type through the plugin, response times were hideously slow. The request I was making looked like this:</p>
-
-<p><a href="http://domain.com/?json=get_posts&amp;post_type=artist&amp;count=1000&amp;order=ASC">http://domain.com/?json=get_posts&amp;post_type=artist&amp;count=1000&amp;order=ASC</a></p>
-
-<p>Reading the documentation for the plugin, I found that it was possible to filter the response to only contain properties that I wanted, which I figured should reduce the amount of work WordPress was having to do:</p>
-
-<p><a href="http://domain.com/?json=get_posts&amp;post_type=artist&amp;count=2&amp;order=ASC&amp;include=id,title,content,custom_fields,thumbnail_images">http://domain.com/?json=get_posts&amp;post_type=artist&amp;count=2&amp;order=ASC&amp;include=id,title,content,custom_fields,thumbnail_images</a></p>
-
-<p>This proved to be true, but I hit a snag when trying to include the thumbnail_images property &#8211; adding it to the CSV of whitelisted fields had no effect. Through trial and error it transpired that including the thumbnail field also has the effect of including the thumbnail, thumbnail_size, and thumbnail_images fields. The final URL ended up looking like this:</p>
-
-<p><a href="http://domain.com/?json=get_posts&amp;post_type=artist&amp;count=2&amp;order=ASC&amp;include=id,title,content,custom_fields,thumbnail">http://domain.com/?json=get_posts&amp;post_type=artist&amp;count=2&amp;order=ASC&amp;include=id,title,content,custom_fields,thumbnail</a></p>
-
-<p>Problem solved!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -644,6 +636,10 @@ options as they should improve in time.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/17/noob-0-dot-9-19-you-shouldnt-have-to-click-it/">NOOB 0.9.19 - &#8216;You Shouldn&#8217;t Have to Click It&#8217;</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/03/waiting-for-ssh/">Waiting for SSH</a>
       </li>
     
@@ -657,10 +653,6 @@ options as they should improve in time.</p>
     
       <li class="post">
         <a href="/blog/2014/04/11/local-provisioning-with-ansible/">Local Provisioning With Ansible</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/18/vagrant-1-dot-5-syncing-situation/">Vagrant 1.5 Syncing Situation</a>
       </li>
     
   </ul>

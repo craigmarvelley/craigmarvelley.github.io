@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Podcast | Craig Marvelley]]></title>
   <link href="http://marvelley.com/blog/categories/podcast/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-09-06T19:26:54+00:00</updated>
+  <updated>2014-09-17T20:34:55+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[NOOB 0.9.19 - 'You Shouldn't Have to Click It']]></title>
+    <link href="http://marvelley.com/blog/2014/09/17/noob-0-dot-9-19-you-shouldnt-have-to-click-it/"/>
+    <updated>2014-09-17T10:17:41+00:00</updated>
+    <id>http://marvelley.com/blog/2014/09/17/noob-0-dot-9-19-you-shouldnt-have-to-click-it</id>
+    <content type="html"><![CDATA[<p>Gav and myself mainly talk about software company processes and principles, with a little bit on communication tools and AWS thrown in for good measure.</p>
+
+<p>This is the first podcast we&rsquo;ve recorded remotely, since Gav moved to Bristol. Following <a href="http://www.macworld.com/article/2030512/how-we-produce-our-podcasts.html">this Macworld post&rsquo;s directions</a> seemed to work; we each recorded our own audio via Quicktime, and synced it up with our &ldquo;master&rdquo; recording from Skype, made possible via <a href="http://ecamm.com/mac/callrecorder/">Call Recorder</a>. I sequenced it all in GarageBand, with the odd final edit in Audacity.</p>
+
+<p>We&rsquo;re five episodes in since we rebooted the podcast back in June. There&rsquo;s still a lot of room for improvement (especially, for me, in my speech - I find it hard to speak in a slow cadence, and concentrating on that often distracts me from the topic at hand), but I feel that each episode has gained in professionalism, and they&rsquo;re a lot of fun to do.</p>
+
+<p>Check it out on Soundcloud <a href="https://soundcloud.com/never-out-of-beta/you-shouldnt-have-to-click-it">here</a>, or even <a href="https://itunes.apple.com/gb/podcast/never-out-of-beta/id908946657?mt=2">subscribe on iTunes</a> thanks to Soundcloud&rsquo;s currently-in-beta integration with that service, which we&rsquo;re fortunate have been given access to.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Never Out of Beta Returns!]]></title>
