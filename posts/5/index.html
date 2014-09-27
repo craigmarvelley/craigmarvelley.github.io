@@ -9,7 +9,7 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="Yesterday brought a bug in a PHP thumbnail library I&#8217;ve been working on: when mounting a 24 bit PNG with alpha transparency onto another &#8216 &hellip;">
+  <meta name="description" content="This exception was being thrown by Doctrine during a long-running process: exception 'Doctrine_Connection_Mysql_Exception' with message 'SQLSTATE[ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,40 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/10/06/overcoming-a-lock-wait-timeout-exceeded-exception/">Overcoming a &#8216;lock Wait Timeout Exceeded&#8217; Exception.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-10-06T00:00:00+00:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This exception was being thrown by <a href="http://doctrine-project.org">Doctrine</a> during a long-running process:</p>
+
+<p><code>exception 'Doctrine_Connection_Mysql_Exception' with message 'SQLSTATE[HY000]: General error: 1205 Lock wait timeout exceeded; try restarting transaction'&lt;br /&gt;
+</code></p>
+
+<p>The code in question was performing a lot of queries within a transaction &#8211; it seems that innodb will only hold a lock for so long, and this limit was being reached before the transaction could commit and release the lock. The solution (other than refactoring the code to be a little quicker!) was to increase innodb&#8217;s <code>innodb_lock_wait_timeout</code> setting in <code>my.cnf</code> to accommodate the transaction.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -191,6 +225,10 @@ imagepng($mount);</pre>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/27/uisplitviewcontroller-collapsing-and-separating-in-ios-8/">UISplitViewController Collapsing and Separating in iOS 8</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/17/noob-0-dot-9-19-you-shouldnt-have-to-click-it/">NOOB 0.9.19 - &#8216;You Shouldn&#8217;t Have to Click It&#8217;</a>
       </li>
     
@@ -204,10 +242,6 @@ imagepng($mount);</pre>
     
       <li class="post">
         <a href="/blog/2014/04/23/handling-interactive-ansible-tasks/">Handling Interactive Ansible Tasks</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/11/local-provisioning-with-ansible/">Local Provisioning With Ansible</a>
       </li>
     
   </ul>

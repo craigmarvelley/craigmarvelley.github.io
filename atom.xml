@@ -4,7 +4,7 @@
   <title><![CDATA[Craig Marvelley]]></title>
   <link href="http://marvelley.com/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-09-17T20:39:41+00:00</updated>
+  <updated>2014-09-27T23:13:52+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -12,6 +12,108 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[UISplitViewController Collapsing and Separating in iOS 8]]></title>
+    <link href="http://marvelley.com/blog/2014/09/27/uisplitviewcontroller-collapsing-and-separating-in-ios-8/"/>
+    <updated>2014-09-27T22:39:43+00:00</updated>
+    <id>http://marvelley.com/blog/2014/09/27/uisplitviewcontroller-collapsing-and-separating-in-ios-8</id>
+    <content type="html"><![CDATA[<p>The new UISplitViewController class and delegate methods in iOS 8 is interesting, and caused me a lot of head scratching last week.
+The problem Brent Simmons describes <a href="http://inessential.com/2014/09/27/uisplitviewcontroller_question">here</a>, where
+after rotating the device from regular to compact size class and back again iOS uses the topmost master view controller
+as the new detail view, instead of the previous detail view, is roughly the same issue I had.</p>
+
+<p>As far as I can tell so far, I think the following approach solves the issue. Note that I don&rsquo;t think I have the same set up as
+Brent - I have a navigation stack in each of the master and detail sides - but I think the general approach
+is sound, based on advice from Apple in the the &ldquo;Building Adaptive Apps with UIKit&rdquo; session from this year&rsquo;s WWDC,
+and the &ldquo;AdaptivePhotos&rdquo; sample app code they provide.</p>
+
+<p>My UISplitViewController delegate looks like this:</p>
+
+<div><script src='https://gist.github.com/c3cbbb717c3ef957cbbe.js'></script>
+<noscript><pre><code>#import &quot;UISplitViewControllerDelegateService.h&quot;
+#import &quot;NoteViewController.h&quot;
+
+@interface UISplitViewControllerDelegateService () &lt;UISplitViewControllerDelegate&gt;
+
+@end
+
+@implementation UISplitViewControllerDelegateService
+
+- (id)initWithSplitViewController:(UISplitViewController *)controller {
+    
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    self.splitViewController = controller;
+    controller.delegate = self;
+    
+    return self;
+    
+}
+
+#pragma mark - Split view
+
+- (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
+    
+    if ([secondaryViewController isKindOfClass:[UINavigationController class]]
+        &amp;&amp; [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[NoteViewController class]]
+        &amp;&amp; ([(NoteViewController *)[(UINavigationController *)secondaryViewController topViewController] note] == nil)) {
+        // If the detail controller doesn't have an item, display the primary view controller instead
+        return YES;
+    }
+
+    return NO;
+    
+}
+
+- (UIViewController *)splitViewController:(UISplitViewController *)splitViewController
+separateSecondaryViewControllerFromPrimaryViewController:(UIViewController *)primaryViewController{
+    
+    if ([primaryViewController isKindOfClass:[UINavigationController class]]) {
+        for (UIViewController *controller in [(UINavigationController *)primaryViewController viewControllers]) {
+            if ([controller isKindOfClass:[UINavigationController class]] &amp;&amp; [[(UINavigationController *)controller visibleViewController] isKindOfClass:[NoteViewController class]]) {
+                return controller;
+            }
+        }
+    }
+    
+    // No detail view present
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@&quot;Main&quot; bundle:nil];
+    UINavigationController *detailView = [storyboard instantiateViewControllerWithIdentifier:@&quot;detailView&quot;];
+    
+    // Ensure back button is enabled
+    UIViewController *controller = [detailView visibleViewController];
+    controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+    controller.navigationItem.leftItemsSupplementBackButton = YES;
+
+    return detailView;
+    
+}
+
+@end
+</code></pre></noscript></div>
+
+
+<ul>
+<li>In the &lsquo;collapse&rsquo; method, which is called when the device rotates to portrait, we disregard the detail view controller and use the
+master view controller if the detail view has no content</li>
+<li>In the &lsquo;merge&rsquo; method, we look to see if there&rsquo;s a navigation controller which is displaying a NoteViewController (this controller
+is currently only used as a detail view, exclusively, so it&rsquo;s a safe bet). If it exists, we use it - otherwise we retrieve the &lsquo;stock&rsquo;
+note view controller stack from the storyboard and use that.</li>
+</ul>
+
+
+<p>This approach seems to have worked well so far. The majority of issues I&rsquo;ve found have been on the iPhone 6 Plus, which combines the
+single hierarchy approach of the smaller form factor devices in regular mode, with the side-by-side dual view approach or the larger form factors
+in compact mode - this hybrid strategy seems to require more direction on our part, whereas elsewhere iOS tends to guess right on its own.</p>
+
+<p>A final note - having to manually ensure the back button exists and is configured on the detail view controller is a bit icky, but I needed
+to do this to avoid a crash. I&rsquo;d love to hear from anyone with more elegant ways to handle this.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[NOOB 0.9.19 - 'You Shouldn't Have to Click It']]></title>
@@ -656,25 +758,6 @@ sudo apachectl start</pre>
     <updated>2012-05-01T00:00:00+00:00</updated>
     <id>http://marvelley.com/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb</id>
     <content type="html"><![CDATA[<p>Step 1: Buy a Mac</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[It&#8217;s a Kind of ImageMagick &#8211; Installing the PHP Extension for Windows 7.]]></title>
-    <link href="http://marvelley.com/2012/02/15/installing-the-imagemagick-extension-for-windows-7n/"/>
-    <updated>2012-02-15T00:00:00+00:00</updated>
-    <id>http://marvelley.com/2012/02/15/installing-the-imagemagick-extension-for-windows-7n</id>
-    <content type="html"><![CDATA[<p>I had a bit of a nightmare recently trying to get the ImageMagick PHP extension working on Windows. Builds of the extension as a DLL are <a href="http://valokuva.org/?page_id=50">provided by Mikko</a>, which is awesome, but I had some trouble getting it to work.</p>
-
-<p>The workstation I was using was running 64-bit Windows 7N, and the issue I was seeing was that the extension was being registered (if I ran php -m from the command line it seemed to be loaded) but when inspecting phpinfo() output the module was conspicuous by its absence.</p>
-
-<p>Windows 7N is an EU version of Windows that comes without the Media Player framework &#8211; presumably an anti-trust related provision. Upon inspecting the extension DLL with <a href="http://www.google.co.uk/url?sa=t&amp;rct=j&amp;q=dependency%20walker&amp;source=web&amp;cd=1&amp;ved=0CCAQFjAA&amp;url=http%3A%2F%2Fwww.dependencywalker.com%2F&amp;ei=gmw7T6H-DqqO0AWCsrRt&amp;usg=AFQjCNH2xHd_jlOFVUuUCGsxzdiAM2BlXg">Dependency Walker</a> I discovered that it was linked to several missing DLLs that are supplied by the Media Player framework, and an additional DLL, IEShims.dll, which is an Internet Explorer library.</p>
-
-<p>I installed the <a href="http://www.microsoft.com/download/en/details.aspx?id=16546&amp;hash=7gyAvmSLCYr1yxwQ5Zti1LMYQjBvQzi8uADSX76Wzkj8h8n3XewG9LWsYhUlcMRMuXN1CUKhhqyeDDJZjZbygw%3d%3d">Media Feature Pack</a> which resolved the majority of the missing DLLs. I also copied IEShims.dll from Program Files\Internet Explorer to Windows\SystemWOW64 (this probably wasn&#8217;t a good idea as the architectures of the DLLs will be fundamentally different, SystemWOW64 expects 32-bit DLLs &#8211; but I haven&#8217;t encountered any adverse effects as yet). After doing this the extension began to work as expected, and was visible in phpinfo() output.</p>
-
-<p>There was a crucial comment on Mikko&#8217;s blog that I&#8217;ll repeat here &#8211; if the workstation is running PHP under IIS/FastCGI, install version <strong>6.6.2-10 or earlier</strong> of ImageMagick (available from <a href="http://image_magick.veidrodis.com/image_magick/">http://image_magick.veidrodis.com/image_magick/</a>). Don&#8217;t install any versions later than that &#8211; they were built with VC10 and will not be compatible with the extension, which was built with VC9.</p>
-
-<p>Finally, when I attempted to use the extension (I wanted to convert some images from SVG to PNG) I ran into errors because ImageMagick defaults to using the Windows temp directory as its conversion directory, and IUSR doesn&#8217;t have rights to write there. Rather than add it to the permitted users list (not a very secure approach) I set the IMAGICK_TMP environment system variable to a less prominent location; this required a restart to take effect.</p>
 ]]></content>
   </entry>
   
