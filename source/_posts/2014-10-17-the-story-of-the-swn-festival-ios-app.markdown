@@ -1,0 +1,107 @@
+---
+layout: post
+title: "The story of the Swn Festival iOS app"
+date: 2014-10-17 09:06:52 +0000
+comments: true
+categories: stories
+---
+
+[This is a rambling post about iOS app development, third party abstractions like Appcelerator Titanium, dealing with short deadlines, evolving feature sets, submitting to the App Store, APIs with Symfony2, and more. I should have written a series of posts but I know I’d never have finished them, so this is a stream of consciousness affair that is hopefully understandable and of interest to someone)].
+
+For the last four years I've made an iPhone app for Cardiff's brilliant [Swn Festival](http://swnfest.com/). Each year I've intended to write about the experience; this year I finally managed it.
+
+That I have done so now is due to this year being the first to take advantage of groundwork gradually laid down since 2010, when I first approached [John Rostron](https://twitter.com/john_rostron) with a horrendous prototype that I'd made with [Appcelerator Titanium](http://www.appcelerator.com/titanium/) while holidaying in Morocco (I'm not sure what made the prototype quite so poor; the tools I was using, or the local beer I was drinking). John, one of the co-founders of the festival, thankfully saw past that early effort and gave his blessing for an official app, and there the hard work began.
+
+![image](/images/posts/2014/10/swn_schedule.png)
+
+In many ways this year's release is closer to a 1.0 than it is a 4.0, in terms of it having features I would have liked in from the get-go. In others, it's a step back; it actually has less functionality now than it did at the start. Here's the story of the app, right from the beginning.
+
+##Version 1.0 - All kitchen, no sync
+
+Ideas for the app started to take shape a year prior, when I attended the festival in 2009. The event encompasses hundreds of bands playing in venues all over the city, typically over four days, and I was frustrated by constantly having to check the website to see who was playing where; the physical programme being difficult to read in the low-lit venues. I decided to build a simple app to display the schedule, and allow me to put together a personal plan of the bands I wanted to see, in time for the following year's event. I was keen on doing more iOS development and it seemed a good excuse as any. I accosted [Huw Stephens](https://twitter.com/huwstephens), who co-hosts the festival with John, during the closing night; he may not have been able to hear (or possibly understand) a single word I said but after I explained my plan he didn't say no, which was good enough for me.
+
+The idea gestated over the next 9 months, until I began the prototype in late July 2010. I used Titanium, a cross platform mobile framework which lets you create apps using JavaScript, because I'd done a few projects with it around the same time and I was fairly productive with it. I was yet to feel wholly comfortable with Objective-C, Apple's then advocated language for native iOS apps. I decided to implement the following features:
+
+ * An easily browsable schedule
+ * A personalised shortlist of acts to see
+ * An index of artists, with biographies, social media links etc. to aid discoverability 
+* An index of venues
+
+That made up the prototype that I showed John that year, albeit with data from the previous year. Also in the meeting was [Marc Thomas](https://twitter.com/iammarcthomas) who produces the Swn website along with lots of other things, and has therefore been closely involved with the app too. John asked if we could incorporate festival news and sponsor details into the app as well, which wasn't a problem.
+
+Soon thereafter I decided to abandon Titanium and throw my lot in with Objective-C, reasons being:
+
+ * The Titanium IDE, based on Eclipse, was dreadful. XCode, Apple's IDE, isn't perfect but it was a sure improvement
+* I came across significant bugs with the platform, and when I submitted pull requests they sometimes went ignored for months
+* I needed to learn a lot about iOS very quickly, and didn't want to have to filter the knowledge I was getting from Apple documentation and other sources into a "Titanium transformer" so I could apply it on that platform
+
+I don't regret investing time in Titanium because it distills the common concepts of mobile development to the bare minimum. I found it very accessible, where native development can initially be daunting. Had I stuck with it there would probably be an Android version of the Swn app by now; these days I haven't the time to learn Android development, and was put off back then by its relative immaturity to iOS. Ultimately, once I was oriented I quickly outgrew the platform, and considering how much more complicated iOS has become since (see storyboards, auto layout, etc.) I wouldn’t want to stray too far from Apple’s toolchain - they struggle to keep up with it themselves.
+
+It didn’t take very long to get the features I had in the prototype properly implemented in the native app, and the basic structure of the app hasn’t changed to this day. A tab bar controller hosted a navigation group for each distinct area of the app (schedule, artists, venues, and then also news and sponsors), and each of the sections made extensive use of tableviews to present data. I decided not to host the app’s data on a web service, and instead painstakingly added it manually to a set of plist files stored in the app bundle - this I would soon regret.
+
+Another factor in deciding to go native was that a lot of the artists playing at the festival had [SoundCloud](https://soundcloud.com/) accounts, and back then SoundCloud had a very permissive Objective-C client that made it ridiculously easy to stream songs via the app. As long as I attributed SoundCloud by displaying their logo I was free to play as much music as I wanted, so I added a player with some really basic playlist functionality as well. It was by far the most technically difficult part of the app (although all the clever bits around streaming were the SoundCloud library's doing) but I don't think many people even knew it was there. Indeed, my first submission to the App Store was rejected because the review team didn’t notice it and flagged the app as “unnecessarily requesting permission to play background audio" - which is a pretty damning indictment of my UX skills.
+
+(Another late feature I added was the ability for users to share their personal planner on Facebook - I wrote a custom Facebook app, added authentication to the Swn app, integrated with their iOS SDK… and around six people ended up using it).
+
+It was a rush to get the app ready in time. Because I was bundling the data in with the app, I had to wait until the schedule was finalised before I could ship; and before I could ship I had to pass Apple's app review process, which usually takes anywhere from a week to a fortnight. When I got the schedule with around a week to go before the festival started, I knew I was in trouble.
+
+I submitted the app on the 14th October, three days before opening day, and knew that it wasn't going to make it in time. Desperate not to see our work go to waste, I frantically Googled for options - I briefly explored ways to distribute the app manually, which would have been insane - before reading about Apple's expedited review provision; this is a mechanism where app developers can request a shorter review time if they feel their submission meets certain criteria (like a critical bug fix, or - hallelujah - apps that are time dependent). I made the request and was extremely grateful when Apple granted it. 
+
+The app went live a day before the festival began.
+
+Overall it was well received. There were the inevitable complaints that there wasn't a companion Android version, and each year since I've intended to address that, only for a lack of time to prevent me doing do. Aside from that there was a single major problem.
+
+A day into the festival I got an email from John asking if I could make a few amendments to the schedule; a few bands had dropped out, there had been a couple of set time alterations, etc. I hadn't considered this scenario at all, and here's where my decision to bundle the data with the app came back to bite me - any amendment to the schedule would require a new release and another trip through the review process. In my experience minor updates to existing apps do get approved quicker than brand new submissions (perhaps subsequent reviews are less stringent? Or are tasked to the same reviewer as before, so they’re familiar with the app?), but given the festival was only four days long, it was unlikely to be available in time to be of any use - and indeed the event was over halfway through before the update hit the App Store.
+
+In retrospect it would have been wiser to have spent time on externalising the data rather than adding flashy but little used features. Thankfully user feedback and download statistics suggested that the app was popular, so I suppose it was a success nonetheless.
+
+##Version 2.0 - Enter Wordpress
+
+When the time came to start thinking about an update for 2012's event an API was at the top of the list of new features. With an API delivering the schedule, artist and venue data the app could be updated at any time, without an app resubmission.
+
+Since all of the artist data was already in the Wordpress installation that powered the Swn website it seemed logical to export it from there. Marc suggested we use the [JetPack plugin](https://wordpress.org/plugins/jetpack/) for Wordpress to expose the artist data via its JSON API, and use the custom field functionality to provide additional data like set times or venue locations that were outside the requirements of the website. Inputting the data was a long-winded process, especially when adding dates since the custom field UI had no date picker - typing around 400 dates in ISO 8601 format into a text field is no fun. Thanks to [Morgan](https://twitter.com/morgapplegarth)'s hard work we eventually had an API delivering the data we needed - now I had to get it into the app.
+
+The [RestKit](http://restkit.org/) library for iOS hadn't been around long but looked like it would do exactly what I needed - make HTTP requests to given endpoints, transform the responses into objects using custom mappings, and then store the resulting object graph into Core Data, Apple's persistence framework. It also made it easy to load a seed database on the first run of the app, so I could bundle as accurate a dataset as I could get without leaving it too late to pass app review. That way the app would be fairly accurate from launch, and any amendments could be performed via the API as necessary. I had to jump through some hoops when transforming the object graph as our use of custom fields meant there weren't concrete objects with primary keys to map to my event and venue Core Data entities, but it didn't take long to work around that. I faked an identifier from hashed content to identify individual artist appearances, so I could persist favourited events beyond each schedule reload.
+
+I found RestKit to be straightforward to implement, although its documentation was light, disorganised and outdated. Thankfully since getting it working I've not needed to touch it in two years save to update the odd URL, which has been a relief. I've often thought to replace it but if ain't broke...
+
+I simplified the app by removing its Facebook integration; I doubt it was missed. The SoundCloud player survived, but I had to redesign it, and other parts of the app, to accommodate the iPhone 5 which was released in the September and introduced a new 4" screen size into the iPhone lineup. Since the app made use of lots of UITableViewControllers I was quite lucky in this regard - the tableviews naturally stretched a little more to take up the additional space.
+
+Despite our improved data approach we still contrived to cut it close with the app submission. Thankfully it was approved in time, and I saw plenty of people using it during the festival. Since I'm predominately a web developer I don't often get to see people use the things I make, so it was nice to observe the odd person browsing the schedule or reading about an artist.
+
+##Version 3.0 - Bittersweet Symfony
+
+2013 continued the pattern of very little innovation from the app's perspective, with most of the work going into supporting the latest version of iOS (the 7th iteration came out that year and embraced flat design, so I gave the app a facelift to match) and improving data delivery.
+
+Wordpress had proved a decent stop-gap API, but it needed to be replaced; it was too easy to enter incorrect data with no validation on custom fields, and the response times from the API were poor, and for a relatively small dataset too. Since people would usually be downloading over a data connection (3G at best) with spotty connectivity due to being in and out of venues I wanted updates to the schedule to be much quicker than they currently were.
+
+I was working a lot with [Symfony2](http://symfony.com/) at the time, and it's still my go-to PHP framework. Its out-of-the-box integration with the [Doctrine ORM](http://www.doctrine-project.org/) means it's really easy to produce a decent webservice, so I decided to write my own API and import whatever I could from Wordpress to minimise he amount of data entry I had to do. Ideally the import would be semi-idempotent as well, so if any artist data (like biographies) changed I'd be able to rerun the import to get the latest data but maintain existing identifiers, so as not to break user's favourite lists.
+
+I used the [Sonata Admin Bundle](http://sonata-project.org/bundles/admin/2-3/doc/index.html) for Symfony2 to provide a front end to the API, so the Swn team could update the schedule themselves and no longer rely on me. We also managed to get a new feature into the app - venue capacity indicators, so festival goers would know ahead of time if they were likely to be queuing to get in to see a particular artist. 
+
+Because the changes weren't drastic I didn't expect many side effects in the app, but man was I wrong. There were some nasty schedule issues to resolve (mostly around dates and time zones, which may have been in the app from the start but were surely highlighted by my API changes). As a result I once again ended up rushing to finish in time, and most maddeningly had to spend a day at the [PHPNW13](http://conference.phpnw.org.uk/phpnw13/) conference ensconced in my room, coding frantically and missing talks. [Steve Halford](https://twitter.com/theSteveHalford) - friend, colleague and beta tester extraordinaire - was probably sick of the sight of emails from [TestFlight](https://www.testflightapp.com/) announcing another build for him to try. Another expedited review was requested, and granted. I've read that developers are limited to a certain amount of these, so really it's a good thing I make apps sporadically. 
+
+##Version 4.0 - Auto layout aside…
+
+And so to 2014. I’ve been really busy since changing jobs last March, and feared I wouldn’t have time to produce the app this year. I was all set to take a back seat (which would have saddened me because I love making it and being involved) when I found out that this year’s festival was to be a smaller affair, and so if I were to do the app less work would be required. That was too tempting an offer to pass up, especially as I felt we’d spent four years getting to this point - where the API and the app were in harmony, and any time spent would be on maintaining the app and hopefully expanding it with the odd new feature.
+
+![image](/images/posts/2014/10/swn_storyboard.png)
+
+Of course, nothing’s ever that simple. Apple announced not one but two new devices this year, the iPhones 6 and 6 Plus, each with a screen size which meant the app needed to support four form factors in total (the 4s, 5/5s/5c, 6 and 6+). Up until now I’d been quite lucky, with each new release of iOS not needing much in the way of view changes, but after watching several of this year’s WWDC videos I realised I couldn’t keep putting off using storyboards and auto layout - it was only going to get more difficult the longer I left it.
+
+So I ended up scrapping the existing XIBs which defined the user interface and moved everything to a single storyboard (the app’s small so I could get away with that). Though I’d not used auto layout extensively I managed to convert everything without much bother - aside from one UI element which consisted of a set of tableviews in a paginated scrollview, one for each venue on a given day. Try as I might I couldn’t get it paging properly through Interface Builder (I suspect I need to manage it in code, as the tables are dynamic) so I ended up replacing the scrollview with a single tableview, which luckily I could do since the festival takes place on a single day this year - there’s less data to display.
+
+Here’s the cool thing though - I estimate I spent no more than 2 days’ worth of time preparing the app for 2014, which is a significant improvement on previous years. I didn’t miss half of a conference this time either! The infrastructure that’s now in place should provide a consistent base from which I can experiment with new features. Here’s hoping Apple now slow down a bit so I can spend less time firefighting in future.
+
+##Final Thoughts
+
+In a nutshell, here's what I’ve learned from developing this app over the last four years:
+
+* Abstraction frameworks are useful for quick prototyping 
+* Don’t waste time on features if they aren’t likely to be used (however cool you think they may be!)
+* If your app depends on a dataset but has a deadline, submit as early as possible and update it on first launch
+* Each year, run your app with the new iOS beta releases as soon as they’re available to identify what needs fixing, even if you don’t plan on updating it in the near future - avoid late surprises. 
+* The WWDC videos are essential viewing
+* Where you can, own your own web services. Don’t rely on someone else’s platform and its performance, availability, etc.
+
+Phew. That's it. You have my thanks if you made it this far!
