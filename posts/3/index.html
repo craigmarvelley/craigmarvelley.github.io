@@ -9,7 +9,8 @@
   <meta name="author" content="Craig Marvelley">
 
   
-  <meta name="description" content="I had a bit of a nightmare recently trying to get the ImageMagick PHP extension working on Windows. Builds of the extension as a DLL are provided by &hellip;">
+  <meta name="description" content="Step 1: Buy a Mac
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +78,35 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/05/01/windows-7-connecting-to-a-samsung-galaxy-s2-device-with-adb/">Windows 7: Connecting to a Samsung Galaxy S2 Device With ADB</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-05-01T00:00:00+00:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Step 1: Buy a Mac</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -555,51 +585,6 @@ According to the IIS blog</a> IIS should flush the cache when files are modified
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/03/09/determining-the-type-of-appcelerator-objects/">Determining the Type of Appcelerator Objects.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-03-09T00:00:00+00:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The Appcelerator platform doesn&#8217;t provide a way to determine what the type of an Appcelerator object is (e.g. a Window, a View, a Button, etc.). This is often necessary because one may wish to tailor logic to the type of object being dealt with.</p>
-
-<p>For example, when working with a SplitWindow in an iPad app built in Appcelerator I needed to know if an object that was to be added to the detail view was a navigation group or a window. I ended up using toString() on the object to get its type, then using a regex. This is the way I ended up doing it:</p>
-
-<p><code>&lt;br /&gt;
-if(! window.toString().match(/TiUIiPhoneNavigationGroup/)) {&lt;br /&gt;
-var nav = Ti.UI.iPhone.createNavigationGroup({&lt;br /&gt;
-window: window&lt;br /&gt;
-});</code></p>
-
-<p><code>return nav;&lt;br /&gt;
-}</code></p>
-
-<p><code></code></p>
-
-<p><code>return window;&lt;br /&gt;
-</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -617,6 +602,10 @@ window: window&lt;br /&gt;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/10/17/the-story-of-the-swn-festival-ios-app/">The Story of the Swn Festival iOS App</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/27/uisplitviewcontroller-collapsing-and-separating-in-ios-8/">UISplitViewController Collapsing and Separating in iOS 8</a>
       </li>
     
@@ -630,10 +619,6 @@ window: window&lt;br /&gt;
     
       <li class="post">
         <a href="/blog/2014/06/09/never-out-of-beta-returns/">Never Out of Beta Returns!</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/23/handling-interactive-ansible-tasks/">Handling Interactive Ansible Tasks</a>
       </li>
     
   </ul>
