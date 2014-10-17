@@ -6,7 +6,7 @@ comments: true
 categories: stories
 ---
 
-[This is a rambling post about iOS app development, third party abstractions like Appcelerator Titanium, dealing with short deadlines, evolving feature sets, submitting to the App Store, APIs with Symfony2, and more. I should have written a series of posts but I know I’d never have finished them, so this is a stream of consciousness affair that is hopefully understandable and of interest to someone)].
+[This is a rambling post about iOS app development, Appcelerator Titanium, dealing with short deadlines, evolving feature sets, submitting to the App Store, APIs with Symfony2, and more. I should have written a series of posts but I know I’d never have finished them, so this is a stream of consciousness affair that is hopefully understandable and of interest to someone)].
 
 For the last four years I've made an iPhone app for Cardiff's brilliant [Swn Festival](http://swnfest.com/). Each year I've intended to write about the experience; this year I finally managed it.
 
