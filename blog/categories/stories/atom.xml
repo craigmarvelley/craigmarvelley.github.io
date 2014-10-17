@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Stories | Craig Marvelley]]></title>
   <link href="http://marvelley.com/blog/categories/stories/atom.xml" rel="self"/>
   <link href="http://marvelley.com/"/>
-  <updated>2014-10-17T09:18:38+00:00</updated>
+  <updated>2014-10-17T09:25:28+00:00</updated>
   <id>http://marvelley.com/</id>
   <author>
     <name><![CDATA[Craig Marvelley]]></name>
@@ -18,7 +18,7 @@
     <link href="http://marvelley.com/blog/2014/10/17/the-story-of-the-swn-festival-ios-app/"/>
     <updated>2014-10-17T09:06:52+00:00</updated>
     <id>http://marvelley.com/blog/2014/10/17/the-story-of-the-swn-festival-ios-app</id>
-    <content type="html"><![CDATA[<p>[This is a rambling post about iOS app development, third party abstractions like Appcelerator Titanium, dealing with short deadlines, evolving feature sets, submitting to the App Store, APIs with Symfony2, and more. I should have written a series of posts but I know I’d never have finished them, so this is a stream of consciousness affair that is hopefully understandable and of interest to someone)].</p>
+    <content type="html"><![CDATA[<p>[This is a rambling post about iOS app development, Appcelerator Titanium, dealing with short deadlines, evolving feature sets, submitting to the App Store, APIs with Symfony2, and more. I should have written a series of posts but I know I’d never have finished them, so this is a stream of consciousness affair that is hopefully understandable and of interest to someone)].</p>
 
 <p>For the last four years I&rsquo;ve made an iPhone app for Cardiff&rsquo;s brilliant <a href="http://swnfest.com/">Swn Festival</a>. Each year I&rsquo;ve intended to write about the experience; this year I finally managed it.</p>
 
